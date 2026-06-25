@@ -1,0 +1,142 @@
+\documentclass[12pt,titlepage,headings,oneside,openany]{book}
+\usepackage{kotex}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{subfigure}
+\usepackage{rotating}
+\usepackage{enumitem}
+\usepackage{amsfonts,amssymb}
+\usepackage{pifont}
+\usepackage{indentfirst}
+\usepackage{lscape}
+\usepackage{booktabs,longtable,adjustbox,caption,array}
+\usepackage{soul}
+\soulregister{\ref}{1}
+\soulregister{\cite}{1}
+\usepackage{xcolor}
+\usepackage{fvextra}
+\usepackage{algorithmic}
+\usepackage{stfloats}
+\usepackage{verbatim}
+\usepackage[cmex10]{amsmath}
+\usepackage{newlfont}
+\usepackage{XThesis_skku_eng}
+\usepackage[active]{srcltx}
+\usepackage{notebook}
+\usepackage{fancyhdr}
+\usepackage{cite}
+\usepackage[hyphens]{url}
+\usepackage{array,tabularx}
+\usepackage{bm,upgreek}
+\usepackage{textcomp}
+\usepackage{makecell,multirow}
+\usepackage{ifpdf}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{mathtools}
+\usepackage{microtype}
+\ifpdf
+  \usepackage[CJKbookmarks]{hyperref}
+  \hypersetup{hidelinks}
+\else
+  \usepackage[dvipdfm,CJKbookmarks]{hyperref}
+  \hypersetup{hidelinks}
+  \AtBeginDvi{\special{pdf: tounicode KSCms-UHC-UCS2}}
+\fi
+% Symmetric vertical margins for the thesis body.
+% The previous template used a large positive \voffset and the default book-class
+% chapter spacing, which pushed chapter titles far below the top of the page.
+\usepackage[
+  a4paper,
+  top=25mm,
+  bottom=25mm,
+  left=36mm,
+  right=36mm,
+  includefoot,
+  footskip=10mm
+]{geometry}
+
+% Place chapter headings at the top of the text area instead of adding the
+% default 50 pt blank space used by the book class.
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{0pt}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \huge\bfseries \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 14\p@
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 28\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{0pt}%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 28\p@
+  }}
+\makeatother
+\hfuzz2pt
+\newlength{\defbaselineskip}
+\setlength{\defbaselineskip}{\baselineskip}
+\newcommand{\setlinespacing}[1]{\setlength{\baselineskip}{#1 \defbaselineskip}}
+\newcommand{\doublespacing}{\setlength{\baselineskip}{2.0 \defbaselineskip}}
+\newcommand{\singlespacing}{\setlength{\baselineskip}{\defbaselineskip}}
+\newcommand{\todoexp}[1]{\textcolor{red}{[Planned/TBD: #1]}}
+\begin{document}
+\setlinespacing{1.7}
+\def\baselinestretch{1}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\clearpage
+\markboth{Abstract}{Abstract}
+\include{abstract_eng}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\markboth{Introduction}{Introduction}
+\include{./1.Introduction/1.Introduction}
+\markboth{System Overview and Problem Formulation}{System Overview and Problem Formulation}
+\include{./2.SystemOverview/2.SystemOverview}
+\markboth{Tool-Footprint-Aware Full-Coverage Path Planning}{Tool-Footprint-Aware Full-Coverage Path Planning}
+\include{./3.FullCoveragePathPlanning/3.FullCoveragePathPlanning}
+\markboth{Reinforcement Learning}{Reinforcement Learning}
+\include{./4.ReinforcementLearning/4.ReinforcementLearning}
+\markboth{Force-Aware Imitation Learning}{Force-Aware Imitation Learning}
+\include{./5.ForceAwareIL/5.ForceAwareIL}
+\markboth{Feature Masking}{Feature Masking}
+\include{./6.FeatureMasking/6.FeatureMasking}
+\markboth{Experimental Design}{Experimental Design}
+\include{./7.ExperimentalDesign/7.ExperimentalDesign}
+\markboth{Conclusions}{Conclusions}
+\include{./8.Conclusions/8.Conclusions}
+\clearpage
+\bibliographystyle{IEEEtran}
+\markboth{Bibliography}{Bibliography}
+\bibliography{Bibliography/ThesisRef}
+\setlinespacing{1.44}
+\clearpage
+\markboth{Appendix}{Appendix}
+\include{./Appendix/Appendix}
+\clearpage
+\markboth{국문요약}{국문요약}
+\include{abstract_kr}
+\end{document}

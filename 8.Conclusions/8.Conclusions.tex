@@ -1,0 +1,11 @@
+\chapter{Conclusions and Future Work}
+\section{Conclusions}
+This thesis draft defines a hybrid framework for full-product robotic surface finishing. The central design decision is to avoid using one method for every region and decision level. Tool-footprint-aware geometric planning provides explicit full coverage of broad CAD surfaces. Reinforcement learning optimizes only the sliding velocity along the reference path, preserving geometric correctness and low-level safety. Force-aware imitation learning transfers local pose--force strategies to edges and contact-sensitive regions. Feature masking applies object-centric proposals and predictive future masks to reduce the influence of reflections and background distractors.
+
+The methods are connected through a common 9-D pose--force trajectory and a deterministic admittance controller. This interface enables fair comparisons and modular development. The scientific contribution will depend on experimental evidence that the integrated system improves coverage, removal uniformity, local contact behavior, programming time, and generalization relative to strong geometric, analytical, and learning-based baselines.
+
+\section{Limitations}
+The tool-footprint model is initially approximate and depends on pad compression, curvature, and force. The RL policy may fail to outperform an analytical inverse-Preston controller in well-modeled conditions. The IL policy depends on demonstration coverage and can fail on unseen hardware or wear states. Mask extraction can introduce an additional failure mode, and predictive masks may be visually correct but physically inconsistent with force and depth. A guitar demonstrates the target method-selection problem but does not prove universal industrial applicability.
+
+\section{Future Work}
+Future work includes automatic assignment of global and local regions using reconstruction confidence and planner feasibility; force/moment-based contact-point estimation; joint optimization of force, speed, spindle speed, and admittance gains; nonlinear and online material-removal modeling; sim-to-real RL transfer; tool changing between broad and local pads; active camera positioning; quality-aware termination; and validation on furniture, molds, consumer-product housings, violins, and automotive trim.

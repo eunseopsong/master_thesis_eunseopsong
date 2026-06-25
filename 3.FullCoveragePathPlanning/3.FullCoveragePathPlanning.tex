@@ -1,0 +1,60 @@
+\chapter{Tool-Footprint-Aware Full-Coverage Path Planning on CAD Surfaces}
+\label{chap:full_coverage}
+\section{Problem Definition}
+The objective of this chapter is to generate a robot-executable path whose swept polishing footprint covers an entire target region on a CAD surface. The TCP is a point and does not possess a physical width. Therefore, the planner uses the effective polishing-tool footprint, denoted by $w_{\mathrm{eff}}$, which depends on pad diameter, compression, tool tilt, local curvature, and the selected contact point.
+
+Let $\gamma(s)\in\mathcal{S}$ denote the centerline of the polishing path, parameterized by arc length $s$, and let $\mathcal{B}(\gamma(s),\mathbf{R}(s),w_{\mathrm{eff}})$ denote the surface footprint covered by the tool at that configuration. Full coverage is achieved when
+\begin{equation}
+\Omega \subseteq \bigcup_{s\in[0,L]} \mathcal{B}(\gamma(s),\mathbf{R}(s),w_{\mathrm{eff}}).
+\end{equation}
+In practice, exact full coverage is relaxed by a small tolerance near protected boundaries and physically inaccessible regions.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.98\textwidth]{./3.FullCoveragePathPlanning/figs/tool_footprint_coverage.png}
+    \caption{Concept of tool-footprint-aware full coverage. The path spacing is determined by the effective contact width and the desired overlap.}
+    \label{fig:tool_footprint}
+\end{figure}
+
+\section{CAD Surface Preprocessing}
+The CAD model is converted into a triangular mesh with controlled resolution. The target region is selected through CAD semantics, manual annotation, or surface segmentation. Boundary loops, normals, principal curvatures, and adjacency are computed. Mesh quality is checked for holes, non-manifold edges, and inconsistent normals. If the product pose is obtained from a scan, scan-to-CAD registration determines the transformation to the robot base frame.
+
+\section{Effective Tool-Footprint Model}
+For a nominal circular pad with diameter $D$, the footprint projected onto the local tangent plane is approximately circular under normal contact and elliptical under tilt. A first-order effective cross-track width is
+\begin{equation}
+w_{\mathrm{eff}}(\mathbf{q},\theta) = D\,g_c(\kappa_1,\kappa_2)\,g_t(\theta)\,g_p(F_n),
+\end{equation}
+where $g_c$ represents curvature-induced footprint change, $g_t$ represents tool-tilt projection, and $g_p$ represents compression under normal force. These factors can initially be calibrated empirically and later estimated online.
+
+Given a desired overlap ratio $\eta\in[0,1)$, the nominal path spacing is
+\begin{equation}
+d(\mathbf{q}) = (1-\eta)w_{\mathrm{eff}}(\mathbf{q}).
+\end{equation}
+The spacing is reduced near high curvature, uncertain reconstruction, or regions where the footprint projection changes rapidly.
+
+\section{Coverage Path Generation}
+The planner supports two complementary methods. The first generates scan lines on a reference parameterization and projects them onto the CAD mesh. The second creates geodesic offset curves from a selected seed curve or boundary. In both cases, the cross-track distance is adapted according to $d(\mathbf{q})$ rather than a fixed Euclidean spacing.
+
+Candidate path directions are evaluated using coverage efficiency, number of disconnected segments, curvature variation, path length, reachability, and boundary behavior. The selected centerlines are ordered in a serpentine sequence and connected through safe transition trajectories. Geodesic Hermite splines or another surface-constrained smoother reduce abrupt direction changes without leaving the CAD surface.
+
+\section{Boundary and Edge Treatment}
+For full footprint support, the centerline should remain approximately $w_{\mathrm{eff}}/2$ inside the target boundary. This creates a trade-off: a conservative offset prevents pad overhang but can leave an uncovered strip. The planner therefore offers three boundary modes:
+\begin{enumerate}
+    \item \textbf{Conservative offset:} the complete footprint remains inside the target region;
+    \item \textbf{Controlled overhang:} partial footprint overhang is allowed when surrounding geometry is safe;
+    \item \textbf{Local strategy handoff:} the boundary strip is delegated to the force-aware IL policy or a specialized contact-point planner.
+\end{enumerate}
+The third mode is central to the hybrid framework. It prevents the global planner from accumulating a large number of product-specific edge rules.
+
+\section{Tool Pose and Robot Feasibility}
+Tool orientation is initialized from the local normal $\mathbf{n}(\mathbf{q})$ and path tangent $\mathbf{t}(\mathbf{q})$. Orientation smoothing minimizes rotational acceleration while preserving a bounded angle to the surface normal. Inverse kinematics, joint limits, singularity measures, self-collision, fixture collision, and tool-body collision are evaluated at each waypoint. Infeasible segments are replanned or assigned to the local policy.
+
+\section{Optimization Objective}
+The global path is selected by minimizing
+\begin{equation}
+J = w_{\mathrm{cov}}E_{\mathrm{cov}} + w_{\mathrm{ov}}E_{\mathrm{overlap}} + w_L L + w_R E_{\mathrm{rot}} + w_M E_{\mathrm{manip}} + w_C E_{\mathrm{collision}},
+\end{equation}
+where $E_{\mathrm{cov}}$ measures uncovered area, $E_{\mathrm{overlap}}$ penalizes excessive repeated processing, $L$ is path length, $E_{\mathrm{rot}}$ measures orientation discontinuity, and the remaining terms penalize poor robot feasibility. Material-removal uniformity is not included as a purely geometric term; it is addressed online by the RL module in Chapter~\ref{chap:rl}.
+
+\section{Output Trajectory}
+The optimized surface path is interpolated into the common 9-D pose--force format. Position and orientation follow the CAD geometry. The desired force is initially a constant normal-force profile or a process-specific schedule. Sliding speed is not fixed permanently; a nominal speed is stored and modulated online by the RL policy.

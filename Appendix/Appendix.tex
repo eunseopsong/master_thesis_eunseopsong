@@ -1,0 +1,16 @@
+\appendix
+\chapter{Implementation and Experiment Checklists}
+\section{Current Implementation Status}
+\begin{itemize}
+    \item CAD/mesh path generation and dense pose--force trajectory conversion: partially implemented.
+    \item Low-level admittance controller: available in the existing robot-control stack.
+    \item RL velocity-scale policy: simulation prototype and preliminary internal results available.
+    \item Force-aware IL with direct 9-D output: research architecture defined; final implementation and real-robot validation pending.
+    \item VIOLA- and Mask2Act-inspired feature masking: conceptual design; implementation pending.
+\end{itemize}
+
+\section{Recommended Dataset Fields}
+Each demonstration episode should contain timestamps, RGB images, masks, end-effector position and orientation, linear and angular velocity, six-axis wrench, desired force, spindle state, action chunk, region identifier, phase labels, intervention labels, and success or failure annotations.
+
+\section{Build Notes}
+The project is compiled from \texttt{ThesisMain.tex}. A typical command is \texttt{latexmk -pdf ThesisMain.tex}. The cover can be compiled separately from \texttt{ThesisCover.tex}. The author, advisor, submission date, final figures, and experimental results are placeholders that must be updated before submission.

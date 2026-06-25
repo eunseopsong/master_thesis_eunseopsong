@@ -1,0 +1,16 @@
+\chapter*{국문요약}
+\addcontentsline{toc}{chapter}{국문요약}
+\begin{center}
+\Large\textbf{기하학적 경로계획, 강화학습, 힘 인지 모방학습 및 특징 마스킹 기반 하이브리드 로봇 표면 마감 프레임워크 개발}
+\end{center}
+
+본 학위논문 초안은 하나의 제품 전체를 자동으로 폴리싱하기 위한 하이브리드 로봇 표면 마감 프레임워크를 제안한다. 제안 프레임워크는 CAD 또는 재구성된 표면 전체를 커버하는 공구 폭 기반 전역 경로계획, 실제 접촉력에 따라 sliding velocity를 조절하는 강화학습, 에지 및 국소 난구간에서 위치·자세·목표 힘 궤적을 생성하는 힘 인지 모방학습, 그리고 반사광과 배경 정보에 대한 의존을 줄이는 특징 마스킹으로 구성된다.
+
+전역 경로계획에서는 TCP 자체가 아닌 실제 polishing pad의 유효 접촉 폭과 overlap ratio를 이용해 경로 간격을 결정하고, 공구가 이동하며 형성하는 swept footprint의 합집합이 목표 표면을 포함하도록 full-coverage path를 생성한다. 강화학습 정책은 로봇 관절이나 6차원 자세를 직접 출력하지 않고, 고정된 기준 경로의 진행 속도 scale만 조절하여 Preston equation 기반 가공률 편차를 줄인다. 힘 인지 모방학습 정책은 RGB 영상, 로봇 상태 및 6축 힘·토크 이력을 입력으로 받아 위치 3축, 자세 3축, 목표 힘 3축으로 이루어진 9차원 action chunk를 생성하고, 저수준 admittance controller가 이를 추종한다.
+
+특징 마스킹 장에서는 VIOLA의 object proposal 기반 object-centric representation과 Mask2Act의 future object-mask latent plan을 현재 IL framework에 적용하는 방법을 제안한다. 대상 surface, tool footprint, 보호해야 할 hardware 및 결함 영역을 mask로 표현하고, object-centric region token과 미래 mask sequence를 힘 정보 및 로봇 상태와 융합해 9차원 pose-force action을 생성한다. 이 부분은 아직 구현 전의 설계안으로서 정적 mask conditioning, VIOLA-inspired region token, Mask2Act-inspired future-mask plan 및 결합 모델을 비교하는 실험을 계획한다.
+
+실증 대상물은 넓은 도장 곡면과 에지, 컷어웨이, 프렛, 픽업, 브릿지 등 다양한 국소 금속 구간이 하나의 제품에 공존하는 기타로 설정한다. 최종 연구는 전체 커버리지, 가공량 균일도, 접촉력 안정성, 안전성, 교시 및 프로그래밍 효율과 다양한 형상 및 사용 상태에 대한 일반화 성능을 종합적으로 평가한다.
+
+\vspace{0.5cm}
+\noindent\textbf{주요어:} 로봇 표면 마감, 전면 커버리지 경로계획, 공구 접촉 폭, 강화학습, 힘 인지 모방학습, 특징 마스킹, 어드미턴스 제어
