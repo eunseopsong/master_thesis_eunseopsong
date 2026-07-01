@@ -1,75 +1,75 @@
-\chapter{Feature Masking for Object-Centric and Predictive Visual Representation}
+\chapter{Hybrid Local-to-Global Surface Finishing}
+\label{chap:hybrid_surface_finishing}
 \label{chap:feature_masking}
 \section{Motivation}
-Reflective guitar finishes and metal hardware generate highlights that can move with illumination and camera pose. A conventional RGB encoder may attend to these correlations rather than the target surface, tool contact region, defect, or protected obstacle. Background clutter and robot-body pixels can also dominate the learned representation. This chapter proposes a mask-guided extension of the force-aware IL framework. The design is preliminary and is presented as a research plan rather than a completed method.
+The headlight demonstration combines two task types. A local ROI requires condition-dependent contact behavior: approach, contact establishment, short traversal, force modulation, and retraction. The remaining visible surface requires deterministic full-coverage polishing. The proposed workflow therefore uses force-aware IL for the requested local region and geometry-based planning for the global surface.
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.98\textwidth]{./6.FeatureMasking/figs/feature_masking_architecture.png}
-    \caption{Proposed integration of VIOLA-inspired object-centric region tokens and Mask2Act-inspired predictive mask plans with the force-aware IL policy.}
+    \fbox{\begin{minipage}[c][0.34\textheight][c]{0.94\textwidth}
+    \centering
+    \textbf{Planned Fig. 2: Headlight pipeline}\\[0.5em]
+    External command or inspection output $\rightarrow$ ArUco ID used outside policy\\
+    $\rightarrow$ predefined ROI information $\rightarrow$ ROI mask in headlight/local-camera coordinates\\
+    $\rightarrow$ force-aware local IL polishing $\rightarrow$ geometry-based full-coverage polishing.
+    \end{minipage}}
+    \caption{Headlight local-to-global workflow. ArUco is a command interface for ROI-mask generation, not a defect-inspection sensor or a policy observation.}
     \label{fig:feature_masking}
 \end{figure}
 
-\section{Task-Relevant Mask Definitions}
-The proposed system represents four semantic mask types:
+\section{ArUco-to-ROI-Mask Interface}
+ArUco markers are used as a low-cost command interface that emulates an external defect-request or defect-map system~\cite{garrido2014aruco}. The marker does not sense a defect, is not treated as defect evidence, and is not polished away. The mapping is:
 \begin{enumerate}
-    \item \textbf{Target-processing mask} $M^{\mathrm{tar}}$: the region that should be polished;
-    \item \textbf{Tool-footprint or contact mask} $M^{\mathrm{tool}}$: the visible or predicted contact footprint;
-    \item \textbf{Protected-object mask} $M^{\mathrm{obs}}$: hardware, string anchors, fretboard, or other regions that must not be contacted;
-    \item \textbf{Defect or condition mask} $M^{\mathrm{def}}$: scratch, haze, oxidation, stain, or local loss of gloss when such a region is visually detectable.
+    \item detect the ArUco marker in a command camera or a region separated from the policy image;
+    \item decode the marker ID outside the policy;
+    \item retrieve predefined ROI information or a synthetic defect-map request;
+    \item generate a spatial ROI mask in the headlight or local-camera coordinate frame;
+    \item provide the ROI mask, not the marker ID, to the IL policy.
 \end{enumerate}
-Masks can be obtained from manual labels, a task-specific segmentation model, or a pretrained segmentation foundation model followed by temporal refinement. The thesis should distinguish mask-generation error from policy error.
+If the marker appears in the RGB image used by the policy, the marker region must be cropped, masked out, or captured by a separate command camera. This prevents the policy from learning a shortcut from marker pattern to trajectory. The demonstration should not be structured as a lookup table from three or four IDs to three or four trajectories.
 
-\section{VIOLA-Inspired Object-Centric Region Tokens}
-VIOLA uses object proposals from a pretrained vision model to construct object-centric representations and a transformer policy to attend to task-relevant visual factors~\cite{zhu2023viola}. The proposed polishing adaptation replaces generic household-object proposals with region proposals relevant to contact: target surface, tool footprint, protected hardware, and defect region.
-
-Given image feature map $\mathbf{Z}_t$, each proposal or mask $M_t^i$ produces a region token through ROI pooling or masked average pooling:
+\section{ROI Mask Construction}
+The ROI mask can be binary or soft:
 \begin{equation}
-\mathbf{r}_t^i = \mathrm{Pool}(\mathbf{Z}_t,M_t^i).
+M_{\mathrm{ROI}}:\Pi(\mathcal{S}_H)\rightarrow[0,1],
 \end{equation}
-The set of tokens $\{\mathbf{r}_t^i\}$, a global image token, robot-state tokens, and wrench-history tokens are processed by a transformer. Attention weights provide an interpretable indication of which region contributes to the pose--force prediction, although attention alone should not be treated as proof of causal relevance.
+where $\Pi(\mathcal{S}_H)$ denotes the image or surface projection of the headlight surface. Training masks should vary in center location, size, shape, orientation, and curvature region. Shapes may include circular, elliptical, elongated, and irregular regions. The split should include seen mask shape with unseen location, seen location range with unseen orientation, unseen size within the training range, held-out combinations of location/size/orientation, and optionally small workpiece-pose perturbations.
 
-\section{Mask2Act-Inspired Predictive Mask Plans}
-Mask2Act learns a planner from action-free video by predicting future masks of task-relevant objects and uses the latent plan to guide an executor trained with robot action data~\cite{zhang2025mask2act}. For polishing, the proposed planner predicts a sequence of future target, tool, and protected-object masks:
-\begin{equation}
-\hat{\mathbf{M}}_{t+1:t+H}=\mathcal{P}(I_{t-h:t},\mathbf{M}_{t-h:t},g),
-\end{equation}
-where $g$ specifies the local task or target region. The predicted future masks encode how the contact footprint should move over the target while remaining separated from protected hardware. Unlike future RGB prediction, the mask sequence suppresses texture and illumination details that are unrelated to motion.
-
-The action executor conditions on the future mask plan, robot state, and wrench history:
-\begin{equation}
-\mathbf{A}_t=\mathcal{E}(I_t,\hat{\mathbf{M}}_{t+1:t+H},\mathbf{s}_t,\mathbf{H}_t^w).
-\end{equation}
-The future mask sequence is a latent spatial plan, not a substitute for force sensing. It specifies where the task-relevant regions should move in image space, while the wrench history informs whether the physical contact is correct.
-
-\section{Combined Mask-Guided Force Policy}
-The full proposed architecture contains two complementary branches. The VIOLA-inspired branch provides object-centric region tokens at the current time. The Mask2Act-inspired branch predicts future masks as a high-level spatial plan. These representations are fused with robot state and force history before the flow-matching action generator.
-
-The policy can be trained with a combined objective:
-\begin{equation}
-\mathcal{L}=\mathcal{L}_{\mathrm{action}}+\lambda_{\mathrm{mask}}\mathcal{L}_{\mathrm{future\ mask}}+\lambda_{\mathrm{cons}}\mathcal{L}_{\mathrm{contact\ consistency}},
-\end{equation}
-where $\mathcal{L}_{\mathrm{action}}$ is the behavior-cloning or flow-matching loss, $\mathcal{L}_{\mathrm{future\ mask}}$ supervises future masks, and $\mathcal{L}_{\mathrm{contact\ consistency}}$ encourages agreement between predicted tool masks and measured contact phases. The exact consistency term remains to be finalized.
-
-\section{Training Strategy}
-A staged training procedure is proposed:
+\section{Local Force-Aware IL Phase}
+The local policy receives the observation in Eq.~\eqref{eq:il_observation}. It generates an action chunk for:
 \begin{enumerate}
-    \item train or adapt the mask extractor on target, tool, hardware, and defect annotations;
-    \item pretrain the future-mask planner from action-free or demonstration videos;
-    \item train the force-aware executor using robot demonstrations while freezing or slowly fine-tuning the planner;
-    \item jointly fine-tune the combined policy with conservative learning rates and validation on unseen lighting and background conditions.
+    \item approach to a safe pre-contact pose;
+    \item contact establishment with bounded force overshoot;
+    \item local traversal over the requested ROI;
+    \item force modulation or force-reference tracking;
+    \item retract to a transition pose for global polishing.
 \end{enumerate}
-Action-free video is particularly attractive because local polishing demonstrations with synchronized robot action and force are expensive. However, human and robot tool morphology differ, so the predicted mask plan should focus on target and contact-footprint motion rather than exact human hand motion.
+The local success criteria are defined by footprint coverage of the ROI, spillover outside the ROI, force stability, contact-loss count, and completion time. Actual defect removal, transparency recovery, or gloss restoration is evaluated only after standardized physical defects and inspection measurements are implemented.
 
-\section{Planned Ablations}
-The feature-masking study compares:
+\section{Global Full-Coverage Phase}
+After local IL inference and execution, the system executes a global path:
 \begin{enumerate}
-    \item raw RGB baseline;
-    \item RGB multiplied by a binary target mask;
-    \item RGB plus mask as an additional channel;
-    \item VIOLA-inspired object-centric region tokens;
-    \item Mask2Act-inspired future-mask latent plan;
-    \item combined region-token and future-mask model;
-    \item each of the above with and without wrench history.
+    \item acquire or update the headlight surface reconstruction;
+    \item register the surface to the robot base frame;
+    \item process the mesh or point cloud and estimate normals;
+    \item generate a tool-footprint-aware coverage path;
+    \item assign local surface-normal-based tool orientations;
+    \item execute the trajectory with force/admittance control.
 \end{enumerate}
-Evaluation includes task success, local coverage, collision, force metrics, generalization to lighting and background changes, sensitivity to mask noise, and representation analysis using occlusion tests and controlled perturbations. The combined model should be accepted only if the benefit exceeds the added segmentation and training complexity.
+The local ROI phase and global phase can overlap spatially if the full-coverage process intentionally blends the local region into the rest of the surface. Any overlap is reported as part of the coverage and spillover metrics rather than treated as unmeasured scratch removal.
+
+\section{Transition, Safety, and Failure Handling}
+The transition from local to global processing requires a safe retract pose, a validated current robot state, and either a known workpiece transform or a fresh registration. The safety supervisor monitors workspace limits, collision margin, normal force, tangential force, tool moment, velocity, and spindle state. Failure handling includes controlled retraction, request for re-registration, rejection of unreachable ROI requests, and operator intervention for out-of-distribution masks.
+
+\section{Headlight Method Variants}
+The headlight comparison includes four minimum variants:
+\begin{enumerate}
+    \item \textbf{H1 Rule-based full coverage only:} geometry-based global coverage without a local ROI phase.
+    \item \textbf{H2 Rule-based local + global hybrid:} ROI-mask-derived raster or contour local path with fixed force or conventional force control, followed by global coverage.
+    \item \textbf{H3 Pose-only IL + global hybrid:} RGB/mask/state policy that outputs pose trajectory and uses fixed-force or conventional force control, followed by global coverage.
+    \item \textbf{H4 Proposed force-aware IL:} RGB/mask/state/F/T-history policy that outputs pose plus verified desired force channels and executes with admittance, followed by global coverage.
+\end{enumerate}
+H2 is essential because it tests whether a simple local rule-based path generated from the same ROI mask is sufficient.
+
+\section{Future Inspection Interface}
+The ArUco-based command interface is a temporary substitute for a real defect-inspection output. Future work should replace it with a high-resolution inspection system that produces a defect map or condition mask. At that stage, additional metrics such as defect-area reduction, gloss or transparency restoration, required number of passes, over-polishing area, and total cycle time to target quality can be reported. Until then, the thesis uses the terms ROI-mask-conditioned local processing or defect-map-conditioned local processing and avoids terminology that implies autonomous defect inspection and repair.

@@ -1,90 +1,179 @@
 \chapter{Experimental Design}
 \label{chap:experiments}
 \section{Validation Strategy}
-The experiments are organized from isolated process validation to full-product integration. The sequence is shown in Fig.~\ref{fig:experimental_sequence}.
+The experiments evaluate the role allocation proposed in this thesis: geometry-based planning for deterministic coverage, force-aware IL for ROI- or pose-conditioned local interaction, and admittance control for contact execution. No numerical result is reported until the corresponding real-robot experiment or inspection measurement is completed.
+
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.98\textwidth]{./7.ExperimentalDesign/figs/experimental_sequence.png}
-    \caption{Planned experimental validation sequence.}
+    \fbox{\begin{minipage}[c][0.30\textheight][c]{0.94\textwidth}
+    \centering
+    \textbf{Planned Fig. 4: Aluminum benchmark}\\[0.5em]
+    Three to five anchor workpiece poses with continuous perturbations in translation, orientation, robot initial configuration, target feature, and approach direction.\\[0.5em]
+    Classical pipeline: perception $\rightarrow$ registration $\rightarrow$ IK/planning $\rightarrow$ execution.\\
+    IL pipeline: observation $\rightarrow$ policy inference $\rightarrow$ execution.
+    \end{minipage}}
+    \caption{Aluminum pose-randomized benchmark. The figure is a placeholder until the final experimental layout is photographed or drawn.}
     \label{fig:experimental_sequence}
 \end{figure}
 
-\section{Hardware and Test Objects}
-The target hardware includes a UR10e-class robot, a six-axis force/torque sensor, a polishing spindle, interchangeable broad and local polishing tools, an RGB-D scanner, a local RGB camera, and a rigid guitar fixture. Early tests use coated flat and convex coupons. Geometry experiments use 3-D printed or sacrificial guitar-body replicas before valuable instruments are introduced.
+\begin{figure}[t]
+    \centering
+    \fbox{\begin{minipage}[c][0.25\textheight][c]{0.94\textwidth}
+    \centering
+    \textbf{Planned Fig. 5: Time decomposition}\\[0.5em]
+    $T_{\mathrm{perception}}$ | $T_{\mathrm{registration}}$ | $T_{\mathrm{planning/inference}}$ | $T_{\mathrm{approach}}$ | $T_{\mathrm{processing}}$ | $T_{\mathrm{recovery}}$
+    \end{minipage}}
+    \caption{Planned visualization for cycle-time decomposition. The final figure should plot distributions rather than only means.}
+    \label{fig:time_decomposition}
+\end{figure}
 
-The final object set should contain at least three body classes, for example a double-cut solid body, a single-cut or arched body, and an acoustic or violin-like curved body. Local tests include body edges, cutaways, neck transitions, frets, pickup or bridge regions, and removable metal coupons that reproduce guitar hardware finish.
+\section{Hardware and Software Setup}
+The hardware setup includes a six-degree-of-freedom robot, a six-axis F/T sensor, a local camera for policy observation, a global RGB-D sensor for reconstruction or registration, polishing and deburring tools, a headlight fixture, and an aluminum specimen fixture. The software setup includes the robot controller, perception and registration stack, motion-planning stack, IL inference stack, data logger, and safety supervisor. Exact model names, controller rates, synchronization method, tool geometry, and safety thresholds remain \todoexp{to be filled from the final implementation}.
 
-\section{Process-Model Calibration}
-Normal force, sliding velocity, dwell time, tool tilt, spindle speed, pad type, and abrasive compound are varied on coupons. Actual removal is measured using profilometry, thickness change, mass change, or high-resolution surface reconstruction. These tests calibrate the Preston coefficient and the effective contact-footprint model used by Chapters~\ref{chap:full_coverage} and~\ref{chap:rl}.
+\section{Headlight ROI-Mask Experiment}
+The headlight experiment evaluates RQ1 and RQ2. Training data include ROI masks with varying center location, size, shape, orientation, and curvature region. The test split includes seen mask shape with unseen location, seen location range with unseen orientation, unseen mask size within the training range, held-out location/size/orientation combinations, and optional small workpiece-pose perturbation.
 
-\section{Full-Coverage Path-Planning Experiments}
-The path planner is compared with fixed planar raster motion, nominal-CAD projection, constant-spacing mesh projection, curvature-aware spacing, and the proposed tool-footprint-aware planner. Metrics include target coverage, boundary coverage, over-processed overlap, path length, orientation smoothness, manipulator feasibility, collision clearance, and planning time.
+The evaluation metrics before physical defects are introduced are ROI tool-footprint coverage ratio, spillover or unnecessary processing outside the ROI, local task completion time, policy inference time, normal-force RMSE, force variance, peak force and overshoot, contact-loss count, tool moment or orientation deviation, and held-out ROI success rate. If standardized physical defects are later added, the additional metrics are defect-area reduction, gloss or transparency restoration, required number of passes, over-polishing area, and total cycle time to target quality.
 
-\section{RL Sliding-Velocity Experiments}
-The same path and admittance controller are used for fixed speed, inverse-Preston control, PID or model-based rate control, and RL velocity modulation. Tests vary curvature, force bias, sensor delay, friction, pad stiffness, and velocity saturation. Both predicted Preston-rate variation and measured-removal variation are reported.
+\section{Hybrid Headlight Demo}
+The local-to-global demonstration executes local IL or a local baseline first and then full-coverage geometric polishing. The minimum method variants are H1--H4 from Chapter~\ref{chap:hybrid_surface_finishing}. The H2 rule-based local + global baseline is required to test whether ROI-mask-derived local raster or contour planning is already sufficient.
 
-\section{Force-Aware IL Experiments}
-Local tasks are evaluated under unseen geometry, initial pose offset, finish color, reflection, wear or oxidation pattern, friction, pad condition, and contact disturbance. Baselines are manual local programming, RGB-only IL, RGB plus force observation with fixed desired force, and full 9-D pose--force IL. The policy is evaluated on task completion, local coverage, force RMSE, peak force, contact loss, collision, intervention, smoothness, and teaching time.
+\section{Aluminum Pose-Randomized Deburring Benchmark}
+The aluminum benchmark evaluates RQ3. Three to five anchor poses are used only as centers of continuous randomization. Around each anchor, translation, yaw/pitch/roll, robot initial joint configuration, target hole or target edge, approach direction, and optional fixture or obstacle condition are perturbed within safe ranges. The perturbation values remain \todoexp{to be set after workspace and safety validation}.
 
-\section{Feature-Masking Experiments}
-Chapter~\ref{chap:feature_masking} is evaluated separately from the core IL policy. Mask quality is varied systematically through boundary erosion, dilation, random holes, delayed updates, and identity errors. Lighting, background, camera pose, and distractors are changed while geometry remains fixed. The study compares raw RGB, static mask conditioning, VIOLA-style region tokens, Mask2Act-style future masks, and the combined model.
+The split is:
+\begin{enumerate}
+    \item \textbf{ID test:} new combinations inside the training randomization range;
+    \item \textbf{Interpolation test:} poses between training anchors;
+    \item \textbf{Boundary test:} conditions near the edge of the training range;
+    \item \textbf{Mild OOD test:} conditions slightly beyond the training range;
+    \item \textbf{Failure-awareness test:} unreachable or unsafe target requests.
+\end{enumerate}
+The number of trials per method and split is \todoexp{TBD}.
 
-\section{Integrated Full-Product Experiment}
-The complete experiment performs CAD or scan registration, full-coverage planning, RL speed modulation on broad surfaces, local IL execution at designated regions, and final quality inspection. The integrated framework is compared with geometry-only automation and a semi-automated framework in which a human manually specifies the local paths.
+\section{Geometry-Based Planning Versus IL}
+The classical baseline uses the pipeline in Chapter~\ref{chap:full_coverage}. The IL method generates approach and processing trajectories directly from the current observation, state, and force history when applicable. Both methods use the same robot, tool, velocity and acceleration limits, force limits, and low-level execution layer to isolate the effect of online planning versus policy inference.
 
-\section{Baselines}
-\begin{table}[t]
+The cycle time is decomposed as
+\begin{equation}
+T_{\mathrm{cycle}}
+=
+T_{\mathrm{perception}}
++
+T_{\mathrm{registration}}
++
+T_{\mathrm{planning/inference}}
++
+T_{\mathrm{approach}}
++
+T_{\mathrm{processing}}
++
+T_{\mathrm{recovery}}.
+\end{equation}
+Reported timing statistics include mean, median, standard deviation or IQR, P95/P99 latency, total cycle time, effective cycle time per successful part, and failure or replanning frequency. A conclusion that IL is faster must be based on planning/inference and total cycle-time decomposition, not only on execution time.
+
+\section{Force-Aware Ablations}
+The force-aware ablation evaluates RQ4 on both workpieces where feasible. The four variants are A1 pose-only IL, A2 force-observation IL, A3 force-action IL, and A4 proposed force-aware IL. A conventional geometry-based + admittance baseline is included when available. Metrics include success rate, desired--measured force RMSE, peak force, tangential force, force variance, contact-loss count, tool slip-out, trajectory tracking error, task time, and unseen-condition performance.
+
+\section{Evaluation Tables}
+\begin{table}[H]
 \centering
-\caption{Planned experimental baselines.}
-\label{tab:baselines}
+\caption{Comparison of method capabilities.}
+\label{tab:method_capabilities}
 \begin{adjustbox}{width=\textwidth}
-\begin{tabular}{lll}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.24\textwidth}ccccc}
 \toprule
-ID & Method & Purpose \\
+Capability & Geometry baseline & Pose-only IL & Force-obs. IL & Force-action IL & Proposed \\
 \midrule
-B0 & Manual expert & Human quality and time reference \\
-B1 & Basic CAD coverage + fixed speed & Conventional geometric baseline \\
-B2 & Advanced region/contact-point planning & Strong geometry baseline \\
-B3 & B2 + manually programmed local paths & Semi-automated baseline \\
-B4 & RGB-only IL, 6-D pose, fixed force & Vision-only learning \\
-B5 & RGB + wrench observation, fixed force & Force observation only \\
-B6 & 9-D pose--force IL & Core local policy \\
-B7 & Fixed path speed & Process baseline \\
-B8 & Inverse-Preston speed control & Analytical strong baseline \\
-B9 & PID/model-based rate control & Feedback strong baseline \\
-B10 & RL velocity-scale policy & Proposed process policy \\
-B11 & VIOLA-style region tokens & Object-centric masking \\
-B12 & Mask2Act-style future masks & Predictive latent plan \\
-Full & Global planner + RL + IL + masking & Integrated framework \\
+Explicit coverage & Yes & No & No & No & Local only \\
+Online planning & Yes & No & No & No & No \\
+ROI conditioning & Optional & Yes & Yes & Yes & Yes \\
+Force observation & Optional & No & Yes & No & Yes \\
+Force action & Fixed/profile & No & No & Yes & Yes \\
+Compliant execution & Optional & Optional & Optional & Yes & Yes \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \end{table}
 
-\section{Evaluation Metrics}
-\begin{table}[t]
+\begin{table}[H]
 \centering
-\caption{Evaluation metrics.}
-\label{tab:metrics}
+\caption{Headlight experiment conditions and metrics.}
+\label{tab:headlight_conditions}
 \begin{adjustbox}{width=\textwidth}
-\begin{tabular}{ll}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.35\textwidth}>{\raggedright\arraybackslash}p{0.35\textwidth}}
 \toprule
-Category & Metrics \\
+Study & Conditions & Metrics \\
 \midrule
-Coverage & Coverage ratio, uncovered area, boundary completion, excessive overlap \\
-Removal & Preston-rate CV, cumulative-removal CV, target-band violation, measured removal \\
-Surface quality & Roughness, gloss uniformity, residual defect, edge damage \\
-Contact & Force RMSE, peak force, $dF/dt$, contact loss, tool-normal error \\
-Safety & Collision, near-collision, overload, retraction, intervention \\
-Efficiency & Scan, planning, teaching, cycle, and non-processing time \\
-Generalization & Geometry, pose, appearance, wear, friction, and pad-condition success \\
+ROI mask generalization & Location, size, shape, orientation, curvature region & ROI coverage, spillover, success rate \\
+Local contact execution & Approach, contact, traversal, retract & Force RMSE, variance, peak force, contact loss \\
+Hybrid sequence & Local phase followed by global coverage & feasibility, transition success, total time \\
+Optional real-defect study & Standardized defects only if implemented & defect-area reduction, restoration, over-polishing \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Aluminum pose-randomization conditions.}
+\label{tab:aluminum_randomization}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.35\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}}
+\toprule
+Variable & Planned randomization & Status \\
+\midrule
+Translation & $x,y,z$ perturbation around anchor poses & \todoexp{TBD ranges} \\
+Orientation & yaw, pitch, and roll perturbation & \todoexp{TBD ranges} \\
+Robot initial configuration & multiple joint-space starts within safety limits & \todoexp{TBD} \\
+Target feature & hole or edge selection & \todoexp{TBD} \\
+Approach direction & nominal and perturbed directions & \todoexp{TBD} \\
+Obstacle or fixture condition & optional condition for collision-aware planning & \todoexp{optional} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Ablation definitions.}
+\label{tab:ablation_definitions}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}}
+\toprule
+ID & Observation & Action & Execution \\
+\midrule
+A1 & vision, robot state & pose trajectory & position or fixed-force control \\
+A2 & vision, robot state, F/T history & pose trajectory & position or fixed-force control \\
+A3 & vision, robot state & pose + desired force trajectory & admittance or hybrid execution \\
+A4 & vision, ROI mask when applicable, robot state, F/T history & pose + desired force trajectory & admittance execution \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Quantitative results template. Values remain TBD until experiments are completed.}
+\label{tab:quantitative_results}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}}
+\toprule
+Method & Success & ROI/edge quality & Force RMSE & P95 latency & Cycle time \\
+\midrule
+Geometry baseline & TBD & TBD & TBD & TBD & TBD \\
+Rule-based local + global & TBD & TBD & TBD & TBD & TBD \\
+Pose-only IL & TBD & TBD & TBD & TBD & TBD \\
+Force-observation IL & TBD & TBD & TBD & TBD & TBD \\
+Force-action IL & TBD & TBD & TBD & TBD & TBD \\
+Proposed force-aware IL & TBD & TBD & TBD & TBD & TBD \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \end{table}
 
 \section{Statistical Analysis}
-Each method-condition pair is repeated across multiple specimens and trials. Method and test condition are treated as fixed factors; specimen and guitar model can be treated as random effects in a mixed-effects analysis. Failure modes are categorized as reconstruction error, coverage-planning error, kinematic infeasibility, local-policy perception error, contact instability, termination error, mask error, and out-of-distribution behavior.
+Each method-condition pair should be repeated across multiple masks, poses, target features, and initial configurations. Method and test split are treated as fixed factors; specimen, anchor pose, and day can be treated as random effects when enough data are available. Timing distributions should be reported with medians, IQR, and high percentiles because planning latency may be heavy-tailed. Failure modes are categorized as perception error, registration error, kinematic infeasibility, collision-planning failure, local-policy perception error, contact instability, mask-generation error, out-of-distribution request, and safety stop.
 
 \section{Planned and Existing Results}
-Only internal simulation results for RL adaptive velocity are currently available. All other numerical results remain planned experiments and must be reported without fabrication. The final thesis should distinguish simulation, coupon, replica, and real-guitar results clearly.
+All numerical results in this chapter are planned. The final thesis must distinguish simulated replay, dry-run motion, force-controlled contact without material removal, real deburring or polishing with material removal, and high-resolution inspection measurements. If the aluminum specimen is already smooth and no burr is measured, the experiment is reported as force-controlled edge-following or deburring-like contact execution rather than deburring-quality validation.

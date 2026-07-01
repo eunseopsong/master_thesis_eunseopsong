@@ -1,16 +1,16 @@
 \chapter*{국문요약}
 \addcontentsline{toc}{chapter}{국문요약}
 \begin{center}
-\Large\textbf{기하학적 경로계획, 강화학습, 힘 인지 모방학습 및 특징 마스킹 기반 하이브리드 로봇 표면 마감 프레임워크 개발}
+\Large\textbf{적응형 로봇 표면 마감을 위한 비전 기반 기하 경로 계획과 힘 인지 모방학습의 하이브리드 프레임워크}
 \end{center}
 
-본 학위논문 초안은 하나의 제품 전체를 자동으로 폴리싱하기 위한 하이브리드 로봇 표면 마감 프레임워크를 제안한다. 제안 프레임워크는 CAD 또는 재구성된 표면 전체를 커버하는 공구 폭 기반 전역 경로계획, 실제 접촉력에 따라 sliding velocity를 조절하는 강화학습, 에지 및 국소 난구간에서 위치·자세·목표 힘 궤적을 생성하는 힘 인지 모방학습, 그리고 반사광과 배경 정보에 대한 의존을 줄이는 특징 마스킹으로 구성된다.
+본 학위논문 초안은 로봇 표면 마감 작업에서 기하학적으로 명확히 정의할 수 있는 전면 커버리지와 접촉 상태에 따라 달라지는 국소 상호작용을 분리하여 처리하는 하이브리드 프레임워크를 제안한다. 기하 기반 경로계획은 표면 법선, 경계, 공구 footprint 및 로봇 feasibility를 명시적으로 고려할 수 있으나, 작업물 pose, 로봇 초기 configuration 및 작업 ROI가 반복적으로 변하면 perception, registration, IK 및 motion planning을 매번 다시 수행해야 한다. 반면, 비전 조건 모방학습은 낮고 일정한 online inference latency로 동작을 생성할 수 있으나, 비전만으로는 접촉 압력, 약한 접촉, slip 및 jamming을 충분히 관측하기 어렵고 전면 coverage를 보장하기 어렵다.
 
-전역 경로계획에서는 TCP 자체가 아닌 실제 polishing pad의 유효 접촉 폭과 overlap ratio를 이용해 경로 간격을 결정하고, 공구가 이동하며 형성하는 swept footprint의 합집합이 목표 표면을 포함하도록 full-coverage path를 생성한다. 강화학습 정책은 로봇 관절이나 6차원 자세를 직접 출력하지 않고, 고정된 기준 경로의 진행 속도 scale만 조절하여 Preston equation 기반 가공률 편차를 줄인다. 힘 인지 모방학습 정책은 RGB 영상, 로봇 상태 및 6축 힘·토크 이력을 입력으로 받아 위치 3축, 자세 3축, 목표 힘 3축으로 이루어진 9차원 action chunk를 생성하고, 저수준 admittance controller가 이를 추종한다.
+제안 방법은 interaction-dependent adaptation이 필요한 국소 작업에는 ROI-mask-conditioned force-aware imitation learning을 사용하고, deterministic coverage가 중요한 영역에는 vision/geometry-based planning을 사용한다. 국소 정책은 RGB 또는 RGB-D observation, 외부에서 생성된 ROI mask, robot proprioceptive state 및 최근 6축 힘/토크 이력을 입력으로 받아 end-effector pose 또는 pose increment와 desired force reference로 구성된 action chunk를 생성한다. 저수준 admittance controller는 측정 wrench와 desired force reference의 오차를 compliant motion correction으로 변환하여 실제 접촉 실행을 담당한다.
 
-특징 마스킹 장에서는 VIOLA의 object proposal 기반 object-centric representation과 Mask2Act의 future object-mask latent plan을 현재 IL framework에 적용하는 방법을 제안한다. 대상 surface, tool footprint, 보호해야 할 hardware 및 결함 영역을 mask로 표현하고, object-centric region token과 미래 mask sequence를 힘 정보 및 로봇 상태와 융합해 9차원 pose-force action을 생성한다. 이 부분은 아직 구현 전의 설계안으로서 정적 mask conditioning, VIOLA-inspired region token, Mask2Act-inspired future-mask plan 및 결합 모델을 비교하는 실험을 계획한다.
+두 실증 시편을 중심으로 실험 설계를 구성한다. 자동차 헤드라이트 실험에서는 ArUco marker를 실제 결함 검사 센서로 사용하지 않고, 외부 고해상도 defect-inspection system이 제공한다고 가정한 defect request를 저비용으로 모사하는 command interface로 사용한다. Marker ID는 policy 외부에서 ROI mask로 변환되며, 정책은 marker ID가 아니라 공간 ROI mask만 관측한다. 국소 IL polishing 이후에는 재구성 또는 registration된 headlight surface에 대해 tool-footprint-aware full-coverage polishing을 수행한다. 알루미늄 가공 시편 실험에서는 workpiece pose와 robot initial configuration이 연속적으로 perturbation되는 조건에서 classical perception--registration--planning pipeline과 vision-conditioned IL policy의 success, online latency, cycle time 및 contact stability를 비교한다.
 
-실증 대상물은 넓은 도장 곡면과 에지, 컷어웨이, 프렛, 픽업, 브릿지 등 다양한 국소 금속 구간이 하나의 제품에 공존하는 기타로 설정한다. 최종 연구는 전체 커버리지, 가공량 균일도, 접촉력 안정성, 안전성, 교시 및 프로그래밍 효율과 다양한 형상 및 사용 상태에 대한 일반화 성능을 종합적으로 평가한다.
+본 초안은 ROI-mask-conditioned local processing, local-to-global hybrid polishing feasibility, online computation time decomposition, 그리고 F/T observation, learned force action 및 admittance execution의 효과를 검증하는 실험 계획을 제시한다. 실제 작업 성공률, force RMSE, cycle time 및 표면 품질 수치는 아직 보고하지 않으며, 실험 후 \todoexp{정량 결과 및 표면 검사 지표를 추가해야 한다}.
 
 \vspace{0.5cm}
-\noindent\textbf{주요어:} 로봇 표면 마감, 전면 커버리지 경로계획, 공구 접촉 폭, 강화학습, 힘 인지 모방학습, 특징 마스킹, 어드미턴스 제어
+\noindent\textbf{주요어:} 로봇 표면 마감, 기하 경로계획, 커버리지 경로계획, 모방학습, 힘/토크 센싱, ROI 마스크, 어드미턴스 제어, 로봇 폴리싱, 로봇 디버링

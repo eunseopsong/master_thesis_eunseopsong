@@ -1,41 +1,88 @@
-\chapter{Force-Aware Imitation Learning for Local Difficult Regions}
+\chapter{ROI-Mask-Conditioned Force-Aware Imitation Learning}
 \label{chap:force_il}
 \section{Motivation and Scope}
-The local policy is designed for short segments that are difficult to cover reliably with a single global geometric strategy. Representative regions include body edges, cutaways, neck joints, fret areas, pickup covers, bridges, and narrow hardware clearances. The method is not intended to replace the CAD planner on broad surfaces, where explicit coverage and removal objectives are easier to verify.
+The local policy is designed for short contact-rich tasks whose desired action depends on a requested ROI, local curvature, initial robot state, and contact history. In the headlight task, the ROI mask specifies the area to process before global polishing. In the aluminum task, vision and state observations specify the current pose-conditioned approach and contact execution. The policy is not intended to replace geometric planning for broad surfaces where explicit coverage can be verified.
 
-Imitation learning is selected instead of unrestricted RL because a skilled operator can directly demonstrate the required approach direction, tool tilt, force reduction, repeated stroke, and termination. Real-world trial-and-error is expensive and potentially destructive, and a complete local-finishing reward would require difficult weighting among coverage, collision, force, surface damage, and stopping.
+Imitation learning is used because expert demonstrations can encode approach, contact establishment, local traversal, force modulation, and retraction without hand-designing a new rule set for every ROI and initial condition. The thesis treats IL as amortized motion generation: online inference should be low and consistent after offline demonstration collection and training.
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.98\textwidth]{./5.ForceAwareIL/figs/force_aware_il_pipeline.png}
-    \caption{Force-aware imitation-learning pipeline for local difficult regions.}
+    \fbox{\begin{minipage}[c][0.32\textheight][c]{0.94\textwidth}
+    \centering
+    \textbf{Planned Fig. 3: Policy architecture}\\[0.5em]
+    RGB/RGB-D encoder + ROI-mask encoder + robot-state encoder + F/T-history encoder\\
+    $\rightarrow$ multimodal fusion $\rightarrow$ implemented action-chunk generator\\
+    $\rightarrow$ pose or pose-increment reference + verified force channel(s)\\
+    $\rightarrow$ admittance controller and safety supervisor.
+    \end{minipage}}
+    \caption{ROI-mask-conditioned force-aware IL architecture. The final figure should reflect the implemented backbone and the actual action channels.}
     \label{fig:force_il_pipeline}
 \end{figure}
 
 \section{Demonstration Data}
-Each demonstration contains synchronized local RGB observations, optional masks, robot or demonstrator pose, six-axis wrench, spindle state, region identity, and termination labels. Demonstrations can be collected through force-feedback teleoperation, kinesthetic teaching with a passive tool, or a force-motion capture device. The dataset is segmented into approach, contact, processing, and retraction phases.
+Each demonstration episode should contain synchronized local RGB or RGB-D observations, ROI masks when applicable, robot state, end-effector pose, measured six-axis force/torque, commanded force reference if available, spindle or tool state, phase labels, intervention labels, and success or failure annotations. Demonstrations may be collected through teleoperation, kinesthetic teaching, scripted baseline execution corrected by an expert, or a force-motion capture system.
 
-Force signals are bias-corrected, transformed to the tool frame, and filtered without eliminating contact onset or impact transients. Failed demonstrations are rejected or labeled explicitly. The local nature of the task reduces the duration and quantity of demonstrations compared with teaching the entire product surface.
+Force signals are bias-corrected, transformed to a consistent frame, synchronized with images and robot state, and filtered without removing contact onset or overload transients. Failed demonstrations should be rejected or labeled explicitly. The dataset must include continuous ROI variation rather than only a few marker IDs connected to fixed trajectories.
 
 \section{Observation and Action}
-Before the feature-masking extension of Chapter~\ref{chap:feature_masking}, the baseline observation is
+For ROI-conditioned local processing, the intended observation is
 \begin{equation}
-\mathbf{o}_t^{\mathrm{IL}}=\{I_t,\mathbf{s}_t,\mathbf{H}_{t}^{w}\},
+o_t =
+\left[
+I_t,\,
+M_{\mathrm{ROI},t},\,
+s_t,\,
+W_{t-h:t}
+\right],
+\label{eq:il_observation}
 \end{equation}
-where $I_t$ is the RGB image, $\mathbf{s}_t$ is the robot state, and $\mathbf{H}_{t}^{w}$ is the recent wrench history. The action is an $H$-step chunk of 9-D pose--force waypoints:
+where $I_t$ is the local RGB or RGB-D observation, $M_{\mathrm{ROI},t}$ is a binary or soft ROI mask, $s_t$ is the robot proprioceptive state, and $W_{t-h:t}$ is a recent history of measured six-axis force/torque. For the aluminum benchmark, the ROI mask term may be omitted or replaced by a target-feature mask if such a mask is used.
+
+The intended action is an $H$-step chunk:
 \begin{equation}
-\mathbf{A}_t=[\mathbf{a}_t,\mathbf{a}_{t+1},\ldots,\mathbf{a}_{t+H-1}]\in\mathbb{R}^{H\times9}.
+a_{t:t+H} =
+\left[
+X^d_{t:t+H},\,
+W^d_{t:t+H}
+\right].
+\label{eq:il_action}
 \end{equation}
-Only the first part of the chunk is executed before the policy replans from the latest observation.
+Here $X^d$ denotes future end-effector pose or pose increments, and $W^d$ denotes the desired force or wrench reference. The repository does not include the final dataset schema, so the exact action dimension is \todoexp{to be verified}. If only normal force is predicted, the method will be reported as pose plus desired normal-force trajectory, not as six-axis wrench prediction.
 
 \section{Policy Architecture}
-A visual encoder extracts image features, a temporal encoder processes the wrench history, and a state encoder processes pose and velocity. The modalities are fused and passed to a conditional flow-matching or diffusion action generator. A generative action-chunk policy is preferred over one-step regression because multiple safe local trajectories may exist around the same hardware geometry.
+The policy contains four encoders. A visual encoder extracts features from $I_t$. A mask encoder processes $M_{\mathrm{ROI},t}$ and may use masked pooling or concatenation with image features. A state encoder processes robot configuration, end-effector pose, velocity, and phase variables when available. A temporal force encoder processes $W_{t-h:t}$ with a temporal convolution, recurrent model, or transformer block.
 
-\section{Direct Desired-Force Generation}
-The policy explicitly predicts the desired Cartesian force together with motion. This differs from force-as-observation-only policies and from methods that convert force into a virtual positional target. Nevertheless, ForceMimic predicts wrench-position parameters and executes them using hybrid force-position control~\cite{liu2025forcemimic}, while Min et al. separate desired motion and desired force for complex wooden-surface finishing~\cite{min2024force}. The thesis therefore treats direct force output as one component of the contribution, not as the complete novelty claim.
+The fused representation conditions the implemented action-chunk generator. The thesis does not rename the implemented backbone. If the working implementation uses Flow Matching, the policy should be described as a conditional flow-matching action-chunk policy. ACT and Diffusion Policy remain related-work references, not substitutes for the implemented method.
 
-\section{Low-Level Execution and Safety}
-The desired pose--force chunk is passed to the common admittance controller. The safety supervisor validates workspace, collision margin, force, torque, velocity, spindle state, and cumulative dwell. Out-of-distribution detection can use latent feature distance, ensemble disagreement, or a task-specific confidence model. Low confidence triggers a stop or operator request rather than autonomous extrapolation.
+\section{Training Objective}
+For deterministic behavior cloning, the training loss can be written as
+\begin{equation}
+\mathcal{L}_{\mathrm{BC}} =
+\lambda_X \left\|X^d_{t:t+H}-\hat{X}^d_{t:t+H}\right\|_2^2
++ \lambda_W \left\|W^d_{t:t+H}-\hat{W}^d_{t:t+H}\right\|_2^2
++ \lambda_{\Delta}\mathcal{L}_{\mathrm{smooth}},
+\end{equation}
+where hats denote policy predictions. If a flow-matching or diffusion model is implemented, $\mathcal{L}_{\mathrm{BC}}$ is replaced by the corresponding conditional generative objective while preserving the same observation and action semantics. Training/validation splits must include held-out combinations of mask location, size, orientation, curvature region, and workpiece pose perturbation.
 
-\section{Baselines and Ablations}
-The local policy is compared with a manually programmed path, RGB-only IL with fixed force, RGB-plus-wrench IL with fixed force, and direct 9-D pose--force IL. Ablations include wrench history length, action horizon, force observation, direct force output, flow matching versus deterministic behavior cloning, and task-relevant masking.
+\section{Inference and Execution}
+During inference, the policy observes the current image, mask, state, and force history and predicts a future chunk. A receding-horizon executor sends only the first portion of the chunk to the admittance controller before requesting a new prediction. This allows the policy to respond to observed contact changes without online learning. The phrase ``adapts online'' is avoided unless the policy weights or model parameters are actually updated online.
+
+\section{Force Reference and Admittance Control}
+The policy and controller play separate roles:
+\begin{itemize}
+    \item the IL policy generates task-conditioned pose and force references;
+    \item the F/T sensor provides contact-state observations and feedback;
+    \item the admittance controller converts force-reference error into compliant motion correction;
+    \item the safety supervisor limits force, velocity, workspace, and collision risk.
+\end{itemize}
+The same Eq.~\eqref{eq:admittance} is used conceptually for both local IL execution and geometry-based trajectories. Any final thesis version must update signs, selected channels, and gain matrices to match the deployed controller.
+
+\section{Ablation Definitions}
+The force-aware study separates four policy variants:
+\begin{enumerate}
+    \item \textbf{A1 Pose-only IL:} vision and robot state observation, pose trajectory action, and position control or fixed-force execution.
+    \item \textbf{A2 Force-observation IL:} vision, robot state, and F/T history observation, but pose trajectory action only.
+    \item \textbf{A3 Force-action IL:} vision and robot state observation with pose plus desired force trajectory output.
+    \item \textbf{A4 Proposed force-aware IL:} vision, ROI mask when applicable, robot state, and F/T history observation with pose plus desired force trajectory output executed by admittance control.
+\end{enumerate}
+The evaluation compares success rate, force tracking error, peak force, force variance, contact-loss count, task time, ROI or edge-following quality, and held-out-condition performance.

@@ -1,38 +1,48 @@
-\chapter{System Overview and Problem Formulation}
-\label{chap:system_overview}
-\section{System Overview}
-The system consists of a six-degree-of-freedom manipulator, a polishing spindle, a wrist six-axis force/torque sensor, a CAD or reconstructed workpiece model, one or more RGB or RGB-D cameras, and a rigid fixture. The framework contains four high-level components: a geometric full-coverage planner, an RL process optimizer, a force-aware IL local planner, and a feature-masking module. All trajectories are executed by a deterministic low-level admittance controller and filtered by an independent safety supervisor.
+\chapter{Background and Related Work}
+\label{chap:related_work}
+\section{Robotic Surface Finishing}
+Robotic polishing and deburring combine geometric path generation with physical interaction. A finishing robot must position the tool relative to a surface, maintain a suitable contact condition, and avoid excessive processing near protected regions. For known surfaces, geometric planning provides a transparent way to encode boundaries, normals, overlaps, collision constraints, and reachable tool orientations. Surface finishing studies therefore often begin from CAD or scan data and generate coverage paths over a target mesh or segmented freeform surface~\cite{tafuro2024autonomous,schneyer2023segmentation,mcgovern2024coverage}.
+
+Deburring introduces a related but distinct contact problem. A rigid cutter, abrasive point, or compliant finishing tool follows an edge, hole, or chamfer while maintaining acceptable tool load and avoiding collision. If the tool is a rigid cutter, position, depth, and approach angle are primary process variables, while force feedback is mainly a contact, overload, and adaptation signal. If the tool is abrasive or compliant, the contact force directly influences the removal process. This thesis therefore avoids claiming industrial deburring quality unless burr removal, residual burr height, chamfer width, or surface damage are actually measured.
+
+\section{3-D Reconstruction and Coverage Path Planning}
+Coverage planning on a three-dimensional surface seeks a path whose swept tool footprint covers the target region. The important footprint is the effective contact footprint of the polishing or deburring tool, not the tool center point. Freeform-surface planners have considered surface segmentation, tool geometry, contact point selection, curvature, and manipulator/task constraints~\cite{schneyer2023segmentation,mcgovern2024coverage}. These approaches are interpretable and can provide explicit coverage checks when the geometry, target region, and tool model are known.
+
+Their limitation in this thesis is not task impossibility. Rather, when the same rigid task must be repeated under many workpiece poses, robot initial configurations, or requested ROIs, the perception--registration--IK--planning loop is repeatedly invoked. The proposed framework keeps geometry-based planning as the deterministic coverage mechanism and as a strong classical baseline, while evaluating whether learned policies can reduce online computation for repeated local or pose-conditioned queries.
+
+\section{Force, Impedance, and Admittance Control}
+Force and compliance control are standard tools for contact-rich robotic manipulation~\cite{hogan1985impedance,villani2008forcecontrol}. In admittance control, measured force error is mapped into motion correction. This is appropriate for industrial position-controlled manipulators that accept pose or velocity commands. The high-level policy should therefore be distinguished from the low-level controller: the policy proposes task-conditioned pose and force references, while the controller stabilizes contact and enforces the reference within safety limits.
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.98\textwidth]{./2.SystemOverview/figs/system_overview.png}
-    \caption{System modules and shared interfaces.}
+    \fbox{\begin{minipage}[c][0.25\textheight][c]{0.94\textwidth}
+    \centering
+    \textbf{Related-work map}\\[0.5em]
+    Geometry-based coverage $\rightarrow$ explicit coverage and constraints.\\
+    Visuomotor IL/action chunking $\rightarrow$ amortized action generation.\\
+    Force-aware IL/admittance $\rightarrow$ contact-aware execution.\\
+    Mask-conditioned policies $\rightarrow$ explicit task-region conditioning.
+    \end{minipage}}
+    \caption{Conceptual map of the literature groups used to motivate the proposed role allocation. The figure is a placeholder.}
     \label{fig:system_overview}
 \end{figure}
 
-\section{Task Decomposition}
-Let $\mathcal{S}$ denote the workpiece surface and $\Omega\subset\mathcal{S}$ the target finishing region. The complete task is partitioned into a global geometric region $\Omega_g$ and a set of local difficult regions $\{\Omega_{\ell}^{i}\}_{i=1}^{N_\ell}$:
-\begin{equation}
-\Omega = \Omega_g \cup \bigcup_{i=1}^{N_\ell}\Omega_{\ell}^{i}, \qquad \Omega_g \cap \Omega_{\ell}^{i}=\varnothing.
-\end{equation}
-The global region contains broad, continuous, and reliably modeled surfaces. Local regions contain sharp boundaries, small reflective hardware, narrow clearance, incomplete reconstruction, or contact behavior that requires configuration-dependent expert adjustment. Initial experiments may use manual region annotation; automatic assignment based on reconstruction confidence, curvature, clearance, and planner feasibility is reserved for future work.
+\section{Visuomotor Imitation Learning and Action Chunking}
+Visuomotor imitation learning maps sensory observations to robot actions from demonstrations. Action chunking predicts a short future sequence rather than a single immediate command, improving temporal coherence and reducing the burden on high-frequency policy replanning. ACT introduced action chunk prediction with transformer policies for fine-grained manipulation~\cite{zhao2023act}, while Diffusion Policy models multimodal action distributions through conditional diffusion~\cite{chi2025diffusionpolicy}. The present thesis uses this family of ideas only as a policy-learning background. The final method description must match the actually implemented backbone; if the implementation uses Flow Matching, the method should be described as flow-matching action-chunk generation rather than ACT or diffusion.
 
-\section{Common Pose--Force Trajectory}
-Both the geometric planner and the IL policy generate a dense sequence of 9-D waypoints:
-\begin{equation}
-\mathbf{a}_k = [x_k,y_k,z_k,\omega_{x,k},\omega_{y,k},\omega_{z,k},F_{x,k},F_{y,k},F_{z,k}]^{\top}.
-\end{equation}
-The first six variables define the desired end-effector pose, with orientation represented as a rotation vector. The final three variables define the desired Cartesian force. The global planner derives pose from CAD geometry and uses a prescribed force profile. The local IL policy predicts the complete pose--force action chunk from sensory observations.
+\section{Force-Aware Imitation Learning}
+Recent work has added force and tactile information to imitation learning for contact-rich manipulation. Admittance visuomotor policies generate motion and force references and execute them with admittance control~\cite{zhou2024admitdiff}. ForceMimic emphasizes force-centric demonstration capture and pose--wrench prediction for contact-rich skills~\cite{liu2025forcemimic}. FoAR fuses visual and high-frequency force/torque signals for reactive contact execution~\cite{he2025foar}, and MOMA-Force combines visual-force imitation with compliant whole-body control in mobile manipulation~\cite{yang2023momaforce}.
 
-\section{Admittance-Controlled Execution}
-The high-level trajectory does not directly produce joint torques. A Cartesian admittance controller computes a compliant pose correction from the desired and measured wrench:
-\begin{equation}
-\mathbf{M}_d\Delta\ddot{\mathbf{x}}+\mathbf{D}_d\Delta\dot{\mathbf{x}}+\mathbf{K}_d\Delta\mathbf{x}=\mathbf{F}_d-\mathbf{F}_m.
-\end{equation}
-The controller maintains high-rate contact stability, while the high-level modules determine the global path, local strategy, and desired sliding speed. This separation is essential for fair evaluation: improvements caused by deterministic force control must not be incorrectly attributed to a learning policy.
+These studies are close to the force-aware component of this thesis. The distinction here is the surface-finishing role allocation: local pose--force references are learned for ROI-conditioned processing, while deterministic full-surface coverage is still assigned to a geometric planner. The thesis therefore avoids claiming novelty from force input or force output alone.
 
-\section{Safety Supervisor}
-Hard limits are imposed on workspace, joint range, self-collision, workpiece collision, force, torque, velocity, acceleration, spindle state, and cumulative dwell. The supervisor can clip a velocity scale, reject a predicted waypoint, pause the spindle, or command a controlled retraction. Learning policies are therefore optimized within a bounded execution envelope.
+\section{Learned and Amortized Motion Planning}
+Learning-based motion planning can be interpreted as amortizing repeated planning queries. Motion Planning Networks learn to produce fast motion-plan predictions and can be combined with classical planning for feasibility repair~\cite{qureshi2019mpnet}. MPC-MPNet similarly combines learned proposals with model-predictive refinement under kinodynamic constraints~\cite{li2021mpcmpnet}. This perspective motivates RQ3: an IL policy may reduce online computation time for repeated pose-conditioned tasks, while classical planning remains the standard for explicit feasibility and coverage guarantees.
 
-\section{Demonstration Object: Guitar}
-A guitar is used as the principal validation object because it combines broad coated surfaces and local difficult features in one product. The body top, back, and side are suitable for CAD-based coverage. The body edge, cutaway, neck joint, frets, pickup covers, bridge, and other metal hardware expose narrow, reflective, and contact-sensitive regions. The object is also compact enough for a UR10e-class robot and supports both manufacturing-oriented body finishing and repair-oriented local reconditioning.
+\section{Task-Relevant Feature and Mask Conditioning}
+Mask-conditioned policies provide task-relevant spatial information explicitly. VIOLA uses object proposal priors to form object-centric representations for manipulation~\cite{zhu2023viola}. Mask2Act uses object masks as a predictive video-pretraining signal for robot manipulation~\cite{zhang2025mask2act}. In this thesis, the ROI mask is not a predicted future mask. It is an externally provided task condition that specifies the requested local processing region. The mask may initially be generated from an ArUco marker command interface~\cite{garrido2014aruco}; later it can be replaced by a high-resolution inspection system that produces a real defect map.
+
+\section{Force-Feedback Deburring}
+Recent deburring work combines a learned motion prior, force-feedback MPC, and obstacle avoidance~\cite{wojciechowski2026deburring}. That work is relevant because it separates learned initialization from force-feedback control and collision-aware optimization. The present aluminum benchmark uses a similar separation: the classical baseline includes perception, registration, IK, planning, parameterized edge or hole motion, and force/admittance execution. The IL policy is evaluated as an amortized motion-generation alternative under the same robot, tool, safety limits, and execution layer.
+
+\section{Research Gap}
+The reviewed literature suggests two gaps addressed by this thesis. First, few surface-finishing workflows explicitly allocate deterministic global coverage to geometric planning while allocating ROI-conditioned, contact-sensitive local processing to force-aware IL. Second, few evaluations compare a strong classical perception--registration--planning pipeline and a vision-conditioned IL policy on the same rigid contact task while separating task success, online latency, total cycle time, and contact stability. The proposed work is positioned around these gaps rather than around a claim that one method universally dominates the other.

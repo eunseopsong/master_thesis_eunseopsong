@@ -1,51 +1,65 @@
-\chapter{Reinforcement Learning for Adaptive Sliding-Velocity Optimization}
-\label{chap:rl}
-\section{Motivation}
-A full-coverage path guarantees that the tool footprint visits the target surface, but it does not guarantee uniform material removal. Contact force varies with curvature, fixture error, pad deformation, sensor bias, and admittance dynamics. Under a constant feed speed, these force variations produce non-uniform pressure--velocity products and therefore non-uniform removal.
+\chapter{Vision-Based Geometric Surface Planning}
+\label{chap:full_coverage}
+\section{Motivation and Scope}
+Geometry-based planning remains the preferred mechanism when the task can be specified through surface geometry, tool footprint, boundaries, and robot constraints. This chapter defines the deterministic full-coverage planner for the headlight surface and the classical perception--registration--planning baseline for the aluminum specimen. The purpose is to establish a strong classical component, not a deliberately slow or incomplete rule-based baseline.
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.98\textwidth]{./4.ReinforcementLearning/figs/rl_velocity_pipeline.png}
-    \caption{Hierarchical RL formulation. The policy changes only the path-progress rate while preserving the CAD path and the low-level admittance controller.}
-    \label{fig:rl_pipeline}
+    \fbox{\begin{minipage}[c][0.28\textheight][c]{0.94\textwidth}
+    \centering
+    \textbf{Vision-based geometric planning placeholder}\\[0.5em]
+    RGB-D scan or CAD registration $\rightarrow$ surface mesh/target feature $\rightarrow$ footprint-aware path or edge trajectory $\rightarrow$ IK and collision checks $\rightarrow$ admittance execution.
+    \end{minipage}}
+    \caption{Planned geometric planning pipeline for full-coverage polishing and the aluminum classical baseline. The figure is a placeholder.}
+    \label{fig:geometric_planning_pipeline}
 \end{figure}
 
-\section{Restricted RL Formulation}
-The policy does not generate robot joint commands or a new Cartesian pose. At time $t$, the observation is
+\section{Headlight Reconstruction}
+The headlight global-polishing branch starts from an RGB-D scan, a calibrated fixture pose, or a CAD/scan registration. The intended pipeline is:
+\begin{enumerate}
+    \item acquire the headlight surface with the global RGB-D sensor;
+    \item remove background, fixture, and marker regions that are not part of the polishing surface;
+    \item estimate or register the surface in the robot base frame;
+    \item reconstruct a mesh or filtered point cloud with normals and boundaries;
+    \item define the global target surface excluding protected areas and local ROI-handled regions.
+\end{enumerate}
+If a D435 is used, it is treated as a 3-D surface sensor for reconstruction or registration. It is not described as a defect-inspection sensor. Real defect maps require a separate high-resolution inspection system and are left as future work unless such a system is implemented.
+
+\section{Tool-Footprint-Aware Coverage}
+Let $\gamma(s)\in\mathcal{S}$ be the centerline of a polishing path on the reconstructed or registered surface, and let $\mathcal{B}(\gamma(s),\mathbf{R}(s),w_{\mathrm{eff}})$ be the surface footprint swept by the polishing tool at path parameter $s$. The full-coverage objective is
 \begin{equation}
-\mathbf{o}_t^{\mathrm{RL}}=[F_{n,t},\mathbf{F}_{t-h:t},F_n^*,\dot{s}_t,\kappa_t,\phi_t,\mathbf{x}_{a,t}],
+\Omega_g \subseteq \bigcup_{s\in[0,L]} \mathcal{B}(\gamma(s),\mathbf{R}(s),w_{\mathrm{eff}}),
+\label{eq:coverage_objective}
 \end{equation}
-where $F_{n,t}$ is the measured normal force, $\mathbf{F}_{t-h:t}$ is a wrench history, $F_n^*$ is the desired force, $\dot{s}_t$ is current path progress, $\kappa_t$ is local curvature, $\phi_t$ is the normalized path phase, and $\mathbf{x}_{a,t}$ contains admittance states.
+up to a documented tolerance near protected boundaries, occluded regions, and physically inaccessible areas. The effective footprint $w_{\mathrm{eff}}$ depends on pad diameter, compression, local curvature, tool tilt, and the selected contact point. It is not equivalent to TCP path spacing.
 
-The action is a bounded velocity scale
+For a desired overlap ratio $\eta$, the nominal cross-track spacing is
 \begin{equation}
-\alpha_t \in [\alpha_{\min},\alpha_{\max}], \qquad \dot{s}_{t+1}=\alpha_t\dot{s}_{\mathrm{nom}}.
+d(\mathbf{q})=(1-\eta)w_{\mathrm{eff}}(\mathbf{q}),
 \end{equation}
-Action-rate limits and low-pass filtering prevent chatter.
+with local reductions in high-curvature or uncertain regions. Candidate path directions can be generated from raster projection, geodesic offsets, or surface parameterization and then selected according to coverage, path length, overlap, boundary behavior, and robot feasibility.
 
-\section{Preston-Based Reward}
-The local material-removal rate is approximated by
-\begin{equation}
-\rho_t = K p_t v_t,
-\end{equation}
-where $p_t$ is estimated from normal force and contact area and $v_t$ is the sliding velocity. The policy tracks a target rate $\rho^*$:
-\begin{equation}
-r_t = -w_{\rho}(\rho_t-\rho^*)^2 - w_{\alpha}(\Delta\alpha_t)^2 - w_J J_t^2 - w_S P_{\mathrm{safety}}.
-\end{equation}
-The smoothness term penalizes rapid velocity changes, and $P_{\mathrm{safety}}$ penalizes overload, contact loss, excessive tracking error, or unsafe tool motion.
+\section{Orientation Generation and Robot Feasibility}
+Tool orientation is initialized from the local surface normal $\mathbf{n}(\mathbf{q})$ and path tangent $\mathbf{t}(\mathbf{q})$. Orientation smoothing limits angular acceleration while preserving the process-specific tilt range. Each waypoint is checked for inverse kinematics, joint limits, singularity margin, self-collision, fixture collision, workpiece collision, and tool-body clearance. Infeasible segments are either replanned, assigned to a safer contact point, or excluded with a documented coverage gap.
 
-\section{Training Environment}
-Training is performed in a parallel simulation environment using the same reference paths used by the real controller. Domain randomization covers curvature, friction, pad stiffness, force-sensor bias, delay, noise, initial pose error, and contact parameters. The policy can be trained using PPO or another actor--critic method, although the exact algorithm is secondary to the restricted hierarchical formulation.
+\section{Full-Coverage Execution}
+The global coverage trajectory is converted to the common pose--force interface of Eq.~\eqref{eq:common_action}. The pose sequence follows the reconstructed or registered surface. The force reference is a conventional fixed normal-force schedule or a process-specific profile unless a verified force-action policy is used. Execution uses the same admittance controller as the learned local policy so that the comparison does not confound planning strategy with low-level contact control.
 
-\section{Analytical and Model-Based Baselines}
-A strong inverse-Preston controller is
-\begin{equation}
-v_t = \mathrm{clip}\left(\frac{c}{p_t+\epsilon},v_{\min},v_{\max}\right).
-\end{equation}
-A filtered PID or model-predictive speed controller can regulate $\rho_t-\rho^*$. These baselines are essential. RL is justified only if it provides better robustness under delay, saturation, curvature transitions, contact-area uncertainty, and noisy force estimates. If the analytical controller performs equivalently, RL adds unnecessary complexity.
+\section{Aluminum Geometry-Based Baseline}
+The aluminum benchmark uses a classical pipeline:
+\begin{enumerate}
+    \item acquire a D435 scan or the actual perception input used in the system;
+    \item register the observed part to a nominal CAD or mesh model;
+    \item estimate the workpiece pose and target edge or hole transform;
+    \item compute IK for the approach, processing, and retraction poses;
+    \item perform collision-aware motion planning from the current robot initial configuration;
+    \item generate a parameterized deburring or edge-following trajectory;
+    \item execute the trajectory with the conventional force/admittance layer.
+\end{enumerate}
+The baseline records sensor acquisition time, reconstruction time, registration time, IK time, motion-planning time, trajectory post-processing time, execution time, and recovery time. It should be implemented as a strong classical method. A slow script or unnecessarily repeated computation is not an acceptable baseline for claiming reduced IL latency.
 
-\section{Internal Preliminary Results}
-Internal simulation work has shown that adaptive velocity can strongly reduce Preston-rate variation. On a flat surface, the coefficient of variation decreased from 0.101 under fixed velocity to 0.013 under the learned policy. On a convex surface, the value decreased from 0.195 to 0.026. These results are preliminary and should not be interpreted as measured material-removal performance. Real-robot experiments and direct removal measurements are required.
+\section{Classical Local ROI Baseline}
+For the headlight study, a rule-based local baseline is required in addition to full-coverage-only polishing. Given an ROI mask, this baseline generates a local raster or contour path within the mask, assigns tool orientation from the local surface normal, and executes with fixed force or conventional force control. This baseline addresses the question of whether a simple ROI-conditioned raster path is sufficient. The proposed force-aware IL method should be evaluated against this baseline before any claim about the value of learned local processing is made.
 
-\section{Sim-to-Real Transfer and Safety}
-The real system uses the same observation normalization, action limits, and path-phase representation as simulation. Safety overrides the learned scale when force or path error exceeds a threshold. A gradual deployment sequence is used: offline replay, zero-contact motion, compliant contact on sacrificial coupons, and finally workpiece experiments. The learned policy is never allowed to modify the geometric path or exceed the certified speed and force envelope.
+\section{Relation to Process Optimization}
+Previous drafts of this thesis included reinforcement learning for Preston-rate-based sliding-velocity optimization. That topic is not treated as a main contribution in the present thesis direction. The Preston relation remains useful background for understanding material removal, but no RL velocity result is used as evidence for the proposed hybrid framework. Future work may revisit speed or process-parameter optimization after the geometry/IL role allocation and force-aware contact execution have been validated.
