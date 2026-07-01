@@ -1,7 +1,7 @@
 \chapter{Vision-Based Geometric Surface Planning}
 \label{chap:full_coverage}
 \section{Motivation and Scope}
-Geometry-based planning remains the preferred mechanism when the task can be specified through surface geometry, tool footprint, boundaries, and robot constraints. This chapter defines the deterministic full-coverage planner for the headlight surface and the classical perception--registration--planning baseline for the aluminum specimen. The purpose is to establish a strong classical component, not a deliberately slow or incomplete rule-based baseline.
+Geometry-based planning remains the preferred mechanism when the task can be specified through surface geometry, tool footprint, boundaries, and robot constraints. Freeform-surface finishing planners motivate explicit use of segmentation, contact geometry, coverage checks, and manipulator constraints~\cite{schneyer2023segmentation,mcgovern2024coverage}. This chapter defines the deterministic full-coverage planner for the headlight surface and the classical perception--registration--planning baseline for the aluminum specimen. The purpose is to establish a strong classical component, not a deliberately slow or incomplete baseline.
 
 \begin{figure}[t]
     \centering
@@ -15,7 +15,7 @@ Geometry-based planning remains the preferred mechanism when the task can be spe
 \end{figure}
 
 \section{Headlight Reconstruction}
-The headlight global-polishing branch starts from an RGB-D scan, a calibrated fixture pose, or a CAD/scan registration. The intended pipeline is:
+The headlight global-polishing branch starts from an RGB-D scan, a calibrated fixture pose, or a CAD/scan registration. Similar scanning-to-program workflows appear in robotic surface-treatment systems such as RoboGrind~\cite{alt2024robogrind}. The intended pipeline is:
 \begin{enumerate}
     \item acquire the headlight surface with the global RGB-D sensor;
     \item remove background, fixture, and marker regions that are not part of the polishing surface;
@@ -37,10 +37,10 @@ For a desired overlap ratio $\eta$, the nominal cross-track spacing is
 \begin{equation}
 d(\mathbf{q})=(1-\eta)w_{\mathrm{eff}}(\mathbf{q}),
 \end{equation}
-with local reductions in high-curvature or uncertain regions. Candidate path directions can be generated from raster projection, geodesic offsets, or surface parameterization and then selected according to coverage, path length, overlap, boundary behavior, and robot feasibility.
+with local reductions in high-curvature or uncertain regions. Candidate path directions can be generated from raster projection, geodesic offsets, or surface parameterization and then selected according to coverage, path length, overlap, boundary behavior, and robot feasibility. Ergodic surface finishing is related because it uses tool-imprint and spatial-distribution objectives for surface treatment~\cite{schneyer2026ergodic}; the present planner is limited to a deterministic implementation of the global coverage stage after local ROI processing.
 
 \section{Orientation Generation and Robot Feasibility}
-Tool orientation is initialized from the local surface normal $\mathbf{n}(\mathbf{q})$ and path tangent $\mathbf{t}(\mathbf{q})$. Orientation smoothing limits angular acceleration while preserving the process-specific tilt range. Each waypoint is checked for inverse kinematics, joint limits, singularity margin, self-collision, fixture collision, workpiece collision, and tool-body clearance. Infeasible segments are either replanned, assigned to a safer contact point, or excluded with a documented coverage gap.
+Tool orientation is initialized from the local surface normal $\mathbf{n}(\mathbf{q})$ and path tangent $\mathbf{t}(\mathbf{q})$. Orientation smoothing limits angular acceleration while preserving the process-specific tilt range. Each waypoint is checked for inverse kinematics, joint limits, singularity margin, self-collision, fixture collision, workpiece collision, and tool-body clearance. Infeasible segments are either replanned, assigned to a safer contact point, or excluded with a documented coverage gap. Learned surface-action approaches such as Mesh-DMP-integrated diffusion policy and Surface Constraint Policy also address geometric consistency of learned actions~\cite{ke2025visualguided,ke2026surfaceconstraint}; this chapter keeps that role in an explicit geometric planner for the global phase.
 
 \section{Full-Coverage Execution}
 The global coverage trajectory is converted to the common pose--force interface of Eq.~\eqref{eq:common_action}. The pose sequence follows the reconstructed or registered surface. The force reference is a conventional fixed normal-force schedule or a process-specific profile unless a verified force-action policy is used. Execution uses the same admittance controller as the learned local policy so that the comparison does not confound planning strategy with low-level contact control.
@@ -56,10 +56,10 @@ The aluminum benchmark uses a classical pipeline:
     \item generate a parameterized deburring or edge-following trajectory;
     \item execute the trajectory with the conventional force/admittance layer.
 \end{enumerate}
-The baseline records sensor acquisition time, reconstruction time, registration time, IK time, motion-planning time, trajectory post-processing time, execution time, and recovery time. It should be implemented as a strong classical method. A slow script or unnecessarily repeated computation is not an acceptable baseline for claiming reduced IL latency.
+The baseline records sensor acquisition time, reconstruction time, registration time, IK time, motion-planning time, trajectory post-processing time, execution time, and recovery time. It should be implemented as a strong classical method. A slow script or unnecessarily repeated computation is not an acceptable baseline for claiming reduced IL latency. Learned motion-planning references are used only to frame amortized online computation, not to weaken the classical baseline~\cite{qureshi2019mpnet,carvalho2025motionplanningdiffusion}.
 
 \section{Classical Local ROI Baseline}
-For the headlight study, a rule-based local baseline is required in addition to full-coverage-only polishing. Given an ROI mask, this baseline generates a local raster or contour path within the mask, assigns tool orientation from the local surface normal, and executes with fixed force or conventional force control. This baseline addresses the question of whether a simple ROI-conditioned raster path is sufficient. The proposed force-aware IL method should be evaluated against this baseline before any claim about the value of learned local processing is made.
+For the headlight study, a geometry-derived local baseline is required in addition to full-coverage-only polishing. Given an ROI mask, this baseline generates a local raster or contour path within the mask, assigns tool orientation from the local surface normal, and executes with fixed force or conventional force control. This baseline addresses the question of whether a simple ROI-conditioned raster path is sufficient. The proposed force-aware IL method should be evaluated against this baseline before any claim about the value of learned local processing is made.
 
 \section{Relation to Process Optimization}
 Previous drafts of this thesis included reinforcement learning for Preston-rate-based sliding-velocity optimization. That topic is not treated as a main contribution in the present thesis direction. The Preston relation remains useful background for understanding material removal, but no RL velocity result is used as evidence for the proposed hybrid framework. Future work may revisit speed or process-parameter optimization after the geometry/IL role allocation and force-aware contact execution have been validated.

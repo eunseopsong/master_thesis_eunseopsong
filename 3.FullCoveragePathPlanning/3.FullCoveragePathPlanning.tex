@@ -3,7 +3,7 @@
 \section{System Components}
 The experimental platform is organized around a six-degree-of-freedom industrial manipulator, a finishing spindle or deburring tool, a wrist-mounted six-axis force/torque sensor, an RGB-D sensor such as an Intel RealSense D435 for surface reconstruction or registration, a local RGB or RGB-D camera for policy observation, and rigid fixtures for the headlight and aluminum workpieces. The exact robot model, controller rate, sensor mounting, tool type, and calibration procedure remain \todoexp{to be finalized from the real hardware setup}.
 
-The system has three high-level modules. The geometry-based planner reconstructs or registers the workpiece, computes surface normals and feasible tool poses, and generates deterministic coverage or baseline trajectories. The force-aware IL policy generates local task-conditioned pose--force references from sensory observations. The low-level admittance controller executes the references while enforcing force, velocity, workspace, and collision limits.
+The system has three high-level modules. The geometry-based planner reconstructs or registers the workpiece, computes surface normals and feasible tool poses, and generates deterministic coverage or baseline trajectories. The force-aware IL policy generates local task-conditioned pose--force references from sensory observations, a structure that directly overlaps with recent admittance visuomotor and hybrid force-position policies~\cite{zhou2024admitdiff,fang2026forcepolicy}. The low-level admittance controller executes the references while enforcing force, velocity, workspace, and collision limits.
 
 \begin{figure}[t]
     \centering
@@ -19,12 +19,12 @@ The system has three high-level modules. The geometry-based planner reconstructs
 \section{Coordinate Frames}
 Let $\{B\}$ denote the robot base frame, $\{E\}$ the end-effector frame, $\{T\}$ the tool frame, $\{F\}$ the force/torque sensor frame, $\{C_g\}$ the global RGB-D camera frame, and $\{C_l\}$ the local policy camera frame. The headlight and aluminum workpiece frames are denoted by $\{H\}$ and $\{A\}$, respectively. A calibrated rigid transform is written as ${}^{i}\mathbf{T}_{j}\in SE(3)$ from frame $\{j\}$ to frame $\{i\}$.
 
-The global geometric pipeline estimates ${}^{B}\mathbf{T}_{H}$ or ${}^{B}\mathbf{T}_{A}$ from scan-to-CAD registration, fiducial-assisted calibration, or fixture calibration. The IL policy should not receive marker IDs or global registration outputs as a shortcut unless that information is explicitly part of the intended deployed observation. For the headlight local task, the policy receives a spatial ROI mask in the local camera or headlight coordinate system.
+The global geometric pipeline estimates ${}^{B}\mathbf{T}_{H}$ or ${}^{B}\mathbf{T}_{A}$ from scan-to-CAD registration, fiducial-assisted calibration, or fixture calibration. The IL policy should not receive marker IDs or global registration outputs as a shortcut unless that information is explicitly part of the intended deployed observation. For the headlight local task, the policy receives a spatial ROI mask in the local camera or headlight coordinate system. ArUco is cited only as a fiducial detection and command-interface mechanism, not as evidence of physical surface defects~\cite{garrido2014aruco}.
 
 \section{Workpieces}
 Two workpieces are considered.
 \begin{enumerate}
-    \item \textbf{Automotive headlight:} a curved transparent or coated surface used for local ROI-mask-conditioned polishing followed by full-surface geometry-based polishing. The current thesis treats ArUco markers as a command interface for ROI generation, not as defect-inspection sensors or defect evidence.
+    \item \textbf{Automotive headlight:} a curved transparent or coated surface used for local ROI-mask-conditioned polishing followed by full-surface geometry-based polishing. The current thesis treats ArUco markers as a command interface for ROI generation, not as defect-inspection sensors or defect evidence~\cite{garrido2014aruco}.
     \item \textbf{Aluminum machining specimen:} a rigid part containing holes, edges, or deburring-like target features. The benchmark varies workpiece pose, robot initial configuration, target feature, and approach direction to compare a classical online planning pipeline with a vision-conditioned IL policy.
 \end{enumerate}
 
@@ -33,7 +33,7 @@ Let $\mathcal{S}$ be a workpiece surface and $\Omega\subset\mathcal{S}$ be the t
 \begin{equation}
 \Omega = \Omega_g \cup \bigcup_{i=1}^{N_\ell}\Omega_{\ell}^{i}.
 \end{equation}
-The global region is assigned to geometry-based planning when coverage completeness, boundary handling, and tool footprint are explicitly defined. A local region is assigned to IL when the required behavior depends on ROI mask shape, local curvature, approach direction, contact onset, force modulation, or a changing initial condition. This allocation does not imply that geometry-based planning is unable to process local regions; instead, the thesis evaluates whether IL can provide lower and more consistent online computation while preserving task quality.
+The global region is assigned to geometry-based planning when coverage completeness, boundary handling, and tool footprint are explicitly defined. A local region is assigned to IL when the required behavior depends on ROI mask shape, local curvature, approach direction, contact onset, force modulation, or a changing initial condition. Surface-constrained policy learning already addresses geometric consistency for learned surface actions~\cite{ke2026surfaceconstraint}; this thesis instead separates local learned interaction from explicit global coverage. This allocation does not imply that geometry-based planning is unable to process local regions; instead, the thesis evaluates whether IL can provide lower and more consistent online computation while preserving task quality.
 
 \section{Common Pose--Force Interface}
 Both the geometric planner and IL policy output references for the same low-level execution layer. A high-level action chunk is written as
@@ -50,7 +50,7 @@ where $X^d$ is a future end-effector pose or pose-increment trajectory and $W^d$
 If the actual implementation commands only normal force $F_z^d$, the action should be written as $a_{t:t+H}=[X^d_{t:t+H},F_{z,t:t+H}^d]$ rather than as a full six-dimensional wrench. If the implementation commands three force components, the action should be written as $[X^d,F_x^d,F_y^d,F_z^d]$. The text avoids claiming six-axis wrench control until the controller channels are verified.
 
 \section{Admittance Execution}
-The low-level controller maps force-reference error into motion correction:
+The low-level controller maps force-reference error into motion correction, following classical impedance/admittance-control principles and recent learned desired-force execution structures~\cite{hogan1985impedance,keemink2018admittance,villani2008forcecontrol,zhou2024admitdiff}:
 \begin{equation}
 \mathbf{M}_d\Delta\ddot{\mathbf{x}}+
 \mathbf{D}_d\Delta\dot{\mathbf{x}}+

@@ -5,6 +5,8 @@ The local policy is designed for short contact-rich tasks whose desired action d
 
 Imitation learning is used because expert demonstrations can encode approach, contact establishment, local traversal, force modulation, and retraction without hand-designing a new rule set for every ROI and initial condition. The thesis treats IL as amortized motion generation: online inference should be low and consistent after offline demonstration collection and training.
 
+Three related-work groups bound the scope of this chapter. First, force-conditioned action generation has already been studied through admittance visuomotor policies, ForceMimic, FAWAM, Force Policy, FoAR, compliant flow matching, and stage-aware robotic polishing policies~\cite{zhou2024admitdiff,liu2025forcemimic,he2026fawam,fang2026forcepolicy,he2025foar,li2026flowforce,ke2026srdp}. Second, compliant execution and contact correction are grounded in classical admittance/impedance control and have been combined with learned policies in recent contact-rich manipulation work~\cite{hogan1985impedance,keemink2018admittance,villani2008forcecontrol,hou2025adaptivecompliance,xue2025reactivediffusion}. Third, spatial semantic conditioning through masks or object-centric representations has been used in manipulation policies~\cite{yang2025foundation,zhu2023viola,zhang2025mask2act,zhu2023groot}. The proposed policy does not claim novelty from force sensing, force-reference prediction, admittance execution, action chunking, generative policy learning, or mask conditioning in isolation. It investigates an external ROI-mask task interface for local contact-rich surface processing and integrates it with deterministic global coverage and a planning-latency benchmark.
+
 \begin{figure}[t]
     \centering
     \fbox{\begin{minipage}[c][0.32\textheight][c]{0.94\textwidth}
@@ -20,7 +22,7 @@ Imitation learning is used because expert demonstrations can encode approach, co
 \end{figure}
 
 \section{Demonstration Data}
-Each demonstration episode should contain synchronized local RGB or RGB-D observations, ROI masks when applicable, robot state, end-effector pose, measured six-axis force/torque, commanded force reference if available, spindle or tool state, phase labels, intervention labels, and success or failure annotations. Demonstrations may be collected through teleoperation, kinesthetic teaching, scripted baseline execution corrected by an expert, or a force-motion capture system.
+Each demonstration episode should contain synchronized local RGB or RGB-D observations, ROI masks when applicable, robot state, end-effector pose, measured six-axis force/torque, commanded force reference if available, spindle or tool state, phase labels, intervention labels, and success or failure annotations. Demonstrations may be collected through teleoperation, kinesthetic teaching, scripted baseline execution corrected by an expert, or a force-motion capture system such as the type studied in ForceMimic~\cite{liu2025forcemimic}.
 
 Force signals are bias-corrected, transformed to a consistent frame, synchronized with images and robot state, and filtered without removing contact onset or overload transients. Failed demonstrations should be rejected or labeled explicitly. The dataset must include continuous ROI variation rather than only a few marker IDs connected to fixed trajectories.
 
@@ -37,6 +39,7 @@ W_{t-h:t}
 \label{eq:il_observation}
 \end{equation}
 where $I_t$ is the local RGB or RGB-D observation, $M_{\mathrm{ROI},t}$ is a binary or soft ROI mask, $s_t$ is the robot proprioceptive state, and $W_{t-h:t}$ is a recent history of measured six-axis force/torque. For the aluminum benchmark, the ROI mask term may be omitted or replaced by a target-feature mask if such a mask is used.
+Force-history-conditioned prediction is compared with FAWAM and FoAR, which explicitly use recent or high-frequency force/torque signals for closed-loop contact-rich manipulation~\cite{he2026fawam,he2025foar}. The ROI mask stream is compared with segmentation- and object-mask-conditioned manipulation policies~\cite{yang2025foundation,zhu2023viola,zhang2025mask2act}.
 
 The intended action is an $H$-step chunk:
 \begin{equation}
@@ -47,12 +50,12 @@ W^d_{t:t+H}
 \right].
 \label{eq:il_action}
 \end{equation}
-Here $X^d$ denotes future end-effector pose or pose increments, and $W^d$ denotes the desired force or wrench reference. The repository does not include the final dataset schema, so the exact action dimension is \todoexp{to be verified}. If only normal force is predicted, the method will be reported as pose plus desired normal-force trajectory, not as six-axis wrench prediction.
+Here $X^d$ denotes future end-effector pose or pose increments, and $W^d$ denotes the desired force or wrench reference. Desired force output is compared with Admittance Visuomotor Policy Learning, ForceMimic, FAWAM, and SRDP~\cite{zhou2024admitdiff,liu2025forcemimic,he2026fawam,ke2026srdp}. The repository does not include the final dataset schema, so the exact action dimension is \todoexp{to be verified}. If only normal force is predicted, the method will be reported as pose plus desired normal-force trajectory, not as six-axis wrench prediction.
 
 \section{Policy Architecture}
 The policy contains four encoders. A visual encoder extracts features from $I_t$. A mask encoder processes $M_{\mathrm{ROI},t}$ and may use masked pooling or concatenation with image features. A state encoder processes robot configuration, end-effector pose, velocity, and phase variables when available. A temporal force encoder processes $W_{t-h:t}$ with a temporal convolution, recurrent model, or transformer block.
 
-The fused representation conditions the implemented action-chunk generator. The thesis does not rename the implemented backbone. If the working implementation uses Flow Matching, the policy should be described as a conditional flow-matching action-chunk policy. ACT and Diffusion Policy remain related-work references, not substitutes for the implemented method.
+The fused representation conditions the implemented action-chunk generator. Action chunking is related to ACT~\cite{zhao2023act}; generative visuomotor action distributions are related to Diffusion Policy~\cite{chi2025diffusionpolicy}; and flow-matching robot policies are related when the implementation uses a flow-based backbone~\cite{braun2024riemannianflow}. The thesis does not rename the implemented backbone. If the working implementation uses Flow Matching, the policy should be described as a conditional flow-matching action-chunk policy. ACT and Diffusion Policy remain related-work references, not substitutes for the implemented method.
 
 \section{Training Objective}
 For deterministic behavior cloning, the training loss can be written as
@@ -65,7 +68,7 @@ For deterministic behavior cloning, the training loss can be written as
 where hats denote policy predictions. If a flow-matching or diffusion model is implemented, $\mathcal{L}_{\mathrm{BC}}$ is replaced by the corresponding conditional generative objective while preserving the same observation and action semantics. Training/validation splits must include held-out combinations of mask location, size, orientation, curvature region, and workpiece pose perturbation.
 
 \section{Inference and Execution}
-During inference, the policy observes the current image, mask, state, and force history and predicts a future chunk. A receding-horizon executor sends only the first portion of the chunk to the admittance controller before requesting a new prediction. This allows the policy to respond to observed contact changes without online learning. The phrase ``adapts online'' is avoided unless the policy weights or model parameters are actually updated online.
+During inference, the policy observes the current image, mask, state, and force history and predicts a future chunk. A receding-horizon executor sends only the initial portion of the chunk to the admittance controller before requesting a new prediction. This is an observation-conditioned response with closed-loop force correction, not online parameter learning.
 
 \section{Force Reference and Admittance Control}
 The policy and controller play separate roles:
@@ -75,7 +78,7 @@ The policy and controller play separate roles:
     \item the admittance controller converts force-reference error into compliant motion correction;
     \item the safety supervisor limits force, velocity, workspace, and collision risk.
 \end{itemize}
-The same Eq.~\eqref{eq:admittance} is used conceptually for both local IL execution and geometry-based trajectories. Any final thesis version must update signs, selected channels, and gain matrices to match the deployed controller.
+The same Eq.~\eqref{eq:admittance} is used conceptually for both local IL execution and geometry-based trajectories. This policy--controller separation is directly compared with learned desired-force execution in Admittance Visuomotor Policy Learning and hybrid force-position execution in ForceMimic and Force Policy~\cite{zhou2024admitdiff,liu2025forcemimic,fang2026forcepolicy}. Any final thesis version must update signs, selected channels, and gain matrices to match the deployed controller.
 
 \section{Ablation Definitions}
 The force-aware study separates four policy variants:

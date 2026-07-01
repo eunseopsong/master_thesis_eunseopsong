@@ -1,7 +1,7 @@
 \chapter{Experimental Design}
 \label{chap:experiments}
 \section{Validation Strategy}
-The experiments evaluate the role allocation proposed in this thesis: geometry-based planning for deterministic coverage, force-aware IL for ROI- or pose-conditioned local interaction, and admittance control for contact execution. No numerical result is reported until the corresponding real-robot experiment or inspection measurement is completed.
+The experiments evaluate the role allocation proposed in this thesis: geometry-based planning for deterministic coverage, force-aware IL for ROI- or pose-conditioned local interaction, and admittance control for contact execution. The ablation structure is motivated by recent force-aware and compliance-aware policies that separately use force observations, force-history inputs, force or wrench predictions, and hybrid/admittance execution~\cite{zhou2024admitdiff,liu2025forcemimic,fang2026forcepolicy,he2026fawam,he2025foar}. No numerical result is reported until the corresponding real-robot experiment or inspection measurement is completed.
 
 \begin{figure}[t]
     \centering
@@ -31,15 +31,15 @@ The experiments evaluate the role allocation proposed in this thesis: geometry-b
 The hardware setup includes a six-degree-of-freedom robot, a six-axis F/T sensor, a local camera for policy observation, a global RGB-D sensor for reconstruction or registration, polishing and deburring tools, a headlight fixture, and an aluminum specimen fixture. The software setup includes the robot controller, perception and registration stack, motion-planning stack, IL inference stack, data logger, and safety supervisor. Exact model names, controller rates, synchronization method, tool geometry, and safety thresholds remain \todoexp{to be filled from the final implementation}.
 
 \section{Headlight ROI-Mask Experiment}
-The headlight experiment evaluates RQ1 and RQ2. Training data include ROI masks with varying center location, size, shape, orientation, and curvature region. The test split includes seen mask shape with unseen location, seen location range with unseen orientation, unseen mask size within the training range, held-out location/size/orientation combinations, and optional small workpiece-pose perturbation.
+The headlight experiment evaluates RQ1 and RQ2. Training data include ROI masks with varying center location, size, shape, orientation, and curvature region. The test split includes seen mask shape with unseen location, seen location range with unseen orientation, unseen mask size within the training range, held-out location/size/orientation combinations, and optional small workpiece-pose perturbation. The comparison is positioned relative to defect-to-program workflows, learning--mesh hybrids, ergodic surface finishing, stage-aware polishing policies, and mask-conditioned manipulation policies~\cite{alt2024robogrind,ke2025visualguided,schneyer2026ergodic,ke2026srdp,yang2025foundation}.
 
 The evaluation metrics before physical defects are introduced are ROI tool-footprint coverage ratio, spillover or unnecessary processing outside the ROI, local task completion time, policy inference time, normal-force RMSE, force variance, peak force and overshoot, contact-loss count, tool moment or orientation deviation, and held-out ROI success rate. If standardized physical defects are later added, the additional metrics are defect-area reduction, gloss or transparency restoration, required number of passes, over-polishing area, and total cycle time to target quality.
 
 \section{Hybrid Headlight Demo}
-The local-to-global demonstration executes local IL or a local baseline first and then full-coverage geometric polishing. The minimum method variants are H1--H4 from Chapter~\ref{chap:hybrid_surface_finishing}. The H2 rule-based local + global baseline is required to test whether ROI-mask-derived local raster or contour planning is already sufficient.
+The local-to-global demonstration executes local IL or a local baseline before full-coverage geometric polishing. The minimum method variants are H1--H4 from Chapter~\ref{chap:hybrid_surface_finishing}. The H2 geometry-derived local + global baseline is required to test whether ROI-mask-derived local raster or contour planning is already sufficient.
 
 \section{Aluminum Pose-Randomized Deburring Benchmark}
-The aluminum benchmark evaluates RQ3. Three to five anchor poses are used only as centers of continuous randomization. Around each anchor, translation, yaw/pitch/roll, robot initial joint configuration, target hole or target edge, approach direction, and optional fixture or obstacle condition are perturbed within safe ranges. The perturbation values remain \todoexp{to be set after workspace and safety validation}.
+The aluminum benchmark evaluates RQ3. Three to five anchor poses are used only as centers of continuous randomization. Around each anchor, translation, yaw/pitch/roll, robot initial joint configuration, target hole or target edge, approach direction, and optional fixture or obstacle condition are perturbed within safe ranges. The perturbation values remain \todoexp{to be set after workspace and safety validation}. The comparison is motivated by learned and hybrid planning work that amortizes repeated queries or warm-starts classical optimization~\cite{qureshi2019mpnet,li2021mpcmpnet,carvalho2025motionplanningdiffusion,tian2025flowwarmstart,wojciechowski2026deburring}.
 
 The split is:
 \begin{enumerate}
@@ -53,6 +53,8 @@ The number of trials per method and split is \todoexp{TBD}.
 
 \section{Geometry-Based Planning Versus IL}
 The classical baseline uses the pipeline in Chapter~\ref{chap:full_coverage}. The IL method generates approach and processing trajectories directly from the current observation, state, and force history when applicable. Both methods use the same robot, tool, velocity and acceleration limits, force limits, and low-level execution layer to isolate the effect of online planning versus policy inference.
+
+Two timing comparisons are reported separately. The algorithm-level comparison uses matched target and pose information and compares classical planning computation time against policy inference and post-processing time. The end-to-end comparison measures the full pipeline from sensing to task completion. The thesis does not compare IL inference-only time against a classical end-to-end time.
 
 The cycle time is decomposed as
 \begin{equation}
@@ -73,7 +75,7 @@ T_{\mathrm{recovery}}.
 Reported timing statistics include mean, median, standard deviation or IQR, P95/P99 latency, total cycle time, effective cycle time per successful part, and failure or replanning frequency. A conclusion that IL is faster must be based on planning/inference and total cycle-time decomposition, not only on execution time.
 
 \section{Force-Aware Ablations}
-The force-aware ablation evaluates RQ4 on both workpieces where feasible. The four variants are A1 pose-only IL, A2 force-observation IL, A3 force-action IL, and A4 proposed force-aware IL. A conventional geometry-based + admittance baseline is included when available. Metrics include success rate, desired--measured force RMSE, peak force, tangential force, force variance, contact-loss count, tool slip-out, trajectory tracking error, task time, and unseen-condition performance.
+The force-aware ablation evaluates RQ4 on both workpieces where feasible. The four variants are A1 pose-only IL, A2 force-observation IL, A3 force-action IL, and A4 proposed force-aware IL. A conventional geometry-based + admittance baseline is included when available. The variants separate observation-side force information, action-side force references, and compliant execution because prior work often combines these components in a single system~\cite{zhou2024admitdiff,liu2025forcemimic,he2026fawam,fang2026forcepolicy,ke2026srdp}. Metrics include success rate, desired--measured force RMSE, peak force, tangential force, force variance, contact-loss count, tool slip-out, trajectory tracking error, task time, and unseen-condition performance.
 
 \section{Evaluation Tables}
 \begin{table}[H]

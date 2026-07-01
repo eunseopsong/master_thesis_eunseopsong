@@ -4,6 +4,8 @@
 \section{Motivation}
 The headlight demonstration combines two task types. A local ROI requires condition-dependent contact behavior: approach, contact establishment, short traversal, force modulation, and retraction. The remaining visible surface requires deterministic full-coverage polishing. The proposed workflow therefore uses force-aware IL for the requested local region and geometry-based planning for the global surface.
 
+Several recent systems are close to this learning--geometry integration. Visual-guided Diffusion Policy with Mesh-DMP combines learned action generation with an explicit surface-constrained motion representation for freeform polishing~\cite{ke2025visualguided}. RoboGrind integrates scanning, defect identification, robot program generation, and force-controlled surface treatment~\cite{alt2024robogrind}. Ergodic surface finishing uses tool imprints, desired spatial distributions, and learned motion preferences for surface treatment~\cite{schneyer2026ergodic}. SRDP studies stage-aware robotic polishing with feed-speed and normal-force generation under roughness-oriented constraints~\cite{ke2026srdp}. Learning-augmented robotic automation further frames learned controllers inside conventional industrial workflows~\cite{kim2026learningaugmented}. The contribution here is therefore limited to the planned evaluation of ROI-mask-conditioned local force-aware processing, explicit global coverage, and latency/ablation comparisons on the selected workpieces.
+
 \begin{figure}[t]
     \centering
     \fbox{\begin{minipage}[c][0.34\textheight][c]{0.94\textwidth}
@@ -56,7 +58,7 @@ After local IL inference and execution, the system executes a global path:
     \item assign local surface-normal-based tool orientations;
     \item execute the trajectory with force/admittance control.
 \end{enumerate}
-The local ROI phase and global phase can overlap spatially if the full-coverage process intentionally blends the local region into the rest of the surface. Any overlap is reported as part of the coverage and spillover metrics rather than treated as unmeasured scratch removal.
+The local ROI phase and global phase can overlap spatially if the full-coverage process intentionally blends the local region into the rest of the surface. Any overlap is reported as part of the coverage and spillover metrics rather than treated as unmeasured physical-defect removal.
 
 \section{Transition, Safety, and Failure Handling}
 The transition from local to global processing requires a safe retract pose, a validated current robot state, and either a known workpiece transform or a fresh registration. The safety supervisor monitors workspace limits, collision margin, normal force, tangential force, tool moment, velocity, and spindle state. Failure handling includes controlled retraction, request for re-registration, rejection of unreachable ROI requests, and operator intervention for out-of-distribution masks.
@@ -64,12 +66,12 @@ The transition from local to global processing requires a safe retract pose, a v
 \section{Headlight Method Variants}
 The headlight comparison includes four minimum variants:
 \begin{enumerate}
-    \item \textbf{H1 Rule-based full coverage only:} geometry-based global coverage without a local ROI phase.
-    \item \textbf{H2 Rule-based local + global hybrid:} ROI-mask-derived raster or contour local path with fixed force or conventional force control, followed by global coverage.
+    \item \textbf{H1 Geometry-based full coverage only:} geometry-based global coverage without a local ROI phase.
+    \item \textbf{H2 Geometry-derived local + global hybrid:} ROI-mask-derived raster or contour local path with fixed force or conventional force control, followed by global coverage.
     \item \textbf{H3 Pose-only IL + global hybrid:} RGB/mask/state policy that outputs pose trajectory and uses fixed-force or conventional force control, followed by global coverage.
     \item \textbf{H4 Proposed force-aware IL:} RGB/mask/state/F/T-history policy that outputs pose plus verified desired force channels and executes with admittance, followed by global coverage.
 \end{enumerate}
-H2 is essential because it tests whether a simple local rule-based path generated from the same ROI mask is sufficient.
+H2 is essential because it tests whether a simple local geometry-derived path generated from the same ROI mask is sufficient.
 
 \section{Future Inspection Interface}
 The ArUco-based command interface is a temporary substitute for a real defect-inspection output. Future work should replace it with a high-resolution inspection system that produces a defect map or condition mask. At that stage, additional metrics such as defect-area reduction, gloss or transparency restoration, required number of passes, over-polishing area, and total cycle time to target quality can be reported. Until then, the thesis uses the terms ROI-mask-conditioned local processing or defect-map-conditioned local processing and avoids terminology that implies autonomous defect inspection and repair.
