@@ -1,4 +1,4 @@
-# Hybrid Surface Finishing Thesis LaTeX Project
+# FAIRE Thesis LaTeX Project
 
 This project uses the Sungkyunkwan University thesis template and is organized by chapter.
 
@@ -11,13 +11,17 @@ This project uses the Sungkyunkwan University thesis template and is organized b
 
 ## Chapter structure
 1. Introduction
-2. System Overview and Problem Formulation
-3. Tool-Footprint-Aware Full-Coverage Path Planning on CAD Surfaces
-4. Reinforcement Learning for Adaptive Sliding-Velocity Optimization
-5. Force-Aware Imitation Learning for Local Difficult Regions
-6. Feature Masking for Object-Centric and Predictive Visual Representation
-7. Experimental Design
+2. Related Work
+3. FAIRE Overview and Problem Formulation
+4. VR-Calibrated Motion--Force Demonstration Collection
+5. Force-History Imitation and Admittance Execution
+6. Residual Reinforcement Learning for Precision Correction
+7. Experimental Evaluation
 8. Conclusions and Future Work
+
+The thesis content is derived from the FAIRE review manuscript. Missing
+implementation details and quantitative results remain explicitly marked as
+planned or TBD.
 
 ## Page layout
 The thesis body uses equal top and bottom margins of 25 mm. Chapter headings start at the top of the text area rather than using the default `book`-class 50 pt vertical offset.

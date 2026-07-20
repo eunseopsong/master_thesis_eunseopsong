@@ -1,50 +1,57 @@
 \chapter{Introduction}
+\label{chap:introduction}
+
 \section{Background and Motivation}
-Robotic surface finishing, including polishing, sanding, deburring, grinding, and buffing, is a physically demanding and quality-sensitive operation. Integrated systems such as RoboGrind show that surface scanning, defect identification, program generation, and force-controlled execution are all relevant to practical robotic surface treatment~\cite{alt2024robogrind}. A successful finishing process depends on the nominal tool path, surface normal, tool footprint, contact force, sliding direction, dwell time, abrasive state, and robot feasibility. These factors are coupled: a path that covers a mathematical surface does not necessarily cover the surface with the physical tool, and a geometrically valid pose may still produce unstable or insufficient contact.
+Robotic polishing is a contact-rich manufacturing process in which the robot must coordinate geometric motion with the physical interaction between a compliant tool and a workpiece. A path that visits the intended surface region is necessary, but it is not sufficient for a consistent finish. The applied normal force, the sliding velocity, and the tool orientation jointly affect contact stability, dwell, and material removal. Errors in any of these variables can cause intermittent contact, excessive loading, nonuniform processing, or surface damage~\cite{preston1927theory,mohsin2019path,min2024force}.
 
-Geometry-based planning is therefore indispensable for many finishing tasks. Given a CAD model or a reconstructed surface, a planner can compute coverage paths, surface-normal tool orientations, boundary offsets, and robot feasibility constraints. Recent freeform-surface coverage planners explicitly consider segmentation, contact points, and manipulator constraints~\cite{schneyer2023segmentation,mcgovern2024coverage}; ergodic surface-finishing methods additionally connect tool imprints and learned motion preferences to spatial coverage objectives~\cite{schneyer2026ergodic}. Such methods are strong when the target region is known and the main objective is deterministic coverage. This thesis does not treat geometry-based planning as a weak baseline or as an approach that cannot perform the task.
+Classical polishing systems address this problem with geometric path planning and force or compliance control. Such systems can be highly repeatable when the workpiece geometry, contact model, fixture, and process parameters are known. Their performance nevertheless depends on accurate modeling and tuning. Local defects, fixture tolerances, uncertain compliance, and operator-specific adjustments are difficult to encode in a fixed analytic trajectory. These limitations motivate learning task-specific contact behavior from human demonstrations.
 
-At the same time, surface-finishing cells increasingly face repeated variation in workpiece pose, requested region of interest (ROI), robot initial configuration, and local contact condition. In such settings, a classical pipeline must repeatedly perform perception, reconstruction or registration, target transformation, inverse kinematics, collision-aware motion planning, trajectory post-processing, and recovery. Imitation learning (IL) offers a complementary mechanism: demonstrations and planning solutions can be compressed into a policy that generates task-conditioned action chunks with low online inference latency. This is an amortized motion-generation hypothesis, not a claim that geometric planning is infeasible.
+Imitation learning has become a practical method for acquiring visuomotor skills from demonstrations~\cite{zhao2023act,chi2025diffusionpolicy}. In polishing, however, visual and kinematic observations alone do not uniquely describe the interaction. Similar tool poses can correspond to approach, stable contact, excessive loading, or contact loss. Force/torque sensing supplies direct evidence of this latent contact state. Recent force-aware methods demonstrate the value of predicting or reacting to force during contact-rich manipulation~\cite{zhou2024admitdiff,liu2025forcemimic,he2025foar,tsuji2025contactsurvey}. Their existence also makes the scope of the present thesis precise: the contribution is not force sensing by itself, but its integration into a polishing-oriented demonstration, prediction, and compliant-execution framework.
 
-Contact-rich finishing also exposes a limitation of vision-only policies. Images and depth observations are useful for free-space approach and task semantics, but they do not directly measure contact pressure, weak contact, slip, tool jamming, or overload. Force-conditioned visuomotor policies already combine vision, proprioception, force observation, desired force references, and compliant execution for contact-rich manipulation~\cite{zhou2024admitdiff,liu2025forcemimic}. Recent policies also study global/local force control, high-frequency force/torque feedback, and force-aware reactive fusion~\cite{fang2026forcepolicy,he2025foar}. A low-level admittance controller then converts force-reference error into compliant motion correction, following established force and compliance-control principles~\cite{hogan1985impedance,keemink2018admittance,villani2008forcecontrol}.
+\section{From Motion Reproduction to Contact Reproduction}
+A polishing demonstration contains at least two coupled forms of information. The motion component describes where and how the tool should travel. The interaction component describes the force developed while that motion is executed. Replaying only the demonstrated path assumes that the robot and demonstrator encounter identical geometry and compliance. This assumption is fragile because a small surface-height error can substantially change the contact force without visibly changing the tangential path.
 
-Recent studies have already demonstrated force-conditioned visuomotor policies, learned force references, compliant execution, mask-conditioned manipulation policies, surface-constrained imitation learning, robotic-polishing generative policies, and hybrid learning--geometry systems~\cite{zhou2024admitdiff,yang2025foundation,ke2025visualguided,ke2026surfaceconstraint,ke2026srdp,kim2026learningaugmented}. Therefore, this thesis does not claim novelty from these individual components in isolation. Its focus is narrower: an external defect request is represented as a spatial ROI mask, interaction-dependent local processing is assigned to a force-aware policy, deterministic full-surface coverage is assigned to a geometry planner, and the resulting workflow is evaluated with force-observation/action ablations and a planning-latency benchmark.
+FAIRE therefore treats the desired force trajectory as part of the learned action. The force trajectory is not interpreted as a direct actuator-level command. Instead, a low-level admittance controller converts force-tracking error into a compliant Cartesian correction. This separation assigns complementary responsibilities to learning and control: imitation learning predicts the demonstrated task reference, while admittance control realizes that reference under local contact variation.
 
-This thesis proposes a hybrid framework with a simple allocation principle: learn where interaction-dependent adaptation is required, and use geometric planning where deterministic coverage can be explicitly specified. The local component is an ROI-mask-conditioned force-aware IL policy that generates pose--force action chunks for contact-sensitive local processing. The global component is a vision- or reconstruction-based geometry planner that generates tool-footprint-aware full-coverage trajectories. Both components share a common execution layer based on force/torque sensing and admittance control.
+Contact is also temporal. An instantaneous wrench cannot always distinguish contact establishment from steady sliding or contact loss. FAIRE uses a gated recurrent unit (GRU) to encode a recent six-axis wrench history. The history representation is fused with visual context and robot state to predict short-horizon pose and force references. During execution, bounded residual reinforcement-learning (RL) policies adjust sliding velocity and tool orientation as precision corrections without replacing the nominal imitation policy.
 
 \begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.19\textheight][c]{0.90\textwidth}
     \centering
-    \fbox{\begin{minipage}[c][0.32\textheight][c]{0.94\textwidth}
-    \centering
-    \textbf{Planned Fig. 1: Overall hybrid framework}\\[0.5em]
-    Headlight branch: ArUco command interface $\rightarrow$ ROI mask $\rightarrow$ force-aware local IL $\rightarrow$ geometry-based full coverage.\\[0.5em]
-    Aluminum branch: pose-randomized perception/planning baseline $\leftrightarrow$ vision-conditioned IL.\\[0.5em]
-    Shared layer: F/T observation, pose--force references, admittance execution, safety checks.
-    \end{minipage}}
-    \caption{Overall structure of the proposed hybrid framework. The figure is a placeholder until the final system diagram is prepared.}
-    \label{fig:overall_framework}
+    \textbf{FAIRE information flow}\\[1.0ex]
+    VR-calibrated handheld teaching\\
+    $\downarrow$\\
+    synchronized image--pose--wrench demonstrations\\
+    $\downarrow$\\
+    GRU force-history encoding and motion--force imitation\\
+    $\downarrow$\\
+    admittance execution with residual velocity and orientation correction
+  \end{minipage}}
+  \caption{Conceptual organization of FAIRE. The final system illustration is planned; this box records only the verified information flow in the source manuscript.}
+  \label{fig:overall_framework}
 \end{figure}
 
 \section{Research Questions}
-The thesis is organized around four research questions.
-
-\textbf{RQ1: ROI-mask-conditioned local processing.} Can a force-aware imitation-learning policy generate task-appropriate local pose--force trajectories for spatially varying ROI masks on a curved workpiece? For the headlight task, the policy should respond to the location, size, and shape of the mask rather than memorize a marker ID or a fixed trajectory associated with one marker.
-
-\textbf{RQ2: Hybrid local-to-global surface finishing.} Can a hybrid workflow combining force-aware IL-based local processing and geometry-based full-coverage planning provide a practical local-to-global robotic polishing framework? Before standardized physical defects are introduced, the evaluation focuses on ROI coverage, spillover, contact stability, and execution feasibility rather than physical-defect removal performance.
-
-\textbf{RQ3: Rapid response to initial-condition variations.} Can a vision-conditioned IL policy achieve comparable task success with lower and more consistent online computation time than a conventional geometry-based planning pipeline under variations in workpiece pose and robot initial configuration? The comparison is between a classical perception--registration--planning pipeline and a vision-conditioned IL policy, not between ``vision'' and ``learning'' in isolation.
-
-\textbf{RQ4: Contribution of force-aware observation and action.} Do six-axis force/torque observations and learned force references improve contact stability and task execution compared with pose-only IL and fixed-force execution? This question separates the effect of force observation, force action, and admittance-based execution.
+The thesis is organized around three research questions inherited from the FAIRE manuscript.
+\begin{enumerate}[label=\textbf{RQ\arabic*:},leftmargin=2.2cm]
+  \item Does predicting a time-varying motion--force trajectory and realizing it through admittance control reproduce demonstrated contact behavior better than pose-only, force-observation-only, fixed-force, phase-force, or one-step-force interfaces?
+  \item How should contact history be represented for continuous polishing, and does a separated GRU-based wrench-history encoder improve force-trajectory tracking relative to unified, current-force, nonrecurrent, and LSTM variants?
+  \item Do bounded residual policies for sliding velocity and tool-normal alignment improve force tracking, alignment, surface-quality consistency, or task time beyond imitation plus admittance execution?
+\end{enumerate}
 
 \section{Contributions}
-The thesis makes the following planned contributions:
+The contributions are threefold.
 \begin{enumerate}
-    \item a force-aware imitation-learning framework that uses ROI masks, visual observation, proprioception, and force/torque history to generate local pose--force trajectories;
-    \item a defect-map-conditioned local polishing architecture in which ArUco markers are used only as an external command interface for ROI-mask generation and are not provided as policy observations;
-    \item a local-to-global hybrid surface-finishing framework that assigns state-dependent local processing to force-aware IL and deterministic full-surface coverage to vision/geometry-based planning;
-    \item an experimental framework that compares classical geometry-based planning and IL policy execution for pose-randomized aluminum deburring, separating task success, online latency, cycle time, and contact stability.
+  \item A VR-calibrated motion--force teaching system transfers synchronized position, orientation, wrench, and image demonstrations from a handheld device equipped with a six-axis force/torque sensor into robot-executable polishing trajectories.
+  \item A GRU-based force-history encoder represents contact evolution within a force-aware imitation policy that predicts reference pose trajectories and desired force trajectories.
+  \item A residual RL-augmented admittance execution layer applies bounded sliding-velocity and tool-orientation corrections for precision polishing while retaining the nominal learned motion--force trajectory as the task-level reference.
 \end{enumerate}
-These contributions are stated as proposed and evaluated components. Superiority over the baselines is a hypothesis to be tested, not an assumed result.
+
+These contributions are intentionally framed as an integrated precision-polishing system. FAIRE does not claim to introduce force sensing, force prediction, recurrent wrench encoding, admittance control, or residual learning in isolation.
+
+\section{Scope and Thesis Status}
+The target task is polishing curved headlight surfaces. Vision is used to provide task-region context; autonomous defect detection or region-of-interest discovery is outside the claimed contribution. The source FAIRE repository is a review-version manuscript draft whose experimental tables, hardware identifiers, network dimensions, controller parameters, and final figures remain incomplete. This thesis preserves that evidentiary boundary. Missing implementation details and measurements are labeled as planned or TBD, and no numerical advantage is asserted before the corresponding experiment is completed.
 
 \section{Thesis Organization}
-Chapter~2 reviews robotic surface finishing, coverage planning, force control, visuomotor IL, force-aware IL, mask-conditioned policies, and learned or amortized planning. Chapter~3 defines the system, coordinate frames, workpieces, task allocation, and shared pose--force interface. Chapter~4 presents vision-based geometric surface planning for headlight coverage and the aluminum geometry-based baseline. Chapter~5 defines the ROI-mask-conditioned force-aware IL policy and admittance execution. Chapter~6 describes the hybrid local-to-global headlight workflow. Chapter~7 presents the experimental design and metrics for the headlight and aluminum studies. Chapter~8 concludes the thesis and outlines future work.
+Chapter~\ref{chap:related_work} reviews robotic polishing, force-aware imitation, demonstration capture, and compliant residual execution. Chapter~\ref{chap:faire_overview} defines the FAIRE architecture and problem. Chapter~\ref{chap:demonstration_collection} presents VR-calibrated motion--force demonstration transfer. Chapter~\ref{chap:force_il} develops the force-history imitation policy and admittance execution. Chapter~\ref{chap:residual_rl} formulates the residual precision policies. Chapter~\ref{chap:experiments} specifies the evaluation and ablations. Chapter~\ref{chap:conclusions} concludes the thesis and records its limitations.

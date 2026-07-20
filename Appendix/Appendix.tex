@@ -1,27 +1,36 @@
 \appendix
-\chapter{Implementation and Experiment Checklists}
-\section{Current Implementation Status}
+\chapter{Reproducibility and Completion Checklist}
+\label{chap:appendix}
+
+\section{Demonstration Record}
+Each episode should contain:
 \begin{itemize}
-    \item Headlight ROI-mask interface: planned; ArUco ID must be converted to a spatial ROI mask outside the policy.
-    \item Headlight full-coverage planning: planned; tool-footprint model, surface reconstruction, and registration must be verified.
-    \item Aluminum geometry-based baseline: planned; perception, registration, IK, planning, and timing breakdown must be logged separately.
-    \item Force-aware IL policy: architecture defined; exact observation/action channels must be verified from the final dataset and controller implementation.
-    \item Low-level admittance controller: required shared execution layer; selected force/wrench channels and gains must be documented.
-    \item RL velocity optimization and Preston-rate tuning: not a core contribution in the current thesis direction; keep only as optional future work unless separately validated.
+  \item timestamps for image, tracker, wrench, robot, and command streams;
+  \item raw and calibrated tool pose with explicit frame names and transform version;
+  \item raw, bias-compensated, filtered, and transformed six-axis wrench;
+  \item RGB observations, target-region metadata, and workpiece identifier;
+  \item episode boundaries, contact phase, safety events, and acceptance or rejection status;
+  \item tool, abrasive, sensor-zeroing, and operator metadata.
 \end{itemize}
 
-\section{Recommended Dataset Fields}
-Each demonstration episode should contain timestamps, local RGB or RGB-D images, ROI masks, robot joint state, end-effector pose, linear and angular velocity, measured six-axis force/torque, desired force reference if available, tool or spindle state, action chunk, phase labels, intervention labels, workpiece pose, target feature or ROI metadata, and success or failure annotations. Marker ID should be stored only as external command metadata and not used as a policy input.
-
-\section{TODO Items Before Final Submission}
+\section{Implementation Parameters to Report}
 \begin{itemize}
-    \item Verify whether the IL action is Cartesian pose, Cartesian increment, joint-space command, normal-force reference, three-axis force reference, or six-axis wrench reference.
-    \item Fill in robot, sensor, controller, tool, fixture, and calibration details.
-    \item Replace figure placeholders with final system, policy, headlight, aluminum, and timing figures.
-    \item Set aluminum randomization ranges and trial counts after safety validation.
-    \item Add quantitative headlight, aluminum, and force-ablation results only after experiments are completed.
-    \item Report unresolved LaTeX warnings, overfull boxes, and citation issues before submission.
+  \item VR-to-robot and tracker-to-tool calibration procedures and residual errors;
+  \item stream rates, synchronization method, interpolation, filtering, and maximum skew;
+  \item image and pose encoders, GRU/LSTM dimensions, history length \(K\), horizon \(H\), fusion and prediction heads;
+  \item loss definitions, weights, normalization, optimizer, schedule, split, seed count, and checkpoint rule;
+  \item admittance axes, frame, discrete update, \(M_d\), \(D_d\), \(K_d\), contact detection, saturation, and reset behavior;
+  \item RL algorithms, observations, actions, rewards, bounds, rates, training environment, randomization, and stopping rule.
 \end{itemize}
 
-\section{Build Notes}
-The project is compiled from \texttt{ThesisMain.tex}. A typical command is \texttt{latexmk -pdf ThesisMain.tex}. The cover can be compiled separately from \texttt{ThesisCover.tex}. The author, advisor, submission date, final figures, and experimental results are placeholders that must be updated before submission.
+\section{Experiment Fields to Complete}
+\begin{itemize}
+  \item robot, polishing tool, force/torque sensor, camera, curved headlight set, and abrasive consumables;
+  \item demonstration count, trial count, target-region assignment, randomized order, and termination conditions;
+  \item contact threshold, normal estimator, PQI protocol, consistency metric, timing definition, and statistical analysis;
+  \item all cells in Tables~\ref{tab:force_action_interface}, \ref{tab:force_trajectory_tracking}, and \ref{tab:residual_rl_ablation};
+  \item representative trajectories, force traces, alignment examples, before/after observations, and failure cases.
+\end{itemize}
+
+\section{Evidence Status}
+The present thesis is an expanded, template-adapted version of the FAIRE review draft. Every numerical result and implementation-specific value absent from that repository remains planned or TBD. Before submission, each placeholder should be replaced by a value traceable to code, configuration, calibration output, experiment log, or inspection record.

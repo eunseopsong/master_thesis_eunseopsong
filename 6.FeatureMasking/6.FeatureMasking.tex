@@ -1,77 +1,97 @@
-\chapter{Hybrid Local-to-Global Surface Finishing}
-\label{chap:hybrid_surface_finishing}
-\label{chap:feature_masking}
-\section{Motivation}
-The headlight demonstration combines two task types. A local ROI requires condition-dependent contact behavior: approach, contact establishment, short traversal, force modulation, and retraction. The remaining visible surface requires deterministic full-coverage polishing. The proposed workflow therefore uses force-aware IL for the requested local region and geometry-based planning for the global surface.
+\chapter{Residual Reinforcement Learning for Precision Correction}
+\label{chap:residual_rl}
 
-Several recent systems are close to this learning--geometry integration. Visual-guided Diffusion Policy with Mesh-DMP combines learned action generation with an explicit surface-constrained motion representation for freeform polishing~\cite{ke2025visualguided}. RoboGrind integrates scanning, defect identification, robot program generation, and force-controlled surface treatment~\cite{alt2024robogrind}. Ergodic surface finishing uses tool imprints, desired spatial distributions, and learned motion preferences for surface treatment~\cite{schneyer2026ergodic}. SRDP studies stage-aware robotic polishing with feed-speed and normal-force generation under roughness-oriented constraints~\cite{ke2026srdp}. Learning-augmented robotic automation further frames learned controllers inside conventional industrial workflows~\cite{kim2026learningaugmented}. The contribution here is therefore limited to the planned evaluation of ROI-mask-conditioned local force-aware processing, explicit global coverage, and latency/ablation comparisons on the selected workpieces.
+\section{Role of the Residual Layer}
+The nominal motion--force policy and admittance controller define a complete polishing execution path. Residual RL is added only to correct variables that strongly affect polishing precision under local contact and curvature variation. This decomposition narrows the learning problem and keeps task progress anchored to the demonstration.
+
+The residual layer contains two policies. The velocity policy adjusts progress along the reference stroke, and the orientation policy adjusts alignment between the tool and surface normals. Their actions are bounded and regularized for smoothness. Neither policy selects the target region, generates the nominal path, nor replaces the desired force trajectory.
 
 \begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.22\textheight][c]{0.90\textwidth}
     \centering
-    \fbox{\begin{minipage}[c][0.34\textheight][c]{0.94\textwidth}
-    \centering
-    \textbf{Planned Fig. 2: Headlight pipeline}\\[0.5em]
-    External command or inspection output $\rightarrow$ ArUco ID used outside policy\\
-    $\rightarrow$ predefined ROI information $\rightarrow$ ROI mask in headlight/local-camera coordinates\\
-    $\rightarrow$ force-aware local IL polishing $\rightarrow$ geometry-based full-coverage polishing.
-    \end{minipage}}
-    \caption{Headlight local-to-global workflow. ArUco is a command interface for ROI-mask generation, not a defect-inspection sensor or a policy observation.}
-    \label{fig:feature_masking}
+    motion--force reference\\
+    \(\downarrow\)\\
+    admittance position correction from force error\\
+    \(\searrow\quad\quad\swarrow\)\\
+    velocity scale \(\alpha_t\) \hspace{2em} orientation residual \(\Delta R_t^{\mathrm{RL}}\)\\
+    \(\searrow\quad\quad\swarrow\)\\
+    bounded Cartesian polishing command
+  \end{minipage}}
+  \caption{Residual RL-augmented execution. The residual policies correct precision variables while nominal execution remains with imitation and admittance control.}
+  \label{fig:residual_execution}
 \end{figure}
 
-\section{ArUco-to-ROI-Mask Interface}
-ArUco markers are used as a low-cost command interface that emulates an external defect-request or defect-map system~\cite{garrido2014aruco}. The marker does not sense a defect, is not treated as defect evidence, and is not polished away. The mapping is:
-\begin{enumerate}
-    \item detect the ArUco marker in a command camera or a region separated from the policy image;
-    \item decode the marker ID outside the policy;
-    \item retrieve predefined ROI information or a synthetic defect-map request;
-    \item generate a spatial ROI mask in the headlight or local-camera coordinate frame;
-    \item provide the ROI mask, not the marker ID, to the IL policy.
-\end{enumerate}
-If the marker appears in the RGB image used by the policy, the marker region must be cropped, masked out, or captured by a separate command camera. This prevents the policy from learning a shortcut from marker pattern to trajectory. The demonstration should not be structured as a lookup table from three or four IDs to three or four trajectories.
-
-\section{ROI Mask Construction}
-The ROI mask can be binary or soft:
+\section{Adaptive Sliding-Velocity Policy}
+Let
 \begin{equation}
-M_{\mathrm{ROI}}:\Pi(\mathcal{S}_H)\rightarrow[0,1],
+  e_F(t)=F_t^{\mathrm{meas}}-F_t^{\mathrm{des}}
+  \label{eq:force_error}
 \end{equation}
-where $\Pi(\mathcal{S}_H)$ denotes the image or surface projection of the headlight surface. Training masks should vary in center location, size, shape, orientation, and curvature region. Shapes may include circular, elliptical, elongated, and irregular regions. The split should include seen mask shape with unseen location, seen location range with unseen orientation, unseen size within the training range, held-out combinations of location/size/orientation, and optionally small workpiece-pose perturbations.
+denote the force-tracking error. The velocity policy observes this error, recent wrench history, and robot state:
+\begin{equation}
+  \alpha_t=\pi_v(e_F(t),w_{t-K:t},s_t).
+  \label{eq:velocity_residual}
+\end{equation}
+The commanded tangential velocity is
+\begin{equation}
+  v_t^{\mathrm{cmd}}=\alpha_t v_t^{\mathrm{ref}},
+  \label{eq:velocity_command}
+\end{equation}
+where \(\alpha_t\) is constrained to a safe interval. Reducing progress can give the admittance loop time to recover from a force deviation, while increasing progress can reduce excessive dwell when contact is stable. Because speed also affects material-removal rate, the policy objective must balance force tracking, finish consistency, execution time, smoothness, and safety.
 
-\section{Local Force-Aware IL Phase}
-The local policy receives the observation in Eq.~\eqref{eq:il_observation}. It generates an action chunk for:
-\begin{enumerate}
-    \item approach to a safe pre-contact pose;
-    \item contact establishment with bounded force overshoot;
-    \item local traversal over the requested ROI;
-    \item force modulation or force-reference tracking;
-    \item retract to a transition pose for global polishing.
-\end{enumerate}
-The local success criteria are defined by footprint coverage of the ROI, spillover outside the ROI, force stability, contact-loss count, and completion time. Actual defect removal, transparency recovery, or gloss restoration is evaluated only after standardized physical defects and inspection measurements are implemented.
+A generic planned reward decomposition is
+\begin{equation}
+  r_t^v =
+  -c_F(e_F)
+  -c_{\Delta\alpha}(\alpha_t-\alpha_{t-1})
+  -c_{\mathrm{safety}}
+  +r_{\mathrm{progress}},
+  \label{eq:velocity_reward}
+\end{equation}
+where each term must be defined and scaled from measured quantities. Equation~\eqref{eq:velocity_reward} records the intended objective categories, not finalized reward weights.
 
-\section{Global Full-Coverage Phase}
-After local IL inference and execution, the system executes a global path:
-\begin{enumerate}
-    \item acquire or update the headlight surface reconstruction;
-    \item register the surface to the robot base frame;
-    \item process the mesh or point cloud and estimate normals;
-    \item generate a tool-footprint-aware coverage path;
-    \item assign local surface-normal-based tool orientations;
-    \item execute the trajectory with force/admittance control.
-\end{enumerate}
-The local ROI phase and global phase can overlap spatially if the full-coverage process intentionally blends the local region into the rest of the surface. Any overlap is reported as part of the coverage and spillover metrics rather than treated as unmeasured physical-defect removal.
+\section{Tool-Normal Alignment Policy}
+Let \(n_t^{\mathrm{tcp}}\) be the tool-center-point normal and \(n_t^{\mathrm{surf}}\) the estimated local surface normal. Their angular discrepancy is
+\begin{equation}
+  e_n(t)=
+  \cos^{-1}\!\left(
+  \operatorname{clip}\left(
+  (n_t^{\mathrm{tcp}})^\top n_t^{\mathrm{surf}},-1,1
+  \right)\right).
+  \label{eq:normal_alignment_error}
+\end{equation}
+The orientation policy produces a bounded residual rotation:
+\begin{align}
+  \Delta R_t^{\mathrm{RL}}
+  &=\pi_R(n_t^{\mathrm{tcp}},n_t^{\mathrm{surf}},w_{t-K:t},s_t),\\
+  R_t^{\mathrm{cmd}}
+  &=R_t^{\mathrm{ref}}\Delta R_t^{\mathrm{RL}}.
+  \label{eq:orientation_command}
+\end{align}
+The multiplication order in Eq.~\eqref{eq:orientation_command} defines the residual in the local reference frame. A different implemented convention must be documented explicitly.
 
-\section{Transition, Safety, and Failure Handling}
-The transition from local to global processing requires a safe retract pose, a validated current robot state, and either a known workpiece transform or a fresh registration. The safety supervisor monitors workspace limits, collision margin, normal force, tangential force, tool moment, velocity, and spindle state. Failure handling includes controlled retraction, request for re-registration, rejection of unreachable ROI requests, and operator intervention for out-of-distribution masks.
+A planned orientation reward can combine normal-alignment error, force tracking, rotation magnitude, temporal smoothness, and safety:
+\begin{equation}
+  r_t^R =
+  -c_n(e_n)
+  -c_F(e_F)
+  -c_R(\Delta R_t^{\mathrm{RL}})
+  -c_{\Delta R}
+  -c_{\mathrm{safety}}.
+  \label{eq:orientation_reward}
+\end{equation}
+The final estimator for \(n_t^{\mathrm{surf}}\), reward terms, and weights remain \todoexp{TBD}.
 
-\section{Headlight Method Variants}
-The headlight comparison includes four minimum variants:
-\begin{enumerate}
-    \item \textbf{H1 Geometry-based full coverage only:} geometry-based global coverage without a local ROI phase.
-    \item \textbf{H2 Geometry-derived local + global hybrid:} ROI-mask-derived raster or contour local path with fixed force or conventional force control, followed by global coverage.
-    \item \textbf{H3 Pose-only IL + global hybrid:} RGB/mask/state policy that outputs pose trajectory and uses fixed-force or conventional force control, followed by global coverage.
-    \item \textbf{H4 Proposed force-aware IL:} RGB/mask/state/F/T-history policy that outputs pose plus verified desired force channels and executes with admittance, followed by global coverage.
-\end{enumerate}
-H2 is essential because it tests whether a simple local geometry-derived path generated from the same ROI mask is sufficient.
+\section{Training Interface}
+The source FAIRE manuscript does not name the RL algorithms or state whether the policies are trained in simulation, from logged data, on the physical robot, or through a staged combination. Consequently, this thesis does not infer an algorithm. The final report must specify the Markov state, action parameterization, observation normalization, algorithm, network size, discount, optimizer, replay or rollout scheme, environment randomization, termination conditions, and number of training steps.
 
-\section{Future Inspection Interface}
-The ArUco-based command interface is a temporary substitute for a real defect-inspection output. Future work should replace it with a high-resolution inspection system that produces a defect map or condition mask. At that stage, additional metrics such as defect-area reduction, gloss or transparency restoration, required number of passes, over-polishing area, and total cycle time to target quality can be reported. Until then, the thesis uses the terms ROI-mask-conditioned local processing or defect-map-conditioned local processing and avoids terminology that implies autonomous defect inspection and repair.
+Safe training should begin with a verified nominal controller and conservative action bounds. Physical-robot exploration, if used, requires force, velocity, orientation, workspace, and cumulative-load limits plus an independent stop mechanism. A residual action must be clipped before command composition, not only discouraged by reward.
+
+\section{Policy Interaction}
+The two residual policies may interact because velocity affects force tracking and orientation affects contact distribution. The planned ablation therefore evaluates no residual policy, velocity only, orientation only, and both policies. All four variants retain the same imitation representation, force-trajectory output, and admittance controller so that performance changes can be attributed to the correction layer.
+
+Joint execution also requires a specified command order. The conceptual FAIRE order computes the admittance position correction from force error, scales tangential reference velocity, applies the bounded orientation residual, and then enforces final safety limits. Controller implementation, update rates, and arbitration rules remain \todoexp{TBD}.
+
+\section{Expected Failure Modes}
+Potential failures include velocity oscillation, residual saturation, inaccurate surface normals, overcorrection on high curvature, conflict between force and orientation objectives, and distribution shift outside the demonstrations or RL training environment. Evaluation should report safety interventions and saturation frequency alongside average performance. A gain in mean polishing quality is insufficient if it is accompanied by rare excessive-force events.

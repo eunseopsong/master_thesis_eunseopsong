@@ -1,181 +1,146 @@
-\chapter{Experimental Design}
+\chapter{Experimental Evaluation}
 \label{chap:experiments}
-\section{Validation Strategy}
-The experiments evaluate the role allocation proposed in this thesis: geometry-based planning for deterministic coverage, force-aware IL for ROI- or pose-conditioned local interaction, and admittance control for contact execution. The ablation structure is motivated by recent force-aware and compliance-aware policies that separately use force observations, force-history inputs, force or wrench predictions, and hybrid/admittance execution~\cite{zhou2024admitdiff,liu2025forcemimic,fang2026forcepolicy,he2026fawam,he2025foar}. No numerical result is reported until the corresponding real-robot experiment or inspection measurement is completed.
 
-\begin{figure}[t]
-    \centering
-    \fbox{\begin{minipage}[c][0.30\textheight][c]{0.94\textwidth}
-    \centering
-    \textbf{Planned Fig. 4: Aluminum benchmark}\\[0.5em]
-    Three to five anchor workpiece poses with continuous perturbations in translation, orientation, robot initial configuration, target feature, and approach direction.\\[0.5em]
-    Classical pipeline: perception $\rightarrow$ registration $\rightarrow$ IK/planning $\rightarrow$ execution.\\
-    IL pipeline: observation $\rightarrow$ policy inference $\rightarrow$ execution.
-    \end{minipage}}
-    \caption{Aluminum pose-randomized benchmark. The figure is a placeholder until the final experimental layout is photographed or drawn.}
-    \label{fig:experimental_sequence}
-\end{figure}
-
-\begin{figure}[t]
-    \centering
-    \fbox{\begin{minipage}[c][0.25\textheight][c]{0.94\textwidth}
-    \centering
-    \textbf{Planned Fig. 5: Time decomposition}\\[0.5em]
-    $T_{\mathrm{perception}}$ | $T_{\mathrm{registration}}$ | $T_{\mathrm{planning/inference}}$ | $T_{\mathrm{approach}}$ | $T_{\mathrm{processing}}$ | $T_{\mathrm{recovery}}$
-    \end{minipage}}
-    \caption{Planned visualization for cycle-time decomposition. The final figure should plot distributions rather than only means.}
-    \label{fig:time_decomposition}
-\end{figure}
-
-\section{Hardware and Software Setup}
-The hardware setup includes a six-degree-of-freedom robot, a six-axis F/T sensor, a local camera for policy observation, a global RGB-D sensor for reconstruction or registration, polishing and deburring tools, a headlight fixture, and an aluminum specimen fixture. The software setup includes the robot controller, perception and registration stack, motion-planning stack, IL inference stack, data logger, and safety supervisor. Exact model names, controller rates, synchronization method, tool geometry, and safety thresholds remain \todoexp{to be filled from the final implementation}.
-
-\section{Headlight ROI-Mask Experiment}
-The headlight experiment evaluates RQ1 and RQ2. Training data include ROI masks with varying center location, size, shape, orientation, and curvature region. The test split includes seen mask shape with unseen location, seen location range with unseen orientation, unseen mask size within the training range, held-out location/size/orientation combinations, and optional small workpiece-pose perturbation. The comparison is positioned relative to defect-to-program workflows, learning--mesh hybrids, ergodic surface finishing, stage-aware polishing policies, and mask-conditioned manipulation policies~\cite{alt2024robogrind,ke2025visualguided,schneyer2026ergodic,ke2026srdp,yang2025foundation}.
-
-The evaluation metrics before physical defects are introduced are ROI tool-footprint coverage ratio, spillover or unnecessary processing outside the ROI, local task completion time, policy inference time, normal-force RMSE, force variance, peak force and overshoot, contact-loss count, tool moment or orientation deviation, and held-out ROI success rate. If standardized physical defects are later added, the additional metrics are defect-area reduction, gloss or transparency restoration, required number of passes, over-polishing area, and total cycle time to target quality.
-
-\section{Hybrid Headlight Demo}
-The local-to-global demonstration executes local IL or a local baseline before full-coverage geometric polishing. The minimum method variants are H1--H4 from Chapter~\ref{chap:hybrid_surface_finishing}. The H2 geometry-derived local + global baseline is required to test whether ROI-mask-derived local raster or contour planning is already sufficient.
-
-\section{Aluminum Pose-Randomized Deburring Benchmark}
-The aluminum benchmark evaluates RQ3. Three to five anchor poses are used only as centers of continuous randomization. Around each anchor, translation, yaw/pitch/roll, robot initial joint configuration, target hole or target edge, approach direction, and optional fixture or obstacle condition are perturbed within safe ranges. The perturbation values remain \todoexp{to be set after workspace and safety validation}. The comparison is motivated by learned and hybrid planning work that amortizes repeated queries or warm-starts classical optimization~\cite{qureshi2019mpnet,li2021mpcmpnet,carvalho2025motionplanningdiffusion,tian2025flowwarmstart,wojciechowski2026deburring}.
-
-The split is:
+\section{Evaluation Strategy}
+All planned experiments use curved headlight surfaces. The target polishing region is specified before demonstration and evaluation; autonomous region or defect detection is not treated as a contribution. The evaluation directly follows the three research questions in Chapter~\ref{chap:introduction}:
 \begin{enumerate}
-    \item \textbf{ID test:} new combinations inside the training randomization range;
-    \item \textbf{Interpolation test:} poses between training anchors;
-    \item \textbf{Boundary test:} conditions near the edge of the training range;
-    \item \textbf{Mild OOD test:} conditions slightly beyond the training range;
-    \item \textbf{Failure-awareness test:} unreachable or unsafe target requests.
+  \item compare force-action interfaces under a fixed force-history representation;
+  \item compare motion--force representations under a fixed trajectory action and admittance controller;
+  \item compare residual precision policies under a fixed FAIRE imitation and execution stack.
 \end{enumerate}
-The number of trials per method and split is \todoexp{TBD}.
+This staged design changes one interface at a time. It avoids attributing a performance difference to the GRU when the compared method also uses a different action, or attributing a residual-policy effect to a changed admittance controller.
 
-\section{Geometry-Based Planning Versus IL}
-The classical baseline uses the pipeline in Chapter~\ref{chap:full_coverage}. The IL method generates approach and processing trajectories directly from the current observation, state, and force history when applicable. Both methods use the same robot, tool, velocity and acceleration limits, force limits, and low-level execution layer to isolate the effect of online planning versus policy inference.
+\section{Experimental Setup}
+The robot carries a polishing tool and a six-axis force/torque sensor, and an RGB camera supplies visual context. The handheld teaching device described in Chapter~\ref{chap:demonstration_collection} records synchronized pose, wrench, and image demonstrations. Each robot trial begins from a standardized pre-contact pose and ends at the policy horizon, task-completion condition, or safety limit. Surface appearance is recorded under controlled conditions before and after polishing.
 
-Two timing comparisons are reported separately. The algorithm-level comparison uses matched target and pose information and compares classical planning computation time against policy inference and post-processing time. The end-to-end comparison measures the full pipeline from sensing to task completion. The thesis does not compare IL inference-only time against a classical end-to-end time.
+The source FAIRE manuscript does not identify the robot, tool, force/torque sensor, camera, abrasive, workpiece set, sampling rates, control rates, number of demonstrations, or number of evaluation trials. It also does not state the target-region protocol, termination criteria, or safety thresholds. These fields are \todoexp{TBD and must be filled from the final implementation and experiment logs}.
 
-The cycle time is decomposed as
+\section{Experimental Notation}
+The six-dimensional motion state, three-dimensional force, and six-axis wrench are
+\begin{align}
+  q_t&=[x_t,y_t,z_t,\omega_{x,t},\omega_{y,t},\omega_{z,t}],\\
+  f_t&=[F_{x,t},F_{y,t},F_{z,t}],\\
+  w_t&=[F_{x,t},F_{y,t},F_{z,t},\tau_{x,t},\tau_{y,t},\tau_{z,t}].
+\end{align}
+The proposed action is a horizon of 9D motion--force references,
 \begin{equation}
-T_{\mathrm{cycle}}
-=
-T_{\mathrm{perception}}
-+
-T_{\mathrm{registration}}
-+
-T_{\mathrm{planning/inference}}
-+
-T_{\mathrm{approach}}
-+
-T_{\mathrm{processing}}
-+
-T_{\mathrm{recovery}}.
+  a_t=[q^{\mathrm{ref}}_{t:t+H},f^{\mathrm{des}}_{t:t+H}],
+  \label{eq:experimental_action}
 \end{equation}
-Reported timing statistics include mean, median, standard deviation or IQR, P95/P99 latency, total cycle time, effective cycle time per successful part, and failure or replanning frequency. A conclusion that IL is faster must be based on planning/inference and total cycle-time decomposition, not only on execution time.
+and the force-history observation is \(w_{t-K:t}\). Unless an ablation states otherwise, a force-aware variant uses a split motion--force representation and the GRU-based six-axis wrench-history encoder.
 
-\section{Force-Aware Ablations}
-The force-aware ablation evaluates RQ4 on both workpieces where feasible. The four variants are A1 pose-only IL, A2 force-observation IL, A3 force-action IL, and A4 proposed force-aware IL. A conventional geometry-based + admittance baseline is included when available. The variants separate observation-side force information, action-side force references, and compliant execution because prior work often combines these components in a single system~\cite{zhou2024admitdiff,liu2025forcemimic,he2026fawam,fang2026forcepolicy,ke2026srdp}. Metrics include success rate, desired--measured force RMSE, peak force, tangential force, force variance, contact-loss count, tool slip-out, trajectory tracking error, task time, and unseen-condition performance.
+\section{Metrics}
+\subsection{Force-Trajectory Tracking}
+Normal-force root-mean-square error is evaluated after aligning an executed trial with its demonstration-derived reference by normalized task progress:
+\begin{equation}
+  F_n\text{-RMSE}
+  =
+  \sqrt{\frac{1}{N}\sum_{i=1}^{N}
+  \left(F_{n,i}^{\mathrm{meas}}-F_{n,i}^{\mathrm{des}}\right)^2}.
+  \label{eq:force_rmse}
+\end{equation}
+Force correlation (F-Corr) measures temporal similarity between the aligned measured and desired normal-force profiles. Overshoot is the maximum positive value of \(F_n^{\mathrm{meas}}-F_n^{\mathrm{des}}\). Contact Loss is the fraction of evaluated samples below a predefined normal-force contact threshold.
 
-\section{Evaluation Tables}
-\begin{table}[H]
+\subsection{Alignment and Process Quality}
+Normal-alignment error (NAE) is the angular difference in Eq.~\eqref{eq:normal_alignment_error}. Polishing-quality improvement (PQI) compares controlled pre- and post-polishing measurements. The FAIRE manuscript leaves PQI measurement-agnostic so that it can be instantiated with verified gloss, haze, roughness, or image-based surface-quality measurements. Consistency measures the spatial uniformity of the post-polishing finish, and Task Time is elapsed execution time.
+
+The final evaluation must specify the contact threshold, progress-alignment algorithm, surface-normal estimator, PQI instrument or image protocol, spatial sampling pattern, consistency definition, units, aggregation statistic, confidence interval, and treatment of failed trials. These items are \todoexp{TBD}.
+
+\section{RQ1: Force-Action Interface and Admittance Execution}
+The first ablation asks how the demonstrated force trajectory should be represented by the policy and used during execution. Pose-only Policy excludes force observations and force output. Force-Observation Pose Policy adds wrench history but still predicts pose only. Fixed-Force Admittance uses a constant target \(F_0\). Phase-Force Admittance uses a demonstration-derived phase profile \(\bar f^{\mathrm{demo}}(s)\). One-Step Force Action predicts only the current desired force, whereas FAIRE predicts a force trajectory aligned with the motion horizon.
+
+All force-aware rows use the same GRU-based six-axis wrench-history encoder; residual RL is disabled. Thus, Table~\ref{tab:force_action_interface} isolates the action and low-level execution interfaces.
+
+\begin{sidewaystable}[p]
 \centering
-\caption{Comparison of method capabilities.}
-\label{tab:method_capabilities}
-\begin{adjustbox}{width=\textwidth}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.24\textwidth}ccccc}
+\caption{Planned ablation of force-action interface and admittance execution. Dashes indicate measurements not yet reported in the FAIRE source manuscript.}
+\label{tab:force_action_interface}
+\scriptsize
+\setlength{\tabcolsep}{2.0pt}
+\resizebox{\textheight}{!}{%
+\begin{tabular}{llllccccc}
 \toprule
-Capability & Geometry baseline & Pose-only IL & Force-obs. IL & Force-action IL & Proposed \\
+Method & Policy output & Force target & Execution & \(F_n\)-RMSE \(\downarrow\) & F-Corr \(\uparrow\) & Overshoot \(\downarrow\) & Contact Loss \(\downarrow\) & PQI \(\uparrow\)\\
 \midrule
-Explicit coverage & Yes & No & No & No & Local only \\
-Online planning & Yes & No & No & No & No \\
-ROI conditioning & Optional & Yes & Yes & Yes & Yes \\
-Force observation & Optional & No & Yes & No & Yes \\
-Force action & Fixed/profile & No & No & Yes & Yes \\
-Compliant execution & Optional & Optional & Optional & Yes & Yes \\
+Pose-only Policy & \(q^{\mathrm{ref}}_{t:t+H}\) & None & Position & -- & -- & -- & -- & --\\
+Force-Obs. Pose Policy & \(q^{\mathrm{ref}}_{t:t+H}\) & None & Position & -- & -- & -- & -- & --\\
+Fixed-Force Admittance & \(q^{\mathrm{ref}}_{t:t+H}\) & Constant \(F_0\) & Admittance & -- & -- & -- & -- & --\\
+Phase-Force Admittance & \(q^{\mathrm{ref}}_{t:t+H}\) & \(\bar f^{\mathrm{demo}}(s)\) & Admittance & -- & -- & -- & -- & --\\
+One-Step Force Action & \(q^{\mathrm{ref}}_{t:t+H},f_t^{\mathrm{des}}\) & Predicted step & Admittance & -- & -- & -- & -- & --\\
+\textbf{FAIRE 9D Trajectory} & \(q^{\mathrm{ref}}_{t:t+H},f^{\mathrm{des}}_{t:t+H}\) & Predicted trajectory & Admittance & -- & -- & -- & -- & --\\
 \bottomrule
-\end{tabular}
-\end{adjustbox}
-\end{table}
+\end{tabular}}
+\end{sidewaystable}
+\clearpage
 
-\begin{table}[H]
+\section{RQ2: Motion--Force Representation}
+The second ablation asks how force history should be encoded when every method predicts the same 9D trajectory action and uses the same admittance controller. Unified Current MLP concatenates the current motion and force sample. Split Current MLP uses separate current-sample branches. Split History MLP flattens or otherwise encodes a window without recurrence. LSTM and GRU variants use recurrent force-history encoders. The motion encoder, fusion network, policy backbone, training split, action horizon, and controller must remain fixed.
+
+\begin{sidewaystable}[p]
 \centering
-\caption{Headlight experiment conditions and metrics.}
-\label{tab:headlight_conditions}
-\begin{adjustbox}{width=\textwidth}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.35\textwidth}>{\raggedright\arraybackslash}p{0.35\textwidth}}
+\caption{Planned ablation of motion--force representation.}
+\label{tab:force_trajectory_tracking}
+\scriptsize
+\setlength{\tabcolsep}{2.2pt}
+\resizebox{\textheight}{!}{%
+\begin{tabular}{lllllcccc}
 \toprule
-Study & Conditions & Metrics \\
+Method & Input & Motion encoder & Force observation & Force encoder & \(F_n\)-RMSE \(\downarrow\) & F-Corr \(\uparrow\) & Overshoot \(\downarrow\) & Contact Loss \(\downarrow\)\\
 \midrule
-ROI mask generalization & Location, size, shape, orientation, curvature region & ROI coverage, spillover, success rate \\
-Local contact execution & Approach, contact, traversal, retract & Force RMSE, variance, peak force, contact loss \\
-Hybrid sequence & Local phase followed by global coverage & feasibility, transition success, total time \\
-Optional real-defect study & Standardized defects only if implemented & defect-area reduction, restoration, over-polishing \\
+Unified Current MLP & \([q_t,f_t]\) & shared MLP & current & shared MLP & -- & -- & -- & --\\
+Split Current MLP & \(q_t,f_t\) & MLP & current & MLP & -- & -- & -- & --\\
+Split History MLP & \(q_t,f_{t-K:t}\) & MLP & history & MLP & -- & -- & -- & --\\
+Split History LSTM & \(q_t,f_{t-K:t}\) & MLP & history & LSTM & -- & -- & -- & --\\
+\textbf{FAIRE History GRU} & \(q_t,f_{t-K:t}\) & MLP & history & GRU & -- & -- & -- & --\\
 \bottomrule
-\end{tabular}
-\end{adjustbox}
-\end{table}
+\end{tabular}}
+\end{sidewaystable}
+\clearpage
 
-\begin{table}[H]
+The hypothesis is that force-history conditioning improves reproduction of demonstrated contact behavior during continuous polishing. This is an experimental hypothesis, not a result reported by the current draft.
+
+\section{RQ3: Residual Precision Policies}
+The third ablation measures the contribution of velocity and orientation correction. Every row uses the FAIRE History GRU representation, 9D trajectory action, policy backbone, and admittance controller. Only the two residual policies vary.
+
+\begin{sidewaystable}[p]
 \centering
-\caption{Aluminum pose-randomization conditions.}
-\label{tab:aluminum_randomization}
-\begin{adjustbox}{width=\textwidth}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.35\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}}
+\caption{Planned ablation of residual RL precision policies.}
+\label{tab:residual_rl_ablation}
+\scriptsize
+\setlength{\tabcolsep}{2.8pt}
+\resizebox{\textheight}{!}{%
+\begin{tabular}{lccccccc}
 \toprule
-Variable & Planned randomization & Status \\
+Method & Velocity & Orientation & \(F_n\)-RMSE \(\downarrow\) & NAE \(\downarrow\) & PQI \(\uparrow\) & Consistency \(\uparrow\) & Task Time \(\downarrow\)\\
 \midrule
-Translation & $x,y,z$ perturbation around anchor poses & \todoexp{TBD ranges} \\
-Orientation & yaw, pitch, and roll perturbation & \todoexp{TBD ranges} \\
-Robot initial configuration & multiple joint-space starts within safety limits & \todoexp{TBD} \\
-Target feature & hole or edge selection & \todoexp{TBD} \\
-Approach direction & nominal and perturbed directions & \todoexp{TBD} \\
-Obstacle or fixture condition & optional condition for collision-aware planning & \todoexp{optional} \\
+FAIRE without residual RL & No & No & -- & -- & -- & -- & --\\
+Velocity policy only & Yes & No & -- & -- & -- & -- & --\\
+Orientation policy only & No & Yes & -- & -- & -- & -- & --\\
+\textbf{FAIRE full} & Yes & Yes & -- & -- & -- & -- & --\\
 \bottomrule
-\end{tabular}
-\end{adjustbox}
-\end{table}
+\end{tabular}}
+\end{sidewaystable}
+\clearpage
 
-\begin{table}[H]
-\centering
-\caption{Ablation definitions.}
-\label{tab:ablation_definitions}
-\begin{adjustbox}{width=\textwidth}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}}
-\toprule
-ID & Observation & Action & Execution \\
-\midrule
-A1 & vision, robot state & pose trajectory & position or fixed-force control \\
-A2 & vision, robot state, F/T history & pose trajectory & position or fixed-force control \\
-A3 & vision, robot state & pose + desired force trajectory & admittance or hybrid execution \\
-A4 & vision, ROI mask when applicable, robot state, F/T history & pose + desired force trajectory & admittance execution \\
-\bottomrule
-\end{tabular}
-\end{adjustbox}
-\end{table}
+\section{Protocol and Statistical Reporting}
+Trial ordering should be randomized or counterbalanced across methods to reduce confounding from abrasive wear, surface condition, and operator setup. Methods should use identical target regions where repeated processing is physically valid; otherwise, comparable regions and a documented assignment scheme are required. Demonstrations, hyperparameter selection, and final test trials must be separated.
 
-\begin{table}[H]
-\centering
-\caption{Quantitative results template. Values remain TBD until experiments are completed.}
-\label{tab:quantitative_results}
-\begin{adjustbox}{width=\textwidth}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}}
-\toprule
-Method & Success & ROI/edge quality & Force RMSE & P95 latency & Cycle time \\
-\midrule
-Geometry baseline & TBD & TBD & TBD & TBD & TBD \\
-Rule-based local + global & TBD & TBD & TBD & TBD & TBD \\
-Pose-only IL & TBD & TBD & TBD & TBD & TBD \\
-Force-observation IL & TBD & TBD & TBD & TBD & TBD \\
-Force-action IL & TBD & TBD & TBD & TBD & TBD \\
-Proposed force-aware IL & TBD & TBD & TBD & TBD & TBD \\
-\bottomrule
-\end{tabular}
-\end{adjustbox}
-\end{table}
+For each metric, the thesis should report the number of independent workpieces or regions, trials per condition, central tendency, dispersion, confidence intervals, and the planned statistical test. Paired analysis is preferable when methods can be evaluated on matched regions. Failed or safety-stopped trials must remain visible through success and intervention counts rather than being silently removed from continuous metrics.
 
-\section{Statistical Analysis}
-Each method-condition pair should be repeated across multiple masks, poses, target features, and initial configurations. Method and test split are treated as fixed factors; specimen, anchor pose, and day can be treated as random effects when enough data are available. Timing distributions should be reported with medians, IQR, and high percentiles because planning latency may be heavy-tailed. Failure modes are categorized as perception error, registration error, kinematic infeasibility, collision-planning failure, local-policy perception error, contact instability, mask-generation error, out-of-distribution request, and safety stop.
+\section{Qualitative Analysis}
+Planned qualitative evidence includes representative robot trajectories, desired-versus-measured normal-force traces, examples of TCP and surface-normal alignment, and controlled before/after surface observations. Visual examples complement but do not replace force, alignment, and surface-quality measurements. VR-to-robot calibration is used consistently by all methods and is documented as a pipeline component rather than presented as a separate performance baseline.
 
-\section{Planned and Existing Results}
-All numerical results in this chapter are planned. The final thesis must distinguish simulated replay, dry-run motion, force-controlled contact without material removal, real deburring or polishing with material removal, and high-resolution inspection measurements. If the aluminum specimen is already smooth and no burr is measured, the experiment is reported as force-controlled edge-following or deburring-like contact execution rather than deburring-quality validation.
+\begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.19\textheight][c]{0.90\textwidth}
+    \centering
+    \textbf{Planned qualitative panel}\\[1ex]
+    robot polishing trajectory \(\mid\) desired/measured force\\
+    TCP/surface-normal alignment \(\mid\) before/after finish
+  \end{minipage}}
+  \caption{Planned qualitative results on curved headlight surfaces. No result image is available in the source repository.}
+  \label{fig:experimental_results}
+\end{figure}
+
+\section{Current Result Status}
+All quantitative cells remain blank because the FAIRE repository contains no completed measurements or statistical analysis. Accordingly, this thesis does not state that one method outperforms another. The tables constitute a preregistered comparison structure to be populated only from traceable experiment logs and inspection data.

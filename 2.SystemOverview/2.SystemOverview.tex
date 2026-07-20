@@ -1,90 +1,51 @@
-\chapter{Background and Related Work}
+\chapter{Related Work}
 \label{chap:related_work}
-\section{Robotic Surface Finishing}
-Robotic polishing, grinding, sanding, and deburring combine geometric path generation with physical interaction. RoboGrind is a close system-level reference because it combines 3-D scanning, defect identification, robot program generation, and force-controlled surface treatment in an integrated workflow~\cite{alt2024robogrind}. This thesis therefore does not treat the combination of inspection, geometric planning, and force-controlled execution as new by itself.
 
-Geometry-based coverage planning remains the standard mechanism when a surface, tool footprint, boundary, and feasibility model are available. Freeform-surface planning studies have considered segmentation, tool geometry, contact point selection, curvature, and manipulator/task constraints~\cite{schneyer2023segmentation,mcgovern2024coverage}. Ergodic surface finishing further uses a desired spatial distribution, tool imprint, and learned motion preferences to guide online surface treatment~\cite{schneyer2026ergodic}. These works support the global stage of this thesis: deterministic coverage is assigned to a geometric planner rather than to an end-to-end policy.
+\section{Robotic Polishing and Surface Finishing}
+Robotic surface finishing combines surface representation, path generation, process planning, and contact control. Coverage planners reason about workpiece boundaries, tool footprints, local surface normals, reachability, and collision constraints~\cite{schneyer2023segmentation,mcgovern2024coverage,tafuro2024autonomous}. Force-controlled polishing methods complement geometric planning by regulating contact on curved surfaces~\cite{mohsin2019path,min2024force}. Integrated systems such as RoboGrind demonstrate that inspection, task specification, trajectory generation, and force-controlled execution can form a practical surface-treatment workflow~\cite{alt2024robogrind}.
 
-Learning-based surface motion has also entered polishing and surface-constrained manipulation. Visual-guided Diffusion Policy with Mesh-DMP integrates learned action generation with explicit surface-constrained motion embedding for robotic freeform polishing~\cite{ke2025visualguided}. Surface Constraint Policy uses visual observations and learned surface constraints to generate dynamically feasible surface-constrained skills~\cite{ke2026surfaceconstraint}. Stage-Aware and Roughness-Constrained Diffusion Policy targets multi-stage robotic polishing and generates process-related feed speed and normal contact force under roughness-oriented constraints~\cite{ke2026srdp}. These studies overlap strongly with surface-aware action generation and process-parameter learning; the distinction in this thesis is the explicit allocation of local ROI-conditioned interaction to force-aware IL and global full-coverage execution to a geometry planner.
+These methods establish the importance of both geometry and contact. FAIRE addresses a different question: how to reproduce a task-specific motion--force demonstration and then correct its execution reactively. It does not claim that learning eliminates geometric or process knowledge, nor that a demonstrated trajectory guarantees full-surface coverage. Its evaluation is centered on force tracking, contact stability, normal alignment, and surface-quality consistency for specified polishing regions.
 
-Deburring is related but not identical to polishing. A rigid cutter, abrasive point, or compliant finishing tool follows an edge, hole, or chamfer while maintaining acceptable tool load and avoiding collision. Learning-guided force-feedback MPC for robotic deburring combines a diffusion motion prior, force-feedback MPC, and obstacle avoidance~\cite{wojciechowski2026deburring}. This thesis cites that work as a deburring and learned-warm-start reference, not as evidence for validated material-removal quality in the present aluminum experiment. If the aluminum specimen is smooth or burr geometry is not measured, the task is reported as force-controlled edge-following or deburring-like contact execution.
+\section{Imitation Learning for Contact-Rich Manipulation}
+Modern visuomotor imitation policies can generate temporally coherent action sequences from image and robot-state observations~\cite{zhao2023act,chi2025diffusionpolicy}. Contact-rich tasks expose an observation gap because the image and pose may not reveal the force transmitted through the environment. A survey of contact-rich imitation learning describes force, tactile, and compliance information as central to closing this gap~\cite{tsuji2025contactsurvey}.
 
-\section{3-D Reconstruction and Coverage Path Planning}
-Coverage planning on a three-dimensional surface seeks a path whose swept tool footprint covers the target region. The important footprint is the effective contact footprint of the polishing or deburring tool, not the tool center point. Freeform-surface planners and system studies motivate the use of surface normals, tool-contact modeling, adaptive spacing, segmentation, reachability checks, and manipulator constraints~\cite{tafuro2024autonomous,schneyer2023segmentation,mcgovern2024coverage,alt2024robogrind}.
+Force-aware methods use interaction measurements in different ways. Admittance Visuomotor Policy Learning predicts a desired force and executes it through an admittance mechanism for general contact-rich manipulation~\cite{zhou2024admitdiff}. ForceMimic combines force--motion demonstration capture with learned pose and wrench parameters and hybrid force--position execution~\cite{liu2025forcemimic}. FoAR conditions a high-frequency reactive position policy on force/torque observations rather than using a predicted desired force trajectory as the policy action~\cite{he2025foar}. MOMA-Force similarly demonstrates visual--force imitation in mobile manipulation~\cite{yang2023momaforce}.
 
-The limitation considered here is not task impossibility. Rather, when the same rigid task must be repeated under many workpiece poses, robot initial configurations, or requested ROIs, the perception--registration--IK--planning loop is repeatedly invoked. The proposed framework keeps geometry-based planning as the deterministic coverage mechanism and as a strong classical baseline, while evaluating whether learned policies can amortize online computation for repeated local or pose-conditioned queries.
+The FAIRE source manuscript additionally compares its intended force-history representation with FAWAM, which predicts future action and wrench trajectories, and identifies G-force as related work on robustness to contact-dynamics variation~\cite{he2026fawam,TODO_GForce}. These references delimit rather than establish FAIRE's novelty. FAIRE integrates temporal wrench encoding, desired-force prediction, and compliant execution specifically around polishing precision metrics.
+
+\section{Motion--Force Demonstration Collection}
+Contact-rich learning requires synchronized capture of task context, tool motion, and wrench. Kinesthetic teaching obtains demonstrations through the robot, whereas external devices can reduce dependence on a specific robot embodiment. ForceMimic is a direct precedent for a force--motion capture device used in contact-rich imitation~\cite{liu2025forcemimic}. Other surface-treatment interfaces emphasize intuitive task teaching and interactive programming~\cite{alt2024robogrind}.
+
+FAIRE uses a handheld device instrumented with a six-axis force/torque sensor and tracked in a VR coordinate frame. Its method contribution is the calibrated transform chain that maps these measurements into the robot workspace while preserving synchronization with wrench and image streams. The use of six-axis sensing or external tracking alone is not presented as novel.
 
 \section{Force, Impedance, and Admittance Control}
-Force and compliance control are standard tools for contact-rich robotic manipulation~\cite{hogan1985impedance,keemink2018admittance,villani2008forcecontrol}. In admittance control, measured force error is mapped into motion correction. This is appropriate for industrial position-controlled manipulators that accept pose or velocity commands. The high-level policy should therefore be distinguished from the low-level controller: the policy proposes task-conditioned pose and force references, while the controller stabilizes contact and enforces the reference within safety limits.
+Compliant robot control regulates the relationship between motion and contact force. Impedance control specifies a desired dynamic relation between displacement and force, while admittance control maps measured force into a motion response~\cite{hogan1985impedance,villani2008forcecontrol,keemink2018admittance}. Admittance is particularly suitable when a learned policy supplies a force reference but the available robot interface accepts Cartesian motion commands.
 
-\begin{figure}[t]
-    \centering
-    \fbox{\begin{minipage}[c][0.25\textheight][c]{0.94\textwidth}
-    \centering
-    \textbf{Related-work map}\\[0.5em]
-    Geometry-based coverage $\rightarrow$ explicit coverage and constraints.\\
-    Visuomotor IL/action chunking $\rightarrow$ amortized action generation.\\
-    Force-aware IL/admittance $\rightarrow$ contact-aware execution.\\
-    Mask-conditioned policies $\rightarrow$ explicit task-region conditioning.
-    \end{minipage}}
-    \caption{Conceptual map of the literature groups used to motivate the proposed role allocation. The figure is a placeholder.}
-    \label{fig:system_overview}
-\end{figure}
+In FAIRE, admittance control is the explicit bridge between prediction and physical execution. The force-tracking error drives a compliant position correction that is added to the imitated position reference. This formulation avoids describing the learned force as a direct actuator command and keeps safety filtering, saturation, and controller-rate implementation within the low-level execution layer.
 
-\section{Visuomotor Imitation Learning and Generative Policies}
-Visuomotor imitation learning maps sensory observations to robot actions from demonstrations. Action chunking predicts a short future sequence rather than a single immediate command; ACT introduced this idea with transformer policies for fine-grained manipulation~\cite{zhao2023act}. Diffusion Policy models multimodal action distributions through conditional action diffusion and receding-horizon execution~\cite{chi2025diffusionpolicy}. Flow-matching policies are relevant when the implemented backbone uses flow-based generation: Riemannian Flow Matching Policy studies manifold-aware robot motion learning with fast inference~\cite{braun2024riemannianflow}.
+\section{Residual Learning for Precision Correction}
+Residual learning augments a nominal controller with a bounded learned correction. This decomposition is attractive for polishing because the demonstrated path and force trajectory already define task progress, while local changes in contact or curvature may require small adjustments. Related compliance-aware and reactive policies use learned fast corrections without assigning the learned residual responsibility for the complete task~\cite{hou2025adaptivecompliance,xue2025reactivediffusion}.
 
-These references are used to position the policy-learning mechanism, not to rename the implemented method. If the final implementation uses Flow Matching, Chapter~\ref{chap:force_il} describes it as a conditional flow-matching action-chunk policy. ACT and Diffusion Policy remain related-work references for action chunks and generative action distributions.
+FAIRE applies this principle to two variables that directly affect surface processing. A velocity residual scales progress along the demonstrated stroke, and an orientation residual reduces the error between the tool normal and local surface normal. The intended novelty is their integration as polishing-specific precision layers above motion--force imitation and admittance execution, not residual RL as a general algorithm.
 
-\section{Force-Aware and Compliance-Aware Imitation Learning}
-Recent work has added force and tactile information to imitation learning for contact-rich manipulation. Admittance Visuomotor Policy Learning is the most direct structural overlap: it uses vision, proprioception, and force observation to generate action trajectories and desired contact forces, then executes them with an admittance controller~\cite{zhou2024admitdiff}. ForceMimic emphasizes force-motion capture, wrench-position parameter prediction, and hybrid force-position execution~\cite{liu2025forcemimic}. FAWAM encodes historical six-axis force/torque signals, jointly predicts future actions and wrenches, and uses force residual correction during execution~\cite{he2026fawam}. Force Policy separates a global vision policy from a high-frequency local force policy in an interaction frame for hybrid force-position control~\cite{fang2026forcepolicy}. FoAR uses high-frequency F/T input with visual observations for reactive multimodal fusion~\cite{he2025foar}.
-
-Other compliance-aware policy studies are relevant to the controller boundary. Adaptive Compliance Policy learns approximate compliance profiles for diffusion-guided control~\cite{hou2025adaptivecompliance}; Reactive Diffusion Policy combines a slow visual policy with a fast tactile/force loop~\cite{xue2025reactivediffusion}; Flow with the Force Field studies compliant flow-matching policies from force and demonstration-guided simulation data~\cite{li2026flowforce}; and Force Generative Imitation Learning estimates force commands from position trajectories through a control-oriented formulation~\cite{sato2026forcegenerative}. These works mean that F/T observation, F/T history, pose-plus-force output, desired force references, admittance execution, high-frequency force correction, and polishing force generation are not treated as standalone novelty claims in this thesis.
-
-\section{Mask-Conditioned Policies}
-Mask-conditioned policies provide task-relevant spatial information explicitly. Transferring Foundation Models for Generalizable Robotic Manipulation uses raw RGB and segmentation masks in a two-stream imitation-learning policy, making the semantic mask an explicit task condition~\cite{yang2025foundation}. VIOLA uses object proposal priors to form object-centric representations and attend to task-relevant visual factors~\cite{zhu2023viola}. Mask2Act uses future object masks as a latent plan for action-free video pre-training~\cite{zhang2025mask2act}. GROOT uses object-centric 3-D representations and segmentation correspondence for generalizable manipulation~\cite{zhu2023groot}.
-
-The proposed ROI mask is therefore not presented as a new visual representation by itself. It is used as an explicit and transferable task-specification interface for local force-aware surface processing. In the headlight setup, the mask is generated from an external command or inspection request. The initial ArUco implementation is only a low-cost command interface~\cite{garrido2014aruco}; the marker ID is not a policy observation and is not treated as visual evidence of a physical defect.
-
-\section{Learned and Amortized Motion Planning}
-Learning-based motion planning can be interpreted as amortizing repeated planning queries. Motion Planning Networks learn fast motion-plan predictions and can be combined with classical planning for feasibility repair~\cite{qureshi2019mpnet}. MPC-MPNet combines learned proposals with model-predictive refinement under kinodynamic constraints~\cite{li2021mpcmpnet}. Motion Planning Diffusion learns trajectory-distribution priors with diffusion models and adapts them with motion-planning costs~\cite{carvalho2025motionplanningdiffusion}. Point-cloud-conditioned flow matching has also been studied as a warm start for optimization-based manipulator motion planning~\cite{tian2025flowwarmstart}.
-
-This perspective motivates RQ3. The aluminum experiment does not claim that IL generally replaces classical planning. Classical planners retain advantages in collision checking, explicit constraints, and feasibility repair. The planned comparison measures latency, latency variance, cycle time, contact stability, and task success under a shared execution layer.
-
-\section{Related-Work Comparison}
-\begin{landscape}
-\begin{table}[p]
+\section{Positioning of FAIRE}
+\begin{table}[t]
 \centering
-\scriptsize
-\caption{Related-work comparison. Y = reported or central to the method, N = not part of the method, N/R = not reported or not verified from the checked source. The table is intended to bound novelty rather than rank methods.}
+\caption{Functional positioning of representative related approaches. Desired force denotes a policy-generated reference rather than force observation alone.}
 \label{tab:related_work_comparison}
-\begin{adjustbox}{width=\linewidth}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.14\linewidth}>{\raggedright\arraybackslash}p{0.13\linewidth}ccccccccccccc}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
 \toprule
-Work & Task/application & RGB/RGB-D observation & ROI/object mask condition & F/T observation & Force-history input & Pose/action prediction & Force/wrench prediction & Compliance/admittance execution & Explicit surface geometry & Explicit global coverage & Local/global decomposition & Defect-map interface & Planning-latency evaluation & Surface-quality evaluation \\
+Method & Force observation & Desired force & Compliant execution & Polishing precision focus \\
 \midrule
-Admittance Visuomotor Policy~\cite{zhou2024admitdiff} & General contact-rich manipulation & Y & N & Y & N/R & Y & Y & Y & N & N & N & N & N/R & N \\
-ForceMimic~\cite{liu2025forcemimic} & Force-centric contact-rich manipulation & N/R & N & Y & N/R & Y & Y & Y & N & N & N & N & N/R & N \\
-Force Policy~\cite{fang2026forcepolicy} & Contact-rich manipulation & Y & N/R & Y & Y & Y & Y & Y & N & N & Y & N & N/R & N \\
-FAWAM~\cite{he2026fawam} & Closed-loop contact-rich manipulation & N/R & N/R & Y & Y & Y & Y & Correction & N & N & N & N & N/R & N \\
-FoAR~\cite{he2025foar} & Reactive contact-rich manipulation & Y & N & Y & Y & Y & N/R & Position/reactive & N & N & N & N & N/R & N \\
-Adaptive Compliance Policy~\cite{hou2025adaptivecompliance} & Compliance-aware manipulation & Y & N/R & N/R & N/R & Y & N/R & Compliance & N & N & N & N & N/R & N \\
-Reactive Diffusion Policy~\cite{xue2025reactivediffusion} & Visual-tactile contact manipulation & Y & N/R & Tactile/force & Y & Y & N/R & Reactive loop & N & N & Y & N & N/R & N \\
-Flow with the Force Field~\cite{li2026flowforce} & Compliant flow-matching policy & Y & N/R & Y & N/R & Y & N/R & Compliance & N & N & N & N & N/R & N \\
-SRDP~\cite{ke2026srdp} & Multi-stage robotic polishing & Y & N/R & N/R & Y & Y & Normal force & Process constraint & Surface task & N/R & Stage-based & N & N/R & Y \\
-SCP~\cite{ke2026surfaceconstraint} & Surface-constrained robot skills & Y & N & N/R & N/R & Y & N/R & Compliant DMP & Y & N & N & N & N/R & N/R \\
-Visual-Guided Diffusion + Mesh-DMP~\cite{ke2025visualguided} & Freeform surface polishing & RGB-D & N & N/R & N/R & Y & N/R & N/R & Y & N/R & N & N & N/R & N/R \\
-Transferring Foundation Models~\cite{yang2025foundation} & Generalizable manipulation & Y & Y & N & N & Y & N & N/R & N & N & Local-global visual & N & N/R & N \\
-RoboGrind~\cite{alt2024robogrind} & Industrial surface treatment workflow & 3-D scan & Defect region & Y & N/R & Program/path & Force setpoint & Hybrid force-position & Y & Path planning & Workflow stages & Y & N/R & Y \\
-Ergodic Surface Finishing~\cite{schneyer2026ergodic} & Surface finishing with learned preferences & N/R & Spatial distribution & N/R & N/R & Motion preference & N/R & N/R & Y & Y & N/R & N/R & N/R & N/R \\
-Proposed method & ROI-conditioned polishing and pose-randomized deburring & Y & Y & Y & Y & Y & Verified force channel & Y & Y & Y & Y & Y & Planned & Planned \\
+Vision-only IL~\cite{zhao2023act,chi2025diffusionpolicy} & No & No & No & No \\
+AdmitDiff~\cite{zhou2024admitdiff} & Yes & Yes & Yes & No \\
+ForceMimic~\cite{liu2025forcemimic} & Yes & Yes & Yes & No \\
+FoAR~\cite{he2025foar} & Yes & No & Reactive & No \\
+FAIRE & Yes & Yes & Yes & Yes \\
 \bottomrule
-\end{tabular}
-\end{adjustbox}
+\end{tabular}}
 \end{table}
-\end{landscape}
 
-The comparison shows that most individual components of the proposed workflow already exist in the literature. The thesis therefore positions its contribution as a task-specific integration and evaluation: an external ROI interface for local contact-rich surface processing, force-aware local pose--force generation, deterministic full-surface coverage, and a latency/cycle-time benchmark against a classical perception--registration--planning pipeline. This is not framed as an absolute novelty claim.
-
-\section{Research Gap}
-The reviewed literature motivates the thesis around a specific intersection. Surface-finishing systems already integrate perception, planning, and force control; force-aware IL already predicts motion and force-related references; mask-conditioned manipulation already uses spatial task conditions; and learned planners already amortize repeated planning queries. The planned contribution is to evaluate a local-to-global surface-finishing workflow in which interaction-dependent local processing and deterministic global coverage are assigned to different solvers, and to test the resulting force-aware ablations and planning-latency trade-offs on complementary headlight and aluminum workpieces.
+The research gap is therefore not the absence of force-aware learning. It is the need for a single precision-oriented polishing framework that connects calibrated human motion--force teaching, temporal force-conditioned imitation, controller-level force-trajectory execution, and bounded velocity and normal-alignment correction, and then evaluates each interface using continuous process metrics.

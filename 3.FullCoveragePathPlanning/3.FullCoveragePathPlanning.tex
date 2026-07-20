@@ -1,67 +1,86 @@
-\chapter{System Overview and Problem Formulation}
-\label{chap:system_overview}
-\section{System Components}
-The experimental platform is organized around a six-degree-of-freedom industrial manipulator, a finishing spindle or deburring tool, a wrist-mounted six-axis force/torque sensor, an RGB-D sensor such as an Intel RealSense D435 for surface reconstruction or registration, a local RGB or RGB-D camera for policy observation, and rigid fixtures for the headlight and aluminum workpieces. The exact robot model, controller rate, sensor mounting, tool type, and calibration procedure remain \todoexp{to be finalized from the real hardware setup}.
+\chapter{FAIRE Overview and Problem Formulation}
+\label{chap:faire_overview}
 
-The system has three high-level modules. The geometry-based planner reconstructs or registers the workpiece, computes surface normals and feasible tool poses, and generates deterministic coverage or baseline trajectories. The force-aware IL policy generates local task-conditioned pose--force references from sensory observations, a structure that directly overlaps with recent admittance visuomotor and hybrid force-position policies~\cite{zhou2024admitdiff,fang2026forcepolicy}. The low-level admittance controller executes the references while enforcing force, velocity, workspace, and collision limits.
+\section{System Objective}
+FAIRE aims to reproduce the continuous contact behavior demonstrated during robotic polishing. Let the robot observation at time \(t\) contain an RGB image \(I_t\), a proprioceptive and pose state \(s_t\), and the measured six-axis wrench
+\begin{equation}
+  w_t=[F_x,F_y,F_z,\tau_x,\tau_y,\tau_z]_t.
+  \label{eq:wrench}
+\end{equation}
+The image localizes the task region, the pose state describes the robot configuration and tool motion, and the wrench describes interaction with the workpiece.
 
+The task output is a short horizon of reference position, reference orientation, and desired contact force:
+\begin{equation}
+  \mathcal{A}_t =
+  \left\{
+    x^{\mathrm{ref}}_{t:t+H},
+    R^{\mathrm{ref}}_{t:t+H},
+    F^{\mathrm{des}}_{t:t+H}
+  \right\}.
+  \label{eq:faire_action}
+\end{equation}
+Here \(H\) is the prediction horizon. The desired force is a trajectory to be tracked by a compliant controller; it is not a direct joint-torque or actuator-level command.
+
+\section{Framework Architecture}
 \begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.24\textheight][c]{0.90\textwidth}
     \centering
-    \fbox{\begin{minipage}[c][0.28\textheight][c]{0.94\textwidth}
-    \centering
-    \textbf{System overview placeholder}\\[0.5em]
-    Robot base frame $\{B\}$, tool frame $\{T\}$, F/T sensor frame $\{F\}$, RGB-D camera frame $\{C_g\}$, local policy camera frame $\{C_l\}$, headlight frame $\{H\}$, and aluminum specimen frame $\{A\}$.
-    \end{minipage}}
-    \caption{Coordinate frames and shared modules of the proposed system. The final figure should show the actual robot, cameras, workpieces, and calibration transforms.}
-    \label{fig:tool_footprint}
+    \textbf{Teaching}\\
+    tracked handheld pose \(+\) six-axis wrench \(+\) RGB image\\[0.8ex]
+    \(\downarrow\) VR-to-robot calibration and synchronization\\[0.8ex]
+    \textbf{Learning}\\
+    visual encoder \(+\) pose encoder \(+\) GRU wrench-history encoder\\[0.8ex]
+    \(\downarrow\) motion--force reference horizon\\[0.8ex]
+    \textbf{Execution}\\
+    admittance position correction \(+\) bounded residual velocity/orientation
+  \end{minipage}}
+  \caption{FAIRE architecture. A final implementation figure remains planned in the source manuscript.}
+  \label{fig:faire_overview}
 \end{figure}
 
-\section{Coordinate Frames}
-Let $\{B\}$ denote the robot base frame, $\{E\}$ the end-effector frame, $\{T\}$ the tool frame, $\{F\}$ the force/torque sensor frame, $\{C_g\}$ the global RGB-D camera frame, and $\{C_l\}$ the local policy camera frame. The headlight and aluminum workpiece frames are denoted by $\{H\}$ and $\{A\}$, respectively. A calibrated rigid transform is written as ${}^{i}\mathbf{T}_{j}\in SE(3)$ from frame $\{j\}$ to frame $\{i\}$.
+The framework contains three stages. First, the teaching stage maps handheld motion into the robot base frame through an explicit calibration chain and stores synchronized image, pose, and wrench measurements. Second, the learning stage encodes the current visual and pose context together with a wrench-history window. Third, the execution stage uses admittance control to realize the desired force and residual policies to correct velocity and orientation.
 
-The global geometric pipeline estimates ${}^{B}\mathbf{T}_{H}$ or ${}^{B}\mathbf{T}_{A}$ from scan-to-CAD registration, fiducial-assisted calibration, or fixture calibration. The IL policy should not receive marker IDs or global registration outputs as a shortcut unless that information is explicitly part of the intended deployed observation. For the headlight local task, the policy receives a spatial ROI mask in the local camera or headlight coordinate system. ArUco is cited only as a fiducial detection and command-interface mechanism, not as evidence of physical surface defects~\cite{garrido2014aruco}.
+\section{Temporal Contact Representation}
+Polishing contact is history dependent. The same instantaneous normal force can occur during initial contact, stable sliding, or recovery from excessive load. FAIRE therefore uses the wrench window
+\begin{equation}
+  w_{t-K:t}=\{w_{t-K},\ldots,w_t\},
+  \label{eq:wrench_history}
+\end{equation}
+where \(K+1\) is the history length. The recurrent representation is
+\begin{equation}
+  z_t^F=\mathrm{GRU}(w_{t-K:t}).
+  \label{eq:force_gru}
+\end{equation}
+Separate visual and pose encoders produce \(z_t^I=f_I(I_t)\) and \(z_t^P=f_P(s_t)\). Their fused latent state,
+\begin{equation}
+  z_t=\mathrm{Fusion}(z_t^I,z_t^P,z_t^F),
+  \label{eq:fusion}
+\end{equation}
+conditions the motion--force policy. Separation is important to the planned ablation: unified and split encoders, current and historical force inputs, and recurrent alternatives can be compared while holding the action and controller interfaces fixed.
 
-\section{Workpieces}
-Two workpieces are considered.
+\section{Nominal and Residual Responsibilities}
+The nominal policy \(\pi_\theta\) produces the task-level reference,
+\begin{equation}
+  \pi_\theta(z_t)\mapsto\mathcal{A}_t.
+  \label{eq:motion_force_policy}
+\end{equation}
+The admittance controller maps force error into the compliant position adjustment needed to realize this reference. Residual policies then make bounded precision corrections:
+\begin{align}
+  v_t^{\mathrm{cmd}} &= \alpha_t v_t^{\mathrm{ref}},\\
+  R_t^{\mathrm{cmd}} &= R_t^{\mathrm{ref}}\Delta R_t^{\mathrm{RL}}.
+  \label{eq:residual_commands_overview}
+\end{align}
+The velocity scale \(\alpha_t\) and residual rotation \(\Delta R_t^{\mathrm{RL}}\) are restricted by safety and smoothness limits. They do not generate a new path, target region, or force trajectory.
+
+\section{Design Principles}
+Four principles constrain the framework.
 \begin{enumerate}
-    \item \textbf{Automotive headlight:} a curved transparent or coated surface used for local ROI-mask-conditioned polishing followed by full-surface geometry-based polishing. The current thesis treats ArUco markers as a command interface for ROI generation, not as defect-inspection sensors or defect evidence~\cite{garrido2014aruco}.
-    \item \textbf{Aluminum machining specimen:} a rigid part containing holes, edges, or deburring-like target features. The benchmark varies workpiece pose, robot initial configuration, target feature, and approach direction to compare a classical online planning pipeline with a vision-conditioned IL policy.
+  \item \textbf{Synchronized multimodal teaching:} pose, orientation, image, and wrench must share a common time base and coordinate convention.
+  \item \textbf{Explicit execution semantics:} the predicted desired force must be realized through a specified controller rather than described ambiguously as a robot action.
+  \item \textbf{Temporal contact context:} the force representation must distinguish contact phases that are not identifiable from a single sample.
+  \item \textbf{Bounded correction:} RL is limited to precision adjustments; nominal task execution remains interpretable through the demonstrated motion--force reference.
 \end{enumerate}
 
-\section{Hybrid Task Allocation}
-Let $\mathcal{S}$ be a workpiece surface and $\Omega\subset\mathcal{S}$ be the target finishing region. The task is divided into a deterministic global region $\Omega_g$ and local requested regions $\Omega_{\ell}^{i}$:
-\begin{equation}
-\Omega = \Omega_g \cup \bigcup_{i=1}^{N_\ell}\Omega_{\ell}^{i}.
-\end{equation}
-The global region is assigned to geometry-based planning when coverage completeness, boundary handling, and tool footprint are explicitly defined. A local region is assigned to IL when the required behavior depends on ROI mask shape, local curvature, approach direction, contact onset, force modulation, or a changing initial condition. Surface-constrained policy learning already addresses geometric consistency for learned surface actions~\cite{ke2026surfaceconstraint}; this thesis instead separates local learned interaction from explicit global coverage. This allocation does not imply that geometry-based planning is unable to process local regions; instead, the thesis evaluates whether IL can provide lower and more consistent online computation while preserving task quality.
-
-\section{Common Pose--Force Interface}
-Both the geometric planner and IL policy output references for the same low-level execution layer. A high-level action chunk is written as
-\begin{equation}
-a_{t:t+H} =
-\left[
-X^d_{t:t+H},\,
-W^d_{t:t+H}
-\right],
-\label{eq:common_action}
-\end{equation}
-where $X^d$ is a future end-effector pose or pose-increment trajectory and $W^d$ is the desired force or wrench reference. The current repository does not contain the robot dataset or controller source code needed to verify whether the implemented action is Cartesian pose, Cartesian increment, joint-space command, normal-force-only reference, or multi-axis wrench. This draft therefore states the intended interface and leaves the exact channel definition as \todoexp{verify against the actual dataset and controller implementation}.
-
-If the actual implementation commands only normal force $F_z^d$, the action should be written as $a_{t:t+H}=[X^d_{t:t+H},F_{z,t:t+H}^d]$ rather than as a full six-dimensional wrench. If the implementation commands three force components, the action should be written as $[X^d,F_x^d,F_y^d,F_z^d]$. The text avoids claiming six-axis wrench control until the controller channels are verified.
-
-\section{Admittance Execution}
-The low-level controller maps force-reference error into motion correction, following classical impedance/admittance-control principles and recent learned desired-force execution structures~\cite{hogan1985impedance,keemink2018admittance,villani2008forcecontrol,zhou2024admitdiff}:
-\begin{equation}
-\mathbf{M}_d\Delta\ddot{\mathbf{x}}+
-\mathbf{D}_d\Delta\dot{\mathbf{x}}+
-\mathbf{K}_d\Delta\mathbf{x}
-=
-\mathbf{W}_{\mathrm{ext}}-\mathbf{W}^{d}.
-\label{eq:admittance}
-\end{equation}
-Here $\Delta\mathbf{x}$ is the compliant Cartesian correction, $\mathbf{W}_{\mathrm{ext}}$ is the measured external wrench or selected force channel, and $\mathbf{W}^{d}$ is the desired reference from the planner or policy. The signs and gains must be matched to the deployed controller. The conceptual role is fixed: the policy generates task-conditioned references, the F/T sensor observes contact state, and admittance control performs stable compliant execution.
-
-\section{Problem Definitions}
-The headlight task is to process a requested local ROI and then execute full-coverage polishing over the visible target surface. Before standardized defect specimens are introduced, success is defined through ROI tool-footprint coverage, spillover outside the ROI, contact stability, completion time, and feasibility of the local-to-global sequence.
-
-The aluminum task is to execute a specified edge-following or deburring-like contact trajectory under randomized workpiece pose and robot initial configuration. If real burrs are not present or not measured, the task is reported as force-controlled edge-following or deburring-like contact execution rather than a validated material-removal deburring study. The main hypothesis is that the IL policy can provide comparable task success with lower and more consistent online computation time than the classical pipeline under the same safety and execution limits.
+\section{Assumptions and Safety Boundary}
+The target polishing region is specified before demonstration and evaluation. The framework assumes that the task remains within the demonstrated visual, geometric, and contact distribution and that the robot provides a Cartesian command interface compatible with admittance correction. Wrench bias compensation, frame transformation, filtering, action limits, force limits, velocity limits, workspace limits, and emergency-stop logic are required implementation elements. Their verified numerical settings are \todoexp{TBD in the FAIRE source repository}.

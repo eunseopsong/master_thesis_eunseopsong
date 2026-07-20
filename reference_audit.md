@@ -1,43 +1,33 @@
-| Citation key | Verified title | Status | Official venue | Year | Used chapter | Priority | Direct overlap | Reason for citation | Metadata source checked |
-|---|---|---|---|---:|---|---|---|---|---|
-| zhou2024admitdiff | Admittance Visuomotor Policy Learning for General-Purpose Contact-Rich Manipulations | Preprint | arXiv preprint arXiv:2409.14440 | 2024 | Ch. 1,2,3,5,7,8 | S | High | Closest prior structure: vision/proprioception/force observation, desired force prediction, admittance execution | https://arxiv.org/abs/2409.14440 |
-| liu2025forcemimic | ForceMimic: Force-Centric Imitation Learning with Force-Motion Capture System for Contact-Rich Manipulation | Published conference paper | 2025 IEEE ICRA | 2025 | Ch. 1,2,5,7 | S | High | Force-motion capture, pose/wrench prediction, hybrid force-position execution | DOI 10.1109/ICRA55743.2025.11128061; arXiv:2410.07554 |
-| fang2026forcepolicy | Force Policy: Learning Hybrid Force-Position Control Policy under Interaction Frame for Contact-Rich Manipulation | Preprint | arXiv preprint arXiv:2602.22088 | 2026 | Ch. 1,2,3,5,7,8 | S | High | Global/local force-policy split and hybrid force-position execution | https://arxiv.org/abs/2602.22088 |
-| he2026fawam | FAWAM: Force-Aware World Action Models for Closed-Loop Contact-Rich Manipulation | Preprint | arXiv preprint arXiv:2606.08555 | 2026 | Ch. 2,5,7,8 | S | High | F/T history encoding and joint future action/wrench prediction | https://arxiv.org/abs/2606.08555 |
-| ke2026srdp | Stage-Aware and Roughness-Constrained Diffusion Policy for Multi-Stage Robotic Polishing | Preprint | arXiv preprint arXiv:2606.25754 | 2026 | Ch. 1,2,6,7,8 | S | High | Robotic polishing, multimodal history, stage inference, feed speed and normal force generation | https://arxiv.org/abs/2606.25754 |
-| ke2026surfaceconstraint | Surface Constraint Policy for Learning Surface-Constrained and Dynamically Feasible Robot Skills | Preprint | arXiv preprint arXiv:2605.31321 | 2026 | Ch. 1,2,3,4,6,8 | S | High | Learned surface-constrained action generation and geometric consistency | https://arxiv.org/abs/2605.31321 |
-| ke2025visualguided | Visual-Guided Diffusion Policy and Mesh-DMP Integration for Robotic Freeform Surface Polishing | Published conference paper | ICIRA 2025, LNCS 16074, pp. 77--90 | 2025 | Ch. 1,2,4,6,7 | S | High | Closest learning--geometry polishing reference; diffusion policy plus Mesh-DMP surface constraint | https://link.springer.com/chapter/10.1007/978-981-95-2095-4_7 |
-| yang2025foundation | Transferring Foundation Models for Generalizable Robotic Manipulation | Published conference paper | WACV 2025, pp. 1999--2010 | 2025 | Ch. 1,2,5,6,7 | A | Medium | RGB plus segmentation mask as explicit task condition | https://openaccess.thecvf.com/content/WACV2025/html/Yang_Transferring_Foundation_Models_for_Generalizable_Robotic_Manipulation_WACV_2025_paper.html |
-| alt2024robogrind | RoboGrind: Intuitive and Interactive Surface Treatment with Industrial Robots | Published conference paper | 2024 IEEE ICRA, pp. 2140--2146 | 2024 | Ch. 1,2,4,6,7,8 | S | High | Integrated scan/defect/program/force-controlled surface-treatment workflow | arXiv:2402.16542; ICRA 2024 metadata from prompt |
-| schneyer2026ergodic | An Ergodic Approach to Robotic Surface Finishing With Learned Motion Preferences | Published journal article | IEEE Transactions on Robotics, vol. 42, pp. 342--361 | 2026 | Ch. 1,2,4,6,7,8 | S | Medium | Tool imprint, desired spatial distribution, learned motion preferences for surface finishing | DOI 10.1109/TRO.2025.3641752; metadata from prompt |
-| kim2026learningaugmented | Learning-augmented robotic automation for real-world manufacturing | Preprint | arXiv preprint arXiv:2604.22235 | 2026 | Ch. 1,2,6,7,8 | A | Medium | Learned task controller inside conventional industrial automation workflow | https://arxiv.org/abs/2604.22235 |
-| wojciechowski2026deburring | Learning-Guided Force-Feedback Model Predictive Control with Obstacle Avoidance for Robotic Deburring | Preprint | arXiv preprint arXiv:2604.06133 | 2026 | Ch. 2,7 | S | Medium | Deburring-related learned motion prior, force-feedback MPC, obstacle avoidance | https://arxiv.org/abs/2604.06133 |
-| he2025foar | FoAR: Force-Aware Reactive Policy for Contact-Rich Robotic Manipulation | Published journal article | IEEE Robotics and Automation Letters, vol. 10, no. 6, pp. 5625--5632 | 2025 | Ch. 1,2,5,7 | A | High | High-frequency F/T and visual fusion for reactive contact-rich execution | DOI 10.1109/LRA.2025.3560871; arXiv:2411.15753 |
-| hou2025adaptivecompliance | Adaptive Compliance Policy: Learning Approximate Compliance for Diffusion Guided Control | Preprint | arXiv preprint arXiv:2410.09309 | 2024 | Ch. 2,5 | A | Medium | Compliance-aware learned execution boundary | https://arxiv.org/abs/2410.09309 |
-| xue2025reactivediffusion | Reactive Diffusion Policy: Slow-Fast Visual-Tactile Policy Learning for Contact-Rich Manipulation | Preprint | arXiv preprint arXiv:2503.02881 | 2025 | Ch. 2,5 | A | Medium | Slow visual policy plus fast tactile/force reactive loop | https://arxiv.org/abs/2503.02881 |
-| li2026flowforce | Flow with the Force Field: Learning 3D Compliant Flow Matching Policies from Force and Demonstration-Guided Simulation Data | Preprint | arXiv preprint arXiv:2510.02738 | 2025 | Ch. 2,5 | A | Medium | Compliant flow-matching policy with force-conditioned demonstrations | https://arxiv.org/abs/2510.02738 |
-| sato2026forcegenerative | Force Generative Imitation Learning: Bridging Position Trajectory and Force Commands through Control Technique | Preprint | arXiv preprint arXiv:2602.06620 | 2026 | Ch. 2 | A | Medium | Force-command generation from position trajectories | https://arxiv.org/abs/2602.06620 |
-| chi2025diffusionpolicy | Diffusion Policy: Visuomotor Policy Learning via Action Diffusion | Published journal article | The International Journal of Robotics Research, vol. 44, no. 10--11, pp. 1684--1704 | 2025 | Ch. 2,5 | A | Medium | Generative visuomotor action-sequence policy background | DOI 10.1177/02783649241273668; arXiv:2303.04137 |
-| zhao2023act | Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware | Published conference paper | Robotics: Science and Systems | 2023 | Ch. 2,5 | A | Low | Action chunk prediction background | arXiv:2304.13705 |
-| braun2024riemannianflow | Riemannian Flow Matching Policy for Robot Motion Learning | Preprint | arXiv preprint arXiv:2403.10672 | 2024 | Ch. 2,5 | A | Medium | Flow-matching robot motion policy background | https://arxiv.org/abs/2403.10672 |
-| yang2023momaforce | MOMA-Force: Visual-Force Imitation for Real-World Mobile Manipulation | Published conference paper | IEEE/RSJ IROS | 2023 | Bibliography retained | B | Medium | Earlier visual-force IL and admittance whole-body control reference retained from prior draft | DOI 10.1109/IROS55552.2023.10342371; arXiv:2308.03624 |
-| zhu2023viola | VIOLA: Imitation Learning for Vision-Based Manipulation with Object Proposal Priors | Published conference proceedings | Proceedings of the 6th Conference on Robot Learning, PMLR 205, pp. 1199--1210 | 2023 | Ch. 2,5,6 | A | Medium | Object proposal priors and task-relevant feature attention | PMLR metadata from prompt; arXiv:2210.11339 |
-| zhang2025mask2act | Mask2Act: Predictive Multi-Object Tracking as Video Pre-Training for Robot Manipulation | Published conference proceedings | BMVC 2025 | 2025 | Ch. 2,5 | A | Medium | Future object masks as latent plan; contrasted with static external ROI mask | BMVC 2025 metadata from prompt |
-| zhu2023groot | Learning Generalizable Manipulation Policies with Object-Centric 3D Representations | Preprint | arXiv preprint arXiv:2310.14386 | 2023 | Ch. 2,5 | B | Low | Object-centric 3-D representation background for mask/object-conditioned policies | https://arxiv.org/abs/2310.14386 |
-| qureshi2019mpnet | Motion Planning Networks: Bridging the Gap Between Learning-Based and Classical Motion Planners | Preprint | arXiv preprint arXiv:1907.06013 | 2019 | Ch. 2,4,7 | A | Medium | Amortized repeated motion-planning queries and learned/classical repair | https://arxiv.org/abs/1907.06013 |
-| li2021mpcmpnet | MPC-MPNet: Model-Predictive Motion Planning Networks for Fast, Near-Optimal Planning under Kinodynamic Constraints | Preprint | arXiv preprint arXiv:2101.06798 | 2021 | Ch. 2,7 | A | Medium | Learned proposal plus MPC/classical refinement | https://arxiv.org/abs/2101.06798 |
-| carvalho2025motionplanningdiffusion | Motion Planning Diffusion: Learning and Adapting Robot Motion Planning with Diffusion Models | Published journal article | IEEE Transactions on Robotics, vol. 41, pp. 4881--4901 | 2025 | Ch. 2,4,7,8 | A | Medium | Diffusion-based motion-plan priors and cost adaptation | arXiv:2412.19948; IEEE T-RO metadata from prompt |
-| tian2025flowwarmstart | Warm-Starting Optimization-Based Motion Planning for Robotic Manipulators via Point Cloud-Conditioned Flow Matching | Preprint | arXiv preprint arXiv:2510.03460 | 2025 | Ch. 2,7 | B | Medium | Point-cloud-conditioned flow-matching warm start for classical planning | https://arxiv.org/abs/2510.03460 |
-| schneyer2023segmentation | Segmentation and Coverage Planning of Freeform Geometries for Robotic Surface Finishing | Published journal article | IEEE Robotics and Automation Letters | 2023 | Ch. 1,2,4 | A | Medium | Freeform surface segmentation and coverage planning | DOI 10.1109/LRA.2023.3293309 |
-| mcgovern2024coverage | A General Approach for Constrained Robotic Coverage Path Planning on 3D Freeform Surfaces | Published journal article | IEEE Transactions on Automation Science and Engineering, vol. 21, no. 4, pp. 5546--5557 | 2024 | Ch. 1,2,4 | A | Medium | Constrained 3-D freeform surface coverage planning | DOI 10.1109/TASE.2023.3313228 |
-| garrido2014aruco | Automatic Generation and Detection of Highly Reliable Fiducial Markers under Occlusion | Published journal article | Pattern Recognition, vol. 47, no. 6, pp. 2280--2292 | 2014 | Ch. 2,3,6 | B | Low | Marker detection basis for command interface only, not defect sensing | DOI 10.1016/j.patcog.2014.01.005 |
-| hogan1985impedance | Impedance Control: An Approach to Manipulation | Published journal article | Journal of Dynamic Systems, Measurement, and Control, vol. 107, no. 1, pp. 1--24 | 1985 | Ch. 1,2,3,5 | B | Low | Classical impedance/compliance control background | Publisher/DOI metadata from existing bibliography |
-| keemink2018admittance | Admittance Control for Physical Human--Robot Interaction | Published journal article | The International Journal of Robotics Research, vol. 37, no. 11, pp. 1421--1444 | 2018 | Ch. 1,2,3,5 | B | Low | Classical admittance control reference | DOI 10.1177/0278364918768950 |
-| villani2008forcecontrol | Force Control | Book chapter | Springer Handbook of Robotics | 2008 | Ch. 1,2,3,5 | B | Low | General force-control background | DOI 10.1007/978-3-540-30301-5_8 |
+# FAIRE thesis reference audit
 
-Notes:
-- `zhou2024admitdiff` is retained because it is already used in the thesis. The user-suggested key `zhou2024admittance` was not added as a duplicate.
-- `qureshi2019mpnet` is retained because it is already used in the thesis. The user-suggested key `qureshi2021mpnet` was not added as a duplicate.
-- `schneyer2023segmentation` is retained because it is already used in the thesis. The user-suggested key `schneyer2023coverage` was not added as a duplicate.
-- `ke2025visualguided` is cited in the text as an ICIRA 2025 paper. The Springer book-chapter citation may display a 2026 book publication year, but the bibliography follows the thesis convention of using the conference year.
-- `wen2022uniformcoverage` was not added because the exact official metadata could not be verified during this audit.
+This file tracks references cited by the revised thesis. Bibliographic entries
+not cited by the FAIRE-based text remain in Bibliography/ThesisRef.bib for
+provenance but do not appear in the generated bibliography.
+
+| Citation key | Role in the revised thesis | Status |
+|---|---|---|
+| preston1927theory | Classical polishing process background | Existing bibliography entry |
+| mohsin2019path | Curved-surface path planning under force control | Existing bibliography entry |
+| min2024force | Human-skill force control for surface finishing | Existing bibliography entry |
+| schneyer2023segmentation | Freeform-surface segmentation and coverage | Existing bibliography entry |
+| mcgovern2024coverage | Constrained 3-D surface coverage | Existing bibliography entry |
+| tafuro2024autonomous | Scan-to-polishing planning | Existing bibliography entry |
+| alt2024robogrind | Interactive robotic surface treatment | Existing bibliography entry |
+| zhao2023act | Action-chunk imitation-learning background | Existing bibliography entry |
+| chi2025diffusionpolicy | Visuomotor action-sequence learning | Existing bibliography entry |
+| tsuji2025contactsurvey | Contact-rich imitation-learning overview | Existing bibliography entry |
+| zhou2024admitdiff | Desired-force prediction with admittance execution | Existing bibliography entry |
+| liu2025forcemimic | Force--motion capture and force-centric imitation | Existing bibliography entry |
+| he2025foar | Force-aware reactive position policy | Existing bibliography entry |
+| yang2023momaforce | Visual--force imitation | Existing bibliography entry |
+| he2026fawam | Wrench-history action/world modeling | Existing bibliography entry |
+| hogan1985impedance | Classical compliant-control background | Existing bibliography entry |
+| villani2008forcecontrol | Force-control background | Existing bibliography entry |
+| keemink2018admittance | Admittance-control background | Existing bibliography entry |
+| hou2025adaptivecompliance | Learned compliance-related execution | Existing bibliography entry |
+| xue2025reactivediffusion | Slow--fast reactive contact policy | Existing bibliography entry |
+| TODO_GForce | G-force comparison retained from the FAIRE draft | Metadata remains TBD |
+
+The TODO_GForce entry is intentionally a placeholder because the FAIRE source
+repository names the work but supplies no verified author, title, venue, or
+identifier. It must be replaced before final submission.
