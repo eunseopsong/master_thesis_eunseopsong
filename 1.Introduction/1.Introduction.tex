@@ -2,56 +2,62 @@
 \label{chap:introduction}
 
 \section{Background and Motivation}
-Robotic polishing is a contact-rich manufacturing process in which the robot must coordinate geometric motion with the physical interaction between a compliant tool and a workpiece. A path that visits the intended surface region is necessary, but it is not sufficient for a consistent finish. The applied normal force, the sliding velocity, and the tool orientation jointly affect contact stability, dwell, and material removal. Errors in any of these variables can cause intermittent contact, excessive loading, nonuniform processing, or surface damage~\cite{preston1927theory,mohsin2019path,min2024force}.
+Localized surface repair must remove a defect without unnecessarily processing the intact material around it. This requirement is more demanding than visiting a region with a tool. Contact force, true tool--surface relative velocity, orientation, dwell, overlap, and material response jointly determine what is physically removed~\cite{preston1927theory,mohsin2019path,min2024force}. A robot must therefore decide how a defect should be treated, how much processing it requires, which locations require repetition, and when selective removal should terminate.
 
-Classical polishing systems address this problem with geometric path planning and force or compliance control. Such systems can be highly repeatable when the workpiece geometry, contact model, fixture, and process parameters are known. Their performance nevertheless depends on accurate modeling and tuning. Local defects, fixture tolerances, uncertain compliance, and operator-specific adjustments are difficult to encode in a fixed analytic trajectory. These limitations motivate learning task-specific contact behavior from human demonstrations.
+Geometric perception and coverage planning provide essential information about where the robot can move~\cite{schneyer2023segmentation,mcgovern2024coverage,tafuro2024autonomous}. They do not, by themselves, reveal defect depth, local severity, removal difficulty, or the appropriate process intensity. These variables may be only partially observable in an RGB image and may become apparent only through interaction. FAIRE addresses this gap with a force-aware imitation policy that learns an operator's defect-conditioned repair decisions from visual context and contact history.
 
-Imitation learning has become a practical method for acquiring visuomotor skills from demonstrations~\cite{zhao2023act,chi2025diffusionpolicy}. In polishing, however, visual and kinematic observations alone do not uniquely describe the interaction. Similar tool poses can correspond to approach, stable contact, excessive loading, or contact loss. Force/torque sensing supplies direct evidence of this latent contact state. Recent force-aware methods demonstrate the value of predicting or reacting to force during contact-rich manipulation~\cite{zhou2024admitdiff,liu2025forcemimic,he2025foar,tsuji2025contactsurvey}. Their existence also makes the scope of the present thesis precise: the contribution is not force sensing by itself, but its integration into a polishing-oriented demonstration, prediction, and compliant-execution framework.
+\section{Localized Defect Removal versus Surface Restoration}
+Selective removal and surface restoration are related but distinct objectives. The first objective is to eliminate the defect while limiting collateral processing. The second is to leave a spatially regular surface that connects smoothly to its surroundings. An imitation policy may successfully remove a visible scratch while concentrating material removal near the defect. The resulting surface may contain a local depression, nonuniform removal, excessive overlap at turning points, or a height and appearance discontinuity at the processed boundary.
 
-\section{From Motion Reproduction to Contact Reproduction}
-A polishing demonstration contains at least two coupled forms of information. The motion component describes where and how the tool should travel. The interaction component describes the force developed while that motion is executed. Replaying only the demonstrated path assumes that the robot and demonstrator encounter identical geometry and compliance. This assumption is fragile because a small surface-height error can substantially change the contact force without visibly changing the tangential path.
-
-FAIRE therefore treats the desired force trajectory as part of the learned action. The force trajectory is not interpreted as a direct actuator-level command. Instead, a low-level admittance controller converts force-tracking error into a compliant Cartesian correction. This separation assigns complementary responsibilities to learning and control: imitation learning predicts the demonstrated task reference, while admittance control realizes that reference under local contact variation.
-
-Contact is also temporal. An instantaneous wrench cannot always distinguish contact establishment from steady sliding or contact loss. FAIRE uses a gated recurrent unit (GRU) to encode a recent six-axis wrench history. The history representation is fused with visual context and robot state to predict short-horizon pose and force references. During execution, bounded residual reinforcement-learning (RL) policies adjust sliding velocity and tool orientation as precision corrections without replacing the nominal imitation policy.
+Consequently, defect removal does not imply complete surface restoration. FAIRE assigns uncertain, defect-conditioned selective removal to expert imitation learning (IL). It assigns quantitative spatial regularization after IL to a model-based blending stage. The executed IL process is measured and converted into a spatial removal estimate so that blending responds to what the robot actually produced rather than to the commanded path alone.
 
 \begin{figure}[t]
   \centering
-  \fbox{\begin{minipage}[c][0.19\textheight][c]{0.90\textwidth}
+  \fbox{\begin{minipage}[c][0.22\textheight][c]{0.90\textwidth}
     \centering
-    \textbf{FAIRE information flow}\\[1.0ex]
-    VR-calibrated handheld teaching\\
-    $\downarrow$\\
-    synchronized image--pose--wrench demonstrations\\
-    $\downarrow$\\
-    GRU force-history encoding and motion--force imitation\\
-    $\downarrow$\\
-    admittance execution with residual velocity and orientation correction
+    \textbf{Localized defect}\\
+    $\downarrow$ expert IL selective removal\\
+    \textbf{Defect removed, but localized depression or nonuniformity may remain}\\
+    $\downarrow$ execution-derived removal estimation and model-based blending\\
+    \textbf{Uniform core and smoothly decaying transition to the intact surface}
   \end{minipage}}
-  \caption{Conceptual organization of FAIRE. The final system illustration is planned; this box records only the verified information flow in the source manuscript.}
-  \label{fig:overall_framework}
+  \caption{Motivation for separating selective defect removal from complete surface restoration. The final illustrated result sequence will be populated from verified experiments.}
+  \label{fig:motivation}
 \end{figure}
 
+\section{Why Defect Localization Is Not Sufficient}
+Conventional perception-and-planning approaches can localize a defect and generate a geometric path through its image-space or surface-space region. A region of interest nevertheless does not uniquely determine the necessary force, tangential feed velocity, number of passes, local repetition pattern, or stopping condition. Two defects with similar visible footprints may differ in depth or removal difficulty, while different parts of one defect may demand unequal treatment. A purely geometric recipe must receive these process decisions from another source.
+
+FAIRE does not claim a separate explicit autonomous detector. Within a bounded task workspace, the visual policy may implicitly localize and interpret the defect together with the robot state and recent six-axis wrench history. Its role is summarized as follows: \emph{the imitation policy determines how and to what extent a visually observed defect should be selectively removed from visual context and interaction history}.
+
+\section{Skill and Expert Roles in Robotic Surface Repair}
+A \emph{skill} executes a process whose region, target, and parameters have already been specified. An \emph{expert} interprets uncertain observations and determines the appropriate behavior, process intensity, repetition, and termination. This distinction prevents geometric execution from being conflated with defect-dependent decision making.
+
+In FAIRE, force-aware IL acts as the expert repair policy. Model-based blending acts as a structured restoration skill. The latter uses the material-removal distribution produced by IL to regularize the inner repair region toward a target depth and to reduce removal gradually across an outer transition region. It therefore receives a quantitatively defined target instead of deciding the severity of the original defect.
+
 \section{Research Questions}
-The thesis is organized around three research questions inherited from the FAIRE manuscript.
 \begin{enumerate}[label=\textbf{RQ\arabic*:},leftmargin=2.2cm]
-  \item Does predicting a time-varying motion--force trajectory and realizing it through admittance control reproduce demonstrated contact behavior better than pose-only, force-observation-only, fixed-force, phase-force, or one-step-force interfaces?
-  \item How should contact history be represented for continuous polishing, and does a separated GRU-based wrench-history encoder improve force-trajectory tracking relative to unified, current-force, nonrecurrent, and LSTM variants?
-  \item Do bounded residual policies for sliding velocity and tool-normal alignment improve force tracking, alignment, surface-quality consistency, or task time beyond imitation plus admittance execution?
+  \item Can force-aware imitation learning infer and reproduce a defect-conditioned expert repair strategy when the required process intensity and removal termination are not explicitly specified?
+  \item Can the executed pose--wrench--velocity history be converted into an accurate spatial material-removal estimate using a calibrated Preston model and tool influence function?
+  \item Does residual-removal-based model planning improve the uniformity of the defect-containing core and the smoothness of the transition to the surrounding surface compared with IL-only repair or predefined uniform processing?
+  \item Do bounded residual orientation and feed-velocity policies improve contact stability and target-removal accuracy during CAD-free blending on previously unseen smooth curved surfaces?
 \end{enumerate}
+Force-action interfaces and recurrent wrench representations are evaluated as subsystem ablations under RQ1 rather than as thesis-level objectives.
 
 \section{Contributions}
-The contributions are threefold.
+The intended integrated contributions are:
 \begin{enumerate}
-  \item A VR-calibrated motion--force teaching system transfers synchronized position, orientation, wrench, and image demonstrations from a handheld device equipped with a six-axis force/torque sensor into robot-executable polishing trajectories.
-  \item A GRU-based force-history encoder represents contact evolution within a force-aware imitation policy that predicts reference pose trajectories and desired force trajectories.
-  \item A residual RL-augmented admittance execution layer applies bounded sliding-velocity and tool-orientation corrections for precision polishing while retaining the nominal learned motion--force trajectory as the task-level reference.
+  \item a VR-calibrated motion--force teaching and force-aware imitation framework that transfers an operator's defect-conditioned selective repair strategy rather than only reproducing a predefined geometric path;
+  \item an execution-derived spatial material-removal representation that converts actual pose, wrench, and velocity history into a calibrated Preston-model-based removal map;
+  \item a residual-removal-aware model-based blending method that regularizes the defect-containing core to a target removal depth and gradually reduces removal across a transition band; and
+  \item a CAD-free adaptive execution architecture in which admittance control handles unknown surface height and bounded residual RL adapts tool orientation and local feed velocity during blending on unseen smooth surface geometries.
 \end{enumerate}
+Preston's equation, admittance control, GRUs, coverage planning, and residual RL are not claimed as novel in isolation.
 
-These contributions are intentionally framed as an integrated precision-polishing system. FAIRE does not claim to introduce force sensing, force prediction, recurrent wrench encoding, admittance control, or residual learning in isolation.
+\section{Scope, Assumptions, and Thesis Status}
+The scope is local repair on smooth, continuously varying surfaces with moderate convex or concave curvature. It excludes sharp edges, steps, grooves, discontinuities, and extreme curvature unless later verified experimentally. CAD-free means that the planner does not require a complete CAD model or full 3D reconstruction; it does not mean geometry-free. A bounded local workspace, a viable local 2D coverage parameterization, and compliant contact are still assumed.
 
-\section{Scope and Thesis Status}
-The target task is polishing curved headlight surfaces. Vision is used to provide task-region context; autonomous defect detection or region-of-interest discovery is outside the claimed contribution. The source FAIRE repository is a review-version manuscript draft whose experimental tables, hardware identifiers, network dimensions, controller parameters, and final figures remain incomplete. This thesis preserves that evidentiary boundary. Missing implementation details and measurements are labeled as planned or TBD, and no numerical advantage is asserted before the corresponding experiment is completed.
+Hardware identifiers, network dimensions, control parameters, removal-model calibration, RL details, metrology settings, and quantitative results are not yet established in the source repository. They are marked \todoexp{to be determined from the final implementation} or \todoexp{to be populated from experimental results}. No unmeasured performance advantage is asserted.
 
 \section{Thesis Organization}
-Chapter~\ref{chap:related_work} reviews robotic polishing, force-aware imitation, demonstration capture, and compliant residual execution. Chapter~\ref{chap:faire_overview} defines the FAIRE architecture and problem. Chapter~\ref{chap:demonstration_collection} presents VR-calibrated motion--force demonstration transfer. Chapter~\ref{chap:force_il} develops the force-history imitation policy and admittance execution. Chapter~\ref{chap:residual_rl} formulates the residual precision policies. Chapter~\ref{chap:experiments} specifies the evaluation and ablations. Chapter~\ref{chap:conclusions} concludes the thesis and records its limitations.
+Chapter~\ref{chap:related_work} reviews the relevant literature. Chapter~\ref{chap:faire_overview} formulates the problem and allocates module responsibilities. Chapter~\ref{chap:demonstration_collection} presents motion--force demonstration collection. Chapter~\ref{chap:force_il} defines expert IL and its compliant execution. Chapter~\ref{chap:removal_estimation} derives the execution-based removal and residual maps. Chapter~\ref{chap:blending} presents CAD-free blending with residual RL. Chapter~\ref{chap:experiments} defines the staged evaluation. Chapter~\ref{chap:conclusions} concludes the thesis, and Appendix~\ref{chap:appendix} records reproducibility requirements.

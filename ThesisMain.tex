@@ -89,6 +89,8 @@
 \newcommand{\doublespacing}{\setlength{\baselineskip}{2.0 \defbaselineskip}}
 \newcommand{\singlespacing}{\setlength{\baselineskip}{\defbaselineskip}}
 \newcommand{\todoexp}[1]{\textcolor{red}{[Planned/TBD: #1]}}
+% TODO: Finalize thesis title after journal positioning and experiments.
+\newcommand{\fairetitle}{FAIRE: Force-Aware Imitation with Residual-Removal-Aware Blending for CAD-Free Robotic Surface Repair}
 \begin{document}
 \setlinespacing{1.7}
 \def\baselinestretch{1}
@@ -115,19 +117,21 @@
 \markboth{Introduction}{Introduction}
 \include{./1.Introduction/1.Introduction}
 \markboth{Related Work}{Related Work}
-\include{./2.SystemOverview/2.SystemOverview}
-\markboth{FAIRE Overview}{FAIRE Overview}
-\include{./3.FullCoveragePathPlanning/3.FullCoveragePathPlanning}
+\include{./2.RelatedWork/2.RelatedWork}
+\markboth{Problem Formulation and FAIRE Overview}{Problem Formulation and FAIRE Overview}
+\include{./3.ProblemFormulation/3.ProblemFormulation}
 \markboth{Demonstration Collection}{Demonstration Collection}
-\include{./4.ReinforcementLearning/4.ReinforcementLearning}
-\markboth{Force-Aware Imitation and Execution}{Force-Aware Imitation and Execution}
-\include{./5.ForceAwareIL/5.ForceAwareIL}
-\markboth{Residual RL Precision Correction}{Residual RL Precision Correction}
-\include{./6.FeatureMasking/6.FeatureMasking}
+\include{./4.DemonstrationCollection/4.DemonstrationCollection}
+\markboth{Force-Aware Expert Imitation}{Force-Aware Expert Imitation}
+\include{./5.ExpertImitation/5.ExpertImitation}
+\markboth{Material-Removal Estimation}{Material-Removal Estimation}
+\include{./6.MaterialRemoval/6.MaterialRemoval}
+\markboth{CAD-Free Model-Based Blending}{CAD-Free Model-Based Blending}
+\include{./7.Blending/7.Blending}
 \markboth{Experimental Evaluation}{Experimental Evaluation}
-\include{./7.ExperimentalDesign/7.ExperimentalDesign}
-\markboth{Conclusions}{Conclusions}
-\include{./8.Conclusions/8.Conclusions}
+\include{./8.ExperimentalEvaluation/8.ExperimentalEvaluation}
+\markboth{Conclusions and Future Work}{Conclusions and Future Work}
+\include{./9.Conclusions/9.Conclusions}
 \clearpage
 \bibliographystyle{IEEEtran}
 \markboth{Bibliography}{Bibliography}

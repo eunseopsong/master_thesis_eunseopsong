@@ -12,16 +12,21 @@ This project uses the Sungkyunkwan University thesis template and is organized b
 ## Chapter structure
 1. Introduction
 2. Related Work
-3. FAIRE Overview and Problem Formulation
+3. Problem Formulation and FAIRE Overview
 4. VR-Calibrated Motion--Force Demonstration Collection
-5. Force-History Imitation and Admittance Execution
-6. Residual Reinforcement Learning for Precision Correction
-7. Experimental Evaluation
-8. Conclusions and Future Work
+5. Force-Aware Expert Imitation for Selective Defect Removal
+6. Execution-Derived Material-Removal Estimation
+7. CAD-Free Model-Based Blending with Residual RL
+8. Experimental Evaluation
+9. Conclusions and Future Work
 
-The thesis content is derived from the FAIRE review manuscript. Missing
-implementation details and quantitative results remain explicitly marked as
-planned or TBD.
+Chapter sources are stored in the correspondingly numbered directories
+(`1.Introduction` through `9.Conclusions`).
+
+The working title is “FAIRE: Force-Aware Imitation with
+Residual-Removal-Aware Blending for CAD-Free Robotic Surface Repair.”
+Missing implementation details and quantitative results remain explicitly
+marked as planned or TBD.
 
 ## Page layout
 The thesis body uses equal top and bottom margins of 25 mm. Chapter headings start at the top of the text area rather than using the default `book`-class 50 pt vertical offset.
