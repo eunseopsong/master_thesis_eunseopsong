@@ -1,0 +1,27 @@
+\chapter*{Notation and Terminology}
+\addcontentsline{toc}{chapter}{Notation and Terminology}
+\begin{longtable}{P{0.23\textwidth}p{0.69\textwidth}}
+\toprule Symbol & Meaning \\ \midrule
+\endhead
+\(B,V,T,E\) & Robot-base, VR tracking, tracker, and calibrated tool/TCP frames. \\
+\({}^{B}T_E\) & Homogeneous pose of frame \(E\) in frame \(B\). \\
+\(p,\rho,R\) & Position (mm), rotation vector (rad), and its rotation matrix. \\
+\(c\in\R^2\) & Fixed task-origin XY coordinates in the robot base (mm). \\
+\(\theta_{\mathrm{live}},\theta_{\mathrm{ref}},\alpha\) & Live stain-axis angle, teaching reference angle, and their wrapped alignment angle (rad). \\
+\(R_2(\alpha),u\) & Planar rotation matrix and center-relative XY position aligned with the teaching direction (mm). \\
+\(q=[p^\mathsf{T},\rho^\mathsf{T}]^\mathsf{T}\) & Six-dimensional Cartesian pose; the code name \texttt{qpos} does not denote joint angles here. \\
+\(f^{\mathrm{demo}},f^{\mathrm{meas}}\) & Recorded teaching force and measured robot force (N). Superscripts identify their roles; frames are stated separately. \\
+\(f^{\pi},f^{\mathrm{sent}},f^{\mathrm{applied}}\) & Policy-predicted, executor-transmitted, and controller-applied target forces (N). The last is not available as a synchronized recorded time series. \\
+\(I_k,o_k\) & RGB observation and complete policy observation at physical sample \(k\). \\
+\(a_k,A_k\) & One action and a future action sequence. \\
+\(H,L\) & Action horizon (128 samples) and force-history length (30 samples) for the evaluated checkpoints. \\
+\(t,k,\Delta t\) & Physical elapsed time (s), sample index, and physical sample interval. \\
+\(s,z_s,v_\theta\) & Dimensionless flow time, noisy normalized action sequence, and learned vector field. \\
+\(g(t)\) & Operational contact gate from measured robot-base \(F_z\). \\
+\(Q_{95},J_{\mathrm{excess}}\) & Common teaching base-force reference (N) and excess-force integral (N\,s). \\
+\(R,T,C\) & E1 rule, teaching replay, and force-conditioned learned providers. \\
+\(A,B,C\) & E2 motion-only, learned motion--force without force observation, and learned motion--force with force observation. \\
+\bottomrule
+\end{longtable}
+
+\emph{Task specification} identifies the local region and task setting. A \emph{motion--force skill} is a temporally organized sequence of pose and target-force references. \emph{Contact regulation} is the lower-level response to force feedback while executing those references. \emph{Procedural completion} denotes the specified contact--traversal--exit sequence. It does not denote verified scratch removal or a roughness requirement. The letter C names a condition within each experiment; E1 and E2 executions are separate cohorts.

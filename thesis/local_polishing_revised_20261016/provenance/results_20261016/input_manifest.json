@@ -1,0 +1,2561 @@
+{
+  "session_id": "E1_CT_pass_height_v2_nominal_dev_20261015",
+  "config_version_id": "e1ct_46de718a23a2a7cf",
+  "evaluation_version": "pass_height_ref_v2",
+  "observer_version": "received_observations_v2",
+  "included_run_count": 15,
+  "included_runs": [
+    {
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "method": "T",
+      "repeat_index": 1,
+      "execution_order": 1,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "method": "R",
+      "repeat_index": 1,
+      "execution_order": 2,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "method": "C",
+      "repeat_index": 1,
+      "execution_order": 3,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "method": "T",
+      "repeat_index": 2,
+      "execution_order": 4,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "method": "R",
+      "repeat_index": 2,
+      "execution_order": 5,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "method": "C",
+      "repeat_index": 2,
+      "execution_order": 6,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "method": "R",
+      "repeat_index": 3,
+      "execution_order": 7,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "method": "C",
+      "repeat_index": 3,
+      "execution_order": 8,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "method": "T",
+      "repeat_index": 3,
+      "execution_order": 9,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "method": "R",
+      "repeat_index": 4,
+      "execution_order": 10,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "method": "T",
+      "repeat_index": 4,
+      "execution_order": 11,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "method": "C",
+      "repeat_index": 4,
+      "execution_order": 12,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "method": "R",
+      "repeat_index": 5,
+      "execution_order": 13,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "method": "C",
+      "repeat_index": 5,
+      "execution_order": 14,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b"
+    },
+    {
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "method": "T",
+      "repeat_index": 5,
+      "execution_order": 15,
+      "run_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6"
+    }
+  ],
+  "excluded_runs": [],
+  "artifacts": {
+    "C_checkpoint": {
+      "path": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f"
+    },
+    "C_normalizer": {
+      "path": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/dataset_stats.pkl",
+      "sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49"
+    },
+    "R_template": {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_transition_20261014_sync_confirm/templates/rule_contact_task.npz",
+      "sha256": "a9342a66ba8bdc782369f1df59af8cd3d847d0e0b1246d3b4ddf19d15d0d8d7f"
+    },
+    "T_template": {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_transition_20261014_sync_confirm/templates/episode_29_force_cleanup.npz",
+      "sha256": "07dfb0289cc04ab141c13355e57662044bdb34ce04f3cbb08b9e6c21e65e6b67"
+    }
+  },
+  "files": [
+    {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/sessions/E1_CT_pass_height_v2_nominal_dev_20261015/session.json",
+      "role": "session metadata",
+      "run_id": null,
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/sessions/E1_CT_pass_height_v2_nominal_dev_20261015/attempts.json",
+      "role": "session metadata",
+      "run_id": null,
+      "bytes": 40736,
+      "sha256": "544c68442d4d1e0f0539b66d4eabd7fa2f9137c4a8e9146060f95d438521253f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/sessions/E1_CT_pass_height_v2_nominal_dev_20261015/trial_plan.json",
+      "role": "session metadata",
+      "run_id": null,
+      "bytes": 2548,
+      "sha256": "948216a295fc35d02e4292229be325d215d6fbe4cbe87cce71cf62812ca1f128"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/sessions/E1_CT_pass_height_v2_nominal_dev_20261015/frozen_config/execution_C.json",
+      "role": "frozen configuration",
+      "run_id": null,
+      "bytes": 20568,
+      "sha256": "de7a71f1fc1fa68dc62e92cdfa6c76a5094a4a2ec3a78c21df032b442916d80d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/sessions/E1_CT_pass_height_v2_nominal_dev_20261015/frozen_config/execution_R.json",
+      "role": "frozen configuration",
+      "run_id": null,
+      "bytes": 21018,
+      "sha256": "cf9cbf61d22fea84ea12233e8c2f20e16c25008d53d0829c4a7b449da74fec50"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/sessions/E1_CT_pass_height_v2_nominal_dev_20261015/frozen_config/execution_T.json",
+      "role": "frozen configuration",
+      "run_id": null,
+      "bytes": 21026,
+      "sha256": "946538a0bb205261e1c746a95bdcf157d63e8036ee7b9e1c97ff52d7102f0ee0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/sessions/E1_CT_pass_height_v2_nominal_dev_20261015/frozen_config/experiment_config.json",
+      "role": "frozen configuration",
+      "run_id": null,
+      "bytes": 3423,
+      "sha256": "6a311505cc5fd74d97e794eb01794226cc4bcdeb3cf138ac25fca8aa9eed364f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/sessions/E1_CT_pass_height_v2_nominal_dev_20261015/frozen_config/task_definition.json",
+      "role": "frozen configuration",
+      "run_id": null,
+      "bytes": 2729,
+      "sha256": "7b7dc981b9db3a3827a4c8e3d439db6f7e9b4cfcaa7dcfc5a25a11f0f2a8b9ec"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/sessions/E1_CT_pass_height_v2_nominal_dev_20261015/frozen_config/task_evaluation.json",
+      "role": "frozen configuration",
+      "run_id": null,
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 2584,
+      "sha256": "662e92a4e21f039cf91e428e4ede2dc89f687d7ac9fd981339841beebaebbc19"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 22755,
+      "sha256": "aa860a454db7869b3dd9e196a007dcedc9edeee89e3f6ea3eafc13523a37f097"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 1078,
+      "sha256": "243b3ed3ac5daac9fc830127538a8bebc632c72bcd426cfe5eba02e045b9d080"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/executor/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_executor_20261015T224952_1792072192283776480_3sfmtpn6/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 14833059,
+      "sha256": "a5594719d45fa6425919462dd25ceca5a75f850cac47deeda6e8bc09ef43ad0f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/executor/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_executor_20261015T224952_1792072192283776480_3sfmtpn6/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 48542,
+      "sha256": "6640c2c3099f5b73270fccc4a71f7a5fda658b2f375c8f1082fa7cbc44815224"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/executor/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_executor_20261015T224952_1792072192283776480_3sfmtpn6/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 3499,
+      "sha256": "dacc51ad030d9734af3f2b3f227e9e4aad2375b25e90c725222544ff1e0e0360"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/executor/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_executor_20261015T224952_1792072192283776480_3sfmtpn6/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 212735,
+      "sha256": "1010f994fd5bad690a73536d59ac8af8688476a8214d82985596c72f3fef5701"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/executor/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_executor_20261015T224952_1792072192283776480_3sfmtpn6/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 202697,
+      "sha256": "29d9bcee9b5c35d48a5b032a96de6c574574e0e72bf0233acc075d866caad2f2"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/executor/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_executor_20261015T224952_1792072192283776480_3sfmtpn6/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 7793371,
+      "sha256": "d28f8240a43681a2feb12098e325b4713e22b43b77343e5f09167c047c0508f4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/provider/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_20261015T224954_1792072194506443323_p_o9o77v/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 27502,
+      "sha256": "62509cb9c1fbb5f7cde55126aca67eda3e979101463f17795292e0293777852d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/provider/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_20261015T224954_1792072194506443323_p_o9o77v/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 102324,
+      "sha256": "758d226d12eb1b04cf04287c53d6ef32b002837f3e6f7a01f25e6e585377b348"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/provider/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_20261015T224954_1792072194506443323_p_o9o77v/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 4505,
+      "sha256": "ff90ade843288caba8fa31f77d5e60a017ce950ba01e933d2d4809866bfd2687"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/provider/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_20261015T224954_1792072194506443323_p_o9o77v/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 354497,
+      "sha256": "fa55322d319a2bbd1115bffa893b34293f68e4563bfb2995cf26a72fe07ba0fe"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/provider/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_20261015T224954_1792072194506443323_p_o9o77v/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 261558,
+      "sha256": "7b6c73161ce00674d7f508a14396f7273ce6edc0097918b3cda6264cf1ff8bed"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/provider/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_20261015T224954_1792072194506443323_p_o9o77v/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 2127,
+      "sha256": "84f4e0ebe231177b129a97254fc45325fa4918ae5bf8dca6d4b6dfe6de0077ac"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/provider/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_20261015T224954_1792072194506443323_p_o9o77v/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 157197,
+      "sha256": "e78cdf006f74cf6bd04a3be823a943f13aff6dd26f8705d31e074edadf743425"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/provider/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_20261015T224954_1792072194506443323_p_o9o77v/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 146925,
+      "sha256": "76b49ff7696ef6e6c3fd09b6ba06d8022b00a633ccafbbd64cc77d42d82e4836"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/removal_visualization/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_20261015_225012/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "bytes": 80143,
+      "sha256": "a42a416f749d3fbe12346a5dc845ff836b9e52842fac54421238a260c69646af"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 2584,
+      "sha256": "86be78c166b1edcd3a0607b2836cc8f41890245342b90b5006a4e914d45eebb7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 22755,
+      "sha256": "fd77d90c9aa28bdd0411a95b496aee7dd7717a7f47bb66781eedff17405c8eb8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 1078,
+      "sha256": "f96cdbf8633fb7f59612855bf79b076d1d8e0cdf5463cf694b1dac63c7b79b35"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/executor/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_executor_20261015T225245_1792072365380786054_adv1fjx1/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 16465801,
+      "sha256": "e6a55ba156445e75f9fac524e0382341921842a9c41d4bc93a768166f496d95d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/executor/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_executor_20261015T225245_1792072365380786054_adv1fjx1/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 48542,
+      "sha256": "bf656695cf2e708ab552554daf9e8cb1cb453d6b6e3a52b4a42274f3179e46d3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/executor/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_executor_20261015T225245_1792072365380786054_adv1fjx1/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 3499,
+      "sha256": "8a510ccb2c76f83017202ee4ccc8cefc05ed127cd52a4b6b15de5362e98569a5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/executor/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_executor_20261015T225245_1792072365380786054_adv1fjx1/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 240135,
+      "sha256": "11a700428e47f6fb0d18463b0bcd829442f94406cca19fd7d586ce351ce04cb3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/executor/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_executor_20261015T225245_1792072365380786054_adv1fjx1/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 228137,
+      "sha256": "069d3c9582c8c565eeb1c7865b1c6c41fb24f4c47e1820b4697715a317a9a7fc"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/executor/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_executor_20261015T225245_1792072365380786054_adv1fjx1/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 8585879,
+      "sha256": "825422f77a469d70d06c2c08b62ee28cc6dafd5a7f7deea96125868b40bedd49"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/provider/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_20261015T225247_1792072367588789634_ti0ugmnc/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 31614,
+      "sha256": "3f16f2435be46aabbc8baa6c1c93a08a5997f596ae9290714ad877824b830970"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/provider/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_20261015T225247_1792072367588789634_ti0ugmnc/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 102324,
+      "sha256": "9b3a5ac98bb4eb13867c58aa978f8f13d0b68561b5eaeed723d93b4873b95cc2"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/provider/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_20261015T225247_1792072367588789634_ti0ugmnc/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 4505,
+      "sha256": "a9e47f8d5686fc8dddcc51567e2d557253325f1e5f9016af7cad75e1af8cb2e8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/provider/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_20261015T225247_1792072367588789634_ti0ugmnc/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 401310,
+      "sha256": "e3f689952d89f230181a3d741250b1726bf497cc68b2e63e73946dc054e78d4f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/provider/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_20261015T225247_1792072367588789634_ti0ugmnc/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 295368,
+      "sha256": "69152c87d2b262bbb1f2be254f25ee508bce7ef1ad0bb60937787fbdac3bd216"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/provider/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_20261015T225247_1792072367588789634_ti0ugmnc/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 2123,
+      "sha256": "b6392173ed22cb826498648f8fb748253b80fb502f5ce417e92b1b1188097700"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/provider/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_20261015T225247_1792072367588789634_ti0ugmnc/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 154252,
+      "sha256": "6700029ea4066ebfc94853259f9142763428f7213899d6159cdbd7d8d141f564"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/provider/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_20261015T225247_1792072367588789634_ti0ugmnc/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 145334,
+      "sha256": "0ff4e0e16195d65ec50aacd3c850fd4750cef5d754ecf784122d3b5888adf99e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/removal_visualization/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_20261015_225308/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "bytes": 80610,
+      "sha256": "55a90f402cc484d0a75038d81a298c05ccd0befcf53ded9ebb8ae2a358f8bcba"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 2584,
+      "sha256": "57494228b7268e760f4694828da7f64b2274fd655874c395775f1a655b11dc80"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 22755,
+      "sha256": "b7083e7fdf35f4331090c4c544bbbb265fc4753de0d918ebf9184bfb5fbb03d9"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 1078,
+      "sha256": "31fe4f7dceb5bf97b24548d111b1871ec294cafb6262ffc584e1a3047ebc727a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/executor/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_executor_20261015T225546_1792072546323850500_juh6gbe0/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 15843425,
+      "sha256": "22c29e2ed1d7758aeb345015d6db7f0ba6134cc445f0c8becab753c54256d99c"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/executor/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_executor_20261015T225546_1792072546323850500_juh6gbe0/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 48542,
+      "sha256": "dfa6b60b88fcf977af979f26f17cb5c03666260694c13ca77fffc29b991835ec"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/executor/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_executor_20261015T225546_1792072546323850500_juh6gbe0/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 3497,
+      "sha256": "a59b18180fbcbfd4aeccf8f014414f37a58f393c734f70cfd723a0154993a677"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/executor/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_executor_20261015T225546_1792072546323850500_juh6gbe0/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 225378,
+      "sha256": "3b66116563a924d5e6475fb53e2d809e94b3c600659a4698849406064ee90e54"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/executor/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_executor_20261015T225546_1792072546323850500_juh6gbe0/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 214063,
+      "sha256": "de7fbf1be7af170929fd6ca4b97232103c632bb222dfba9e76924ef52fc2db28"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/executor/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_executor_20261015T225546_1792072546323850500_juh6gbe0/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 8488509,
+      "sha256": "bdac9a25654fcb82ac52aac525e108e4d809dc6dec771e4b50cfd8368f36767d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/provider/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_20261015T225548_1792072548571725685_exf7gtxd/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 31615,
+      "sha256": "57802757f76ce032d6f8b166f087ff6953f9f806d5a4bc59ecbeb637a058606a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/provider/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_20261015T225548_1792072548571725685_exf7gtxd/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 102324,
+      "sha256": "594d2885d497bb49c14479e4c62e18e4deb97a190e211f5a2ce8a13193b4d0be"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/provider/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_20261015T225548_1792072548571725685_exf7gtxd/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 4505,
+      "sha256": "dba0af3a4a44d9e4392683cf7b9b0626502b854e2c84a1d489155f5dcdacbc43"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/provider/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_20261015T225548_1792072548571725685_exf7gtxd/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 374894,
+      "sha256": "0c91cab3e36cd6f3d872d5039f62a3928fb289f01022af241bd280b343c4021f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/provider/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_20261015T225548_1792072548571725685_exf7gtxd/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 275795,
+      "sha256": "3623a0b5d6f71a3978dfacb775bf7218d59e305db3f53d539621d10d34171ea5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/provider/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_20261015T225548_1792072548571725685_exf7gtxd/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 2120,
+      "sha256": "594b3e114fc626bf9debba88d413168b3a9301347757963cabb0bba3126098b3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/provider/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_20261015T225548_1792072548571725685_exf7gtxd/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 153549,
+      "sha256": "8ee51bb67e8fb635de23e57f4b80c9d88dfcd464f8b4e3ed5bb5e74d7a93a355"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/provider/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_20261015T225548_1792072548571725685_exf7gtxd/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 142997,
+      "sha256": "75e5c7c0fc5d70afe1fd1f0e7f10ae2159223c604e20d86304ba1f2a22f8b09a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/removal_visualization/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_20261015_225608/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "bytes": 80382,
+      "sha256": "1a76cc191c0920800d8031960a3d0a04a641b75fe09e77555e74f74efaf19479"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 2586,
+      "sha256": "350b9bb54440832d911fd3ee753488453a2344a9fd708165b1b95c2dc3a45a80"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 22757,
+      "sha256": "4c6e30719e5c98146108e35b2d46be729a17d2082ad661113c095b93c88f170c"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 1078,
+      "sha256": "bbc613e1397cad9b5e011886037207db457e0385b458c880bcd88df8bd36cac1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/executor/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_executor_20261015T225925_1792072765893819930_qt_v3pr8/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 15198446,
+      "sha256": "fda86b58990253f07dffe286021ae115cc137d5e1454e54f421f8661fd31e1bd"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/executor/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_executor_20261015T225925_1792072765893819930_qt_v3pr8/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 48546,
+      "sha256": "60151ae54c86fd1d44d87197b0ed9e44519be61eb3eb8fac661d9fda508e592e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/executor/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_executor_20261015T225925_1792072765893819930_qt_v3pr8/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 3499,
+      "sha256": "38dde11b125ac94b02b59e66137f84d099cc7d258758a0649e694b5b9bbae91b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/executor/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_executor_20261015T225925_1792072765893819930_qt_v3pr8/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 220724,
+      "sha256": "061c122d08c3bad97e98726902244af68c9e0b7c1ef7a151bc78747fbc4268bf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/executor/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_executor_20261015T225925_1792072765893819930_qt_v3pr8/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 209826,
+      "sha256": "251101a531765943813179e71344e6d35ee07f512e680177c93f838ed0e0d402"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/executor/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_executor_20261015T225925_1792072765893819930_qt_v3pr8/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 7839891,
+      "sha256": "a7c1814ee69384c1c7ec953142a13bc2f81c709d5a2b16e4acfc451b0fdb8595"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/provider/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_20261015T225928_1792072768099736243_labzo0y6/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 27498,
+      "sha256": "53a30379ab302cb77c54be387964ee2728926ccacf9a067c294f800b9fba0b87"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/provider/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_20261015T225928_1792072768099736243_labzo0y6/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 102330,
+      "sha256": "af48bb631f5d2100346af78a472864a1601cdf3f3f4d9407ec94808bdc2f2b92"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/provider/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_20261015T225928_1792072768099736243_labzo0y6/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 4505,
+      "sha256": "df99d4058e9a5abe76ff04d0cceb468529b90f74eb76fd1fde549d9cbb6f3ced"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/provider/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_20261015T225928_1792072768099736243_labzo0y6/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 366236,
+      "sha256": "f0bcc7ef029312dd7492386486090981a99a4b3be95bfcd459c5f26ec4de8853"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/provider/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_20261015T225928_1792072768099736243_labzo0y6/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 270488,
+      "sha256": "e95d9946be5cd5f7d2ae6fc2e096a6ce22920fd6e69a3971613fde360bcb54f6"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/provider/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_20261015T225928_1792072768099736243_labzo0y6/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 2123,
+      "sha256": "3e648dcd452b7c09ac73aaa18b363a9eb00fc557673a5e828b3046dcbcefebfa"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/provider/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_20261015T225928_1792072768099736243_labzo0y6/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 153039,
+      "sha256": "fb66a05e3d37e3c024217f201010f5170b4682d5031e337a4350929a4ebf5317"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/provider/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_20261015T225928_1792072768099736243_labzo0y6/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 143160,
+      "sha256": "4769ab82cb46ebe3f0545d27e37f460b3f0a059b03a30a4c885f662bf7dc1b01"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/removal_visualization/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_20261015_225947/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "bytes": 77959,
+      "sha256": "c1db1e51e3c5bd09c9f9c9b366c4e5530279579c256bf94fff8dffc2b6169e90"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 2586,
+      "sha256": "1f44a9dfec777f2f4f63f412fd6092a413af2299e867ba5295664e5d26c618c1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 22757,
+      "sha256": "68cdb3a322fd1a4d9909140f558238da1be30315e8291a4b1258c41527dbf506"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 1078,
+      "sha256": "50a7e41f75121e71f00d3c7c8c70ec820ce7c21d67c008b13ed6f28caa8c0de3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/executor/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_executor_20261015T230122_1792072882379712619_vkqm1_m3/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 20255387,
+      "sha256": "cbe79cc69e730cd796a90798e93b594d39667b0f05ef49b27a5863bf2dc6e609"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/executor/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_executor_20261015T230122_1792072882379712619_vkqm1_m3/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 48546,
+      "sha256": "5f4e1cf4b9480fc984b14d2450f5ee32fc7b8683854fbb53034108429e56766b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/executor/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_executor_20261015T230122_1792072882379712619_vkqm1_m3/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 3500,
+      "sha256": "30b017fb0fa085c07f0d7d854915dcc64834ad529c8c098429f4c5277e331c80"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/executor/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_executor_20261015T230122_1792072882379712619_vkqm1_m3/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 281511,
+      "sha256": "76cdc520d1d64ef706093d809c88a3741da48c92cbff3a7abdfedc4a25a6d8ad"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/executor/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_executor_20261015T230122_1792072882379712619_vkqm1_m3/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 268309,
+      "sha256": "a1f88374b4685fe288b2867b022e5e481ffd332d35c251347c48da8c8942c222"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/executor/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_executor_20261015T230122_1792072882379712619_vkqm1_m3/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 12012401,
+      "sha256": "5507e39096172b699215a773875cd5fa4380e23cb7b839c11b12ea7ff377dab9"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/provider/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_20261015T230124_1792072884599430831_n1k44b7c/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 35724,
+      "sha256": "d71cfbe94288826a9e10bd8f0304c573b93fdbb267eb48b48005850e813129f6"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/provider/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_20261015T230124_1792072884599430831_n1k44b7c/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 102330,
+      "sha256": "a2d3b06927d7bb68ea7fd8218a56b6c3c5f55f067b91c0449465eafed5430e05"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/provider/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_20261015T230124_1792072884599430831_n1k44b7c/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 4508,
+      "sha256": "41e0b5bd9dd0c23ff29a971b88df9f5831f830b12ca7510f2f75c86ed3e1aea4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/provider/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_20261015T230124_1792072884599430831_n1k44b7c/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 477167,
+      "sha256": "d1ad03bc7c37ec5c80bc421a8809e8477de11fa0096eaa62002627bf0ffcc738"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/provider/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_20261015T230124_1792072884599430831_n1k44b7c/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 352799,
+      "sha256": "b81989d2fd279045fe71a6e259261aafed00d9e1dc560520d72494dc5a69371d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/provider/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_20261015T230124_1792072884599430831_n1k44b7c/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 2117,
+      "sha256": "65c460106ffa3971fbbf97c541574b3e014857a2bc56c7a057dc37b1a3312608"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/provider/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_20261015T230124_1792072884599430831_n1k44b7c/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 153713,
+      "sha256": "5243a2ef55cf57a1ecc2dd713a1d25df8d1b7f69961cda14fa433b1d7d2d5498"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/provider/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_20261015T230124_1792072884599430831_n1k44b7c/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 143504,
+      "sha256": "a2e270046b3bf95b1b04827c2048993bcaddab89be590fdc324d9ae09797e699"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/removal_visualization/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_20261015_230149/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "bytes": 77169,
+      "sha256": "ee56e2e15583fe60adb619061282a7d8494965f5f11e27b32e1a7a3a82c1008d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 2583,
+      "sha256": "081ead74387759ccb911acc13379f4e9e56ab4c2a87918ec162ebf199e72b600"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 23205,
+      "sha256": "b1768d9fb3d8a4de616e55ef352724e60f4bae19ba57df55440003c9cfdf4103"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 1078,
+      "sha256": "aef5131c8b2827d4401f8cacb0fefeae4a7a92bce9f1ab91f21b58f49e54a30a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/executor/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_executor_20261015T224839_1792072119545411642_4ctu89qh/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 30073896,
+      "sha256": "7c46909aa54ad931f3ef5a312113d7818eab06742d332732ca6d2ec5babf111f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/executor/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_executor_20261015T224839_1792072119545411642_4ctu89qh/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 49458,
+      "sha256": "e2d541416de6585f1abac7e5dc00f454fd669f55fe7ad49547a7775ac588af4f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/executor/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_executor_20261015T224839_1792072119545411642_4ctu89qh/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 3498,
+      "sha256": "a4dc1aaf663c079e5eec945bb6a1671241ff5ff76fc893ccf5c7fe147d6b8648"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/executor/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_executor_20261015T224839_1792072119545411642_4ctu89qh/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 383502,
+      "sha256": "5513ff9aab5a72875c789129782687fde60f1f1d867d76d86f6777e9bd5b08d7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/executor/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_executor_20261015T224839_1792072119545411642_4ctu89qh/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 365758,
+      "sha256": "45cf287b6492faea1d0e3ed17cd98e7e824d85bfc4717efd03911141dbbc5537"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/executor/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_executor_20261015T224839_1792072119545411642_4ctu89qh/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 19406943,
+      "sha256": "e202c9ccac9f25e2896e623bf6c01440e06827fa26413aec7d061655627fd4c6"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/provider/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_20261015T224840_1792072120137997949_clecev5z/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 19300,
+      "sha256": "82f31a2a7a11e0c9f6cce972058dbe283303495c39d2e72048e9c067758cf7c1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/provider/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_20261015T224840_1792072120137997949_clecev5z/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 107487,
+      "sha256": "1d64c8eb8265635e70d8de72586362d2df917ae661d42104c76f72d23b198b23"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/provider/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_20261015T224840_1792072120137997949_clecev5z/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 4478,
+      "sha256": "b543e15fcf29ed24f7986988fff7efe809da55c5018dcf1d85bde9b91565686a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/provider/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_20261015T224840_1792072120137997949_clecev5z/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 716344,
+      "sha256": "a328f451d68bf300017dd91fa186bbe2425a5b7d153fbda6f217ddb8442ac092"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/provider/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_20261015T224840_1792072120137997949_clecev5z/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 529904,
+      "sha256": "23151ac7234efcfa7adb5fba0ffe1681cf9cf7ffe80c564791c5fa7966c567a2"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/provider/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_20261015T224840_1792072120137997949_clecev5z/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 2120,
+      "sha256": "cfc6cdb88ad2ec82c446c2a2cf92ff95bf0c835e799a2e1b1fd0c5a6e96572ef"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/provider/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_20261015T224840_1792072120137997949_clecev5z/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 157308,
+      "sha256": "a02e6c7c084eece8d0ad1e2b25aff678a52b29286444f5e1d8c86d7e77c5adb4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/provider/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_20261015T224840_1792072120137997949_clecev5z/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 146530,
+      "sha256": "c2a168541bf3934960270bbdeaff4b45939b34aa85e6243c3ef5e9c44156c42a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/removal_visualization/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_20261015_224916/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "bytes": 80944,
+      "sha256": "0f574cab5a194ec518fa5a7fc7e712fbaa19344d67203cac39ff81f6fbde7bc0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 2584,
+      "sha256": "3c7015dc96d2a074e7e54bd6b7cf5d0108453aa8e668b9b6fc2a75eeb651ced5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 23205,
+      "sha256": "2f79c1aabf0e1a6aad04336320121da555c9c43d27fcd360578ca890dd169292"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 1078,
+      "sha256": "d497195082b6062e9bb9b65b0827b7263b6fe0a8df369668f9a77735c55805ac"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/executor/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_executor_20261015T225138_1792072298297392052_v7nr59i8/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 29910088,
+      "sha256": "a0cebe5e80180a24785666eaf8a8d1d957acf4e8a3d74d4ee8a62e459ef4382d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/executor/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_executor_20261015T225138_1792072298297392052_v7nr59i8/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 49458,
+      "sha256": "0b54c6da4b9e189ab7c5b1dbbdbb58e619515f4c2fb11fd1adb1ed39e77c46bc"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/executor/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_executor_20261015T225138_1792072298297392052_v7nr59i8/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 3498,
+      "sha256": "236ae0b317d123aa09680e8f61ce27efa692d282b3cba08a731e82994bab836d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/executor/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_executor_20261015T225138_1792072298297392052_v7nr59i8/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 379192,
+      "sha256": "3b819db371288e64e3826c26361773db9a5bf4ac0d1ef9d8c6da4ecf4c3a1cf7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/executor/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_executor_20261015T225138_1792072298297392052_v7nr59i8/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 362002,
+      "sha256": "dd57a0fff0efd317b5cd78278a7b712c33c105faf79ea0fda22c7d07ca61d5d8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/executor/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_executor_20261015T225138_1792072298297392052_v7nr59i8/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 19458242,
+      "sha256": "420f4d939156061ad906cbe5d71a5d5c68ccd9d1bdb378de8e7575647d4a418a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/provider/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_20261015T225138_1792072298902979616_jfi2g_42/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 20766,
+      "sha256": "62898157921387e75c552ceba8c3ad39ef5c39066ea9a504a591569ec411b6a2"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/provider/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_20261015T225138_1792072298902979616_jfi2g_42/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 107487,
+      "sha256": "8f2d3951415b75f94f8d90a2fec723d45934bbdf052158c83bbdf2f7ef42f445"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/provider/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_20261015T225138_1792072298902979616_jfi2g_42/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 4478,
+      "sha256": "e6bec07041df98f1178841343a0b01a6abc2db92b065c647175efb5672579691"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/provider/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_20261015T225138_1792072298902979616_jfi2g_42/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 705224,
+      "sha256": "4cdee3265f68567ac16c0ad75fc61422c69587905ba91ee280b1ab9febb02944"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/provider/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_20261015T225138_1792072298902979616_jfi2g_42/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 522153,
+      "sha256": "fa4543496dfe001e85a8e66bb35514a4f854ccb5a07179179dec66f4bcf5cb1a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/provider/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_20261015T225138_1792072298902979616_jfi2g_42/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 2123,
+      "sha256": "e299694b9359d1f9838a08e8d2933607d61bd9edb48b88000caa51477d9f373f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/provider/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_20261015T225138_1792072298902979616_jfi2g_42/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 157190,
+      "sha256": "25f117026fa6f4bd8d0491a4d375a9f8008a1c60ecd254e1bcbbaca05cbaaef2"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/provider/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_20261015T225138_1792072298902979616_jfi2g_42/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 145605,
+      "sha256": "0f6f3db4c8f7ab461437aed9795d180d8442b4b8945a45452def48f790cc525d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/removal_visualization/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_20261015_225214/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "bytes": 78415,
+      "sha256": "1067aa19bd1e0724cda36a1b4a4a702663219ac2cec3d9ce7d4844afe61a370e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 2584,
+      "sha256": "67e9fc2e55811b71af90494be9a9a586aaf33d536bfcd958a2a83592e721bfc4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 23205,
+      "sha256": "a37e993fdb015c1db950a0b9755f924dda3afa5552a2c4ea2fc34f625203ee59"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 1078,
+      "sha256": "43d000170e710eafe099baffc2a3afaf31c85c27e1e9739fc6cf8fb72cf5edde"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/executor/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_executor_20261015T225439_1792072479516638119_08gur7jd/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 30010063,
+      "sha256": "77ca1a9f7bc9789fa2da12dbe3b62be8f50de46779a7c2f7f508f77612caf2dd"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/executor/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_executor_20261015T225439_1792072479516638119_08gur7jd/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 49458,
+      "sha256": "49ee1199f0b07d53e40782250b080af195279e2c64d8221e7f2edaae4d5198e8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/executor/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_executor_20261015T225439_1792072479516638119_08gur7jd/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 3498,
+      "sha256": "40f650e4c447b2d5629baf80979a1c9deb608e49414da567b975b973995e6ed9"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/executor/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_executor_20261015T225439_1792072479516638119_08gur7jd/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 381150,
+      "sha256": "bb4f878115ae2ddf898c115ca4a431a6a6459ccfa43a36fce9ba2c6794f9d0d7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/executor/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_executor_20261015T225439_1792072479516638119_08gur7jd/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 364233,
+      "sha256": "aa93c37fb301afce519fa5263586ecae33c880b500fc59758992081308a9a59e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/executor/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_executor_20261015T225439_1792072479516638119_08gur7jd/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 19482547,
+      "sha256": "efc604cab2041d2144c2434ca25ac4637023c2cf5911f0228701159ecd71ecb3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/provider/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_20261015T225440_1792072480142209656_b62rg25z/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 22231,
+      "sha256": "3f3da5ff4e46876e76be54853c0779d2fe710401dbcd7b72297d6000889144ce"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/provider/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_20261015T225440_1792072480142209656_b62rg25z/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 107487,
+      "sha256": "919ab05ae781140f6e1f41d90c989bb6ee506dace8bf22e302411078d13c67ad"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/provider/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_20261015T225440_1792072480142209656_b62rg25z/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 4478,
+      "sha256": "f8f6ac473d5b9b709f6a992da56dbec42a6c87984a7c038f98786ab8b95d97f3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/provider/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_20261015T225440_1792072480142209656_b62rg25z/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 706654,
+      "sha256": "f30264b604aec32d9d1b1bc9bf6e98a8a6d5bb0acb1fed6579a7d0af624a0723"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/provider/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_20261015T225440_1792072480142209656_b62rg25z/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 522425,
+      "sha256": "b9d412defe62ea34cb8118ffdb80339b39acf8438bc845e49cb99fb953471479"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/provider/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_20261015T225440_1792072480142209656_b62rg25z/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 2125,
+      "sha256": "87edcce7bfd48c5f3d7d89eb5aad8660e2f3c6570bc23d088bbef4e04c818163"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/provider/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_20261015T225440_1792072480142209656_b62rg25z/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 156616,
+      "sha256": "dbe0526f42022997ca2f041290c68d650875a2686e7f3b0dcab72f25e3b37930"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/provider/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_20261015T225440_1792072480142209656_b62rg25z/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 146200,
+      "sha256": "399ffcd4eaa2288381d4aba73a701e0840e48fd2e871c3d5d2212e6e1ba37320"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/removal_visualization/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_20261015_225516/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "bytes": 78324,
+      "sha256": "c6bd0bae90f088595187a74884d6cebe7c8dc79e45e249d0db430458e98458f3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 2585,
+      "sha256": "75ecad5c457e3a199428b3ec4b12513d9b5d9df6f9a7c3d88ac1b85df59ebe4a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 23207,
+      "sha256": "9448f5b9d31cf9a291286bbb8200198de30dbb94a51e82bcfd857a03a088af62"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 1078,
+      "sha256": "9c11f69e9d8e95bf07269871394f0bb62e279775a6f5c9ad0797f3fdd77b9e0d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/executor/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_executor_20261015T225730_1792072650680158187_rd9cmmm1/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 29914341,
+      "sha256": "b9aa50a6bf9280b3f8c47947a1e09e3351509a11f1638e0ea1169789058801ce"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/executor/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_executor_20261015T225730_1792072650680158187_rd9cmmm1/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 49462,
+      "sha256": "3b4af85149a65d1533c486602f45e437773a3bcf7deadcbcdf52be4e7f3d3aad"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/executor/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_executor_20261015T225730_1792072650680158187_rd9cmmm1/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 3498,
+      "sha256": "91973c7936362b501f48fd58cdb34e180351d404b3912fe9798764bbe2de2692"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/executor/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_executor_20261015T225730_1792072650680158187_rd9cmmm1/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 378723,
+      "sha256": "6a0b10c708e1b8d9de87d7baf7f33a5c1119e946cd677283e4dd60ebe27a950e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/executor/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_executor_20261015T225730_1792072650680158187_rd9cmmm1/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 361454,
+      "sha256": "ebb61309469ad757889c8c2450482504294e451a1123ed0f56281478c3f701b0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/executor/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_executor_20261015T225730_1792072650680158187_rd9cmmm1/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 19488085,
+      "sha256": "6f302f743eaea0ef15911dac33d6400cd926e8bfb3b4e223f56743d690d6d358"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/provider/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_20261015T225731_1792072651284464955_f283x6yx/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 19305,
+      "sha256": "5bdb54573573626a59be031b46f4e91f6bab08a9b4b37de069fd025474a93f7b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/provider/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_20261015T225731_1792072651284464955_f283x6yx/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 107493,
+      "sha256": "e984605e38ba3c5924f45878103770a46c9fc02b1f1176a8a1846c28318864a4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/provider/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_20261015T225731_1792072651284464955_f283x6yx/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 4478,
+      "sha256": "ef72d80be72c28988bd15b1ab9a4172349de476334a18734263f70e5df862f27"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/provider/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_20261015T225731_1792072651284464955_f283x6yx/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 704378,
+      "sha256": "eb089622d43d3a014e394c4ff79b30b9dfd84b30f240e0c53052742db245ac19"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/provider/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_20261015T225731_1792072651284464955_f283x6yx/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 522603,
+      "sha256": "92b5888d48a3413981d44b701c1e24cf4272199d323f1846e3b7aa7140736181"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/provider/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_20261015T225731_1792072651284464955_f283x6yx/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 2125,
+      "sha256": "b34e76bb41a91cc19d7628c148326dee1bc636955fb243bf3b9b03c8ada19003"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/provider/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_20261015T225731_1792072651284464955_f283x6yx/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 156395,
+      "sha256": "e1e1723adbd9afa8908e2c05dc6abe3cd510582ceeabd8bcbd1181754d966bac"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/provider/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_20261015T225731_1792072651284464955_f283x6yx/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 145402,
+      "sha256": "be77917ee4acd091ddd3217b07cb86311437b18c80270e9fdd74f61e97921f20"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/removal_visualization/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_20261015_225807/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "bytes": 78323,
+      "sha256": "1f574a22d607c74461f99b4d3571aab11c61b58429e4119f4385b9bf69d00b7a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 2586,
+      "sha256": "432693e56dd30dafddfd92dbaebb8fa95bc4c6f3190f9eb28fc8f5502377b383"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 23207,
+      "sha256": "6d1ac6c75761d2c702a86de79253f15ece892753a3a3153d59db3a6518e67804"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 1078,
+      "sha256": "ae90f973dfe367277da0cddd02cb022fa26a75f7f533019083b9e76e9cec7310"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/executor/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_executor_20261015T230015_1792072815224111471_6qpme6sm/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 30050774,
+      "sha256": "589f0206f1b899229ae1d0530856d79985ea89d7a25522e181e40fe47a6facb8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/executor/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_executor_20261015T230015_1792072815224111471_6qpme6sm/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 49462,
+      "sha256": "909e9e20a00eb6730da99a257a40c5123370e78b61b4296591f32af49dbd5795"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/executor/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_executor_20261015T230015_1792072815224111471_6qpme6sm/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 3498,
+      "sha256": "a98dc763c9689831c46b92839159b19fe5b439af9af714251619b6a378407bbc"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/executor/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_executor_20261015T230015_1792072815224111471_6qpme6sm/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 381743,
+      "sha256": "dab886146b6a3f68a76e626bfbe797fc5d3984c5f8c447d2eec5b3a8f67245bc"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/executor/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_executor_20261015T230015_1792072815224111471_6qpme6sm/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 364236,
+      "sha256": "e3e169e1b26a4f90becf84f0fa2c9cb6e34467a7ad086000f39ed383797d2ef8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/executor/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_executor_20261015T230015_1792072815224111471_6qpme6sm/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 19520680,
+      "sha256": "22ccdb2381409561e4d9d874216af4e33fcd67cf5c7aa001a68bd70064f02ab9"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/provider/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_20261015T230015_1792072815816154937__jfbobka/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 20769,
+      "sha256": "1dd1acc4d5c489c6b2f31a58c0f4a6599904622e6edfcdca11d76db330f11175"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/provider/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_20261015T230015_1792072815816154937__jfbobka/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 107493,
+      "sha256": "e03914d9156b84ad5ce44e0d1b8672dfecc0d556a304d3a4cfd5b83eae1dfc6a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/provider/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_20261015T230015_1792072815816154937__jfbobka/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 4478,
+      "sha256": "e99f6f544a27cc624a002031bb94361c175cbabe1e7ff34665426db981b99f0e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/provider/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_20261015T230015_1792072815816154937__jfbobka/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 712048,
+      "sha256": "7478a4728414535672ae9cb11784bfab45e455bc42f169b339c543dd3c6711b0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/provider/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_20261015T230015_1792072815816154937__jfbobka/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 526627,
+      "sha256": "3dbce537d06d13a7f6b4903e8ef205e57dcf026135a86517f831591fff5287e1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/provider/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_20261015T230015_1792072815816154937__jfbobka/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 2127,
+      "sha256": "a47a7138a0920f2402b4a46dae4793b5274a8cfc57155b73164ce0e3a2149b96"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/provider/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_20261015T230015_1792072815816154937__jfbobka/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 153474,
+      "sha256": "1075183a473f8d4ea9cc2d5c8e27c1a99829e292f99faca61445fed413ce232a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/provider/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_20261015T230015_1792072815816154937__jfbobka/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 142973,
+      "sha256": "d81a5f500e966575a5ac789baf8483dbba1119f918147c9001c2a21a6e462f7e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/removal_visualization/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_20261015_230052/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "bytes": 77305,
+      "sha256": "dd2fbba773a8ebf068dccc31f414ba1b2b15e7529a575a9402f76d542d92944f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 2584,
+      "sha256": "2486b1913615a4e710873bf128cae8bd57b7e398dd956411fe5f937123d82a17"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 23213,
+      "sha256": "ec8db472353c17043a022018f54b2264fd2155a916b90e8d5336253c84e5f426"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 1078,
+      "sha256": "2853fd6b42e8437843ff8c89455716c8a058794d15223c391a6a6e224a5b884a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/executor/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_executor_20261015T224658_1792072018227298562_uj9d3y17/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 14890180,
+      "sha256": "e43dce414f642559f283020fc413106ccf227b1f636bd076f94956449ff9d02d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/executor/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_executor_20261015T224658_1792072018227298562_uj9d3y17/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 49476,
+      "sha256": "91fe8f1acd3b7df263d9d4636855b6987ddb6bb9a899e44ab6d0165a139ac1e1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/executor/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_executor_20261015T224658_1792072018227298562_uj9d3y17/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 3490,
+      "sha256": "0ea19563ec2540c5eb6de1691582a2e13d9bd2dffc849694c191279f1d4f3bd6"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/executor/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_executor_20261015T224658_1792072018227298562_uj9d3y17/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 205173,
+      "sha256": "8aefa72ea0e04fec8ed7f8da7786069a97484ce54186a11bc5e395f574535a6d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/executor/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_executor_20261015T224658_1792072018227298562_uj9d3y17/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 195278,
+      "sha256": "fff2fbbcb24f1851381bc8e43c21549b31df0fe480b4056333b10aefff73e691"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/executor/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_executor_20261015T224658_1792072018227298562_uj9d3y17/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 8539307,
+      "sha256": "559550e09c2741ea9462d525e13f1f2254cedc9f32ccfb986207e47acfebb940"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/provider/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_20261015T224658_1792072018833284652_pyprfuz_/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 21926,
+      "sha256": "6ce4f66d1634dd8b6cb16a0a939c305e0320a515c22bb4a522bd0b6dd77642fb"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/provider/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_20261015T224658_1792072018833284652_pyprfuz_/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 102794,
+      "sha256": "a7f10f3ea5c9eed7d7d2c4af57b4f5bfe2f2390cf71a201f21ae699d706e31ca"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/provider/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_20261015T224658_1792072018833284652_pyprfuz_/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 4478,
+      "sha256": "3eee7342b5f8fa72f12fcdc5ac9d39e9c0c4044c1171c5b47b9b183529fb69ca"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/provider/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_20261015T224658_1792072018833284652_pyprfuz_/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 380472,
+      "sha256": "f974f1bcc8652fa261acfd6db83cce27d20f59812e024c832e36efc935e38b94"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/provider/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_20261015T224658_1792072018833284652_pyprfuz_/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 280992,
+      "sha256": "45766c7e70703e257ef297621e87a5a8fa32633f6e7f1a4591b5acd1c8c632a8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/provider/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_20261015T224658_1792072018833284652_pyprfuz_/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 2125,
+      "sha256": "88cf0ec4d04ab6c7a3522e7f45bc7a2aaaeb3928031614cf361b7c9f37f5b081"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/provider/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_20261015T224658_1792072018833284652_pyprfuz_/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 154924,
+      "sha256": "d4e9539bbee139ee0611bdf2d2f16a0df500c0bb9dc407a534e963f955506568"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/provider/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_20261015T224658_1792072018833284652_pyprfuz_/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 144687,
+      "sha256": "39b396e45002f157faec99a0da577c5cb3716d191bc9017395917cc4811d4e62"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/removal_visualization/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_20261015_224718/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "bytes": 82105,
+      "sha256": "e220bfa09d6fbfa85269c61e3e593f07604c4fb5cee7187a44a3fcdaadc1d367"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 2583,
+      "sha256": "aeebfb96138cfd35ded5e307e8f0655a8c22179b6bc650a00bd475e8ea62a516"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 23213,
+      "sha256": "18d79191fedb7508c85212c890b647cff318c23ad696c40a3a27652ff0121992"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 1078,
+      "sha256": "d9c04142bc15379e238e15d737fd2035a6d4a634a17e2a918698446aeb97d396"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/executor/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_executor_20261015T225046_1792072246144936371_n54c3n3v/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 15108036,
+      "sha256": "50b33e040d073536171bd9939992aa6d0b4224e2195a3c6d08b2742667a66c7d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/executor/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_executor_20261015T225046_1792072246144936371_n54c3n3v/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 49476,
+      "sha256": "fd5c2bedbe6a4c423c25b6770aa6bfc7430b41af9c4b54085037fb54e3bb21e1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/executor/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_executor_20261015T225046_1792072246144936371_n54c3n3v/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 3488,
+      "sha256": "d02844a924cd6d900c36f2d26720d513f03d80b476be6dd2224d5e1381df6e0e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/executor/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_executor_20261015T225046_1792072246144936371_n54c3n3v/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 208737,
+      "sha256": "761da2b62a43fce2bd63db432126edf7e5e2b946353666485de16f15cc93fd15"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/executor/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_executor_20261015T225046_1792072246144936371_n54c3n3v/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 198800,
+      "sha256": "8795084ff030a51a049591ac84e6072e9525818cb4ff27467d9a795b5da40512"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/executor/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_executor_20261015T225046_1792072246144936371_n54c3n3v/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 8593727,
+      "sha256": "70086b1d5f188a1cb617ec55fd723aae97c31151ea037a68fe6372e88c88a676"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/provider/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_20261015T225046_1792072246739629524_mobm2954/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 21923,
+      "sha256": "bff35b0ece5dff944f7fb3db4be0c76cadccf1a3f4bac116af569ff852579566"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/provider/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_20261015T225046_1792072246739629524_mobm2954/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 102794,
+      "sha256": "9871ff286243f238ea5100ddd64a4f2af4701ace79887a09236bf4894af7721f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/provider/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_20261015T225046_1792072246739629524_mobm2954/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 4478,
+      "sha256": "b5cb50ceba2d1f32cbfa310bfa9740879a3f2fa5bac49f11ec1840f3a1289230"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/provider/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_20261015T225046_1792072246739629524_mobm2954/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 388279,
+      "sha256": "96bbcfbae318a157d9e1c23668e37010bde64d0d7dba149b0a84434575393aee"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/provider/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_20261015T225046_1792072246739629524_mobm2954/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 286722,
+      "sha256": "bb24539b9bb0c803cb682f16ff235126340903392d4a3db017f1d2891fafd60d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/provider/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_20261015T225046_1792072246739629524_mobm2954/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 2116,
+      "sha256": "07e69113bb642acaff082ee1f0933bbf14430dc48af29b0081efb7d2ab446e38"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/provider/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_20261015T225046_1792072246739629524_mobm2954/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 156658,
+      "sha256": "169fd1f1b50bdbd796da0cfcaccc8da5c9f2fb695bbe7badbf9fcf3cfd3cc54f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/provider/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_20261015T225046_1792072246739629524_mobm2954/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 144608,
+      "sha256": "6e3d01d8bd5716b11d5eb26b13274122d4b7a46c646c9a8a60a59d5a93bd18c5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/removal_visualization/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_20261015_225106/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "bytes": 83737,
+      "sha256": "c4823eb034dceacbd70f727706a3ac3dc96ec22c54c27c2baf9001eb4bbb3871"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 2584,
+      "sha256": "6b973c21a437eb3d1aa0a4100af6f6063893a17a21b8b8c9d3e975212403fe77"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 23213,
+      "sha256": "ed38850336e12fc4b307a9bc15767f8e37ce87909ef821deb3539598b5d5815a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 1078,
+      "sha256": "8a3c587aa9e0348ce602602e221e4b47ee3c6d09f13492352dd8724078cefad7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/executor/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_executor_20261015T225640_1792072600004096294_lx8199pz/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 15363136,
+      "sha256": "ed8ee9ff08c17016ac063117e419f68b44959e8c9337b70c62215f662bdcc113"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/executor/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_executor_20261015T225640_1792072600004096294_lx8199pz/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 49476,
+      "sha256": "7555fc5a2cf13775f32581117e5366d6d5cf6a5cf978414c7b08f53eb007f072"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/executor/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_executor_20261015T225640_1792072600004096294_lx8199pz/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 3490,
+      "sha256": "b1800c1072f1cbd1af7b487e56de93fac0e8b13e8235e8e50fa864185663b085"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/executor/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_executor_20261015T225640_1792072600004096294_lx8199pz/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 215644,
+      "sha256": "e54ba8601e917293dcaf13640e8e3bd3bbd1f772bc600f5c23e137bf9b9d0551"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/executor/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_executor_20261015T225640_1792072600004096294_lx8199pz/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 205585,
+      "sha256": "35d941f58908fad9295070763f2caf2c4707054a6b82e2adc7c2837614f89786"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/executor/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_executor_20261015T225640_1792072600004096294_lx8199pz/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 8584879,
+      "sha256": "3f9ab5de96b86316a80098c2ce8db81370bb77247dc100dbda3b18372d0cbc3e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/provider/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_20261015T225640_1792072600616519040_5r0_pnqa/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 20464,
+      "sha256": "72c5c17384255266fe6a9508b558c025e3ae7e8d270d00281a60ea29288cb6a9"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/provider/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_20261015T225640_1792072600616519040_5r0_pnqa/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 102794,
+      "sha256": "a91f3130c406ca4d6bbcfd90397fe343baba69bab4de1379072c6fc258efc612"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/provider/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_20261015T225640_1792072600616519040_5r0_pnqa/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 4478,
+      "sha256": "10b36232100a47781e23f5099fa53b84405eaf55e280a9fd989254c4ed6c81d1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/provider/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_20261015T225640_1792072600616519040_5r0_pnqa/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 399091,
+      "sha256": "8958fe3b6582b9e4f9d6f1c4e36bf7a4c26a972c915af4f42971c562de2de0e4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/provider/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_20261015T225640_1792072600616519040_5r0_pnqa/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 295772,
+      "sha256": "ed7620fe25141c494ca95e9c91f30980c67134aa0528cf854515a0d07cdeb644"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/provider/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_20261015T225640_1792072600616519040_5r0_pnqa/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 2125,
+      "sha256": "9ef5657138d219ef3a3c80903857bae29f417eaf3cdda4e563db701dbb46010c"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/provider/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_20261015T225640_1792072600616519040_5r0_pnqa/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 156286,
+      "sha256": "45a52e014cce03e0f0a2bc5d3c3096d0833b6cc9fe32e13d363e2928524d9b00"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/provider/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_20261015T225640_1792072600616519040_5r0_pnqa/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 144419,
+      "sha256": "6e850e30be864607523dc202462acd03b8b6ba95253ff2490eb4e93caba63683"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/removal_visualization/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_20261015_225700/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "bytes": 84210,
+      "sha256": "aa8fac0b6dd99e33f7d12a7e4b1d5a3f1f7256bed6afa169cc440a1d7928ee50"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 2585,
+      "sha256": "cc87b7779c629af60235e62184e427f2b888cbd917eece95b51892a05814fa99"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 23215,
+      "sha256": "e1fb980755681c6d003d5d0b55c258458167d06e715d0ac5c824bbbaf143c56e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 1078,
+      "sha256": "78ad762cb1e25bffd3ed9c7cd8d27f288118475f9e24a2cc39286e7d6362c216"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/executor/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_executor_20261015T225835_1792072715530435969_x_tbhk_4/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 15030574,
+      "sha256": "3d992b054f7fa98ff5669613ee26b55ee1c29c4b14f63222ee4d7ef0eb8bfaf0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/executor/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_executor_20261015T225835_1792072715530435969_x_tbhk_4/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 49480,
+      "sha256": "d01b6918be471ac25eb86c26f4ed1fe560148f84b4e2f936f905d5a4caa18ce7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/executor/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_executor_20261015T225835_1792072715530435969_x_tbhk_4/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 3488,
+      "sha256": "3c23c3d901e78bb0b828fcfc117d90e08e5fbddc43250e52bd186bb0e93b6a19"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/executor/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_executor_20261015T225835_1792072715530435969_x_tbhk_4/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 206996,
+      "sha256": "7e0a852a1d6443e528544c66cb1f7e545da79df4ffb3408feb4b55fdbc28e1d6"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/executor/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_executor_20261015T225835_1792072715530435969_x_tbhk_4/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 197069,
+      "sha256": "eef15885b9b885f0292ba56da5c1568eec3020d5e8306f5e40493988a5eedf50"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/executor/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_executor_20261015T225835_1792072715530435969_x_tbhk_4/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 8601822,
+      "sha256": "f47bd0997db81c79a517638e64998a96cca0c82154af96671d98c615d5443778"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/provider/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_20261015T225836_1792072716125328256__67mt90u/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 21925,
+      "sha256": "1ba199d8d7a425b710c83911033f8ff3c4475c062c65f1e82264019559719a74"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/provider/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_20261015T225836_1792072716125328256__67mt90u/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 102800,
+      "sha256": "36cdc4651f630862e484d20674cbcfc861c343eb55b62075bf13ef05e6bc5686"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/provider/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_20261015T225836_1792072716125328256__67mt90u/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 4478,
+      "sha256": "61ca6a75d7dd4a06035d5912706069bbffe6776b5cd2095cab3107a960764097"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/provider/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_20261015T225836_1792072716125328256__67mt90u/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 383839,
+      "sha256": "c6ad90fb7e1b41d5431092c30338300093df168f1e751b10a3a44ec3816ba022"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/provider/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_20261015T225836_1792072716125328256__67mt90u/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 282751,
+      "sha256": "090a0c8cad24bd60e185ffb2f35012a1058cef1f00784ee84765ea23407f81e0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/provider/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_20261015T225836_1792072716125328256__67mt90u/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 2124,
+      "sha256": "3336915f90379be1bcbb6d787a7fccb2c92faa43c4710e91c4c8ac9a28552590"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/provider/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_20261015T225836_1792072716125328256__67mt90u/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 156332,
+      "sha256": "a48167f363ab3b6c30c43db045cc241ec1e28afd2eac29df707591ba2e34bc29"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/provider/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_20261015T225836_1792072716125328256__67mt90u/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 141986,
+      "sha256": "7856a1899371c29c1cd9a51ba5df4a73eee0b527e72326bc95996ebedc45882d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/removal_visualization/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_20261015_225855/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "bytes": 81124,
+      "sha256": "1a23181c571f1bb4477eb1521f41b52ccdba74f513fc615cb168f67a02932bb2"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/run_context.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 2586,
+      "sha256": "ac2aaf75301833b1a3fbb47a0a932b4be1709207eb6426ff280dcb84197809f4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/execution_config.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 23215,
+      "sha256": "8603b642e5c058cd1c11fcfd388d2512d49754a5ef0017915553a3a8a5c5fa63"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/task_evaluation.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/runtime_source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 1618,
+      "sha256": "cc164dd7e25a9e78c66135cec2c7424d29945136b8286aead2942b26aabbcc97"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/source_versions.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 5533,
+      "sha256": "0ac986a17068544e182eb5a2279d66fc22b4a9a445181cd7f104aee21e614075"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/wrapper_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 139,
+      "sha256": "ad554896e05c436e3cb89b3a919f20c1b56d9e9709dc510df1689be82446d261"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/post_analysis_exit.json",
+      "role": "run configuration and provenance",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 1078,
+      "sha256": "2dd351912184598849d4f2bc2b8576ba2f933d1983d62e754caef0bbe3d4dac7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/executor/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_executor_20261015T230218_1792072938530336273_t2wt3l82/events.jsonl",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 14886182,
+      "sha256": "d8fa6a8b6ec1c6526dc9e709f6a89b03532a62317ca8b5295ea3ab9a49946b4e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/executor/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_executor_20261015T230218_1792072938530336273_t2wt3l82/metadata.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 49480,
+      "sha256": "a1d12a31ce1004ed58bf866413d01e1e90b1e53d9a837e39fd75c1f3cab40566"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/executor/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_executor_20261015T230218_1792072938530336273_t2wt3l82/summary.json",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 3488,
+      "sha256": "fd9962fb1ae55cba479676e63bd2c95ec2dd566ce9d89cee1380297925d6b944"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/executor/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_executor_20261015T230218_1792072938530336273_t2wt3l82/tcp_pose.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 202895,
+      "sha256": "289c1f784b09a68b8035b4d1b67f5ececb88fc69b8e9a058f2f7face9beb006e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/executor/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_executor_20261015T230218_1792072938530336273_t2wt3l82/wrench.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 193381,
+      "sha256": "1ebdcc511ad68ce18a396089845439c57c7a8aefd66d1dc4022f09fa4edfbaf9"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/executor/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_executor_20261015T230218_1792072938530336273_t2wt3l82/commands.csv",
+      "role": "executor raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 8607480,
+      "sha256": "92c2a178c47c13e7b68ecfadf7398679819f26d222b23ae7826db6f88dd96eb6"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/provider/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_20261015T230219_1792072939124873136_54962dr2/events.jsonl",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 20462,
+      "sha256": "96e5164def8f0410f342edb55fd2adc62c6127ab74cbd45c0f57d79fde261ef9"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/provider/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_20261015T230219_1792072939124873136_54962dr2/metadata.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 102800,
+      "sha256": "eab499f6235f2f4fb3e5959cb569acd184389dafdad8015ddbf451b8a45758a7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/provider/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_20261015T230219_1792072939124873136_54962dr2/summary.json",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 4478,
+      "sha256": "bb740e3e4ef6ac5dc8b3f7673a6f597d4505f30d5ec3d794d735979d2a2d53ab"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/provider/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_20261015T230219_1792072939124873136_54962dr2/tcp_pose.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 377323,
+      "sha256": "82bb0b4296eafa4f948562acfbd3bd4f51ed42e6b3fe77cdc5dc1611128bbdbc"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/provider/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_20261015T230219_1792072939124873136_54962dr2/wrench.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 278913,
+      "sha256": "d126569b0cff577f1d1575b47a9daba0c547f5b11d2d75e492fb66f1d648c740"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/provider/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_20261015T230219_1792072939124873136_54962dr2/commands.csv",
+      "role": "provider raw logging",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 2124,
+      "sha256": "5b6ae30ad852184bcd2ea1053bc6b245c3892bfed9b9bf5591d3c7edac32bed0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/provider/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_20261015T230219_1792072939124873136_54962dr2/snapshots/initial_image.png",
+      "role": "initial saved image",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 153430,
+      "sha256": "d2f4fb314c72d8c6476baa5649e5cbd1702df22709c53e8c611d6c0e6ef774a3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/provider/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_20261015T230219_1792072939124873136_54962dr2/snapshots/final_image.png",
+      "role": "final saved image",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 144256,
+      "sha256": "838cf8ae88744b31b753c275463e20e57e3a7633f47eed7b1b579ad7d02aad27"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/removal_visualization/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_20261015_230238/01_removal_heatmap.png",
+      "role": "heatmap saved image",
+      "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+      "bytes": 81491,
+      "sha256": "4775a3d88a1ee92e88e70d716330b3a6e47a4042a21b078e2591ad26657b0962"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261015_E1_nominal_pass_height_v2_pdf_report/analysis/outcomes.json",
+      "role": "offline analysis input",
+      "run_id": null,
+      "bytes": 46741463,
+      "sha256": "d07ed3ca45ccc8779421c77d1d49a954db874b862466cece0baeda9b79bab116"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261015_E1_nominal_pass_height_v2_pdf_report/analysis/analysis_metadata.json",
+      "role": "offline analysis input",
+      "run_id": null,
+      "bytes": 371,
+      "sha256": "fed7cd141d2ec7e47c79871254cfbdd208c910d6b861837d4b05d7887f50e925"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261015_E1_nominal_pass_height_v2_pdf_report/analysis/metrics_per_run.csv",
+      "role": "offline analysis input",
+      "run_id": null,
+      "bytes": 37458807,
+      "sha256": "57be71a8f76bdbae9a80eb74fc565d78ae31efb141f7e81592453d7d68347c33"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261015_E1_nominal_pass_height_v2_pdf_report/analysis/condition_summary.csv",
+      "role": "offline analysis input",
+      "run_id": null,
+      "bytes": 1817,
+      "sha256": "d2f2a914034854ea1b6a36fef81d68c387634b90a944a0aadabe2b448044ca49"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261015_E1_nominal_pass_height_v2_pdf_report/independent_storage_check.json",
+      "role": "independent verification",
+      "run_id": null,
+      "bytes": 28824,
+      "sha256": "2fd9c1dbf16f5794a406530f24efed70b9dbc0a273e18acb842cf9135bf9c6d0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261015_E1_nominal_pass_height_v2_pdf_report/numeric_validation.json",
+      "role": "independent verification",
+      "run_id": null,
+      "bytes": 20180,
+      "sha256": "af2c741845a5ad8dfd61f45572163a2206c9695c56e5760f085dd2fe3e9ad6a0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261015_E1_nominal_pass_height_v2_pdf_report/report_statistics.json",
+      "role": "independent verification",
+      "run_id": null,
+      "bytes": 18950,
+      "sha256": "34258e4a2f72b1df2acc5f4d2c7e9d527f3f9da7d95a9b07070d0da1862700aa"
+    }
+  ],
+  "file_count": 346,
+  "pdf": "/home/eunseop/nrs_imitation/results/20261015/E1_report_20261015_nominal_pass_height_v2.pdf",
+  "pdf_sha256": "a12a9d89ec96cace859d9d9f669e13f01ca426906aa27257f54931142a931870",
+  "raw_data_modified": false
+}

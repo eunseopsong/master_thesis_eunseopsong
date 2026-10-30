@@ -1,0 +1,143 @@
+\chapter{Experimental Evaluation}
+\label{chap:experiments}
+
+\section{Evaluation Questions and Recorded Cohorts}
+The experiments examine the execution value of a local motion--force skill at two levels. E1 varies how the strategy is supplied while retaining the common contact-control environment. E2 varies force output learning and policy force observation. These comparisons address different questions, even though they use the same family of force-cleanup checkpoints.
+
+The primary E1 cohort is the nominal development session recorded on 14 October 2026. It contains five started executions each of R, T, and C. Its frozen configuration version is \texttt{e1ct\_61a19f7d7337a82c}. The actual started order is R, then T, then C. An earlier R5 registration did not reach execution start; the later R5 retry supplies the fifth started R trial. That original non-start remains a separate record in Appendix~\ref{app:runs}. Thus there are 15 measured executions and one additional non-started registration, rather than an implicit deletion of an unsuccessful robot trajectory.
+
+E2 is the 13 October force-cleanup session, with five attempts each of A, B, and C. Its actual execution order is A, then B, then C, regardless of a different order in the preparation notes. All 15 are retained. The A4 task outcome uses the operator's later, explicit field correction: it did not transition to contact release and was stopped while maintaining contact. The original event labels and request timestamps are preserved.
+
+The two C groups are not combined. Nor are the older September or pre-cleanup records combined with the October results. The analysis is descriptive: one trained seed per learned condition and five physical repetitions do not establish population-level reliability or statistical significance.
+
+\section{Platform, Surface, and Experimental Controls}
+The local task uses the UR10 platform, the robot-mounted processing tool, and a marked plate visible in RGB. The common execution settings are those in Chapter~\ref{chap:execution}. The task is to approach, process the local region under load, and unload with an upward exit. The mark provides visible task context, while measured TCP pose and base-frame wrench provide the quantitative execution signals.
+
+The records do not supply independent measurements of abrasive state, actual spindle RPM, specimen alloy, scratch depth, mass loss, or roughness change. The archived procedure asks the operator to maintain the same setup within a comparison, but this is not a measurement of identical physical conditions. Ordered collection also allows tool wear, mark preparation, or operator familiarity to vary with method. These factors are considered when interpreting the results.
+
+\begin{table}[tbp]\centering\small
+\caption[E1/E2 comparison conditions]{Complementary comparisons. Every condition retains common lower-level force feedback and its experiment's shared command-processing configuration.}
+\label{tab:expert_il_baselines}
+\begin{tabularx}{\textwidth}{P{0.13\textwidth}p{0.16\textwidth}X}
+\toprule Study & Condition & Strategy and force interface \\ \midrule
+E1 & R & Rule path, 18 N recipe, existing contact-start synchronization. \\
+ & T & Cleanup episode 29 pose/force/time replay, scaling 1.0, existing contact-start synchronization. \\
+ & C & Conditioned Flow pose--force chunks with measured-force observation. \\
+\midrule
+E2 & A & Learned pose only; no policy force observation/history; external 23 N target. \\
+ & B & Learned pose and force; current-force and history conditioning zeroed. \\
+ & C & Learned pose and force; measured-force conditioning enabled. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Metrics, Windows, and Outcome Handling}
+E1 uses three primary quantities: procedural completion rate, first completion time, and excess-force exposure relative to the common teaching \(Q_{95}\). Completion requires the contact--ordered loaded pass--exit procedure described in Chapter~\ref{chap:execution}. The force reference is 30.812396273 N. Force exposure is integrated over the common window rule without cropping to the spatial band or excluding inconvenient peaks. A completed attempt's window ends at first completion; an incomplete attempt ends at the first stop. The old segment-dwell statistic is not reinstated as a completion requirement.
+
+Completion-time means use completed executions only and are always accompanied by their denominators. Incomplete attempts have a missing completion time, not a time equal to their stop time. Non-started registrations, unavailable observations, incomplete procedures, and later return/hold outcomes are different categories. In the 15 started E1 trials, none is classified as observation unavailable.
+
+For E2, the available timing measure is execution start to the first operator finish request. For attempts reported as completed, it is an operator-based completion interval that includes movement after processing and operator response delay. It is not the independently measured earliest mark-erasure time. For A4, the same 28.750 s interval is time to interruption. Mean force, force peaks, time above the existing 3 N diagnostic, and measured XY travel use all five attempts per condition.
+
+Force statistics retain native receipt timing with ZOH and reject support gaps exceeding 0.2 s. TCP paths use interpolation within recorded support. The thesis's analysis script independently recomputes E1 excess-force integrals and E2 force means and peaks from all 30 original force CSV files, matching the archived values within numerical precision. Derived CSV extracts make the plots reproducible without modifying the experiment records. Mean \(\pm\) sample standard deviation describes dispersion across runs; it is not a confidence interval.
+
+\section{E1: Nominal Contact-Task Performance}
+All 15 started executions show the required loaded ordered traversal of the 14-segment band. Under the executed initial-contact-height exit criterion, completion is observed in 3/5 R, 4/5 T, and 5/5 C trials (Table~\ref{tab:e1_primary}). The incomplete outcomes are R1, R3, and T4. They reached the required pass and did not satisfy the simultaneous OFF-and-height conjunction under that reference.
+
+\begin{table}[tbp]\centering\small
+\caption[E1 original-criterion results]{E1 nominal development results under the executed original exit criterion. Time is mean \(\pm\) sample SD among completed trials only, with \(n=3,4,5\). Excess-force statistics include all five started executions per method.}
+\label{tab:e1_primary}
+\input{tables/e1_primary}
+\end{table}
+
+\figfull{e1_primary_metrics.pdf}{All E1 started executions. Circles show completion time; crosses show the end of the observation window for incomplete trials, not an imputed completion. Black marks show the completed-time mean and sample SD. Excess-force exposure includes every trial.}{fig:e1_primary_metrics}
+
+R's completed time is longer than T's or C's, but that comparison includes its prescribed approach and departure strategy. It does not isolate a computational planning cost or prove that learning is required for fast movement. T completes faster and with less observed time dispersion than C among its completed trials. Replay therefore supplies an effective nominal strategy in this setting.
+
+C has a nonzero excess-force integral in each of its five E1 executions and a higher mean exposure than R or T. Its mean of per-run base-force peaks is 35.64\(\pm\)2.83 N, compared with 21.99\(\pm\)1.33 N for R and 29.88\(\pm\)0.86 N for T. These peaks are retained rather than removed as outliers. The results do not support a claim that C improves force exposure across the baseline comparison.
+
+\figfull{e1_force_all.pdf}{Measured robot-base \(F_z\) for every E1 execution on its archived primary analysis window. Raw logged values are displayed with ZOH; no additional smoothing or force normalization is used. The dashed line is the empirical teaching upper reference, not a controller or damage limit.}{fig:e1_force_all}
+
+\figfull{e1_xy_all.pdf}{All E1 TCP-center XY trajectories, including approach and exit within each analysis window. The shaded area is the fixed 25 mm task band, not a measured contact footprint or a removal map. All five paths per provider are shown.}{fig:e1_xy_all}
+
+The trajectories and force records establish that each provider can enter loaded motion through the task region. They also show why endpoint coverage alone is insufficient as a complete task metric: the exit conjunction can differ even after all ordered segments have been visited. Conversely, an operational exit miss requires interpretation of its height reference before being called a physical failure to lift.
+
+\section{E1: Exit-Height Sensitivity and Unexecuted Height Conditions}
+The initial-contact reference can be affected by an early positive force observation at a high TCP position. R1 illustrates the consequence. Its original release threshold is 215.472 mm, derived from an initial reference of 210.472 mm. The median measured height of its first successful loaded pass is 174.747 mm, giving a revised replay threshold of 179.747 mm. The initial reference therefore describes a different height than the subsequent working pass. This makes R1's original outcome evidence about the criterion's sensitivity, rather than proof of absent physical exit.
+
+The archived height-only replay changes this reference consistently for all 15 records while retaining the stored observation stream and remaining criteria. It obtains 5/5 for each method (Table~\ref{tab:e1_replay}). R1, R3, and T4 change classification. This is a sensitivity analysis on the same trajectories; it adds no independent executions and cannot validate the revised online observer.
+
+\begin{table}[tbp]\centering\small
+\caption[E1 height-only offline replay]{Height-only offline replay of the same E1 records using the first successful loaded-pass height reference. These values are secondary reanalysis, not results from a newly executed evaluator or height-variation experiment.}
+\label{tab:e1_replay}
+\input{tables/e1_replay}
+\end{table}
+
+\figfull{e1_height_reference.pdf}{Original and height-only replay release thresholds for all E1 runs. Large differences in several initial references explain the sensitivity of procedural-completion recognition. Both references are derived from recorded TCP height; no measured path is changed.}{fig:e1_height_reference}
+
+The revised observer requires receipt-event and consumed-interval evidence that the historical records do not contain. Full reproduction of that observer on these old runs is therefore unavailable. This is different from the height-only replay, which is supported by the recorded force and pose CSVs. The two forms of reanalysis are not interchangeable.
+
+The available \texttt{pass\_height\_ref\_v2} nominal session and both prepared height-session versions contain empty attempt lists. There are no started revised-evaluator NOMINAL, HIGH, or LOW trials to add to the results. Table~\ref{tab:height_status} records that state. HIGH and LOW mean physical specimen placement at \(+1\) and \(-1\) mm; they do not mean shifting the desired path Z in software.
+
+\begin{table}[tbp]\centering\small
+\caption[Prepared height-condition status]{Prepared revised-evaluator conditions at the evidence cutoff. The completed original nominal cohort is reported separately above.}
+\label{tab:height_status}
+\begin{tabular}{lccc}
+\toprule Condition & Physical height offset & Started trials & Status \\ \midrule
+NOMINAL & Reference placement & 0 & Not run \\
+HIGH & \(+1\) mm & 0 & Not run \\
+LOW & \(-1\) mm & 0 & Not run \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+E1 consequently answers the nominal comparison but not robustness to changed contact-start height. The original 5/5 C completion result is compatible with a functioning learned exit, yet the replay analysis prevents using the original completion-rate difference alone as evidence of C's superiority.
+
+\section{E2: Target-Force Learning and Force Observation}
+E2 separates the two force roles by comparing A/B/C under the shared execution environment. A learns motion and uses an external constant force; B learns motion and force without policy force conditioning; C learns both with measured-force conditioning. The A/B comparison changes both the action dimension and the learned reference schedule. The B/C comparison retains the action and history architecture while changing force-conditioning information. All three are independently trained single-seed checkpoints.
+
+Table~\ref{tab:e2_times} applies the corrected field outcome. A has four operator-reported completed attempts and one interrupted attempt. B and C have five operator-reported completed attempts each. A4 remains in the all-attempt statistics and has no successful completion time.
+
+\begin{table}[tbp]\centering\footnotesize
+\caption[E2 corrected completion and interruption timing]{E2 timing with A4 corrected to interrupted. Completed-time statistics use A \(n=4\), B/C \(n=5\); all-attempt intervals use \(n=5\) in every condition. Values are mean \(\pm\) sample SD.}
+\label{tab:e2_times}
+\input{tables/e2_times}
+\end{table}
+
+The completed A intervals average 17.65\(\pm\)1.20 s, whereas its all-attempt interval averages 19.87\(\pm\)5.07 s. C's completed interval averages 15.83\(\pm\)0.56 s and B's 18.81\(\pm\)0.40 s. The difference between the A means is an outcome-conditioning effect, not a change to its recorded stop time. A comparison using 19.87 s as if all A attempts had completed would overstate C's completion-time advantage.
+
+\figfull{e2_primary_metrics.pdf}{All E2 attempts. A4 is shown as a cross at its interruption time. The time summary marks use completed attempts only. Force peaks and XY travel include all five attempts in each condition. Axes retain the full observed ranges.}{fig:e2_primary_metrics}
+
+\begin{table}[tbp]\centering\footnotesize
+\caption[E2 all-attempt force and travel]{E2 all-attempt force and motion statistics, \(n=5\) per condition. ``Peak'' is the mean of per-run measured peaks. Whole-window mean force includes approach and exit and is not a contact-only force-quality measure.}
+\label{tab:e2_force_travel}
+\input{tables/e2_force_travel}
+\end{table}
+
+The mean measured peaks are similar in scale across A, B, and C; C is not below A in the group mean. Whole-window mean force and XY travel are lower for C in this cohort. The shorter contact interval and different approach/exit timing can explain part of those differences, so lower mean force is not interpreted as more accurate force regulation or more effective material processing.
+
+The mean time with recorded \(F_z^B\geq3\) N is 11.49\(\pm\)7.31 s for A, 10.08\(\pm\)1.04 s for B, and 7.26\(\pm\)0.38 s for C. These are existing contact diagnostics on the observed window. They do not define a new threshold for effective polishing. The observed differences are consistent with different temporal organization of contact, while leaving the causal contribution of a particular input channel unresolved by the small ordered design.
+
+\figfull{e2_force_all.pdf}{All measured E2 base-force traces from execution start to first operator stop request. A4 remains in A's five curves. Each curve uses native recorded values with ZOH; the plots do not infer a controller-applied force target.}{fig:e2_force_all}
+
+\section{Phase Transitions and Execution Cases}
+A4 is a direct counterexample to treating every normal-completion software event as task success. The operator reports that the tool remained in contact rather than progressing to release, and interrupted the attempt after 28.750 s. Its measured mean \(F_z^B\) is 19.456 N and its interval with recorded force at or above 3 N is 24.564 s. The trace is consistent with prolonged loading. The field report establishes the task interpretation; the trace does not independently establish why the transition failed.
+
+\figfull{e2_transition_cases.pdf}{Two retained E2 transition cases. A4 is included because of the operator-confirmed release-transition failure. B4 is included because it has the maximum recorded contact-gate transition count, 38. Full force and Z traces are shown. Rapid gate transitions are a software contact diagnostic, not an independently counted number of physical impacts.}{fig:e2_transition_cases}
+
+B4 illustrates a different phenomenon: the common instantaneous gate toggles repeatedly near contact transitions, with 38 recorded changes. The group mean gate-transition counts are 2.6\(\pm\)0.9 for A, 12.4\(\pm\)14.8 for B, and 3.6\(\pm\)1.7 for C. B's dispersion is strongly influenced by B4; it is retained. Threshold crossings, baseline behavior, and transition timing can all affect these counts. They are not sufficient to diagnose an encoder failure or a physical contact-instability mechanism.
+
+E2 C shows a relatively compact range of operator-based intervals and XY travel, but B's completed-time SD is smaller. Repeatability therefore depends on the quantity being considered. A leave-one-out deviation from other executions, where used in earlier diagnostics, would measure between-run repeatability rather than agreement with the teaching or controller force-tracking accuracy. The present primary comparisons use the explicitly reported timing, force, and travel quantities.
+
+\section{Visible Marks and Surface-Quality Scope}
+Figure~\ref{fig:e1_photos} shows the first started run of each E1 method, selected by run index without screening for the best image or result. The provider's initial and final snapshots have different viewpoints and times as the tool moves. They can illustrate the marked task and visible appearance but cannot quantify common-area removal. All-trial numerical results accompany these examples.
+
+\figfull{e1_snapshot_panel.pdf}{Actual provider snapshots from E1 R1, T1, and C1. Each is the first started execution of its method. Initial/final denote saved provider snapshots rather than matched metrology exposures; viewpoint, occlusion, and timing can differ. Visible marking changes do not measure scratch depth or surface restoration.}{fig:e1_photos}
+
+\figfull{e2_sequence.pdf}{Uniformly spaced camera-pane crops from the decodable portion of the first E2 C video. Only the adjacent diagnostic panel is omitted; camera overlays are retained. Times are video offsets, not synchronized stage-event times. The archived WebM ends prematurely and is not used to certify a complete exit sequence. A4 has no archived video.}{fig:e2_sequence}
+
+The existing heatmaps are execution-derived model diagnostics in arbitrary units. Their values are not measured removal depth, roughness reduction, or scratch-removal percentage. They are therefore outside the primary success criterion. A visually diminished marking and a completed contact procedure can be useful observations without supporting a stronger claim about metal surface quality.
+
+\section{Answers to the Research Questions}
+For RQ1, all three providers produce the required nominal loaded traversal under the shared controller. The recorded exit recognition gives different completion counts, but its height sensitivity weakens that difference as evidence for policy superiority. Replay is fast and repeatable in the nominal completed subset, while C has greater excess-force exposure. Actual physical height-variation robustness remains unevaluated.
+
+For RQ2, the force-output and force-observation interfaces are implemented and separately exercised. The interrupted A4 and differing contact intervals show that phase progression can vary across the ablation conditions. C has shorter recorded completion intervals than B and the completed A subset in this cohort, with similar force-peak scale. Ordered collection, separate single-seed training, and operator timing preclude a general causal conclusion that force observation or force output alone produces the differences. The evidence supports a functioning conditioned motion--force generator and a bounded comparison of its execution behavior.

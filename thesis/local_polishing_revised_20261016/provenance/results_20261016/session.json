@@ -1,0 +1,67 @@
+{
+  "session_id": "E1_CT_pass_height_v2_nominal_dev_20261015",
+  "stage": "development",
+  "seed": 20261014,
+  "config_version_id": "e1ct_46de718a23a2a7cf",
+  "config_version": {
+    "files": {
+      "experiment_config.json": "6a311505cc5fd74d97e794eb01794226cc4bcdeb3cf138ac25fca8aa9eed364f",
+      "task_definition.json": "7b7dc981b9db3a3827a4c8e3d439db6f7e9b4cfcaa7dcfc5a25a11f0f2a8b9ec",
+      "task_evaluation.json": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf",
+      "execution_R.json": "cf9cbf61d22fea84ea12233e8c2f20e16c25008d53d0829c4a7b449da74fec50",
+      "execution_T.json": "946538a0bb205261e1c746a95bdcf157d63e8036ee7b9e1c97ff52d7102f0ee0",
+      "execution_C.json": "de7a71f1fc1fa68dc62e92cdfa6c76a5094a4a2ec3a78c21df032b442916d80d"
+    },
+    "artifacts": {
+      "C_checkpoint": {
+        "path": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+        "sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f"
+      },
+      "C_normalizer": {
+        "path": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/dataset_stats.pkl",
+        "sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49"
+      },
+      "R_template": {
+        "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_transition_20261014_sync_confirm/templates/rule_contact_task.npz",
+        "sha256": "a9342a66ba8bdc782369f1df59af8cd3d847d0e0b1246d3b4ddf19d15d0d8d7f"
+      },
+      "T_template": {
+        "path": "/home/eunseop/nrs_imitation/experiments/E1_contact_transition_20261014_sync_confirm/templates/episode_29_force_cleanup.npz",
+        "sha256": "07dfb0289cc04ab141c13355e57662044bdb34ce04f3cbb08b9e6c21e65e6b67"
+      }
+    },
+    "sources": {
+      "behavior_ws/src/nrs_imitation/nrs_imitation/e1_contact_task_executor.py": "c1b5c26df99d04562af20e36c54e10e35584cc138e07094424da41472ab5a031",
+      "behavior_ws/src/nrs_imitation/nrs_imitation/e1_contact_task_session.py": "682f4cdef5cb2c1d67142313bd3ce6d71101c941e0414efa57b8c36725319938",
+      "behavior_ws/src/nrs_imitation/nrs_imitation/e1_contact_task_execution.py": "4b75978e4dd6a84287a34403af329900eeb6f38b8643d50558808026810e98eb",
+      "behavior_ws/src/nrs_imitation/nrs_imitation/e1_contact_task.py": "637a5af2e8592950192306e39a3824d5100d43892230578b87570a6285708c40",
+      "behavior_ws/src/nrs_imitation/nrs_imitation/e2_executor_node.py": "ef5a94460b232475fab1389502ca070d5bcbc09ec0037094ce9fa89da8691225",
+      "behavior_ws/src/nrs_imitation/nrs_imitation/e2_timed_execution.py": "64b3c4475ac2f75f5a1714296da98e9b71de032554e54471ee62fae557166f1b",
+      "behavior_ws/src/nrs_imitation/nrs_imitation/e2_providers.py": "ff36d6575daa644e842d97512910209e28611842952bb046b468808d5f3be654",
+      "behavior_ws/src/nrs_imitation/nrs_imitation/inference_core.py": "f6c1d746ed20c3aaab3e9ed7d8e679e97ff578c2c723eaa9d4897a1fbe9d6d6b",
+      "behavior_ws/src/nrs_imitation/nrs_imitation/inference_metrics.py": "ca165322099ce3893255ee4811e69f328f062d8ca41cc3ae5896716d2c8a09e5",
+      "behavior_ws/src/nrs_imitation/nrs_imitation/execution_metrics.py": "27c6509008297fbb408eb31da5aa8718f60de8a334e853891932b74c1a91c483",
+      "behavior_ws/src/nrs_imitation/launch/e1_contact_task.launch.py": "dfa3262a258aef5df40f58140feee66b9e72b4d9d2364b3c3c4a49544b235985",
+      "behavior_ws/src/nrs_imitation/launch/rtc_timed.launch.py": "409e4310c335939642521927a95907f3dcac51848a0e5e837ff8ef1a0731b649",
+      "behavior_ws/src/nrs_imitation/launch/inference_clean_single_cam.launch.py": "f49236dc3753963a391374968956753e7f8ac7fa9cc69da56c479a94dd20d34d",
+      "behavior_ws/src/nrs_imitation/launch/inference_gradcam_single_cam.launch.py": "23e755d9828fe7b59e9719f8b4bf7826706e85067d301bca854dbac5b860794c",
+      "behavior_ws/src/nrs_imitation/setup.py": "3296f5e1b340677a0f8f0381771979eeabf2b3202c9a84a59067e7c1c55a169f",
+      "scripts/prepare_e1_contact_task.py": "d98cf7d589169d374600fcde2d45eefb98cd451a6499b749246e1579641150d2",
+      "scripts/e1_contact_task.py": "b8fa1c56b913049ce8c6beecd2cd81611262805ec87046acfaf63876976293d6",
+      "scripts/analyze_e1_contact_task.py": "32a8afaf0152a4d6a419350804991ca45b56121a70a40c1483e567b4429b15c8",
+      "scripts/e1_contact_task_env.sh": "f9ae5e30aff9165ad97ad0d570e0012c14e6957b4968d868101bc14ce027ec52",
+      "scripts/e1_contact_task_terminal.py": "ac6597934d5105e6cf6b621b4964e7c521ecb220ddce6469dcfd542b812356ce",
+      "scripts/e1_contact_task_R.sh": "1dda7ccebb2af2f597319efe673c896be449b3e09d508592040ec4855cd5dbdf",
+      "scripts/e1_contact_task_T.sh": "044cdb1a03be11de813c966fe7a9fa806bee9ea32a340e6791f87353946380a8",
+      "scripts/e1_contact_task_C.sh": "5f1d101a5e06ae129bb9231f6c994d899f3941c8deb2e5e56d40d0b8fcc4b66f",
+      "scripts/prepare_e1_pass_height_v2.py": "fde51bccb1e3fef3f2249bf86aae13d62f7e19bbfd6570639b61f18f160cc686",
+      "scripts/e1_pass_height_v2.py": "756e31aa5e6afbdaf6b2e21355885a4d7fcecfd6cf1d5de94b494cb899dbadb3",
+      "scripts/analyze_e1_pass_height_v2.py": "fa141492f090527d48299fde613177187a9ba93417dfd53d0dda699e8eb3969e"
+    }
+  },
+  "plan_digest": "2f8c709ddcf92ff1e29b811801f3e285631db509be85e52a9ed88e5d63512db3",
+  "schema": "E1_contact_task_session_v1",
+  "created_at": "2026-10-15T22:43:53.890642+09:00",
+  "config_source": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2",
+  "physical_setup_manipulated_by_codex": false
+}

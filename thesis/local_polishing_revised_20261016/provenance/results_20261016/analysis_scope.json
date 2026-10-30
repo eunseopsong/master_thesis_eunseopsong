@@ -1,0 +1,13 @@
+{
+  "E1": "Reaggregated report-frozen 15 runs; independently reintegrated the existing force metric and extracted actual receipt traces",
+  "C6": "Original per-run outcome and actual receipt trace checked separately; not a replacement or primary sample",
+  "E2": "Reaggregated archived per-run precision values; checked original event bounds; reused prior native force/path validation",
+  "reused": "Existing force correspondence v2, E1 state-machine/height-reference and storage verification, E2 native CSV validation; no repeat calibration or full input audit",
+  "session_list_now_contains": 16,
+  "primary_E1_count": 15,
+  "primary_E2_count": 15,
+  "diagnostic_count": 1,
+  "stale_handoff": "baseline_manifest still reports zero attempts; actual report, fixed membership and original run evidence take precedence",
+  "raw_data_modified": false,
+  "robot_or_policy_executed": false
+}

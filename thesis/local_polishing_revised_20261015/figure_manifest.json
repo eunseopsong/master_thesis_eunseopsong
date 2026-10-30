@@ -1,0 +1,581 @@
+[
+  {
+    "figure_id": "fig:teaching_frames",
+    "output": "figures/teaching_ep29_frame000.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "source_dataset_key": "observations/images/cam0",
+    "frame_index": 0,
+    "processing": "exact RGB frame, PNG encoding",
+    "location": "Chapter 4"
+  },
+  {
+    "figure_id": "fig:teaching_frames",
+    "output": "figures/teaching_ep29_frame085.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "source_dataset_key": "observations/images/cam0",
+    "frame_index": 85,
+    "processing": "exact RGB frame, PNG encoding",
+    "location": "Chapter 4"
+  },
+  {
+    "figure_id": "fig:teaching_frames",
+    "output": "figures/teaching_ep29_frame150.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "source_dataset_key": "observations/images/cam0",
+    "frame_index": 150,
+    "processing": "exact RGB frame, PNG encoding",
+    "location": "Chapter 4"
+  },
+  {
+    "figure_id": "fig:teaching_frames",
+    "output": "figures/teaching_ep29_frame400.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "source_dataset_key": "observations/images/cam0",
+    "frame_index": 400,
+    "processing": "exact RGB frame, PNG encoding",
+    "location": "Chapter 4"
+  },
+  {
+    "figure_id": "fig:e1_photos",
+    "output": "figures/E1_R1_initial.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435/provider/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435_20261014T190926_1791972566684378427_wh2ahrpe/snapshots/initial_image.png"
+    ],
+    "processing": "copied without pixel changes",
+    "location": "Chapter 7",
+    "run_id": "E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435",
+    "selection": "first started execution per method; no outcome selection",
+    "timing": "provider snapshot; not synchronized surface metrology"
+  },
+  {
+    "figure_id": "fig:e1_photos",
+    "output": "figures/E1_R1_final.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435/provider/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435_20261014T190926_1791972566684378427_wh2ahrpe/snapshots/final_image.png"
+    ],
+    "processing": "copied without pixel changes",
+    "location": "Chapter 7",
+    "run_id": "E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435",
+    "selection": "first started execution per method; no outcome selection",
+    "timing": "provider snapshot; not synchronized surface metrology"
+  },
+  {
+    "figure_id": "fig:e1_photos",
+    "output": "figures/E1_T1_initial.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1/provider/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1_20261014T192012_1791973212065504655_gfam5onu/snapshots/initial_image.png"
+    ],
+    "processing": "copied without pixel changes",
+    "location": "Chapter 7",
+    "run_id": "E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1",
+    "selection": "first started execution per method; no outcome selection",
+    "timing": "provider snapshot; not synchronized surface metrology"
+  },
+  {
+    "figure_id": "fig:e1_photos",
+    "output": "figures/E1_T1_final.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1/provider/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1_20261014T192012_1791973212065504655_gfam5onu/snapshots/final_image.png"
+    ],
+    "processing": "copied without pixel changes",
+    "location": "Chapter 7",
+    "run_id": "E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1",
+    "selection": "first started execution per method; no outcome selection",
+    "timing": "provider snapshot; not synchronized surface metrology"
+  },
+  {
+    "figure_id": "fig:e1_photos",
+    "output": "figures/E1_C1_initial.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24/provider/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24_20261014T192517_1791973517528060895_wodhkdga/snapshots/initial_image.png"
+    ],
+    "processing": "copied without pixel changes",
+    "location": "Chapter 7",
+    "run_id": "E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24",
+    "selection": "first started execution per method; no outcome selection",
+    "timing": "provider snapshot; not synchronized surface metrology"
+  },
+  {
+    "figure_id": "fig:e1_photos",
+    "output": "figures/E1_C1_final.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24/provider/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24_20261014T192517_1791973517528060895_wodhkdga/snapshots/final_image.png"
+    ],
+    "processing": "copied without pixel changes",
+    "location": "Chapter 7",
+    "run_id": "E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24",
+    "selection": "first started execution per method; no outcome selection",
+    "timing": "provider snapshot; not synchronized surface metrology"
+  },
+  {
+    "figure_id": "fig:diagnostic_heatmap",
+    "output": "figures/E1_C1_diagnostic_heatmap.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24/removal_visualization/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24_20261014_192540/01_removal_heatmap.png"
+    ],
+    "processing": "copied without pixel changes",
+    "location": "Chapter 8",
+    "run_id": "E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24",
+    "interpretation": "uncalibrated execution-derived diagnostic, arbitrary units; not depth"
+  },
+  {
+    "figure_id": "fig:apparatus",
+    "output": "figures/apparatus_20260807.jpg",
+    "sources": [
+      "/home/eunseop/Downloads/20260807_144759.jpg"
+    ],
+    "processing": "EXIF orientation 6 (clockwise 90 degrees); proportional downsize; JPEG quality 92",
+    "location": "Chapter 3",
+    "context": "archived apparatus photo; not a photograph of the October E1/E2 runs",
+    "capture_time_exif": "2026:08:07 14:47:59"
+  },
+  {
+    "figure_id": "fig:mark_example",
+    "output": "figures/mark_detection_example.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/images/home_pose_stain_detection.png"
+    ],
+    "processing": "copied without pixel changes",
+    "location": "Chapter 3",
+    "context": "archived spatial registration example; not the evaluated E1 fixed datum"
+  },
+  {
+    "figure_id": "fig:e2_sequence",
+    "output": "figures/E2_C1_video_0.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a/video/polishing_inference_20261013_201600_FLOW_E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a.webm"
+    ],
+    "run_id": "E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a",
+    "video_offset_s": 1.69,
+    "video_duration_s": 16.9,
+    "processing": "ffmpeg frame at stated video offset; proportional scale",
+    "selection": "first C execution; uniform fractions 0.1/0.4/0.7/0.9",
+    "location": "Chapter 7",
+    "limitation": "archived WebM ends prematurely; decoded portion only; no complete-exit certification"
+  },
+  {
+    "figure_id": "fig:e2_sequence",
+    "output": "figures/E2_C1_video_1.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a/video/polishing_inference_20261013_201600_FLOW_E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a.webm"
+    ],
+    "run_id": "E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a",
+    "video_offset_s": 6.76,
+    "video_duration_s": 16.9,
+    "processing": "ffmpeg frame at stated video offset; proportional scale",
+    "selection": "first C execution; uniform fractions 0.1/0.4/0.7/0.9",
+    "location": "Chapter 7",
+    "limitation": "archived WebM ends prematurely; decoded portion only; no complete-exit certification"
+  },
+  {
+    "figure_id": "fig:e2_sequence",
+    "output": "figures/E2_C1_video_2.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a/video/polishing_inference_20261013_201600_FLOW_E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a.webm"
+    ],
+    "run_id": "E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a",
+    "video_offset_s": 11.829999999999998,
+    "video_duration_s": 16.9,
+    "processing": "ffmpeg frame at stated video offset; proportional scale",
+    "selection": "first C execution; uniform fractions 0.1/0.4/0.7/0.9",
+    "location": "Chapter 7",
+    "limitation": "archived WebM ends prematurely; decoded portion only; no complete-exit certification"
+  },
+  {
+    "figure_id": "fig:e2_sequence",
+    "output": "figures/E2_C1_video_3.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a/video/polishing_inference_20261013_201600_FLOW_E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a.webm"
+    ],
+    "run_id": "E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a",
+    "video_offset_s": 15.209999999999999,
+    "video_duration_s": 16.9,
+    "processing": "ffmpeg frame at stated video offset; proportional scale",
+    "selection": "first C execution; uniform fractions 0.1/0.4/0.7/0.9",
+    "location": "Chapter 7",
+    "limitation": "archived WebM ends prematurely; decoded portion only; no complete-exit certification"
+  },
+  {
+    "figure_id": "fig:e1_force_all",
+    "output": "figures/e1_force_all.pdf",
+    "sources": [
+      "data/traces/E1_C1_force.csv",
+      "data/traces/E1_C2_force.csv",
+      "data/traces/E1_C3_force.csv",
+      "data/traces/E1_C4_force.csv",
+      "data/traces/E1_C5_force.csv",
+      "data/traces/E1_R1_force.csv",
+      "data/traces/E1_R2_force.csv",
+      "data/traces/E1_R3_force.csv",
+      "data/traces/E1_R4_force.csv",
+      "data/traces/E1_R5_force.csv",
+      "data/traces/E1_T1_force.csv",
+      "data/traces/E1_T2_force.csv",
+      "data/traces/E1_T3_force.csv",
+      "data/traces/E1_T4_force.csv",
+      "data/traces/E1_T5_force.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24/executor/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24_executor_20261014T192515_1791973515328864754_vbc0e7f4/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261014T192624_b09089a484/executor/E1_CT_NOMINAL_C_r2_20261014T192624_b09089a484_executor_20261014T192626_1791973586329580061_lfq048sg/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261014T192739_d524cde898/executor/E1_CT_NOMINAL_C_r3_20261014T192739_d524cde898_executor_20261014T192740_1791973660784954501_88_hn48h/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261014T192846_a5624f7264/executor/E1_CT_NOMINAL_C_r4_20261014T192846_a5624f7264_executor_20261014T192847_1791973727488112295_661gzdgw/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261014T192958_f3f83ee6c9/executor/E1_CT_NOMINAL_C_r5_20261014T192958_f3f83ee6c9_executor_20261014T192959_1791973799506408706_iz19lhki/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435/executor/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435_executor_20261014T190926_1791972566078249412_x94cy_zi/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261014T191058_81b3ed524a/executor/E1_CT_NOMINAL_R_r2_20261014T191058_81b3ed524a_executor_20261014T191100_1791972660173681040__mp_kpyu/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261014T191223_c5eab01344/executor/E1_CT_NOMINAL_R_r3_20261014T191223_c5eab01344_executor_20261014T191224_1791972744845684843_8azl_job/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261014T191354_7d902a3420/executor/E1_CT_NOMINAL_R_r4_20261014T191354_7d902a3420_executor_20261014T191355_1791972835614726318_9urapew_/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261014T191842_b6bc0bbdb3/executor/E1_CT_NOMINAL_R_r5_20261014T191842_b6bc0bbdb3_executor_20261014T191844_1791973124305635511_pcvf_wvb/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1/executor/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1_executor_20261014T192011_1791973211470394511_3vxq8jd2/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261014T192108_f428d13ba7/executor/E1_CT_NOMINAL_T_r2_20261014T192108_f428d13ba7_executor_20261014T192110_1791973270316821462_wj6xctxa/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261014T192205_11467f4a6e/executor/E1_CT_NOMINAL_T_r3_20261014T192205_11467f4a6e_executor_20261014T192206_1791973326634206853_oaryce7_/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261014T192301_5dc969c805/executor/E1_CT_NOMINAL_T_r4_20261014T192301_5dc969c805_executor_20261014T192303_1791973383476247608_vg6zt6xv/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261014T192359_3c4108ab4a/executor/E1_CT_NOMINAL_T_r5_20261014T192359_3c4108ab4a_executor_20261014T192401_1791973441193152880_hhltbhgy/wrench.csv"
+    ],
+    "run_ids": [
+      "E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24",
+      "E1_CT_NOMINAL_C_r2_20261014T192624_b09089a484",
+      "E1_CT_NOMINAL_C_r3_20261014T192739_d524cde898",
+      "E1_CT_NOMINAL_C_r4_20261014T192846_a5624f7264",
+      "E1_CT_NOMINAL_C_r5_20261014T192958_f3f83ee6c9",
+      "E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435",
+      "E1_CT_NOMINAL_R_r2_20261014T191058_81b3ed524a",
+      "E1_CT_NOMINAL_R_r3_20261014T191223_c5eab01344",
+      "E1_CT_NOMINAL_R_r4_20261014T191354_7d902a3420",
+      "E1_CT_NOMINAL_R_r5_20261014T191842_b6bc0bbdb3",
+      "E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1",
+      "E1_CT_NOMINAL_T_r2_20261014T192108_f428d13ba7",
+      "E1_CT_NOMINAL_T_r3_20261014T192205_11467f4a6e",
+      "E1_CT_NOMINAL_T_r4_20261014T192301_5dc969c805",
+      "E1_CT_NOMINAL_T_r5_20261014T192359_3c4108ab4a"
+    ],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "All five executions per method; raw logged values shown with ZOH; archived analysis windows; full force range",
+    "location": "Chapter 7",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:e2_force_all",
+    "output": "figures/e2_force_all.pdf",
+    "sources": [
+      "data/traces/E2_A1_force.csv",
+      "data/traces/E2_A2_force.csv",
+      "data/traces/E2_A3_force.csv",
+      "data/traces/E2_A4_force.csv",
+      "data/traces/E2_A5_force.csv",
+      "data/traces/E2_B1_force.csv",
+      "data/traces/E2_B2_force.csv",
+      "data/traces/E2_B3_force.csv",
+      "data/traces/E2_B4_force.csv",
+      "data/traces/E2_B5_force.csv",
+      "data/traces/E2_C1_force.csv",
+      "data/traces/E2_C2_force.csv",
+      "data/traces/E2_C3_force.csv",
+      "data/traces/E2_C4_force.csv",
+      "data/traces/E2_C5_force.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r1_20261013T195840_cfee7559de76/executor/E2_force_cleanup_20261013_A_r1_20261013T195840_cfee7559de76_executor_20261013T195842_1791889122628208116_t4qi7t14/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r2_20261013T200254_da04a1075552/executor/E2_force_cleanup_20261013_A_r2_20261013T200254_da04a1075552_executor_20261013T200257_1791889377184441181_4dqnn29b/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r3_20261013T200416_6ffeb5146764/executor/E2_force_cleanup_20261013_A_r3_20261013T200416_6ffeb5146764_executor_20261013T200419_1791889459139822375__rbnca_e/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601/executor/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601_executor_20261013T200529_1791889529692307773_a7plxs7b/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r5_20261013T200711_ed37cc309c44/executor/E2_force_cleanup_20261013_A_r5_20261013T200711_ed37cc309c44_executor_20261013T200714_1791889634197444926_a235544y/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r1_20261013T200856_b55a06b76524/executor/E2_force_cleanup_20261013_B_r1_20261013T200856_b55a06b76524_executor_20261013T200859_1791889739231717975_dzbdn8v7/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r2_20261013T201013_0fc3796e2d33/executor/E2_force_cleanup_20261013_B_r2_20261013T201013_0fc3796e2d33_executor_20261013T201016_1791889816183728102_w1cuqwic/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r3_20261013T201128_ece39e727bc9/executor/E2_force_cleanup_20261013_B_r3_20261013T201128_ece39e727bc9_executor_20261013T201131_1791889891167300132_omqwdm8d/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c/executor/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c_executor_20261013T201243_1791889963330503884_ceij0mqm/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r5_20261013T201347_702cc1eae9be/executor/E2_force_cleanup_20261013_B_r5_20261013T201347_702cc1eae9be_executor_20261013T201349_1791890029596730151_cc0pqltd/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a/executor/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a_executor_20261013T201552_1791890152942861977_6645_66c/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r2_20261013T201654_2c8a82453c1b/executor/E2_force_cleanup_20261013_C_r2_20261013T201654_2c8a82453c1b_executor_20261013T201656_1791890216606232605_8upj8nb1/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r3_20261013T201751_bb61fb537fa0/executor/E2_force_cleanup_20261013_C_r3_20261013T201751_bb61fb537fa0_executor_20261013T201754_1791890274315144695_etcuce_1/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r4_20261013T201854_63aa9f0a5934/executor/E2_force_cleanup_20261013_C_r4_20261013T201854_63aa9f0a5934_executor_20261013T201856_1791890336674181851_ppsve5wz/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r5_20261013T201958_870d2c89c24d/executor/E2_force_cleanup_20261013_C_r5_20261013T201958_870d2c89c24d_executor_20261013T202000_1791890400991857211_er24mwf9/wrench.csv"
+    ],
+    "run_ids": [
+      "E2_force_cleanup_20261013_A_r1_20261013T195840_cfee7559de76",
+      "E2_force_cleanup_20261013_A_r2_20261013T200254_da04a1075552",
+      "E2_force_cleanup_20261013_A_r3_20261013T200416_6ffeb5146764",
+      "E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601",
+      "E2_force_cleanup_20261013_A_r5_20261013T200711_ed37cc309c44",
+      "E2_force_cleanup_20261013_B_r1_20261013T200856_b55a06b76524",
+      "E2_force_cleanup_20261013_B_r2_20261013T201013_0fc3796e2d33",
+      "E2_force_cleanup_20261013_B_r3_20261013T201128_ece39e727bc9",
+      "E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c",
+      "E2_force_cleanup_20261013_B_r5_20261013T201347_702cc1eae9be",
+      "E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a",
+      "E2_force_cleanup_20261013_C_r2_20261013T201654_2c8a82453c1b",
+      "E2_force_cleanup_20261013_C_r3_20261013T201751_bb61fb537fa0",
+      "E2_force_cleanup_20261013_C_r4_20261013T201854_63aa9f0a5934",
+      "E2_force_cleanup_20261013_C_r5_20261013T201958_870d2c89c24d"
+    ],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "All five executions per method; raw logged values shown with ZOH; archived analysis windows; full force range",
+    "location": "Chapter 7",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:e1_xy_all",
+    "output": "figures/e1_xy_all.pdf",
+    "sources": [
+      "data/traces/E1_C1_pose.csv",
+      "data/traces/E1_C2_pose.csv",
+      "data/traces/E1_C3_pose.csv",
+      "data/traces/E1_C4_pose.csv",
+      "data/traces/E1_C5_pose.csv",
+      "data/traces/E1_R1_pose.csv",
+      "data/traces/E1_R2_pose.csv",
+      "data/traces/E1_R3_pose.csv",
+      "data/traces/E1_R4_pose.csv",
+      "data/traces/E1_R5_pose.csv",
+      "data/traces/E1_T1_pose.csv",
+      "data/traces/E1_T2_pose.csv",
+      "data/traces/E1_T3_pose.csv",
+      "data/traces/E1_T4_pose.csv",
+      "data/traces/E1_T5_pose.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24/executor/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24_executor_20261014T192515_1791973515328864754_vbc0e7f4/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261014T192624_b09089a484/executor/E1_CT_NOMINAL_C_r2_20261014T192624_b09089a484_executor_20261014T192626_1791973586329580061_lfq048sg/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261014T192739_d524cde898/executor/E1_CT_NOMINAL_C_r3_20261014T192739_d524cde898_executor_20261014T192740_1791973660784954501_88_hn48h/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261014T192846_a5624f7264/executor/E1_CT_NOMINAL_C_r4_20261014T192846_a5624f7264_executor_20261014T192847_1791973727488112295_661gzdgw/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261014T192958_f3f83ee6c9/executor/E1_CT_NOMINAL_C_r5_20261014T192958_f3f83ee6c9_executor_20261014T192959_1791973799506408706_iz19lhki/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435/executor/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435_executor_20261014T190926_1791972566078249412_x94cy_zi/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261014T191058_81b3ed524a/executor/E1_CT_NOMINAL_R_r2_20261014T191058_81b3ed524a_executor_20261014T191100_1791972660173681040__mp_kpyu/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261014T191223_c5eab01344/executor/E1_CT_NOMINAL_R_r3_20261014T191223_c5eab01344_executor_20261014T191224_1791972744845684843_8azl_job/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261014T191354_7d902a3420/executor/E1_CT_NOMINAL_R_r4_20261014T191354_7d902a3420_executor_20261014T191355_1791972835614726318_9urapew_/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261014T191842_b6bc0bbdb3/executor/E1_CT_NOMINAL_R_r5_20261014T191842_b6bc0bbdb3_executor_20261014T191844_1791973124305635511_pcvf_wvb/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1/executor/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1_executor_20261014T192011_1791973211470394511_3vxq8jd2/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261014T192108_f428d13ba7/executor/E1_CT_NOMINAL_T_r2_20261014T192108_f428d13ba7_executor_20261014T192110_1791973270316821462_wj6xctxa/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261014T192205_11467f4a6e/executor/E1_CT_NOMINAL_T_r3_20261014T192205_11467f4a6e_executor_20261014T192206_1791973326634206853_oaryce7_/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261014T192301_5dc969c805/executor/E1_CT_NOMINAL_T_r4_20261014T192301_5dc969c805_executor_20261014T192303_1791973383476247608_vg6zt6xv/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261014T192359_3c4108ab4a/executor/E1_CT_NOMINAL_T_r5_20261014T192359_3c4108ab4a_executor_20261014T192401_1791973441193152880_hhltbhgy/tcp_pose.csv"
+    ],
+    "run_ids": [
+      "E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24",
+      "E1_CT_NOMINAL_C_r2_20261014T192624_b09089a484",
+      "E1_CT_NOMINAL_C_r3_20261014T192739_d524cde898",
+      "E1_CT_NOMINAL_C_r4_20261014T192846_a5624f7264",
+      "E1_CT_NOMINAL_C_r5_20261014T192958_f3f83ee6c9",
+      "E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435",
+      "E1_CT_NOMINAL_R_r2_20261014T191058_81b3ed524a",
+      "E1_CT_NOMINAL_R_r3_20261014T191223_c5eab01344",
+      "E1_CT_NOMINAL_R_r4_20261014T191354_7d902a3420",
+      "E1_CT_NOMINAL_R_r5_20261014T191842_b6bc0bbdb3",
+      "E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1",
+      "E1_CT_NOMINAL_T_r2_20261014T192108_f428d13ba7",
+      "E1_CT_NOMINAL_T_r3_20261014T192205_11467f4a6e",
+      "E1_CT_NOMINAL_T_r4_20261014T192301_5dc969c805",
+      "E1_CT_NOMINAL_T_r5_20261014T192359_3c4108ab4a"
+    ],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "All 15 measured XY paths; full observed approach/pass/exit extent; shaded geometric evaluation band, not a measured footprint",
+    "location": "Chapter 7",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:e1_primary_metrics",
+    "output": "figures/e1_primary_metrics.pdf",
+    "sources": [
+      "data/e1_runs.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/reports/20261014_E1_contact_task_pdf_report/metrics_per_run.csv"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "All 15 points; incomplete completion times remain missing; crosses show archived observation end only; mean/sample SD for completed times",
+    "location": "Chapter 7",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:e1_height_reference",
+    "output": "figures/e1_height_reference.pdf",
+    "sources": [
+      "data/e1_height_reference_replay.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/reports/E1_contact_task_pass_height_v2/baseline_replay/baseline_replay_comparison.csv"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "Both archived height thresholds for every run; no change to measured trajectories; not new robot trials",
+    "location": "Chapter 7",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:e2_primary_metrics",
+    "output": "figures/e2_primary_metrics.pdf",
+    "sources": [
+      "data/e2_runs_corrected.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/reports/20261013_E2_pdf_report/metrics_per_run.csv"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "All 15 attempts; A4 marked as interruption; time mean/sample SD use A completed 4, B/C 5; force/travel include A4",
+    "location": "Chapter 7",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:e2_transition_cases",
+    "output": "figures/e2_transition_cases.pdf",
+    "sources": [
+      "data/traces/E2_A4_force.csv",
+      "data/traces/E2_A4_pose.csv",
+      "data/traces/E2_B4_force.csv",
+      "data/traces/E2_B4_pose.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601/executor/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601_executor_20261013T200529_1791889529692307773_a7plxs7b/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601/executor/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601_executor_20261013T200529_1791889529692307773_a7plxs7b/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c/executor/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c_executor_20261013T201243_1791889963330503884_ceij0mqm/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c/executor/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c_executor_20261013T201243_1791889963330503884_ceij0mqm/wrench.csv"
+    ],
+    "run_ids": [
+      "E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601",
+      "E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c"
+    ],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "A4 retained on operator-corrected outcome; B4 chosen for maximum recorded gate transition count; full intervals, no smoothing",
+    "location": "Chapter 7",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:teaching_motion_force",
+    "output": "figures/teaching_motion_force.pdf",
+    "sources": [
+      "data/teaching_episode29.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/20260819_1618/merged_hdf5/hdf5_recorder_single_cam_20260819_1618.hdf5",
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "Actual episode29 on its preserved original source receipt-time axis; no smoothing beyond the archived dataset preprocessing",
+    "location": "Chapter 4",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:force_processing",
+    "output": "figures/force_processing.pdf",
+    "sources": [
+      "data/teaching_episode29.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/20260819_1618/merged_hdf5/hdf5_recorder_single_cam_20260819_1618.hdf5",
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "Archived post-publisher raw, offline EMA, cleanup, and full three-axis pose rotation; no duplicate bias/gravity corrections",
+    "location": "Chapter 4",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:dataset_split",
+    "output": "figures/dataset_split.pdf",
+    "sources": [
+      "data/dataset_episodes.csv"
+    ],
+    "original_sources": [],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "All 42 episode lengths; episode-level split; not windows counted as independent trials",
+    "location": "Chapter 4",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:e1_photos",
+    "output": "figures/e1_snapshot_panel.pdf",
+    "sources": [
+      "figures/E1_C1_final.png",
+      "figures/E1_C1_initial.png",
+      "figures/E1_R1_final.png",
+      "figures/E1_R1_initial.png",
+      "figures/E1_T1_final.png",
+      "figures/E1_T1_initial.png"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24/provider/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24_20261014T192517_1791973517528060895_wodhkdga/snapshots/final_image.png",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24/provider/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24_20261014T192517_1791973517528060895_wodhkdga/snapshots/initial_image.png",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435/provider/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435_20261014T190926_1791972566684378427_wh2ahrpe/snapshots/final_image.png",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435/provider/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435_20261014T190926_1791972566684378427_wh2ahrpe/snapshots/initial_image.png",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1/provider/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1_20261014T192012_1791973212065504655_gfam5onu/snapshots/final_image.png",
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1/provider/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1_20261014T192012_1791973212065504655_gfam5onu/snapshots/initial_image.png"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "Full provider snapshot images in a panel; first run per method; acquisition viewpoints/timing not matched for metrology",
+    "location": "Chapter 7",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:e2_sequence",
+    "output": "figures/e2_sequence.pdf",
+    "sources": [
+      "figures/E2_C1_video_0.png",
+      "figures/E2_C1_video_1.png",
+      "figures/E2_C1_video_2.png",
+      "figures/E2_C1_video_3.png"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a/video/polishing_inference_20261013_201600_FLOW_E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a.webm"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "Uniform video-relative offsets; left camera pane cropped at exactly half full-frame width; original camera overlays preserved; full decoded frames bundled",
+    "location": "Chapter 7",
+    "generated_plot": true
+  },
+  {
+    "figure_id": "fig:faire_architecture",
+    "output": "chapters/03_problem_system.tex",
+    "sources": [
+      "chapters/03_problem_system.tex"
+    ],
+    "location": "Chapter 3",
+    "processing": "Editable TikZ system diagram; task registration includes center and optional axis alignment; not a measured or runtime-specific performance figure",
+    "type": "conceptual; not measured"
+  },
+  {
+    "figure_id": "fig:demo_transfer",
+    "output": "chapters/04_demonstration_dataset.tex",
+    "sources": [
+      "chapters/04_demonstration_dataset.tex",
+      "provenance/stain_relative_generalization_20261015/manifest.json"
+    ],
+    "location": "Chapter 4",
+    "processing": "Editable TikZ conceptual chain: calibration, stain-centered learning, optional live XY/image direction alignment, inverse XY restoration; no measured trajectories generated; optional adapter disabled in E1/E2",
+    "type": "conceptual; not measured"
+  },
+  {
+    "figure_id": "fig:force_history_policy",
+    "output": "chapters/05_skill_learning.tex",
+    "sources": [
+      "chapters/05_skill_learning.tex"
+    ],
+    "location": "Chapter 5",
+    "processing": "editable TikZ conceptual diagram derived from documented implementation",
+    "type": "conceptual; not measured"
+  },
+  {
+    "figure_id": "fig:execution_architecture",
+    "output": "chapters/06_execution_evaluation.tex",
+    "sources": [
+      "chapters/06_execution_evaluation.tex"
+    ],
+    "location": "Chapter 6",
+    "processing": "editable TikZ conceptual diagram derived from documented implementation",
+    "type": "conceptual; not measured"
+  }
+]

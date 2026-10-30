@@ -1,0 +1,4731 @@
+                  Master’s Thesis
+
+
+Human-Guided Local Robotic Polishing via
+ Joint Motion–Force Representation and
+  Force-Conditioned Imitation Learning
+
+인간의 영역 지정과 동작–힘 결합 표현 및 힘 조건부 모방학습을
+          활용한 국소 로봇 폴리싱
+
+
+                    Revised Draft
+
+
+
+
+               The Graduate School
+           Sungkyunkwan University
+        Department of Intelligent Robotics
+
+         Author and submission information: TBD
+Contents
+
+List of Tables                                                                  v
+
+List of Figures                                                                vi
+
+Abstract                                                                       vii
+
+Notation and Terminology                                                       ix
+
+1 Introduction                                                                  1
+
+   1.1   Surface Rework and Local Polishing . . . . . . . . . . . . . . .       1
+
+   1.2 What Remains after a Region Is Specified . . . . . . . . . . .           2
+
+   1.3   Rules, Replay, and Learned Generation . . . . . . . . . . . . .        3
+
+   1.4   Research Questions . . . . . . . . . . . . . . . . . . . . . . . .     4
+
+   1.5   Contributions . . . . . . . . . . . . . . . . . . . . . . . . . . .    4
+
+   1.6   Scope and Organization . . . . . . . . . . . . . . . . . . . . .       5
+
+2 Related Work                                                                  6
+
+   2.1   Robotic Polishing and Surface Coverage . . . . . . . . . . . .         6
+
+   2.2   Human Instruction and Local Task Specification . . . . . . . .         7
+
+   2.3   Rules and Demonstration Replay . . . . . . . . . . . . . . . .         7
+
+   2.4   Force in Demonstrations, Observations, and Actions . . . . . .         8
+
+   2.5   Observation-Conditioned Sequence Generation . . . . . . . . .         10
+
+   2.6   Contact Regulation and Positioning of This Work . . . . . . .         10
+
+3 Problem Formulation and System Overview                                      12
+
+   3.1 A Local Motion–Force Task . . . . . . . . . . . . . . . . . . .         12
+
+   3.2   Human Guidance and the Region Interface . . . . . . . . . . .         13
+
+   3.3   Module Responsibilities . . . . . . . . . . . . . . . . . . . . . .   14
+
+   3.4   Physical Platform and Observations . . . . . . . . . . . . . . .      16
+
+   3.5   Stain-Centered Learning and Direction Transfer . . . . . . . .        17
+
+                                        i
+  3.6   Supported Conditions and Observable Success . . . . . . . . .        20
+
+4 Motion–Force Demonstration and Dataset Construction                        21
+
+  4.1 Teaching as a Source of Temporal Process Structure . . . . . .         21
+
+  4.2 VR Registration and Tracker-to-Tool Conversion . . . . . . . .         21
+
+  4.3   Synchronized Recording and the Meaning of Time . . . . . . .         23
+
+  4.4   Signal Stages and Force Processing . . . . . . . . . . . . . . .     24
+
+  4.5   Force Frames and Common-Axis Analysis . . . . . . . . . . .          26
+
+  4.6   Relative Coordinates, Episodes, and Data Partitions . . . . . .      27
+
+  4.7 A Representative Motion–Force Pairing . . . . . . . . . . . . .        29
+
+5 Force-Conditioned Motion–Force Skill Learning                              31
+
+  5.1   Learning Objective and Observation Interface . . . . . . . . .       31
+
+  5.2   Implemented Observation Encoder . . . . . . . . . . . . . . .        32
+
+  5.3   Flow Matching Sample Construction . . . . . . . . . . . . . .        32
+
+  5.4   Flow Integration and Physical Timing     . . . . . . . . . . . . .   35
+
+  5.5   Separating Force Output from Force Observation . . . . . . .         36
+
+  5.6 Training Completion and Checkpoint Selection . . . . . . . . .         37
+
+6 Robot Execution and Contact-Task Evaluation                                39
+
+  6.1   From a Skill Sequence to Robot Commands . . . . . . . . . .          39
+
+  6.2   Shared Pose Conditioning and Plan Connection . . . . . . . .         40
+
+  6.3   Command Rates, Limits, and Force Gating . . . . . . . . . . .        41
+
+  6.4   Existing Lower-Level Contact Regulation . . . . . . . . . . . .      42
+
+  6.5 Approach and Contact-Start Synchronization . . . . . . . . . .         43
+
+  6.6 The Executed E1 Contact Procedure . . . . . . . . . . . . . .          44
+
+  6.7   Completion, Observation Support, and Time Windows . . . .            45
+
+  6.8   Execution Timing and Checks . . . . . . . . . . . . . . . . . .      47
+
+7 Experimental Evaluation                                                    48
+
+  7.1   Evaluation Questions and Recorded Cohorts . . . . . . . . . .        48
+
+
+                                     ii
+  7.2   Platform, Surface, and Experimental Controls . . . . . . . . .      49
+
+  7.3   Metrics, Windows, and Outcome Handling . . . . . . . . . . .        49
+
+  7.4   E1: Nominal Contact-Task Performance . . . . . . . . . . . . .      51
+
+  7.5   E1: Original C5 and Additional Diagnostic C6 . . . . . . . . .      54
+
+  7.6   E2: Target-Force Learning and Force Observation . . . . . . .       56
+
+  7.7   Phase Transitions and Execution Cases . . . . . . . . . . . . .     58
+
+  7.8 Visible Marks and Surface-Quality Scope . . . . . . . . . . . .       60
+
+  7.9 Answers to the Research Questions . . . . . . . . . . . . . . .       60
+
+8 Discussion and Extensions                                                 64
+
+  8.1 What the Implemented Connection Establishes . . . . . . . . .         64
+
+  8.2 When Rules and Replay Are Sufficient . . . . . . . . . . . . .        65
+
+  8.3   Roles of Human Guidance and Relative Representation . . . .         66
+
+  8.4 What Force Output and Observation Contribute . . . . . . . .          67
+
+  8.5   Procedural Completion and Surface Quality . . . . . . . . . .       68
+
+  8.6   Execution-Derived Dose . . . . . . . . . . . . . . . . . . . . .    69
+
+  8.7   Blending and Adaptive Execution Assets . . . . . . . . . . . .      69
+
+  8.8   Scope and Limitations . . . . . . . . . . . . . . . . . . . . . .   72
+
+9 Conclusions                                                               73
+
+Bibliography                                                                75
+
+A Coordinates, Signals, and Reproduction                                    78
+
+  A.1 Pose and Force Signal Definitions . . . . . . . . . . . . . . . .     78
+
+  A.2 Learning and Temporal Parameters . . . . . . . . . . . . . . .        78
+
+  A.3 Reproducing the Manuscript and Figures . . . . . . . . . . . .        79
+
+B Experiment Versions and Provenance                                        81
+
+  B.1 Selected Models and Dataset . . . . . . . . . . . . . . . . . . .     81
+
+  B.2 Primary E1 Version and Membership . . . . . . . . . . . . . .         81
+
+  B.3 Historical E1 Development and Height-Only Replay . . . . . .          82
+
+
+                                     iii
+  B.4 E2 Versions and the A4 Correction . . . . . . . . . . . . . . .     83
+
+  B.5 Sources for Implemented Extensions . . . . . . . . . . . . . . .    84
+
+C Individual Outcomes and Evidence Boundaries                             85
+
+  C.1 E1 Primary Executions . . . . . . . . . . . . . . . . . . . . . .   85
+
+  C.2 E2 All Attempts . . . . . . . . . . . . . . . . . . . . . . . . .   85
+
+  C.3 Cohort Membership and Interpretation . . . . . . . . . . . . .      85
+
+국문요약                                                                      88
+
+
+
+
+                                    iv
+List of Tables
+
+ 2.1   Force interfaces in related work . . . . . . . . . . . . . . . . .     9
+
+ 2.2 Task specification and evaluation scope . . . . . . . . . . . . .       11
+
+ 3.1   Module responsibilities . . . . . . . . . . . . . . . . . . . . . .   14
+
+ 4.1 Teaching and learning signal stages . . . . . . . . . . . . . . .       25
+
+ 5.1 Architecture and training settings . . . . . . . . . . . . . . . .      34
+
+ 5.2   Selected checkpoint epochs . . . . . . . . . . . . . . . . . . . .    37
+
+ 7.1   E1/E2 comparison conditions . . . . . . . . . . . . . . . . . .       50
+
+ 7.2   E1 primary nominal results . . . . . . . . . . . . . . . . . . .      51
+
+ 7.3   Original C5 and additional diagnostic C6 . . . . . . . . . . . .      54
+
+ 7.4   E2 corrected completion and interruption timing . . . . . . . .       56
+
+ 7.5   E2 all-attempt force and travel . . . . . . . . . . . . . . . . .     57
+
+ 8.1   Status of inherited extensions . . . . . . . . . . . . . . . . . .    71
+
+ A.1 Force signal definitions . . . . . . . . . . . . . . . . . . . . . .    79
+
+ A.2 Distinct clocks and sampling settings . . . . . . . . . . . . . .       80
+
+ B.1 Selected model identifiers . . . . . . . . . . . . . . . . . . . . .    81
+
+ B.2 Historical 14 October E1 results . . . . . . . . . . . . . . . . .      83
+
+ B.3 Historical E1 height-only replay . . . . . . . . . . . . . . . . .      83
+
+ C.1 Individual primary E1 outcomes . . . . . . . . . . . . . . . . .        86
+
+ C.2 Individual E2 corrected task outcomes . . . . . . . . . . . . .         86
+
+
+
+
+                                     v
+List of Figures
+
+ 3.1   Marked local region and registration . . . . . . . . . . . . . .      13
+
+ 3.2   System overview and module interfaces . . . . . . . . . . . . .       15
+
+ 3.3 Archived robot apparatus photograph . . . . . . . . . . . . . .         16
+
+ 4.1 Actual teaching-camera frames . . . . . . . . . . . . . . . . . .       22
+
+ 4.2   Coordinate-processing and direction-transfer chain . . . . . . .      23
+
+ 4.3   Recorded force-processing stages . . . . . . . . . . . . . . . . .    26
+
+ 4.4   Episode lengths and dataset partition . . . . . . . . . . . . . .     28
+
+ 4.5   Representative motion–force teaching . . . . . . . . . . . . . .      30
+
+ 5.1   Implemented policy architecture . . . . . . . . . . . . . . . . .     33
+
+ 6.1   Command processing and contact execution . . . . . . . . . .          41
+
+ 7.1   E1 completion and excess-force results . . . . . . . . . . . . .      52
+
+ 7.2 All E1 measured force traces . . . . . . . . . . . . . . . . . . .      53
+
+ 7.3 All E1 measured XY trajectories . . . . . . . . . . . . . . . . .       53
+
+ 7.4   Original E1 C5 and additional diagnostic C6 . . . . . . . . . .       55
+
+ 7.5   E2 timing, force peaks, and travel . . . . . . . . . . . . . . . .    57
+
+ 7.6 All E2 measured force traces . . . . . . . . . . . . . . . . . . .      58
+
+ 7.7   E2 A4 and B4 transition cases . . . . . . . . . . . . . . . . . .     59
+
+ 7.8   First-run E1 initial and final snapshots . . . . . . . . . . . . .    61
+
+ 7.9   Frames from the first E2 C video . . . . . . . . . . . . . . . .      62
+
+ 8.1   Uncalibrated execution heatmap . . . . . . . . . . . . . . . . .      70
+
+ B.1 E1 exit-height reference sensitivity    . . . . . . . . . . . . . . .   84
+
+
+                                     vi
+Abstract
+  Human-Guided Local Robotic Polishing via Joint
+ Motion–Force Representation and Force-Conditioned
+                Imitation Learning
+
+   Surface finishing often requires local rework around a selected region rather
+
+than uniform treatment of an entire component. A local polishing operation
+
+must coordinate tool movement, contact force, and processing time within
+
+that region. In the setting considered here, a person specifies the region to be
+
+treated, avoiding dependence on autonomous recognition of fine scratches with
+
+the available equipment. This spatial instruction identifies where processing
+
+should occur but leaves the motion–force sequence to be constructed. Rules
+
+and demonstration replay provide legitimate solutions; the research question
+
+is when observation-conditioned skill generation provides additional execution
+
+value.
+
+   This thesis develops a human-guided local polishing framework that con-
+
+nects region specification with temporally paired motion–force demonstrations.
+
+A tracked teaching system records tool pose, three-axis interaction force, and
+
+RGB observations. Task-centered position learning is paired with an imple-
+
+mented direction-alignment adapter that maps observations into the teaching
+
+frame and restores generated XY paths. A conditional Flow Matching policy
+
+generates sequences of position, orientation, and target force from images,
+
+robot state, and measured-force history. A shared execution layer restores
+
+task coordinates, connects plans, and conditions commands before an ex-
+
+isting lower-level force controller regulates contact. Skill generation, contact
+
+regulation, and procedural completion evaluation have distinct responsibilities.
+
+
+
+                                      vii
+   Two robot evaluations examine this division, with direction alignment dis-
+
+abled. E1 compares rule-based planning, force-inclusive demonstration replay,
+
+and the force-conditioned policy for a fixed nominal task. All five executions
+
+per method complete the required contact–loaded-pass–exit procedure. Replay
+
+has a shorter mean completion time and smaller time dispersion than the
+
+learned policy, whose excess-force exposure is greater. E2 compares motion-
+
+only learning and joint motion–force learning with and without measured-force
+
+observation. The force-observing policy has a 15.8% shorter mean operator-
+
+based completion interval than its force-masked counterpart in the recorded
+
+cohort. One motion-only attempt remains in contact and is interrupted. These
+
+results establish an executable, human-guided motion–force skill and reveal
+
+differences in timing, phase progression, and force use across configurations.
+
+Rules and replay remain effective alternatives for the fixed task. The eval-
+
+uation concerns procedural execution rather than measured surface-quality
+
+improvement or robustness across changed task conditions.
+
+
+Keywords: Local Robotic Polishing, Human Task Specification, Motion–Force
+
+Skill, Imitation Learning, Flow Matching, Contact-Task Evaluation
+
+
+
+
+                                     viii
+Notation and Terminology
+
+Symbol                     Meaning
+
+B, V, T, E                 Robot-base, VR tracking, tracker, and calibrated
+                           tool/TCP frames.
+B
+    TE                     Homogeneous pose of frame E in frame B.
+p, ρ, R                    Position (mm), rotation vector (rad), and its rotation
+                           matrix.
+c ∈ R2                     Fixed task-origin XY coordinates in the robot base
+                           (mm).
+θlive , θref , α           Live stain-axis angle, teaching reference angle, and
+                           their wrapped alignment angle (rad).
+R2 (α), u                  Planar rotation matrix and center-relative XY position
+                           aligned with the teaching direction (mm).
+q = [pT , ρT ]T            Six-dimensional Cartesian pose; the code name qpos
+                           does not denote joint angles here.
+f demo , f meas            Recorded teaching force and measured robot force
+                           (N). Superscripts identify their roles; frames are stated
+                           separately.
+f π , f sent , f applied   Policy-predicted, executor-transmitted, and controller-
+                           applied target forces (N). The last is not available as
+                           a synchronized recorded time series.
+Ik , ok                    RGB observation and complete policy observation at
+                           physical sample k.
+ak , Ak                    One action and a future action sequence.
+H, L                       Action horizon (128 samples) and force-history length
+                           (30 samples) for the evaluated checkpoints.
+t, k, ∆t                   Physical elapsed time (s), sample index, and physical
+                           sample interval.
+
+                                           ix
+  Symbol               Meaning
+
+  s, zs , vθ           Dimensionless flow time, noisy normalized action se-
+                       quence, and learned vector field.
+  g(t)                 Operational contact gate from measured robot-base
+                       Fz .
+  Q95 , Jexcess        Common teaching base-force reference (N) and excess-
+                       force integral (N s).
+  R, T, C              E1 rule, teaching replay, and force-conditioned learned
+                       providers.
+  A, B, C              E2 motion-only, learned motion–force without force
+                       observation, and learned motion–force with force ob-
+                       servation.
+
+
+    Task specification identifies the local region and task setting. A motion–
+
+force skill is a temporally organized sequence of pose and target-force references.
+
+Contact regulation is the lower-level response to force feedback while executing
+
+those references. Procedural completion denotes the specified contact–traversal–
+
+exit sequence. It does not denote verified scratch removal or a roughness
+
+requirement. The letter C names a condition within each experiment; E1 and
+
+E2 executions are separate cohorts.
+
+
+
+
+                                        x
+Chapter 1
+Introduction
+
+1.1      Surface Rework and Local Polishing
+
+   Surface finishing changes the condition of a component through controlled
+
+interaction between a tool and its surface. Robotic polishing therefore involves
+
+more than reaching a geometric pose: tool contact, feed motion, and processing
+
+duration jointly determine the operation. Research on curved-surface polishing
+
+combines tool-path planning with force-controlled processing, while coverage
+
+planning accounts for the contact region produced by the tool and workpiece
+
+geometry [1, 2]. These studies establish an industrial and technical context for
+
+treating movement and contact as coupled process decisions.
+
+   Uniform processing of a whole surface and local rework around a selected
+
+region have different spatial objectives. A coverage operation seeks to treat a
+
+prescribed surface systematically. A local operation concentrates movement
+
+and loading around a limited target while retaining an approach and an exit.
+
+In the latter case, the relevant questions include where contact begins, which
+
+part of the region is traversed under load, how force changes during movement,
+
+and how the tool unloads and rises afterward. A path that reaches both
+
+endpoints can still omit one of these procedural requirements.
+
+   Interactive surface-treatment systems provide a practical precedent for
+
+combining human decisions, geometric planning, and robot execution [3]. The
+
+present thesis adopts a specific division of work. A person indicates the local
+
+region, and demonstrations provide examples of how the tool moves and loads
+
+that region. The robot executes a generated or prescribed motion–force skill
+
+
+                                       1
+through an existing force-control system. This division is motivated by the
+
+equipment and task setting, rather than a general assertion that fine defects
+
+cannot be detected automatically.
+
+   The experimental surface contains visible markings that make the local
+
+task observable in the available RGB stream. Such markings supply a spatial
+
+processing cue and support qualitative inspection. They are not calibrated
+
+models of metal scratch depth, and erasing a mark is not equivalent to restoring
+
+a measured surface profile. The thesis uses local polishing as the application
+
+and contact-task execution as the principal measured level of validation.
+
+
+1.2      What Remains after a Region Is Specified
+
+   An identified region is an incomplete processing instruction. It can supply
+
+an origin, extent, and visual context without specifying a force schedule or
+
+the time spent in each phase. For example, traversing a narrow region with a
+
+constant recipe force and replaying a recorded pass can share the same region
+
+but differ in approach timing, loaded motion, repeated movement, and exit.
+
+The region alone does not select between these strategies.
+
+   Human guidance enters through a marked region and task registration.
+
+Position is learned relative to the stain center; an implemented adapter
+
+aligns live XY and the policy image with the teaching direction and restores
+
+generated paths afterward. This supports reuse across planar placements and
+
+directions. The policy uses RGB and a fixed interaction ROI, with no external
+
+segmentation mask. E1 fixes the origin, and both E1/E2 disable direction
+
+alignment. The implemented transfer mechanism therefore has a broader scope
+
+than these comparisons.
+
+   The second source of human guidance is a temporally paired demonstration.
+
+A demonstrator supplies tool movement and interaction force together, so that
+
+
+                                       2
+approach, processing, and release have a common temporal organization. This
+
+supplies information that a geometric boundary does not encode. It does not
+
+provide labels for defect severity or an independent measurement of remaining
+
+material. Learning from those demonstrations is intended to generate an
+
+executable skill, not to infer an unobserved surface state by assumption.
+
+
+1.3      Rules, Replay, and Learned Generation
+
+   Several valid methods can turn a spatial instruction into a polishing
+
+sequence. Rules can combine an approach, a prescribed path, a force recipe,
+
+and a departure. Replay can reuse the position, orientation, force, and timing
+
+of a successful teaching episode. A learned policy can instead generate a new
+
+sequence from the current image, pose, and force history. The existence of
+
+several legitimate choices makes a comparison necessary: the insufficiency of
+
+geometry alone does not imply that imitation learning is the only solution.
+
+   The lower-level controller also contributes feedback in every method. It
+
+regulates the physical interaction for the supplied target and operating mode.
+
+It does not independently choose the complete spatial and temporal strat-
+
+egy. Conversely, removing measured force from the learned policy does not
+
+remove the controller’s force feedback. Distinguishing these two uses of force
+
+is necessary to interpret both baseline comparisons and ablations.
+
+   Generative sequence policies offer a way to model temporally related
+
+actions from demonstration. Action chunking and diffusion-based policies
+
+motivate predicting a sequence rather than an isolated next action [4, 5].
+
+Here, conditional Flow Matching is the implemented generator. Its role is to
+
+produce normalized pose–force sequences; coordinate restoration and command
+
+conditioning remain explicit parts of execution. The thesis studies the combined
+
+representation and execution structure without proposing Flow Matching,
+
+
+                                       3
+force sensing, or a recurrent encoder as new algorithms.
+
+
+1.4     Research Questions
+
+   Two questions organize the evaluation.
+
+   RQ1: For a fixed human-specified local task, how do rule-based planning,
+
+          force-inclusive demonstration replay, and force-conditioned imitation
+
+          learning differ in procedural completion, execution time, and force
+
+          exposure?
+
+   RQ2: What differences in completion, execution timing, phase progression,
+
+          and force exposure are observed across motion-only learning, joint
+
+          motion–force learning without force observation, and joint motion–
+
+          force learning with force observation?
+
+E1 answers RQ1 using the original five nominal executions per strategy
+
+recorded on 15 October 2026, with a common contact–loaded-pass–exit cri-
+
+terion. E2 addresses RQ2 using the five attempts per condition recorded on
+
+13 October. Both comparisons retain their common lower-level execution
+
+environment. Height-change robustness and process-quality improvement are
+
+outside this evaluation’s scope.
+
+
+1.5     Contributions
+
+   The thesis makes three connected contributions at the system and experi-
+
+mental levels.
+
+ 1. It formulates a local polishing task that links human region specification
+
+    with time-aligned motion–force demonstrations. It realizes stain-centered
+
+    position learning and an optional direction-alignment/inverse-restoration
+
+
+
+                                      4
+    path, distinguishes force signal roles and frames, and states the procedural
+
+    scope of the resulting skill.
+
+ 2. It realizes observation-conditioned generation and execution of coupled
+
+    pose–force sequences. The implemented policy, data construction, com-
+
+    mand conditioning, and existing contact controller form an explicit path
+
+    from demonstration to robot action.
+
+ 3. It analyzes procedural completion, execution timing, phase progression,
+
+    and force exposure through complementary strategy and force-information
+
+    comparisons. The original planned trials and incomplete attempts are
+
+    retained, and additional diagnostics are separated from the primary
+
+    comparisons.
+
+These contributions concern the connection between a particular task, repre-
+
+sentation, generator, and execution interface. They do not assert novelty for
+
+the individual encoder, relative-coordinate operation, controller, or logging
+
+state machine.
+
+
+1.6      Scope and Organization
+
+   The implementation supports stain-centered learning and direction transfer
+
+for the marked-surface task. E1/E2 use a fixed tool, fixture, and region, without
+
+testing rotation transfer. Unseen curved surfaces and measured removal or
+
+roughness improvement remain outside their scope. There is no autonomous
+
+defect-completion detector or learned termination head.
+
+   Chapters 2 and 3 position and formulate the task. Chapters 4 and 5 explain
+
+teaching and learning; Chapter 6 describes execution and evaluation. Chapter 7
+
+reports E1/E2, Chapter 8 discusses findings and extensions, and Chapter 9
+
+concludes.
+
+
+                                       5
+Chapter 2
+Related Work
+
+2.1        Robotic Polishing and Surface Coverage
+
+   Surface-treatment planning and contact control address complementary
+
+aspects of a finishing operation. Mohsin et al. [1] combine tool-path planning,
+
+force-controlled contact, and process-parameter optimization for curved-surface
+
+polishing. Their evaluation includes an eyeglass-frame application and surface-
+
+quality measurements. This supports the practical importance of considering
+
+force and motion together, while also illustrating the additional measurements
+
+needed to make a claim about the finished surface.
+
+   Schneyer et al. [2] segment freeform geometries into regions with compatible
+
+machining strategies. Their method uses tool and workpiece geometry, varies
+
+the contact point on a finishing disk, and adapts path spacing to the contact
+
+area. The geometric region in that work organizes coverage of a known surface.
+
+The local region in the present study instead supplies a human-selected
+
+processing target, after which the choice of a temporal motion–force sequence
+
+remains.
+
+   These approaches make geometric planning a substantive baseline rather
+
+than a weak alternative. When geometry, material, and process requirements
+
+admit a stable recipe, explicit planning can directly express the intended
+
+treatment. The narrower question considered here is whether demonstrations
+
+and online observations add useful execution behavior in a specified local task.
+
+The current experiments do not compare surface finish against the published
+
+systems under matched tooling or materials.
+
+
+                                       6
+2.2      Human Instruction and Local Task Speci-
+         fication
+
+   RoboGrind [3] integrates surface scanning, defect identification, interactive
+
+robot-program construction, planning, and force-controlled treatment. It also
+
+evaluates fiberglass wind-turbine-blade refurbishment. Its user interaction
+
+helps select and parameterize processing, while geometric planning and hybrid
+
+force–position control execute the resulting program. This is a useful example
+
+of human participation within an automated surface-treatment system.
+
+   The present work uses a simpler instruction channel: the person marks or
+
+specifies the local region and provides demonstrations. Region registration
+
+is separated from learning how to traverse and load it. This choice avoids
+
+requiring a fine-scratch detector in the available setup. It neither replaces the
+
+broader perception problem nor demonstrates that a marked region carries
+
+sufficient information for an optimal process strategy.
+
+   A task-relative origin also has a limited but clear purpose. It removes an
+
+absolute XY offset from the pose representation so that the local motion can
+
+be restored at a registered origin. An image-to-plane homography provides
+
+a registration mechanism, whereas rotation canonicalization is a separate
+
+transformation. Neither a task-origin subtraction nor a calibrated image
+
+mapping alone demonstrates orientation generalization. The experiments must
+
+establish that claim independently.
+
+
+2.3      Rules and Demonstration Replay
+
+   Rules specify a finite program by composing a path, force schedule, and
+
+phase transitions. Replay preserves an example’s motion–force association and
+
+timing without fitting a policy. In a repetitive, narrowly specified task, these
+
+methods can be sufficient and easier to inspect than a learned generator. Their
+
+
+                                       7
+adequacy is an empirical property of the task and execution environment.
+
+   The distinction between replay and learning is particularly relevant here
+
+because the replay baseline contains force as well as motion. A comparison
+
+against pose-only replay would mix the value of retaining force demonstrations
+
+with the value of generating from observations. E1 instead retains the selected
+
+demonstration’s force sequence. Both rules and replay also retain contact-
+
+start synchronization and lower-level force feedback. They are therefore fixed
+
+strategy providers with feedback during execution, rather than robots operating
+
+without contact sensing.
+
+
+2.4     Force in Demonstrations, Observations,
+        and Actions
+
+   DexForce [6] makes a particularly relevant distinction between observed
+
+motion and an action capable of producing the demonstrated force. It mea-
+
+sures fingertip forces during kinesthetic demonstrations and constructs force-
+
+informed position targets using a quasi-static force–displacement relation.
+
+These targets are replayed through Cartesian impedance control to collect
+
+robot-only visual demonstrations. Its diffusion policy observes images and, in
+
+the force-enabled condition, measured forces and moments; it outputs force-
+
+informed positions rather than a separate desired-force vector. The paper also
+
+ablates force observations. This motivates treating force in supervision and
+
+force in observation as different design choices. Its dexterous-hand tasks and
+
+control interface differ from the tool-pose and target-force interface studied
+
+here.
+
+   ForceMimic [7] records motion and wrench with a handheld device. Its
+
+HybridIL method conditions trajectory generation on point-cloud features
+
+and TCP pose, predicts pose and wrench parameters, and executes them with
+
+
+
+                                      8
+Table 2.1: Force interfaces verified from the cited methods. “Not reported” denotes
+an input absent from the described policy interface, rather than proof that the
+broader system has no such signal.
+
+ Method           Policy force          Learned action         Execution interface
+                  observation           interface
+ DexForce [6]     Forces and moments;   Force-informed         Cartesian impedance
+                  ablated               fingertip positions
+ ForceMimic [7]   Not reported in       Pose and wrench        Position / hybrid
+                  described input                              force–position
+                                                               primitives
+ Admittance       Contact force         Motion and desired     Admittance
+ policy [8]                             force                  controller
+ FoAR [9]         Force/torque          Position actions;      Reactive position
+                                        future-contact         refinement
+                                        prediction
+ This thesis, C   Three force           Tool pose and target   Shared conditioner
+                  components and        force                  and existing force
+                  history                                      controller
+
+
+position or orthogonal hybrid force–position primitives. The described policy
+
+input does not list measured-force history. Thus, its force-inclusive action
+
+interface should not automatically be interpreted as the same force-observation
+
+design used by condition C in this thesis. Its reported task is vegetable peeling,
+
+rather than a human-specified polishing region.
+
+   Admittance visuomotor policy learning [8] explicitly uses vision, pro-
+
+prioception, and contact force to generate action trajectories and desired
+
+contact forces, followed by admittance execution. FoAR [9] takes another
+
+route: force/torque information and a future-contact predictor guide reactive
+
+refinement of position actions. It evaluates wiping, peeling, and chopping with
+
+an end-effector position-control interface. These works illustrate that force
+
+can inform an observation, a learned reference, or a deployment correction.
+
+Those roles should be compared directly rather than grouped under a single
+
+force-aware label.
+
+
+
+
+                                        9
+2.5     Observation-Conditioned Sequence Gen-
+        eration
+
+   ACT [4] predicts action chunks to reduce the effective decision horizon in
+
+demonstration learning. Diffusion Policy [5] models a conditional distribution
+
+over action sequences and executes them with receding-horizon updates. Both
+
+provide methodological context for predicting temporally related actions. They
+
+do not, by themselves, define a polishing force recipe or prove an advantage
+
+over a suitable replay baseline.
+
+   Flow Matching [10] trains a vector field along a prescribed probability path
+
+and generates samples by numerical integration. The implementation in this
+
+project uses linear interpolation between Gaussian noise and a normalized
+
+demonstrated action chunk. Its vector-field loss and integration rule are
+
+specified in Chapter 5. Choosing this generator determines how sequences are
+
+learned and sampled; it does not determine how physical contact is regulated.
+
+   The image encoder uses the existing DINOv3 visual representation [11].
+
+Global and fixed interaction-region features condition the generator together
+
+with pose and force history. A pretrained visual model is an implementation
+
+component, not evidence that the policy recognizes scratch depth or remaining
+
+material. The present experiments evaluate the assembled policy rather than
+
+isolating the backbone’s contribution.
+
+
+2.6     Contact Regulation and Positioning of
+        This Work
+
+   Interaction control distinguishes the dynamic relation between motion and
+
+force from the selection of a task strategy. Impedance control describes how
+
+mechanical interaction should respond to motion [12]; admittance control uses
+
+measured interaction to alter a motion reference through virtual dynamics [13].
+
+
+                                      10
+Table 2.2: Task specification and verified evaluation scope of representative work.
+These are descriptive comparisons of interfaces and tasks.
+
+ Work                 Task/region specification     Demonstration or evaluation
+                                                    scope
+ Geometric            Tool and workpiece geometry   Segmentation and coverage of
+ coverage [2]                                       freeform geometry
+ RoboGrind [3]        Scanning and interactive      Laboratory and
+                      program parameters            blade-refurbishment treatment
+ DexForce [6]         Task-specific object          Kinesthetic fingertip
+                      arrangements                  motion/force; dexterous
+                                                    manipulation
+ ForceMimic [7]       Visual scene and TCP state    Handheld motion/wrench
+                                                    capture; peeling
+ This thesis          Human-specified marked        Tool pose/force/RGB; nominal
+                      region; frozen origin         contact procedure and
+                                                    force-information comparison
+
+
+The deployed lower-level system is an existing element shared within the
+
+experimental comparisons. Its role is to execute the selected force and motion
+
+references.
+
+   This thesis occupies the connection between local human task specification,
+
+paired demonstrations, observation-conditioned sequence generation, and a
+
+common robot execution environment. Table 2.2 summarizes the task-level
+
+comparison. The evaluation asks whether the assembled choices change pro-
+
+cedural execution, and which changes remain attributable to force output or
+
+force observation within the available design. It does not rank methods from
+
+different publications by their reported success rates.
+
+
+
+
+                                         11
+Chapter 3
+Problem Formulation and
+System Overview
+
+3.1      A Local Motion–Force Task
+
+   The task formulation connects a spatial instruction to a physical operation.
+
+A region identifies the intended working area, while a skill supplies the tem-
+
+porally related references needed to approach, traverse under load, and exit.
+
+Keeping these descriptions separate makes it possible to compare different
+
+skill providers without changing the meaning of the task.
+
+   Let Ω ⊂ R2 denote the selected local region in the robot-base XY plane and
+
+let c = [cx , cy ]T be a frozen task origin in millimeters. The region is specified by
+
+a person through the physical marking or the experiment’s region parameters.
+
+A registered RGB image Ik , tool pose qk = [pTk , ρTk ]T , and measured force fkmeas
+
+describe the available execution context. Orientation is stored as a rotation
+
+vector in radians. The action representation is
+                                 
+                          pref
+                        k+j 
+                ak+j =  ρref      ∈ R9 ,  j = 0, . . . , H − 1.               (3.1)
+                                 
+                           k+j   
+                           target
+                         fk+j
+
+The reference does not directly command joint torque. It describes a future
+
+pose and target force for the execution system. The learned pose-only condition
+
+uses the first six components and obtains its force reference externally.
+
+   A local polishing skill is the sequence Ak = (ak , . . . , ak+H−1 ), together with
+
+its physical sample timing and the task registration used to restore absolute
+
+coordinates. Pairing movement and force in this sequence represents when a
+
+                                         12
+Figure 3.1: Archived camera view of a marked local region and its registration
+overlay. The colored outlines belong to the existing detection display. This is an
+example of spatial instruction and image registration, not a validated micro-scratch
+detector or the fixed-origin E1 trial image.
+
+
+target load accompanies a location or motion phase. It does not imply that
+
+the robot will realize the exact demonstrated velocity or force at every instant.
+
+Those quantities also depend on command conditioning, controller dynamics,
+
+and the physical contact.
+
+
+3.2      Human Guidance and the Region Inter-
+         face
+
+   Human guidance contributes both a spatial specification and examples
+
+of temporal behavior. The visible mark gives a practical cue for the local
+
+operation. The region-registration implementation can detect a dark marked
+
+region within a calibrated image area, map it to the working plane, and freeze
+
+its center and principal-axis direction. Figure 3.1 illustrates that interface
+
+using a genuine archived camera image.
+
+   The evaluated E1 comparison fixes c = (457.4, 375.0) mm for all providers.
+
+Its evaluation band is specified independently by endpoints and width. The
+
+origin is a registration datum; it need not coincide with the midpoint of
+
+
+                                        13
+       Table 3.1: Responsibilities of the human and system components.
+
+ Component             Responsibility
+ Human operator        Specify the local task, demonstrate motion and loading,
+                       set up the specimen, and provide recorded field
+                       observations.
+ Teaching system       Register tracked tool pose and record paired RGB, pose,
+                       force, and receipt-time evidence.
+ Skill provider        Supply a time-related reference sequence using a rule, a
+                       fixed demonstration, or a conditioned generator.
+ Common executor       Restore coordinates, interpolate references, connect plans,
+                       condition commands, and manage the existing finish/hold
+                       procedure.
+ Lower-level           Regulate physical contact using the supplied target force
+ controller            and measured state.
+ Task evaluator        Recognize the defined contact procedure and report its
+                       outcome; it does not measure surface quality.
+
+
+that band. In E2, the existing per-run origin interface is retained. Neither
+
+experiment uses a height-condition label as a policy input.
+
+   The policy’s external stain-mask option is disabled for the evaluated
+
+checkpoints. Instead, the image encoder derives a fixed TCP interaction-
+
+region feature from RGB. The physical marking, the registered origin, the
+
+evaluator’s spatial band, and the encoder’s image ROI are therefore four
+
+different objects. Conflating them would incorrectly imply that the network is
+
+explicitly constrained to the evaluator’s band or that it receives a segmentation
+
+of the complete processing strategy.
+
+
+3.3      Module Responsibilities
+
+   Figure 3.2 shows the implemented path from human guidance to evaluation.
+
+A provider supplies a sequence, a common execution layer converts it into
+
+conditioned commands, and the lower-level controller produces the physical
+
+interaction. Measured robot pose and force provide feedback. Evaluation
+
+observes this interaction through its own procedural criteria.
+
+
+                                        14
+                        Human region
+                                                      Motion–force teaching
+                         specification
+                                                      RGB, pose, force, time
+                    mark / fixed task origin
+
+
+                                                          Dataset and
+                       Task registration
+                                                         policy learning
+                       center; optional
+                                                           conditional
+                        axis alignment
+                                                         Flow Matching
+
+
+
+                     Action provider: rules R / teaching replay T / policy C
+                           time-related pose and target-force sequence
+
+
+
+
+                                                                                  measured observations
+                             Shared executor and pose conditioner
+                    coordinate restoration, plan connection, command limits
+completion finish
+
+
+
+
+                              Existing force controller and robot
+                          contact regulation; measured pose and force
+
+
+
+                           Contact-task evaluator / recorded analysis
+                          contact, ordered loaded pass, unload and rise
+
+Figure 3.2: Implemented system overview. Solid arrows show data or execution
+flow. The dashed arrow requests the existing finish/hold after procedural completion;
+it does not synthesize an exit motion. The diagram is conceptual and editable. E2
+uses its separate operator-terminated protocol.
+
+
+
+
+                                               15
+Figure 3.3: Genuine archived apparatus photograph dated 7 August 2026, showing
+the robot-mounted processing tool and fixture. Only image rotation and proportional
+resizing were applied. It illustrates the local experimental platform; it is not presented
+as a photograph taken during the October E1 or E2 runs.
+
+
+3.4       Physical Platform and Observations
+
+    The robot interface is the UR10 system identified by the deployed ur10skku
+
+topics and Cartesian command services. The teaching side uses a Vive tracker,
+
+calibrated tool pose, force/torque sensing, and a RealSense RGB stream.
+
+Robot execution records TCP pose from robot feedback and a processed
+
+six-axis wrench. The policy uses only the three force components. Torques
+
+remain useful logged diagnostics but are not policy inputs or actions for these
+
+checkpoints.
+
+    The available records support a description of a robot-mounted local
+
+processing tool acting on a marked plate. They do not specify a complete
+
+
+                                           16
+process qualification, including measured spindle speed, material alloy, abrasive
+
+grade, or pre/post roughness. The experiments therefore use the measured
+
+robot interaction to answer procedural questions. These limits do not prevent
+
+reproducing the learning and execution interfaces, but they restrict claims
+
+about manufacturing outcomes.
+
+
+3.5     Stain-Centered Learning and Direction
+        Transfer
+
+   The representation separates the local movement pattern from its placement
+
+on the plate. Its training-data transformation expresses observation and action
+
+positions relative to a frozen stain center:
+
+
+                pek = [pk,x − cx , pk,y − cy , pk,z ]T ,   ρek = ρk .       (3.2)
+
+
+This transformation retains the base-axis orientation and absolute Z coordi-
+
+nate. A single-direction demonstration consequently teaches a center-relative
+
+movement pattern in its original reference direction. The implementation
+
+additionally supports transferring that learned pattern to another in-plane
+
+stain direction through coordinated observation and action transformations.
+
+Training on centered positions and aligning directions at inference are two
+
+connected parts of the transfer mechanism; the dataset converter itself does
+
+not rotate the training episodes.
+
+3.5.1     Center and Axis from the Specified Region
+
+   The reference-free registration path detects dark pixels within a configured
+
+plate area, excludes the tool area, and maps the retained pixels to robot-
+
+base XY coordinates using each image’s pose-dependent planar homography.
+
+It pools these mapped points across the registration frames. Starting from
+
+their coordinate-wise median, four iterations retain the nearest 85% of points
+
+                                          17
+and update the center by their mean. A singular-value decomposition of the
+
+trimmed, centered point cloud supplies the dominant strip axis. Its angle
+
+θlive ∈ [0, π) is measured in base-plane radians. The axis is unoriented: the
+
+same strip has directions differing by π, rather than an identified stroke-start
+
+endpoint.
+
+   The resulting center and optional angle are frozen together for the episode.
+
+An operator-supplied live angle is also supported. The direction therefore
+
+enters through explicit task registration rather than a learned output head. A
+
+center recovered from the visible mark identifies the intended task; it does not
+
+estimate defect depth or determine the desired force schedule.
+
+3.5.2       Observation Alignment and Path Restoration
+
+   Let θref denote the base-plane axis associated with the teaching reference
+
+direction. The implemented alignment angle and planar rotation are
+
+       α = wrapπ (θref − θlive ),     wrapπ (δ) = ((δ + π/2) mod π) − π/2, (3.3)
+                           
+            cos α − sin α
+  R2 (α) =                 .
+             sin α cos α
+The wrapped angle lies in [−π/2, π/2). For an absolute measured XY position
+
+pk,xy , the policy-side position is
+
+                              uk = R2 (α)(pk,xy − c).                      (3.4)
+
+Center subtraction is applied first, followed by alignment to the teaching
+
+direction, and then by the checkpoint’s numerical normalization. After the
+
+policy generates a sequence and the action bounds are inverted, each predicted
+
+XY position u
+            bk+j is restored as
+
+                            pref
+                             k+j,xy = c + R2 (−α)b
+                                                 uk+j .                    (3.5)
+
+The same inverse operation restores the stored demonstration-start XY pose
+
+before initial alignment. Thus both the live observation and generated path
+
+                                          18
+use the same frozen center and angle. Disabling direction alignment gives
+
+α = 0 and reduces these equations to the translation-relative path used in
+
+E1/E2.
+
+   The single-camera policy image can also be rotated in plane about the
+
+configured TCP-ROI center, using the alignment angle and a configurable
+
+image-coordinate sign. The implementation uses bilinear image interpolation
+
+and reflected borders. This operation changes the image supplied to the policy
+
+while retaining the original view for recording and display. It adapts the visible
+
+direction to the reference view; a planar image rotation does not establish
+
+complete perspective or lighting invariance.
+
+   Only XY position is rotated by this adapter. Z, tool rotation-vector chan-
+
+nels, target-force channels, and measured-force history retain their existing
+
+conventions. The method transfers a planar stroke direction while preserv-
+
+ing the learned tool-posture and force interfaces; it is not a full rigid-frame
+
+transformation of pose and wrench. Its spatial role is distinct from observation-
+
+conditioned generation of the local motion–force sequence.
+
+   The current launch defaults leave direction alignment disabled. When
+
+enabled, the declared reference angle is 132◦ , image rotation is enabled, and
+
+the maximum accepted alignment magnitude is 65◦ . These are configurable
+
+reference and operating values, not a measured generalization range; the
+
+dataset name containing “90deg” is not used to infer the base-axis reference
+
+angle. If no live angle is available or the configured magnitude is exceeded, the
+
+implementation retains translation-only operation. Chapter 4 distinguishes
+
+these implemented transfer operations from the particular dataset and settings
+
+used in the measured comparisons.
+
+
+
+
+                                       19
+3.6      Supported Conditions and Observable Suc-
+         cess
+
+   The E1/E2 datasets and runtime settings use center-relative XY coordi-
+
+nates with direction alignment disabled. Their results assess strategy generation
+
+and force-information use within that configuration, rather than supplying a
+
+quantitative test of the implemented rotation-transfer mechanism.
+
+   E1 defines observable success as contact formation, a continuous loaded
+
+ordered traversal of the fixed band, and a simultaneous unloaded upward exit.
+
+E2 uses the documented operator-based completion interpretation, corrected
+
+for the interrupted A4 attempt. The two definitions serve different recorded
+
+protocols and are not pooled into one success statistic.
+
+   There is no learned termination output in the evaluated policy. A gener-
+
+ated upward movement may reflect the demonstration’s temporal structure.
+
+Recognition that the procedural exit has occurred belongs to the evaluator
+
+in E1 or to the operator’s stopping decision in E2. Neither establishes that
+
+all defects have been removed. This distinction maintains a clear boundary
+
+between the generated skill and the state of the physical surface.
+
+
+
+
+                                       20
+Chapter 4
+Motion–Force Demonstration
+and Dataset Construction
+
+4.1     Teaching as a Source of Temporal Process
+        Structure
+
+   The purpose of teaching is to supply the motion and loading that remain
+
+unspecified by a local region. A demonstration records a tool’s approach,
+
+motion through the working region, and departure together with the interaction
+
+force. This pairing supplies a temporal example for either direct replay or
+
+policy supervision. It does not include an independently measured defect-depth
+
+trajectory or a label that certifies material-removal completion.
+
+   The teaching system combines Vive tracking, a calibrated tool-pose pub-
+
+lisher, force/torque sensing, and a RealSense RGB stream. The archived
+
+collection interface records six pose components and the first three force com-
+
+ponents. The paired data used by the evaluated models have a single RGB
+
+camera. Figure 4.1 shows actual frames from the selected replay episode’s
+
+source, rather than a rendered apparatus or a substitute robot.
+
+
+4.2     VR Registration and Tracker-to-Tool Con-
+        version
+
+   The recorded pose must refer to the tool rather than the tracker housing.
+
+Let V be the tracking frame, T the tracked rigid body, E the tool/TCP frame,
+
+and B the robot base. The nominal rigid coordinate chain is
+
+                         B
+                             TE (t) = B TV V TT (t) T TE .                (4.1)
+
+                                         21
+Figure 4.1: Actual teaching-camera RGB frames associated with episode 29 at
+stored indices 0, 85, 150, and 400. The corresponding source is merged episode
+ep 0003, recorded on 19 August 2026. The view shows the tool and marked plate
+during the recorded operation. It does not show the full tracker or sensor assembly.
+
+
+The fixed transforms identify the tracking world with the robot base and
+
+remove the tracker-to-tool offset. Translation is expressed in millimeters, while
+
+the final orientation is converted to a rotation vector in radians.
+
+   The implementation includes more than one rigid transform. Its calibration
+
+utilities solve the registration and tool offset, project rotations to valid rotation
+
+matrices, and support a planar correction and a bounded XY-dependent
+
+position residual. The tracker publisher converts OpenVR translation from
+
+meters to millimeters before applying the downstream calibration chain. It
+
+right-multiplies the configured spatial-angle alignment and applies the selected
+
+tool-offset convention. The published calibrated pose is the final tool pose
+
+used by the recorder; the raw tracker rotation is not substituted for it in
+
+force-axis reconstruction.
+
+   The available calibration YAML records a 47-sample fit, planar correction,
+
+and a quadratic XY residual. Its stored residual RMS changes from 4.809 to
+
+3.179 mm for that fit. These are calibration-fit diagnostics, not an independent
+
+
+                                         22
+                    Vive tracker pose in tracking coordinates
+                     OpenVR translation converted to mm
+
+
+                  VR/base registration and tracker/tool offset
+                configured angle, planar, and position corrections
+
+
+                         Published calibrated tool pose
+                        base position and rotation vector
+
+
+                           Stain-centered learning pose
+                           subtract center; retain teach-
+                         ing direction, Z, and orientation
+
+
+                     Optional direction transfer at inference
+              align live XY and image with the teaching reference
+
+
+                      Restore generated XY to the live task
+                      inverse rotation, then center addition
+
+Figure 4.2: Implemented coordinate-processing roles, shown as an editable con-
+ceptual diagram. Calibration establishes the tool pose; center-relative learning and
+optional direction alignment register the local movement pattern. The last two
+boxes show the inference transfer in Equations (3.4) and (3.5), disabled in E1/E2.
+Only XY positions are rotated; tool orientation and force channels retain their
+conventions.
+
+
+accuracy test of every demonstration or October execution. The source also
+
+contains a configurable final constant offset. Consequently, a single concep-
+
+tual frame-chain diagram is useful for understanding the registration, while
+
+the archived parameter file remains necessary for reproducing its numerical
+
+convention.
+
+
+4.3      Synchronized Recording and the Meaning
+         of Time
+
+   The source merged HDF5 identifies its schema as multimodal synchronized
+
+recording, its master as camera 0, and its clock as subscriber-receive Unix
+
+
+                                        23
+time. The camera observation supplies the common sample time. Pose and
+
+force are associated through receive-time buffers, with a recorded maximum
+
+synchronization error parameter of 0.05 s. The archive retains the source times,
+
+interpolation indicators, and pose/force synchronization errors for each paired
+
+sample.
+
+   These timestamps describe software receipt and pairing. They are not
+
+hardware exposure timestamps or the original force-sensor acquisition times.
+
+Their value is that the construction of a paired sample is explicit and can be
+
+inspected. Their limitation is that transport delay and sensor latency cannot
+
+be removed simply by assigning all signals to one image time.
+
+   The representative source episode records a nominal 30 Hz grid, 443 paired
+
+frames, and the original sample time unix array. The compact learning file
+
+retains the paired images and signals but not that full time array. For the
+
+replay baseline and the teaching plots, the source episode is recovered using
+
+the compact file’s source h5 and source episode attributes. This preserves
+
+the actual paired time axis instead of reconstructing it solely from the nominal
+
+rate.
+
+
+4.4       Signal Stages and Force Processing
+
+   The word raw depends on where a signal enters the pipeline. The recorder’s
+
+raw ft is already a decoded and published measurement after the config-
+
+ured sign, startup-zero, and gravity-processing path. It is raw relative to the
+
+recorder’s offline filter. It is not an uncorrected packet from the force sensor.
+
+   The teaching publisher applies its configured sensor decoding and sign
+
+convention, startup mean zeroing, selected publisher filtering, and delta-gravity
+
+compensation before publishing the wrench. The recorder then applies native-
+
+axis force filtering. In the representative archived episode, the force filter is an
+
+
+                                        24
+Table 4.1: Teaching and learning signal stages. Normalization changes scale for
+the network; it does not perform physical calibration.
+
+ Stage                  Meaning and use
+ Published / recorder   Decoded and compensated force paired with calibrated
+ raw                    pose; preserved as raw ft and raw position.
+ Filtered recording     Existing pose processing and force EMA; paired images
+                        and source-time mapping retained.
+ Learning cleanup       Derived force fields modified by the specified native-axis
+                        cleanup; pose and RGB preserved.
+ Normalized tensors     Training-split bounds map pose and force channels to the
+                        network scale. B then masks its force-conditioning
+                        tensors.
+
+
+exponential moving average with α = 0.2,
+
+
+                            f¯k = αfk + (1 − α)f¯k−1 .                        (4.2)
+
+
+The stored pose is processed through the existing Hampel and difference-
+
+regularized smoothing pipeline. The archived episode reports no pose EMA,
+
+no approach slowdown, and retiming factor one. These are properties of the
+
+selected recorded episode; optional processing branches in the current recorder
+
+are not assumed to have been active.
+
+   The 12 October force-cleanup dataset is a derived copy. It preserves the 42
+
+episodes’ images and pose fields, sets negative native Fz values to zero, and
+
+sets all three force components to zero where the associated stored z > 175
+
+mm. Signed Fx , Fy remain unchanged in the other samples. The same rules
+
+apply to observation and action force fields. This height rule is an offline
+
+preprocessing convention tied to the stored coordinate system, not a new
+
+real-time contact detector or an estimate of material-removal depth.
+
+   Figure 4.3 shows these stages for the representative episode. Learning
+
+nonnegative targets does not impose a nonnegative output constraint on the
+
+generator. The archived model checks include negative unconditioned force
+
+predictions in some chunks; the runtime must therefore be described from its
+
+                                       25
+                 30
+                                                                                         Published, before offline EMA
+                                                                                         EMA before cleanup
+                                                                                         Learning cleanup
+ Native Fz (N)   20
+
+
+                 10
+
+
+                  0
+
+
+
+                          Cleanup full vector rotated to base
+                 25
+
+                 20
+ Base Fz (N)
+
+
+
+
+                 15
+
+                 10
+
+                  5
+
+                  0
+                      0            2             4           6           8          10    12             14
+                                                       Original paired source time (s)
+
+
+Figure 4.3: Actual force-processing stages for teaching episode 29. The upper
+panel compares post-publisher recorder raw force, offline EMA, and the learning
+cleanup in native axes. The lower panel rotates the complete cleanup force vector to
+robot-base axes using its paired tool orientation. These are different signal stages;
+none is a new physical calibration.
+
+
+actual gating and command-processing code, rather than by assuming cleanup
+
+enforces a physical output bound.
+
+
+4.5                   Force Frames and Common-Axis Analysis
+
+                 The existing force correspondence analysis supplies a resolved relation
+
+between teaching published axes and the calibrated tool frame:
+
+                              RE←pub = I,                fB (t) = RB←E (t) fpub,processed (t).                   (4.3)
+
+The second relation is posture dependent. All three force components are
+
+rotated using the calibrated tool rotation. Sign, zero, and gravity corrections are
+
+already present in the published vector and are not applied again. Translating
+
+the XY task origin does not rotate force.
+
+                 Robot feedback follows a different processing chain: startup zeroing, the
+
+archived moving-average stage, a fixed sensor-to-TCP rotation, TCP gravity
+
+                                                                 26
+correction, and TCP-to-base rotation before publication and copying into
+
+the current-force topic. The executor’s recorded force is therefore already in
+
+robot-base axes. Re-rotating that CSV would be incorrect.
+
+   Common-axis reconstruction makes the recorded teaching distribution and
+
+measured robot-base component comparable for an empirical force-exposure
+
+statistic. It does not recover an unlogged controller-applied target or establish
+
+a force-tracking error. It also does not imply that training tensors were retro-
+
+spectively rotated. The evaluated dataset keeps native teaching force, while
+
+the inference adapter reads the selected robot-force components directly before
+
+normalization. This numerical input convention is retained when reporting the
+
+actual evaluated implementation. A common-frame policy-training ablation
+
+was not performed.
+
+
+4.6      Relative Coordinates, Episodes, and Data
+         Partitions
+
+   The compact representation subtracts the stored stain center from observa-
+
+tion and action XY positions, leaving Z and orientation unchanged. Learning
+
+this local pattern removes absolute XY placement from the pose supervi-
+
+sion. The selected dataset is labeled single-direction, 90-degree, and explicitly
+
+records rotation aligned=false. This attribute describes the saved training
+
+data; it does not mean that the implementation lacks direction transfer. The
+
+separate inference adapter in Section 3.5 aligns live positions and images to
+
+a configured teaching direction and inversely restores generated XY. E1/E2
+
+explicitly disable that adapter, so their results do not quantify its transfer
+
+performance. Some upstream files also record episode-specific XYZ corrections,
+
+which are preprocessing transformations rather than separate generalization
+
+tests.
+
+
+
+                                       27
+                              Blue: optimization train (38); orange: validation (4)
+
+                        400
+ Stored paired frames
+
+                        300
+
+
+                        200
+
+
+                        100
+
+
+                          0
+                                 0          5           10          15        20        25   30   35   40
+                                                                          Episode index
+
+
+Figure 4.4: Stored lengths of all 42 episodes used by the force-cleanup models.
+Orange identifies the four validation episodes. The partition is made before window
+sampling; repeated windows are not independent demonstrations.
+
+
+                        The evaluated A/B/C models share 42 unique episodes. The optimization
+
+partition contains 38 episodes; validation contains episodes 35, 39, 22, and
+
+37. The checkpoint normalizer files reproduce this episode-level partition. All
+
+windows from an episode remain in its assigned partition, avoiding overlap of
+
+windows from one episode across optimization and validation. This does not
+
+establish independence by operator, material, specimen, or collection session.
+
+No separate held-out demonstration-test split is claimed.
+
+                        The loader draws 50 start indices per episode and constructs a 128-step
+
+future sequence. End-of-episode padding repeats the final action and masks
+
+padded positions out of the loss. Force history includes the current sample and
+
+the preceding samples up to a length of 30; a short initial history is padded
+
+on the left with the first available value. Start sampling is resampled across
+
+training epochs. Its existing phase sampler upweights the one-second precontact
+
+period by five relative to free and contact periods, using the recorded force
+
+thresholds of 3.0 and 1.2 N. The offline sampler uses this force-derived phase
+
+information for all three conditions, including A. A’s policy still receives no
+
+force observation or force target.
+
+
+                                                                            28
+   Normalization bounds are computed from optimization-training episodes
+
+only. For channel d, the implemented min–max mapping is
+
+                                        x − md
+                       Nd (x) = 2                    − 1,                  (4.4)
+                                    max(Md − md , ϵ)
+
+where md , Md are the stored training bounds and ϵ is the numerical denomi-
+
+nator floor. State and action bounds are stored separately; force history uses
+
+the state-force bounds. Normalization does not force all future online values
+
+to lie within the training range.
+
+
+4.7      A Representative Motion–Force Pairing
+
+   Episode 29 is used to explain the temporal representation because it is
+
+the operator-selected replay source, rather than an episode chosen for low
+
+error. Figure 4.5 presents its actual position and force history. The transition
+
+from approach to loaded movement and then rising motion gives a structured
+
+association between location, loading, and time. Replay uses that association
+
+directly; learning uses many such future windows as supervision.
+
+   The force action derives from measured teaching interaction, not an inde-
+
+pendently recorded human command. Physical equivalence must be assessed
+
+from robot measurements because the mechanics and controller differ.
+
+
+
+
+                                        29
+                                     X relative       Y relative
+                            40
+Position (mm)
+
+
+
+
+                            20
+
+                             0
+
+                   −20
+
+                   −40
+
+
+                     210
+  Stored Z (mm)
+
+
+
+
+                     200
+
+                     190
+
+                     180
+
+                     170
+
+
+                                                                                                 fx    fy        fz
+         Native force (N)
+
+
+
+
+                            20
+
+
+                            10
+
+
+                             0
+                                 0                2      4           6           8          10    12        14
+                                                               Original paired source time (s)
+
+
+Figure 4.5: Teaching episode 29 on the original paired source-time axis. XY is task
+relative, Z remains in the stored absolute convention, and force is the native-axis
+cleanup signal. The 175 mm line is the offline cleanup boundary. The curves are not
+a desired-versus-measured robot force-tracking comparison.
+
+
+
+
+                                                                        30
+Chapter 5
+Force-Conditioned
+Motion–Force Skill Learning
+
+5.1     Learning Objective and Observation In-
+        terface
+
+   The learning problem is to generate a future local skill from the execution
+
+context, while preserving a joint representation of movement and target loading.
+
+A conditioned sequence can change at a later inference call when the robot
+
+reaches a different pose or contact state. The policy is not asked to estimate
+
+scratch depth, choose an abrasive, or output a separate completion decision.
+
+   For the force-observing model, the physical observation at index k is
+
+
+                  ok = Ik , qek , fkmeas , fk−L+1:k
+                                            meas
+                                                    
+                                                      ,   L = 30.          (5.1)
+
+
+The numerical state has nine components: six Cartesian pose values and
+
+three current force values. History has shape 30 × 3. Only Fx , Fy , Fz enter
+
+this observation; the sensor’s torque channels do not. The input image is the
+
+single 240 × 424 RGB view. Images are converted to floating-point tensors
+
+and normalized using the implemented RGB channel means and standard
+
+deviations.
+
+   The action target is a normalized 128 × 9 sequence of task-relative position,
+
+rotation vector, and teaching-derived target force. Position and orientation
+
+describe the tool reference, whereas force describes a controller-level target.
+
+Both appear in the same sequence so that their temporal correspondence can
+
+be learned. The action horizon corresponds to approximately 4.27 s on the
+
+                                           31
+nominal 30 Hz action grid. Its last sample is at 127/30 s relative to the first,
+
+which distinguishes a sample count from an endpoint-to-endpoint duration.
+
+
+5.2      Implemented Observation Encoder
+
+   The active model is the Flow RGB policy in the archived training snapshot.
+
+It uses a frozen DINOv3 ViT-small patch-16 image backbone, a state MLP, a
+
+one-layer force-history GRU, and a fusion MLP. The separate encoder mod-
+
+ules available elsewhere in the repository do not determine this checkpoint’s
+
+architecture.
+
+   The visual branch combines the global image feature with a feature pooled
+
+from a fixed TCP interaction ROI. The ROI is constructed internally from
+
+reference image dimensions 424 × 240, center (253, 120), and area-fraction
+
+parameter 0.25. The DINO patch features in that ROI are pooled by the
+
+configured attention mechanism. Global and ROI features are each projected
+
+to 512 components. The ROI is a calibrated interaction-region prior, not an
+
+external defect mask and not a prediction of surface damage.
+
+   The state MLP encodes all nine normalized state components into 256
+
+components. A GRU with input dimension three and hidden dimension 64
+
+encodes the force history, with its final hidden state contributing to fusion. The
+
+fused condition is 256-dimensional. Thus the current force appears both in the
+
+state vector and as the last history sample. There is no learned moment-history
+
+branch, LSTM comparison, or termination head in the evaluated configuration.
+
+
+5.3      Flow Matching Sample Construction
+
+   Flow Matching learns a field that transports a simple noise distribution
+
+toward the demonstrated sequence distribution [10]. The following equations
+
+describe the particular implemented construction, rather than all possible
+
+
+                                       32
+       RGB                          State                    Force history
+   240 × 424 × 3                pose6 + force3                  30 × 3
+
+
+  Frozen DINOv3                   State MLP                 One-layer GRU
+      global +                        256                         64
+     TCP ROI
+     512 + 512
+
+
+        Concatenate and fuse to 256-dimensional condition
+
+
+                    Conditional temporal U-Net
+        noisy action zs + flow-time embedding + condition
+
+
+
+                    Vector field on 128 × 9 actions
+                10 flow updates → pose–force sequence
+
+Figure 5.1: Actual force-observing policy configuration, shown conceptually. In
+B, the current-force and history tensors are zeroed after normalization while the
+history branch remains. A uses pose6 state/action and omits force history. The flow
+vector field has the same sequence shape as its action input.
+
+
+
+
+                                        33
+Table 5.1: Architecture and training settings for the force-cleanup checkpoints
+used in E1/E2.
+
+ Item                                          Stored value
+ Backbone / trainable status                   DINOv3 ViT-small, patch 16 / frozen
+ State / history / global condition            256 / 64 / 256 components
+ Temporal U-Net channel widths                 256, 512, 1024
+ Convolution kernel / groups                   5/8
+ Flow-time embedding                           256 components
+ Action horizon / force-history length         128 / 30 samples
+ Loss / flow integration updates               Masked MSE / 10
+ Optimizer                                     AdamW, learning rate 10−4
+ Weight decay / optimizer betas                10−5 / (0.95, 0.999)
+ Batch size / training seed                    12 / 0
+ Training epochs / warmup                      500 / 10 epochs
+ Learning-rate schedule                        Cosine; minimum 10−6
+ Gradient norm clip                            1.0
+
+
+flow-matching paths.
+
+    Let A ∈ RH×da be a demonstrated action chunk after action normalization,
+
+with da = 9 for B/C and da = 6 for A. Independently sample a noise chunk
+
+Z0 ∼ N (0, I) with the same shape and a scalar flow time
+
+                           s ∼ U(ε, 1 − ε),       ε = 10−4 .                  (5.2)
+
+The source implementation uses
+
+                     Zs = (1 − s)Z0 + sA,           U = A − Z0 .              (5.3)
+
+The vector-field network vθ (Zs , s, ck ) predicts U , conditioned on the encoded
+
+observation ck = Eθ (ok ). The scalar s belongs to a dimensionless generative
+
+process. It is unrelated to the physical polishing time t or the future sample
+
+index j.
+
+    Let mj equal one when future step j has actual episode support and zero
+
+when it is padded. The implemented per-batch objective is
+                     X
+                         mbj [vθ (Zsb , sb , cb )jd − (Ab − Z0,b )jd ]2
+                         b,j,d
+                LFM =                      P                            .   (5.4)
+                                    da max 1, b,j mbj
+
+                                          34
+Here b indexes batch elements, j future action steps, and d action coordinates.
+
+A new noise tensor and flow time are sampled for the training evaluation.
+
+All valid normalized coordinates contribute to the same MSE. There are no
+
+additional orientation-geodesic, target-force-tracking, material-removal, or
+
+completion losses in this configuration.
+
+   The conditional temporal U-Net operates along the action-sequence di-
+
+mension. Its residual blocks combine temporal convolutions with the global
+
+observation and flow-time condition. The configured channel levels are 256,
+
+512, and 1024; convolutional blocks use GroupNorm and Mish nonlinearities.
+
+These choices parameterize the field rather than creating a separate head
+
+for each physical objective. In particular, a lower force-related loss is not
+
+computed independently from the motion coordinates.
+
+
+5.4      Flow Integration and Physical Timing
+
+   At inference, a fresh Gaussian chunk Z (0) is generated. With M = 10 and
+
+h = 1/M , the source applies
+
+    Z (m+1) = Z (m) + h vθ Z (m) , (m + 21 )h, ck ,
+                                                 
+                                                      m = 0, . . . , M − 1.   (5.5)
+
+This is the exact explicit update with a midpoint flow-time argument used in
+
+the code. It is not a two-stage midpoint Runge–Kutta solver: no intermediate
+
+state evaluation is computed. The final sequence is denormalized using the
+
+stored action bounds, and its relative XY coordinates are restored before
+
+execution. When the implemented direction-transfer option is active, observa-
+
+tion XY and the single-camera policy image are aligned before conditioning,
+
+and generated XY is inversely rotated before center addition, as defined in
+
+Section 3.5. This adapter surrounds the learned generator without changing
+
+its training objective or adding a predicted direction channel. It is disabled in
+
+the evaluated E1/E2 runs.
+
+                                        35
+   Ten flow updates generate an entire chunk. They are not ten physical
+
+polishing steps, and the physical action grid does not run at the flow-integration
+
+frequency. Online generation is triggered through a 5 Hz inference timer but
+
+is gated by existing plan age: the nominal stride is 120 samples at 30 Hz, or
+
+four seconds of reference progression. The actual recorded calls are separated
+
+by timer scheduling and inference latency as well. This gives observation-
+
+conditioned replanning at chunk boundaries, not a claim of continuous high-
+
+frequency strategy correction.
+
+   The force history also has two time interpretations. In the dataset, 30
+
+samples on a nominal 30 Hz grid describe approximately one second of historical
+
+context. Online, the adapter retains the most recent 30 force callback values
+
+and left-pads an insufficient history; it does not resample them onto an exact
+
+one-second clock. A 20 Hz recording cap for diagnostic CSV files does not
+
+specify the policy callback rate. The history length is therefore reported as a
+
+sample count, with its nominal training duration stated separately.
+
+
+5.5      Separating Force Output from Force Ob-
+         servation
+
+   The three E2 conditions implement different information contracts. A has
+
+a six-dimensional pose state and six-dimensional pose action, with no force-
+
+history encoder or force supervision. An external constant target is supplied
+
+by the execution interface. B retains the nine-dimensional action and the
+
+same history architecture as C, but the current-force part of its normalized
+
+state and its normalized history tensor are replaced by zeros. C retains the
+
+measured-force inputs.
+
+   Masking occurs in the dataset/model conditioning path during training
+
+and again at the inference boundary. It does not alter the force-action target.
+
+
+
+                                       36
+Table 5.2: Selected checkpoints. Epoch values follow the stored zero-based conven-
+tion. Validation losses have different action dimensions for A versus B/C and are
+not task-performance scores.
+
+      Model   State/action dim.   Best epoch     Final epoch   Best val. loss
+      A                    6/6              39          499        0.049722
+      B                    9/9              42          499        0.069948
+      C                    9/9              42          499        0.066444
+
+
+Because masking is applied after normalization, a zero conditioning value is a
+
+neutral network input, not a declaration that physical measured force is zero
+
+newtons. B remains a separately trained model, rather than C evaluated with
+
+a missing input it was never trained to receive.
+
+   The force signal is still used by the common executor and lower-level
+
+controller in A and B. It is also used by the existing offline phase sampler.
+
+Thus “force observation OFF” refers specifically to the policy’s conditioning
+
+channels. Chapter 7 uses this distinction to interpret the A/B comparison as a
+
+force-output comparison and B/C as a force-observation comparison, subject
+
+to the limitations of separate single-seed training.
+
+
+5.6       Training Completion and Checkpoint Se-
+          lection
+
+   The recorded training completed 500 epochs per condition, ending at zero-
+
+based epoch 499. The deployed best checkpoints are selected by minimum
+
+validation loss, as confirmed by both the model manifest and the checkpoint
+
+metadata. Table 5.2 distinguishes the configured duration from the selected
+
+epoch.
+
+   Validation evaluates the same flow-field objective using held-out episodes.
+
+Its minimum selects a generative model according to that objective, not
+
+according to robot task completion or measured finish quality. Since noise
+
+
+
+                                       37
+and flow time enter the loss evaluation, the numerical minimum also should
+
+not be interpreted as a deterministic physical optimum. There is one recorded
+
+training seed per condition. Five robot repetitions per condition evaluate
+
+execution of that trained model; they do not constitute five independently
+
+trained policies.
+
+   The resulting method offers a concrete mechanism for coupling motion
+
+and target loading under observations. Whether the mechanism improves a
+
+given local task remains an empirical question. Its demonstrated function is
+
+generation and deployment of the specified action representation; its broader
+
+value is assessed alongside rules and replay in the following chapters.
+
+
+
+
+                                      38
+Chapter 6
+Robot Execution and
+Contact-Task Evaluation
+
+6.1      From a Skill Sequence to Robot Com-
+         mands
+
+   The generated sequence is an upper-level reference. Its physical meaning
+
+depends on the execution system that samples it, connects new plans, gates
+
+force, and transmits commands to the existing controller. A common execution
+
+layer is therefore necessary for interpreting differences between providers.
+
+   The provider interface supplies a time array, pose–force values, a plan
+
+identifier, and whether the plan is finite. R supplies a prescribed finite path
+
+with a recipe force. T supplies a finite teaching sequence with its original time
+
+axis. C supplies successively generated chunks from observations. Relative
+
+XY positions are restored using the frozen task origin before commands
+
+are interpreted in robot-base position coordinates. In the optional direction-
+
+transfer path, inverse XY rotation precedes that addition; the evaluated
+
+E1/E2 configuration uses translation alone. This restoration occurs before
+
+downstream command conditioning. The accompanying force values remain
+
+controller targets, with their frame interpreted by the lower-level configuration.
+
+   The timed sampler uses elapsed reference time rather than selecting the
+
+closest spatial waypoint. It linearly interpolates position and force and inter-
+
+polates orientation on SO(3). This preserves the association between a source
+
+time and its requested pose/force. It does not guarantee identical physical
+
+feed velocity, because downstream conditioning and contact dynamics can
+
+                                       39
+alter motion.
+
+
+6.2     Shared Pose Conditioning and Plan Con-
+        nection
+
+   The evaluated E1 configuration applies the same archived pose conditioner
+
+to R, T, and C. Earlier metadata within the profile still refers to its initial
+
+C-only introduction; the active shared R/T/C wrapper and recorded runtime
+
+establish the later comparison’s actual scope. R/T are presented through
+
+a private 30 Hz, 128-point pose view with a 120-point stride, while their
+
+original finite force/time plans remain the source for force sampling and phase
+
+boundaries.
+
+   The conditioner smooths XYZ with a 35-point moving average and orien-
+
+tation with a quaternion mean. The latter avoids averaging rotation vectors
+
+through their branch cut near π. Edge padding is confined to the filter’s
+
+window construction. A replacement plan is joined to the preceding reference
+
+and velocity over 0.5 s. Its quintic connection weight is
+
+
+           β(u) = 10u3 − 15u4 + 6u5 ,        u = min(1, (t − tb )/0.5),   (6.1)
+
+
+where tb is the connection start. Position connects from a velocity-extended
+
+anchor; orientation uses a bounded relative rotation. The conditioner also
+
+retains its velocity state across replacement plans and bounds the change in
+
+commanded velocity.
+
+   These operations alter the reference actually presented to the command
+
+loop. They are shared processing choices, rather than evidence that the
+
+generated raw chunks are intrinsically smooth. Likewise, T’s time scaling of
+
+one describes its source-time replay, not equality between the demonstrator’s
+
+and robot’s measured instantaneous speed.
+
+
+
+                                        40
+                                Provider sequence
+                  raw learned / prescribed pose and target force
+
+
+                   Task-origin restoration and timed sampling
+                   35-point pose conditioning; 0.5 s connection
+
+
+                Common contact gate and command conditioning
+                       tangential force disabled; gain,
+                       speed, acceleration, force slew
+
+
+               Transmitted Cartesian pose + controller target force
+                          125 Hz command publication
+
+
+                      Existing contact controller and robot
+                      measured TCP and base-frame wrench
+
+Figure 6.1: Execution interface and distinct command stages. The transmitted
+target is observable in executor logs; the controller-applied target is not available as
+a synchronized time series. This conceptual diagram describes command processing,
+not measured force-tracking performance.
+
+
+6.3       Command Rates, Limits, and Force Gat-
+          ing
+
+     The command loop uses a nominal 0.008 s period, corresponding to 125
+
+Hz. The common proportional command-update gain is 15 s−1 , with per-
+
+axis position speed cap 10 mm/s and angular cap 40 degrees/s. The pose-
+
+conditioning acceleration settings are 25 mm/s2 and 100 degrees/s2 . The
+
+force-command slew limit is 30 N/s. These are command-processing settings,
+
+not experimentally measured limits of physical tool speed or contact force.
+
+     For a scalar translational component, the shared update can be represented
+
+as
+
+            δxi = clip min(1, K∆t)(x⋆i − xcmd ), −vimax ∆t, vimax ∆t ,
+                                                                    
+                                          i                                       (6.2)
+
+followed by the existing acceleration conditioning. x⋆i is the sampled condi-
+
+tioned reference, K = 15 s−1 , and ∆t is bounded by the nominal control period.
+
+                                          41
+Orientation uses a relative-rotation increment instead of direct component-wise
+
+interpolation across a branch cut.
+
+   The operational gate reads measured robot-base FzB , enters contact at 3.0
+
+N, and leaves at 1.2 N. While the gate is OFF, the requested normal target is
+
+suppressed. The command’s tangential force components are set to zero in the
+
+evaluated common executor. Thus B/C learn a three-component force action,
+
+but the deployed comparison transmits only its normal-force component as a
+
+nonzero target. Their three-component measured-force observations can still
+
+inform generation.
+
+   The target’s final approach to its requested value is affected by gain and
+
+slew conditioning. A nominal constant recipe is therefore distinct from the
+
+full transmitted force curve, particularly around contact onset and release.
+
+In E1, R uses 18 N. In E2, A uses an external 23 N target. The operator’s
+
+approximate 20 N teaching intention, those recipe values, and the measured
+
+base-force distribution describe different quantities.
+
+
+6.4      Existing Lower-Level Contact Regulation
+
+   The archived controller receives a Cartesian pose reference and a signed
+
+target-force vector. Its TCP-coordinate path rotates measured base vectors
+
+into the local frame, performs contact-control computation there, and restores
+
+the resulting motion to the robot frame. The stored controller configuration
+
+identifies TCP force coordinates and an existing mass/damping adaptation
+
+mode. This lower-level adaptation is a shared control asset; it is not the
+
+upper-level residual surface-repair policy proposed in the old thesis.
+
+   The underlying admittance implementation defines position error e =
+
+xd − xc and force error Fd − Fext . Its scalar virtual dynamics can be written as
+
+
+                M ë + Dė + Ke = Fd − Fext ,      xc = xd − e,             (6.3)
+
+                                       42
+where xd is the supplied motion reference, xc the compliant motion output, and
+
+M, D, K the virtual mass, damping, and stiffness. This controller calculation
+
+converts position to meters internally; its translational parameter units are kg,
+
+N s/m, and N/m. The source discretizes the relation using the Tustin form
+
+and contains mode-dependent parameter updates. Equation (6.3) explains the
+
+interaction role; it does not replace the deployed switching and adaptation
+
+logic with a newly designed controller.
+
+   Teaching force, policy output, transmitted target, and measured force must
+
+remain distinct. The available axis correspondence permits rotating teaching
+
+measurements into robot-base coordinates for analysis. It does not provide
+
+the actual controller-applied reference after all internal processing. For that
+
+reason, the thesis does not subtract published TCP target Fz directly from
+
+measured base Fz and call the result tracking RMSE.
+
+
+6.5      Approach and Contact-Start Synchroniza-
+         tion
+
+   R and T retain an existing one-time contact-start synchronization. Before
+
+confirmed contact, their approach reference continues to progress up to the
+
+prescribed processing boundary. Once distinct received force observations
+
+sustain the existing ON state for 0.2 s, the reference clock is aligned to that
+
+boundary. After the alignment, the finite strategy advances from its source
+
+timing; repeated synchronization is not applied.
+
+   This mechanism matters because the physical surface can be encountered
+
+before or after a nominal geometric boundary. It supplies feedback to fixed
+
+strategies without learning a policy. C instead generates its own approach and
+
+later chunks from observations. Common contact gating and lower-level force
+
+regulation remain active in all methods.
+
+
+
+                                       43
+   The normal departure is also provider dependent. R includes a planned
+
+zero-force upward segment, T contains the selected teaching exit, and C can
+
+generate an exit within its pose–force sequence. The evaluator recognizes the
+
+result of these actions. It does not insert a new retraction to make a deficient
+
+sequence satisfy the task.
+
+
+6.6      The Executed E1 Contact Procedure
+
+   E1 uses a fixed 25 mm-wide XY band between P0 = (445, 395) mm
+
+and P1 = (487, 345) mm. Its length is 65.299 mm and it is divided into
+
+14 longitudinal segments. The band concerns the TCP center; it is not a
+
+measurement of the contact footprint.
+
+   Let d = (P1 −P0 )/ℓ, ℓ = ∥P1 −P0 ∥, and let n be a unit vector perpendicular
+
+to d in the XY plane. For TCP XY position pxy , define longitudinal and
+
+transverse coordinates
+
+
+                     u = dT (pxy − P0 ),        v = nT (pxy − P0 ).        (6.4)
+
+
+Band occupancy requires 0 ≤ u ≤ ℓ and |v| ≤ 12.5 mm. An ordered loaded
+
+candidate starts at an end segment and advances through adjacent first visits
+
+toward the opposite end. Contact OFF, missing support, or leaving the band
+
+breaks a candidate. Revisiting a previously visited segment does not create
+
+additional forward progress. Completion of the 14-segment sequence establishes
+
+the required pass. There is no per-segment 0.466 s dwell requirement in this
+
+primary criterion.
+
+   The primary E1 session uses pass height ref v2. The evaluator first
+
+confirms contact for 0.2 s. Once the first continuous loaded ordered pass
+
+succeeds, it freezes the working-height reference zwork ref . This is the time-
+
+weighted lower median of actual TCP Z over that successful candidate’s jointly
+
+
+                                           44
+observed, in-band, contact-ON support S:
+                                    Z                         Z     
+               zwork ref = inf z :       1[Z(t) ≤ z] dt ≥ 12       dt .    (6.5)
+                                     S                         S
+
+
+Here Z(t) is linearly interpolated only within valid recorded pose support, in
+
+millimeters, and the integrals weight the supported physical duration. Failed
+
+candidates contribute no support to the frozen reference. Approach, exit, and
+
+recovery are outside S. After the required pass, both the OFF state and
+
+
+                           Z(t) ≥ zwork ref + 5 mm                         (6.6)
+
+
+must hold simultaneously for 0.2 s. Contact formation, the ordered loaded pass,
+
+and this exit conjunction define TASK COMPLETED. The criterion recognizes the
+
+specified contact procedure; it does not detect completed material removal.
+
+   The 14 October development evaluator instead referenced the first con-
+
+firmed contact height. Its original results and height-only offline replay are
+
+retained as historical material in Appendix B.3, separate from the physically
+
+executed 15 October primary comparison.
+
+
+6.7     Completion, Observation Support, and
+        Time Windows
+
+   The primary E1 observer is received observations v2. Each new pose
+
+and wrench subscription receipt retains its sample identifier and host monotonic
+
+timestamp. The observer constructs supported intervals using pose brackets
+
+and zero-order-held force. Gaps longer than 0.2 s remain unobserved. The
+
+consumed intervals record their source receipt identifiers, interval bounds, and
+
+decision times; repeated reads of the command loop’s cached state are not
+
+counted as new observations.
+
+   Offline reproduction uses those exact consumed intervals and the original
+
+receipt records, with no post-stop bracket added to the decision evidence.
+
+                                          45
+The archived report confirms agreement of online and offline completion and
+
+height-reference fields for all 15 primary executions. This thesis reuses that
+
+verification and checks the original online snapshots while extracting the
+
+receipt traces. It does not rerun the evaluator with new thresholds or infer
+
+higher-rate samples from the lower-rate CSVs.
+
+   The primary completion time is the first procedural-completion time
+
+measured from execution start. Incomplete attempts have no completion time.
+
+The E1 force-analysis window begins at execution start and ends at first
+
+completion, or at the first stop if the procedure is incomplete. Subsequent
+
+return or hold is excluded. The same window rule is applied to every provider.
+
+   Within this window, excess-force exposure is
+               Z t1
+                      max FzB (t) − Q95 , 0 dt,
+                                           
+   Jexcess =                                      Q95 = 30.812396273 N.     (6.7)
+                t0
+
+
+The reference is the existing episode-balanced, actual-time-weighted teaching
+
+cleanup distribution rotated to base axes, with the archived stored-Z candidate
+
+convention. It includes validation episodes because it describes the common
+
+teaching reference, not a fitted policy input. It is an empirical analysis upper
+
+reference, not a damage, safety, or effective-polishing limit. The lower quantile,
+
+approximately 0.4498 N, is not used as a contact threshold. Low or zero
+
+native-force samples can have nonzero projected base components and do not
+
+establish meaningful contact.
+
+   E2 has a different stopping protocol: the recorded window ends at the first
+
+operator finish request. A terminal software event labeled normal completion
+
+verifies the existing stop path rather than task achievement. A4 demonstrates
+
+why the two must be separated. The first request time is retained even when
+
+the later operator report identifies the task as incomplete.
+
+
+
+
+                                           46
+6.8      Execution Timing and Checks
+
+   The action grid (30 Hz), inference timer (5 Hz), plan stride (about 4 s), and
+
+command publication (125 Hz) describe different mechanisms. In the primary
+
+E1 cohort, actual pose and force receipt-event records are approximately 125
+
+Hz. E2 retains the earlier approximately 18 Hz archived feedback CSVs under
+
+a 20 Hz logging cap. Neither rate identifies the sensor’s acquisition frequency or
+
+a policy replanning rate. Existing timing, freshness, workspace, and stop/hold
+
+checks remain common infrastructure.
+
+
+
+
+                                       47
+Chapter 7
+Experimental Evaluation
+
+7.1      Evaluation Questions and Recorded Co-
+         horts
+
+   The experiments examine the execution value of a local motion–force
+
+skill at two levels. E1 varies how the strategy is supplied while retaining the
+
+common contact-control environment. E2 varies force output learning and
+
+policy force observation. These comparisons address different questions, even
+
+though they use the same family of force-cleanup checkpoints.
+
+   The primary E1 cohort is the nominal development session recorded on
+
+15 October 2026, E1 CT pass height v2 nominal dev 20261015. Its frozen
+
+configuration is e1ct 46de718a23a2a7cf, with evaluator pass height ref v2
+
+and observer received observations v2. Each of the 15 original planned
+
+slots has one started execution: five each of R, T, and C, with no non-start,
+
+retry, or exclusion in this primary set. Each of five blocks includes one execution
+
+per method; the recorded seed 20261014 determines the shuffled order within
+
+blocks. The original report inventory fixes membership even though the live
+
+session list later contains an additional C execution.
+
+   E2 is the 13 October force-cleanup session, with five attempts each of A, B,
+
+and C. Its actual execution order is A, then B, then C, regardless of a different
+
+order in the preparation notes. All 15 are retained. The A4 task outcome uses
+
+the operator’s later, explicit field correction: it did not transition to contact
+
+release and was stopped while maintaining contact. The original event labels
+
+and request timestamps are preserved.
+
+
+                                        48
+   The primary analysis therefore contains 30 attempts, 15 in each experiment.
+
+C6 is one additional E1 diagnostic after the planned comparison and is excluded
+
+from its primary means. The two C groups and the historical development
+
+cohorts are kept separate. Mean and sample SD describe run-level observations;
+
+repeated sensor samples are not independent trials.
+
+
+7.2     Platform, Surface, and Experimental Con-
+        trols
+
+   The local task uses the UR10 platform, the robot-mounted processing
+
+tool, and a marked plate visible in RGB. The primary E1 report identifies the
+
+robot as UR10 CB3 and its force/torque sensor as AIDIN AFT200-D80. The
+
+common execution settings are those in Chapter 6. The task is to approach,
+
+process the local region under load, and unload with an upward exit. The
+
+mark provides visible task context, while measured TCP pose and base-frame
+
+wrench provide the quantitative execution signals.
+
+   The records do not supply independent measurements of abrasive state,
+
+actual spindle RPM, specimen alloy, scratch depth, mass loss, or roughness
+
+change. The nominal placement is recorded as operator applied; an approximate
+
+configured surface height is not an independently measured per-trial height.
+
+E1 mixes methods within blocks, whereas E2 retains its A–B–C collection
+
+order. Setup consistency, order, and operator timing are considered together
+
+in Chapter 8.
+
+
+7.3     Metrics, Windows, and Outcome Handling
+
+   E1 uses three primary quantities: procedural completion rate, first com-
+
+pletion time, and excess-force exposure relative to the common teaching
+
+Q95 . Completion requires the contact–ordered loaded pass–exit procedure in
+
+
+                                      49
+Table 7.1: Complementary comparisons. Every condition retains common lower-
+level force feedback and its experiment’s shared command-processing configuration.
+
+ Study        Condition       Strategy and force interface
+ E1           R               Rule path, 18 N recipe, existing contact-start
+                              synchronization.
+              T               Cleanup episode 29 pose/force/time replay, scaling
+                              1.0, existing contact-start synchronization.
+              C               Conditioned Flow pose–force chunks with
+                              measured-force observation.
+ E2           A               Learned pose only; no policy force
+                              observation/history; external 23 N target.
+              B               Learned pose and force; current-force and history
+                              conditioning zeroed.
+              C               Learned pose and force; measured-force
+                              conditioning enabled.
+
+
+Chapter 6. Time runs from execution start to the first TASK COMPLETED;
+
+initial PTP alignment and process startup are excluded. The force reference is
+
+30.812396273 N. Its excess integral covers the entire same interval, including
+
+approach, waiting, loaded movement, and exit, without cropping to the band.
+
+Later hold, recovery, and home motion are excluded. The legacy segment-dwell
+
+statistic is not a completion requirement.
+
+   Completion-time means use completed executions only and are always
+
+accompanied by their denominators. Incomplete attempts have a missing
+
+completion time, not a time equal to their stop time. Non-started registra-
+
+tions, unavailable observations, incomplete procedures, and later return/hold
+
+outcomes are different categories. In the 15 started E1 trials, none is classified
+
+as observation unavailable.
+
+   For E2, the available timing measure is execution start to the first operator
+
+finish request. For completed attempts, this operator-based interval can include
+
+lift, a subsequent descent, and operator response. It is neither an independently
+
+measured earliest removal time nor pure processing time, and differs from E1’s
+
+automatic first-completion definition. For A4, the 28.750 s interval is time to
+
+                                       50
+Table 7.2: Primary E1 nominal development results, 15 October 2026. The original
+five runs per method, including C5, are retained. Time and excess-force exposure are
+mean ± sample SD, with n = 5 in every cell. C6 is excluded from these statistics.
+
+          Method    Completed/started           Time (s)     Jexcess (N s)
+          R                 5/5           29.537 ± 0.075   0.000 ± 0.000
+          T                 5/5           12.897 ± 0.041   0.125 ± 0.254
+          C                 5/5           13.420 ± 2.630   1.440 ± 2.785
+
+
+interruption. Mean force, observed peaks, the existing 3 N contact diagnostic,
+
+and XY travel retain all five attempts per condition.
+
+   Force statistics retain native receipt timing with ZOH and leave gaps longer
+
+than 0.2 s unobserved. TCP paths use interpolation within recorded support.
+
+For this revision, the existing E1 force integral is independently recomputed
+
+from original receipt events for the fixed 15 primary runs and C6, matching
+
+their archived values. E2 is reaggregated from the previously verified per-run
+
+CSV, and original start/stop events are checked; its existing native force/path
+
+validation is reused. The evaluation state machine, force-axis correspondence,
+
+and storage checks are also reused. Mean ± sample SD uses runs as the sample
+
+unit with ddof = 1, and is not a confidence interval or an equivalence test.
+
+
+7.4      E1: Nominal Contact-Task Performance
+
+   All 15 originally planned executions complete the required contact–loaded-
+
+pass–exit procedure. Completion is 5/5 for R, T, and C under the same
+
+physically executed pass height ref v2 criterion (Table 7.2). Every run has
+
+an observed continuous loaded ordered pass through all 14 segments, followed
+
+by the required unloaded rise. No primary run is unstarted, retried, excluded,
+
+or classified as observation unavailable.
+
+   T has the shortest observed mean completion time and smaller time
+
+dispersion than C. R’s longer interval reflects its prescribed approach, path,
+
+
+
+                                        51
+                                                                                                       C5
+                                         5/5        5/5        5/5
+                                  30                                                    6
+First procedural completion (s)
+                                                                                        5
+                                  25
+                                                                                        4
+                                  20                           C5
+
+
+
+
+                                                                       Jexcess (N s)
+                                                                                        3
+
+                                  15                                                    2
+
+                                  10                                                    1
+
+                                                                                        0
+                                   5
+                                                                                       −1
+                                   0
+                                         R           T          C                           R   T       C
+
+
+Figure 7.1: Original planned E1 C1–C5, R1–R5, and T1–T5. Colored points show
+individual runs; black diamonds and bars show mean and sample SD for each metric.
+C5 is retained and labeled. C6 is outside the primary comparison. SD bars describe
+dispersion and are not confidence intervals.
+
+
+contact synchronization, and departure, rather than an isolated computational
+
+planning cost. The fact that both rules and replay complete the procedure
+
+makes them substantive alternatives for this fixed task. The result demonstrates
+
+an executable generated skill without making imitation learning necessary for
+
+completing the nominal operation.
+
+                                  The excess integral is zero in all five R runs. T’s mean is 0.125 N s, whereas
+
+C’s is 1.440 N s. The mean per-run observed peaks are 22.69±0.44 N for R,
+
+32.88±3.14 N for T, and 34.70±3.15 N for C. These describe different force
+
+exposure under the same analysis reference. Zero excess does not establish
+
+superior surface quality or a process safety margin.
+
+                                  Together, the procedural outcomes, paths, and force traces establish physi-
+
+cal execution of the three supplied strategies and show their distinct time–force
+
+characteristics. The five completions per method describe this cohort rather
+
+than a population success probability or equivalence of the methods. Height
+
+changes, reference offsets, new shapes, and surface-quality outcomes are outside
+
+the evaluated conditions.
+
+
+
+                                                                     52
+              40
+                                         R1          R2              R3        R4       R5             Teaching Q95
+
+ R FzB (N)    30
+
+              20
+
+              10
+
+               0
+
+
+              40
+                                         T1           T2             T3        T4       T5             Teaching Q95
+
+              30
+ T FzB (N)
+
+
+
+
+              20
+
+              10
+
+               0
+
+
+              40
+                                         C1          C2              C3        C4       C5             Teaching Q95
+
+              30
+ C FzB (N)
+
+
+
+
+              20
+
+              10
+
+               0
+
+                     0              5               10            15             20               25            30
+                                                     Time from execution start (s)
+
+
+Figure 7.2: Actual received robot-base Fz for all 15 primary E1 runs, from
+execution start to first completion. Values are displayed with ZOH without additional
+smoothing or force normalization. The dashed line is the empirical teaching Q95
+analysis reference. C5’s larger peak and exposure remain visible.
+
+
+                              R                                      T                                 C
+                               R1             R4
+              400
+                               R2             R5
+              390              R3
+Base Y (mm)
+
+
+
+
+              380
+
+              370
+
+              360
+                                                           T1             T4                 C1            C4
+              350
+                                                           T2             T5                 C2            C5
+              340                                          T3                                C3
+
+                    440    460     480        500    440     460     480        500   440      460     480       500
+                          Base X (mm)                       Base X (mm)                       Base X (mm)
+
+
+Figure 7.3: All primary E1 TCP-center XY trajectories through first completion,
+including approach and exit. The shaded region is the fixed 25 mm task band;
+squares mark window endpoints. The band is not a measured contact footprint or
+removal map.
+
+
+                                                                53
+Table 7.3: Individual E1 executions with the same recorded evaluator. C5 belongs
+to the original primary five; C6 is additional diagnostic evidence. Times are relative
+to each execution start. Single-run values are shown without mean or SD.
+
+         Metric                        Original C5 (primary)   C6 (diagnostic)
+         Completion time (s)                         18.024            11.728
+         First confirmed contact (s)                  4.464             4.420
+         Required pass complete (s)                  16.488            10.980
+         Working reference Z (mm)                   174.209           174.411
+         Required exit Z (mm)                       179.209           179.411
+         Observed peak force (N)                     40.211            35.006
+         Jexcess (N s)                                6.413             0.471
+         Time above reference (s)                     1.829             0.260
+         Recorded contact losses                          1                 0
+
+
+7.5      E1: Original C5 and Additional Diagnostic
+         C6
+
+   The original primary C5 completes at 18.024 s, with Jexcess = 6.413 N s
+
+and observed peak 40.21 N. Its required loaded pass completes at 16.488 s.
+
+These values remain in every primary C summary. The additional execution
+
+at 23:35 on the same date is displayed as C6. Its source retains repeat index
+
+5 and a retry link to C5; those original fields are preserved in the manifest,
+
+while the analysis treats it as an additional post-comparison diagnostic rather
+
+than replacing the planned slot.
+
+   C6 completes at 11.728 s, with Jexcess = 0.471 N s and peak 35.006 N.
+
+The original outcome file and actual receipt events support these quantities.
+
+Figure 7.4 shows that C5’s first successful pass occurs later, while initial
+
+contact confirmation occurs at a similar elapsed time. C5 records one contact
+
+loss and C6 none. These stage observations describe the traces and do not
+
+establish a failure mechanism.
+
+   C5’s longer execution and larger excess integral are not reproduced in
+
+C6. One additional execution does not show that the variability is resolved,
+
+that C5 was erroneous, or that the model improved. The original five-run
+
+
+                                           54
+                                          C5 (primary)                      C6 (additional diagnostic)
+                         40
+
+
+                         30
+      Measured FzB (N)
+
+
+
+
+                         20
+
+
+                         10
+
+
+                          0
+
+
+
+
+                        210
+ Measured base Z (mm)
+
+
+
+
+                        200
+
+
+                        190
+
+
+                        180
+
+
+
+                              0     5          10            15        0     5          10            15
+                                  Time from execution start (s)            Time from execution start (s)
+
+
+Figure 7.4: Separate traces for original C5 and additional C6. Top: received force
+with teaching Q95 dashed. Bottom: measured Z with required exit height dashed.
+Vertical dotted gray, dashed blue, and solid orange lines mark confirmed contact,
+required-pass completion, and first procedural completion. Full analysis windows
+are shown with a common time axis. C6 is not included in the primary mean.
+
+
+
+
+                                                                  55
+Table 7.4: E2 timing with A4 corrected to interrupted. Completed-time statistics
+use A n = 4, B/C n = 5; all-attempt intervals use n = 5 in every condition. Values
+are mean ± sample SD.
+
+                          Completed/   Completed          All-attempt
+              Condition                               n
+                          attempted     time (s)          interval (s)
+              A              4/5       17.65 ± 1.20   4   19.87 ± 5.07
+              B              5/5       18.81 ± 0.40   5   18.81 ± 0.40
+              C              5/5       15.83 ± 0.56   5   15.83 ± 0.56
+
+
+comparison remains the basis for R/T/C conclusions.
+
+
+7.6      E2: Target-Force Learning and Force Ob-
+         servation
+
+   E2 separates the two force roles by comparing A/B/C under the shared
+
+execution environment. A learns motion and uses an external constant force;
+
+B learns motion and force without policy force conditioning; C learns both
+
+with measured-force conditioning. The A/B comparison changes both the
+
+action dimension and the learned reference schedule. The B/C comparison
+
+retains the action and history architecture while changing force-conditioning
+
+information. All three are independently trained single-seed checkpoints.
+
+   Table 7.4 applies the corrected field outcome. A has four operator-reported
+
+completed attempts and one interrupted attempt. B and C have five operator-
+
+reported completed attempts each. A4 remains in the all-attempt statistics
+
+and has no successful completion time.
+
+   The completed A intervals average 17.65±1.20 s (n = 4), whereas its
+
+all-attempt interval averages 19.87±5.07 s (n = 5). B and C both complete
+
+five attempts. Their completed intervals are 18.81±0.40 s and 15.83±0.56 s,
+
+respectively. A4’s successful completion time remains null; its stop time is
+
+retained in the five-attempt interval, force, and travel statistics.
+
+   The B–C mean difference is 2.98 s. With tB and tC denoting the respective
+
+
+
+                                       56
+                                                                                      35                                                    350
+                                30       A4 stop
+
+                                                                                      30                                                    300
+Completion / interruption (s)
+
+
+
+
+                                                                                                                  Measured XY travel (mm)
+                                25
+
+
+
+
+                                                              Measured peak FzB (N)
+                                                                                      25                                                    250
+                                20
+                                                                                      20                                                    200
+                                15
+                                                                                      15                                                    150
+
+                                10
+                                                                                      10                                                    100
+
+                                 5                                                     5                                                     50
+
+
+                                 0                                                     0                                                      0
+                                     A             B   C                                      A        B     C                                    A   B   C
+
+
+Figure 7.5: All E2 attempts. A4 is shown as a cross at its interruption time. The
+time summary marks use completed attempts only. Force peaks and XY travel
+include all five attempts in each condition. Axes retain the full observed ranges.
+
+Table 7.5: E2 all-attempt force and motion statistics, n = 5 per condition. “Peak”
+is the mean of per-run measured peaks. Whole-window mean force includes approach
+and exit and is not a contact-only force-quality measure.
+
+                                           Condition       Mean FzB (N)                           Peak FzB (N)    XY travel (mm)
+                                           A                12.09 ± 4.14                           31.02 ± 1.46                     229.68 ± 59.50
+                                           B                11.40 ± 1.17                           32.42 ± 0.76                      205.84 ± 4.80
+                                           C                 9.36 ± 0.48                           31.26 ± 1.66                      189.22 ± 8.60
+
+
+five completed operator-based intervals, the descriptive percentage is
+
+                                                                                           tB − tC
+                                                             rt =                                  100 = 15.8%.                                           (7.1)
+                                                                                              tB
+
+It describes the recorded operator-based timing difference. It does not establish
+
+a causal productivity improvement, equal material removal, or a general benefit
+
+across every performance measure.
+
+                                The mean measured peaks are similar in scale across A, B, and C; C is
+
+not below A in the group mean. Whole-window mean force and XY travel
+
+are lower for C in this cohort. The shorter contact interval and different
+
+approach/exit timing can explain part of those differences, so lower mean
+
+force is not interpreted as more accurate force regulation or more effective
+
+material processing.
+
+                                The mean time with recorded FzB ≥ 3 N is 11.49±7.31 s for A, 10.08±1.04 s
+
+                                                                                                  57
+                                                           A1        A2    A3        A4   A5
+             30
+
+
+             20
+ A FzB (N)
+
+
+
+             10
+
+
+              0
+
+
+                                                           B1        B2    B3        B4   B5
+             30
+
+
+             20
+ B FzB (N)
+
+
+
+
+             10
+
+
+              0
+
+
+                                                           C1        C2    C3        C4   C5
+             30
+
+
+             20
+ C FzB (N)
+
+
+
+
+             10
+
+
+              0
+
+
+                  0          5          10            15              20        25         30
+                                        Time from execution start (s)
+
+
+Figure 7.6: All measured E2 base-force traces from execution start to first operator
+stop request. A4 remains in A’s five curves. Each curve uses native recorded values
+with ZOH; the plots do not infer a controller-applied force target.
+
+
+for B, and 7.26±0.38 s for C. These existing contact diagnostics describe
+
+temporal organization on the observed window; they do not define a new
+
+threshold for effective polishing.
+
+
+7.7               Phase Transitions and Execution Cases
+
+             A4 is a direct counterexample to treating every normal-completion software
+
+event as task success. The operator reports that the tool remained in contact
+
+rather than progressing to release, and interrupted the attempt after 28.750 s.
+
+Its measured mean FzB is 19.456 N and its interval with recorded force at or
+
+                                                 58
+                                   A4 — operator stopped                          B4 — gate transitions: 38
+
+                        30                                              30
+     Measured FzB (N)
+
+                        20                                              20
+
+
+
+                        10                                              10
+
+
+
+                         0                                               0
+
+
+
+
+                       210                                             210
+Measured base Z (mm)
+
+
+
+
+                       200                                             200
+
+
+                       190                                             190
+
+
+                       180                                             180
+
+
+                             0    5     10    15     20      25   30         0       5        10          15
+                                 Time from execution start (s)                   Time from execution start (s)
+
+
+Figure 7.7: Two retained E2 transition cases. A4 is included because of the operator-
+confirmed release-transition failure. B4 is included because it has the maximum
+recorded contact-gate transition count, 38. Full force and Z traces are shown. Rapid
+gate transitions are a software contact diagnostic, not an independently counted
+number of physical impacts.
+
+
+above 3 N is 24.564 s. The trace is consistent with prolonged loading. The field
+
+report establishes the task interpretation; the trace does not independently
+
+establish why the transition failed.
+
+                        B4 illustrates a different phenomenon: the common instantaneous gate
+
+toggles repeatedly near contact transitions, with 38 recorded changes. The
+
+group mean gate-transition counts are 2.6±0.9 for A, 12.4±14.8 for B, and
+
+3.6±1.7 for C. B’s dispersion is strongly influenced by B4; it is retained.
+
+Threshold crossings, baseline behavior, and transition timing can all affect
+
+these counts. They are not sufficient to diagnose an encoder failure or a
+
+physical contact-instability mechanism.
+
+                        E2 C shows a relatively compact range of operator-based intervals and
+
+XY travel, but B’s completed-time SD is smaller. Repeatability therefore
+
+
+                                                                  59
+depends on the quantity being considered. A leave-one-out deviation from
+
+other executions, where used in earlier diagnostics, would measure between-
+
+run repeatability rather than agreement with the teaching or controller force-
+
+tracking accuracy. The present primary comparisons use the explicitly reported
+
+timing, force, and travel quantities.
+
+
+7.8      Visible Marks and Surface-Quality Scope
+
+   Figure 7.8 shows the first started run of each E1 method, selected by run
+
+index without screening for the best image or result. The provider’s initial and
+
+final snapshots have different viewpoints and times as the tool moves. They
+
+can illustrate the marked task and visible appearance but cannot quantify
+
+common-area removal. All-trial numerical results accompany these examples.
+
+   The existing heatmaps are execution-derived model diagnostics in arbitrary
+
+units. Their values are not measured removal depth, roughness reduction, or
+
+scratch-removal percentage. They are therefore outside the primary success
+
+criterion. A visually diminished marking and a completed contact procedure
+
+can be useful observations without supporting a stronger claim about metal
+
+surface quality.
+
+
+7.9      Answers to the Research Questions
+
+   For RQ1, all three providers complete the required contact–loaded-pass–
+
+exit procedure in their five primary nominal executions. The generated skill is
+
+physically executable through the shared execution layer and existing controller.
+
+Replay has a shorter mean completion interval and smaller time dispersion
+
+than C, while C has greater mean excess-force exposure. Rules and replay
+
+are therefore effective alternatives for the fixed task; execution feasibility and
+
+superiority over replay are separate questions.
+
+
+                                        60
+                 R1 initial                                R1 final
+
+
+
+
+                 T1 initial                                T1 final
+
+
+
+
+                 C1 initial                                C1 final
+
+
+
+
+Figure 7.8: Actual provider snapshots from the original E1 R1, T1, and C1
+executions on 15 October 2026. Initial/final denote saved provider snapshots rather
+than matched metrology exposures; viewpoint, occlusion, and timing can differ.
+Visible marking changes do not measure scratch depth or surface restoration.
+
+
+
+
+                                        61
+           Video offset 1.69 s                          Video offset 6.76 s
+
+
+
+
+           Video offset 11.83 s                        Video offset 15.21 s
+
+
+
+
+Figure 7.9: Uniformly spaced camera-pane crops from the decodable portion of the
+first E2 C video. Only the adjacent diagnostic panel is omitted; camera overlays are
+retained. Times are video offsets, not synchronized stage-event times. The archived
+WebM ends prematurely and is not used to certify a complete exit sequence. A4
+has no archived video.
+
+
+
+
+                                        62
+   For RQ2, the force-output and force-observation configurations show dif-
+
+ferences in completion, timing, phase progression, and force use. C has a
+
+15.8% shorter mean operator-based completion interval than B, and A4 pro-
+
+vides a retained incomplete release transition. The results do not improve
+
+monotonically from A to B to C: C’s mean observed peak is not below A’s,
+
+and its completion-time SD is not below B’s. These observations characterize
+
+the implemented configurations; their interpretation and common limits are
+
+developed in Chapter 8.
+
+
+
+
+                                    63
+Chapter 8
+Discussion and Extensions
+
+8.1     What the Implemented Connection Estab-
+        lishes
+
+   The principal result is an implemented connection between a human-
+
+specified local task and an executable motion–force skill. The teaching repre-
+
+sentation supplies pose, loading, and timing together. The policy consumes
+
+observations and generates that same kind of sequence. The common executor
+
+and existing contact controller make the output actionable on the robot. E1
+
+and E2 then examine the physical behavior rather than equating a valid
+
+network output with successful processing.
+
+   The primary E1 comparison establishes that this connection produces an
+
+executable local contact skill. Rules, replay, and the learned provider each
+
+complete contact, the required loaded traversal, and exit in all five planned
+
+runs. Their execution characteristics differ: T has a shorter mean completion
+
+time and smaller time dispersion than C, and C has greater mean excess-force
+
+exposure. E2 then shows a shorter operator-based completion interval for
+
+the force-observing configuration than for B, together with an incomplete
+
+release transition in A4. The two comparisons support an implemented skill
+
+and configuration-dependent behavior while giving the fixed alternatives their
+
+observed value.
+
+   The comparison also clarifies what an execution-level result can establish.
+
+A generated rise can be learned as part of the demonstrated temporal structure.
+
+A gate can recognize unloading, and an evaluator can confirm a displacement.
+
+
+                                      64
+None of those observations directly measures remaining defect depth. Main-
+
+taining that distinction allows the method to be described positively and
+
+precisely without assigning hidden process reasoning to the policy.
+
+
+8.2      When Rules and Replay Are Sufficient
+
+   The nominal task is narrow: a specified region, a single demonstrated
+
+direction, a fixed setup, and an existing lower-level controller. Under those
+
+conditions, a prescribed strategy has a strong opportunity to work well. T
+
+reuses a full force-inclusive episode and its timing, making it a substantive al-
+
+ternative rather than a deliberately impoverished baseline. Its short completed
+
+intervals and low observed dispersion indicate that a stable demonstration
+
+can be valuable without policy learning.
+
+   R illustrates the same point from a process-recipe perspective. A finite rule
+
+can express approach, loading, traversal, and departure directly. Its longer
+
+interval reflects the constructed strategy and contact synchronization, not an
+
+intrinsic limitation that all rules must be slower. Different recipe engineering
+
+could change that tradeoff, but no unexecuted recipe is used to reinterpret
+
+the measured comparison.
+
+   Imitation learning is used here to represent the demonstrated temporal
+
+relationship between motion and target force as an observation-conditioned
+
+generator. The specified region alone does not determine that relationship,
+
+but rules and replay can also supply it. E1 consequently evaluates learning
+
+alongside those alternatives rather than treating it as a necessary condition
+
+for completing the fixed task. T’s strong nominal baseline and C’s executable
+
+sequence are compatible findings: they characterize different ways to supply
+
+the local strategy.
+
+
+
+
+                                       65
+8.3      Roles of Human Guidance and Relative
+         Representation
+
+   Human guidance resolves where the local operation is intended to occur.
+
+Teaching supplies an example of how movement and loading can be organized.
+
+These are complementary contributions of the operator. A spatial mask,
+
+mark, or origin cannot be treated as a complete polishing strategy, and a
+
+demonstrated strategy cannot silently substitute for a new region specification.
+
+   The relative representation supports this division by learning position
+
+around a stain center and explicitly handling the stain direction at the policy
+
+boundary. A single-direction local movement pattern is reused by aligning live
+
+XY and the policy image with the teaching direction, then inversely rotating
+
+the generated XY path and adding the live center. This is an implemented
+
+spatial-generalization mechanism, rather than a future proposal. It addresses
+
+placement and in-plane direction through task registration while leaving
+
+observation-conditioned motion–force generation to the learned policy.
+
+   Its scope follows from the transformed channels. Z, tool orientation, and
+
+force are not rotated, and image adaptation is an in-plane warp about the
+
+interaction ROI. Thus the mechanism transfers the planar movement pattern
+
+without claiming complete pose–wrench equivariance or arbitrary-view invari-
+
+ance. E1/E2 disable direction alignment and cannot establish its empirical
+
+rotation-transfer range. The implementation’s existence and its unmeasured
+
+performance within those comparisons are separate conclusions.
+
+   The fixed image interaction ROI also has a specific function. It focuses
+
+part of the visual representation around the calibrated tool interaction area
+
+while retaining a global feature. It is not an explicit defect-state channel. The
+
+current experiments evaluate the resulting observation path as a whole; they
+
+do not isolate whether a mark’s appearance, pose, or force carries most of the
+
+
+                                       66
+policy’s decisions.
+
+
+8.4      What Force Output and Observation Con-
+         tribute
+
+   Target-force learning allows the reference sequence to express a changing
+
+load, including a departure from a constant recipe. Measured-force observation
+
+provides information about the interaction that occurred rather than the load
+
+merely requested. Their roles are conceptually distinct and are separated by
+
+the E2 contracts.
+
+   The E2 observations identify differences in the organization of contact
+
+and release. C’s mean operator-based completed interval is 2.98 s (15.8%)
+
+shorter than B’s, with five completed attempts in each. This is a descriptive
+
+comparison of separately trained checkpoints, not the same weights tested
+
+with a channel switched off. A4 exposes an incomplete transition in the motion-
+
+only condition, but one interrupted attempt does not identify missing force
+
+output as the cause. The generated motion, external constant-force interface,
+
+mechanical state, and timing can all contribute.
+
+   The magnitude of force peaks also limits an uncomplicated advantage
+
+claim. C does not reduce the E2 mean peak below A, and it has greater E1
+
+excess exposure than R and T. A lower whole-window force mean can follow
+
+from less time spent in contact. It is therefore inadequate to call that lower
+
+mean an improvement in force-control accuracy or surface finishing.
+
+   The force-frame convention is another practical boundary. The resolved
+
+teaching-to-base relation supports empirical common-axis analysis, while the
+
+evaluated training file and online adapter retain their actual numerical conven-
+
+tions. The force-conditioning path was not redefined for this thesis. Its present
+
+
+
+
+                                       67
+performance is an observation about that implementation; a future frame-
+
+consistent learning comparison would be a separate experiment. Similarly,
+
+the executor suppresses tangential force commands, so a nine-dimensional
+
+learned action should not be described as a physically demonstrated three-axis
+
+force-tracking capability.
+
+
+8.5      Procedural Completion and Surface Qual-
+         ity
+
+   The contact procedure is a meaningful intermediate target for local polish-
+
+ing. A tool must establish contact, move through the relevant region under
+
+load, and leave the surface. E1 provides explicit observations for that se-
+
+quence. E2 contributes an operator-based interpretation of task progression
+
+that preserves the interrupted attempt.
+
+   Surface quality adds a separate requirement. A completed traversal may
+
+remove too little, too much, or unevenly depending on the material, tool, abra-
+
+sive, speed, and pressure distribution. Visible marks may respond differently
+
+from fine scratches in metal. Before/after snapshots with changing viewpoint
+
+and occlusion cannot supply calibrated depth or roughness. Consequently, the
+
+thesis’s measured results concern local contact-task execution, with visible
+
+marking changes used qualitatively.
+
+   This separation does not make the application incidental. It identifies the
+
+part of a polishing workflow that the present system actually transfers: a
+
+spatially registered temporal skill and its execution through contact feedback.
+
+It also identifies what must be added before a process-quality claim becomes
+
+defensible. The missing quality evidence cannot be replaced by a model-derived
+
+heatmap or by lower force peaks alone.
+
+
+
+
+                                      68
+8.6      Execution-Derived Dose
+
+   The repository includes an execution-derived heatmap recorder. It in-
+
+tegrates a Preston-style force–speed product along the measured path and
+
+optionally spreads it over a nominal tool kernel. Its diagnostic quantity can
+
+be expressed as
+
+                           X
+               D(x, y) =         κ Fn,k vk ∆tk Ktool (x − xk , y − yk ),     (8.1)
+                             k
+
+where (xk , yk ) is the recorded path location, Fn,k the implementation’s selected
+
+force component or projection, vk its selected speed, ∆tk the observation
+
+duration, and Ktool a spatial spreading kernel. Without a measured coefficient
+
+and tool-response calibration, κ defines relative scale and D has arbitrary
+
+units. Different recorder/extension versions also make different kernel and
+
+speed-model choices.
+
+   The implementation and generated artifact support calling this an im-
+
+plemented diagnostic extension. They do not support the older claim of a
+
+calibrated material-removal model. Its spatial distribution may help inspect
+
+where modeled processing exposure accumulated, but equal dose is not demon-
+
+strated equal removal on the actual specimen.
+
+
+8.7      Blending and Adaptive Execution Assets
+
+   The project also contains finite local blending-path generation from an
+
+existing dose map, construction of an additional spatial target, and time
+
+allocation along a path. The 13 October extension prepares a sequence in
+
+which an initial skill is followed by a separate blending pass and diagnostic
+
+displays. Its archived validation includes offline planning from an earlier
+
+execution. That is evidence of an implemented extension, not an E1/E2
+
+surface-uniformity result.
+
+                                          69
+Figure 8.1: Historical execution-derived heatmap from E1 C1 on 14 October 2026,
+reproduced with its original axes and colorbar. Values are an uncalibrated model
+diagnostic in arbitrary units. They are not measured removal depth, effective contact
+footprint, or surface-quality improvement. This historical illustration is separate
+from the 15 October primary E1 cohort.
+
+
+
+
+                                         70
+ Table 8.1: Status of inherited extensions relative to the main thesis evidence.
+
+ Asset                        Supported status
+ Execution heatmap            Implemented and generated from runs;
+                              uncalibrated arbitrary-unit diagnostic.
+ Finite blending planner      Implemented; archived offline planning and
+                              integration preparation. Surface-quality
+                              improvement not established by the main
+                              comparisons.
+ Adaptive reference-clock     Separate versioned development attempts and code;
+ execution                    controlled ON/OFF outcome benefit not
+                              established.
+ High-level residual RL for   Planned extension; completed skill-level training
+ curved-surface restoration   and quality-grounded evaluation not established in
+                              the selected evidence.
+
+
+   Separate 14 October adaptive-velocity records provide development expe-
+
+rience with reference-clock progression and replanning. The located runtime
+
+files contain five online-OFF development attempts across multiple versions.
+
+Their completion status does not establish a controlled adaptive ON/OFF
+
+process-quality comparison. A later source revision addresses a recorded stalled
+
+reference-clock case, but its README explicitly distinguishes offline checking
+
+from a new physical run. These records are therefore kept outside the nominal
+
+E2 A/B/C cohort.
+
+   An earlier thesis concept proposed residual adjustments to orientation
+
+and feed velocity based on residual removal demand. That concept remains a
+
+possible extension, with its old formulation retained in the preserved source.
+
+Existing low-level learned mass/damping control is a different asset and does
+
+not validate that proposed high-level policy. The core motion–force skill in
+
+this thesis does not require a removal estimator, blending planner, or residual
+
+RL stage to count as an executable system.
+
+
+
+
+                                       71
+8.8      Scope and Limitations
+
+   The evaluation is confined to the fixed NOMINAL task. Physical height
+
+changes, reference Z offsets, new positions or directions, new shapes, and
+
+curved-surface performance are not evaluated. The direction-transfer adapter
+
+and inherited extension assets retain their implemented status, but are not
+
+experimental generalization results of E1/E2.
+
+   There is one trained checkpoint and one recorded training seed per learned
+
+condition, with five physical attempts per primary group. E1 shuffles methods
+
+within its five recorded blocks; E2 collects A, then B, then C. Neither the small
+
+groups nor the SDs establish statistical significance, equivalence, or population
+
+reliability. Reported dispersion concerns run-level time, peak force, and travel,
+
+not waveform reproduction or force-tracking accuracy. Setup preparation,
+
+tooling changes, and operator familiarity can remain alternative explanations
+
+for configuration differences.
+
+   The completion protocols also differ. E1 recognizes the first specified contact
+
+procedure using the recorded observer evidence. E2 includes the operator’s
+
+observation and reaction, with possible lift and reapproach. Its 15.8% B–C
+
+time difference therefore concerns that interval, not pure processing time or
+
+productivity at equal removal. A4’s correction and C6’s separate diagnostic
+
+role preserve the original observations without changing primary membership
+
+or removing unfavorable cases.
+
+   Surface depth, mass, roughness, and scratch-removal rate were not mea-
+
+sured, so completion and visible marking changes support no quantitative
+
+surface-restoration claim. Likewise, an unrecorded controller-applied force
+
+target prevents a force-tracking-error claim. Future process-quality research
+
+can build on this execution framework, with those additional quantities treated
+
+as distinct scientific outcomes.
+
+
+                                       72
+Chapter 9
+Conclusions
+
+   Local robotic polishing requires a strategy for movement, contact loading,
+
+and time within a selected region. Human region specification supplies the
+
+spatial task, but does not by itself determine that temporal strategy. This thesis
+
+has addressed the resulting skill-generation problem through paired motion–
+
+force teaching, observation-conditioned sequence learning, and a common
+
+robot execution interface.
+
+   Tool position is learned relative to a frozen stain center and paired with
+
+orientation and target force on a shared sequence. The direction-transfer
+
+adapter aligns live XY and the policy image with the teaching direction,
+
+then restores generated XY by inverse rotation and center addition. Z, tool
+
+orientation, and force keep their conventions. The evaluated Flow Matching
+
+policy uses RGB, Cartesian state, and three-axis force history, with explicit
+
+coordinate restoration, pose conditioning, plan connection, and existing contact
+
+regulation. E1/E2 disable direction alignment and do not measure its transfer
+
+performance. The implementation separates upper-level skill generation, lower-
+
+level contact control, and completion recognition.
+
+   The first research question compares strategy providers for the fixed human-
+
+specified task. In the primary E1 cohort, rules, force-inclusive replay, and
+
+the conditioned policy each complete the required contact–loaded-pass–exit
+
+procedure in all five planned executions. Replay has a shorter mean completion
+
+time and smaller time dispersion than C, while C has greater mean excess-force
+
+exposure. The learned skill is therefore an executable strategy through the
+
+
+                                       73
+common robot interface, and rules and replay are also effective alternatives
+
+within this nominal task. C5 remains in the primary comparison; the shorter,
+
+lower-exposure C6 is a separate additional diagnostic.
+
+   The second research question compares the force-information configurations
+
+while retaining lower-level feedback. The force-observing motion–force policy
+
+C has a 2.98 s (15.8%) shorter mean operator-based completion interval than
+
+force-masked B, with five completed attempts in each. Motion-only A completes
+
+four of five attempts; A4 does not progress to release and is interrupted. It
+
+remains in all-attempt force, travel, and elapsed-interval statistics, while
+
+A’s successful-time mean uses four completions. Timing, phase progression,
+
+and force exposure differ across the configurations, without a monotonic
+
+improvement from A through B to C or an identified cause for the single
+
+interrupted transition.
+
+   The demonstrated scope is the generation and execution of a human-
+
+guided local contact skill on the marked-surface setup. It does not include
+
+autonomous recognition of defect severity, learned recognition of complete
+
+scratch removal, calibrated material-removal estimation, or measured surface
+
+restoration. The existing dose, blending, and adaptive-execution assets provide
+
+concrete extension paths, with their implementation and validation status
+
+stated separately from the main findings.
+
+   The thesis’s contribution is the coherent connection from local task speci-
+
+fication to a time-related motion–force representation, conditioned generation,
+
+shared execution, and corresponding evaluation. The fixed-task comparison
+
+establishes actual execution alongside valid rule and replay strategies; the
+
+force-information comparison establishes observed differences in completion,
+
+operator-based timing, phase progression, and force use. These findings answer
+
+the stated questions within the nominal contact-task scope.
+
+
+
+                                      74
+Bibliography
+
+[1] I. Mohsin, K. He, Z. Li, and R. Du, “Path planning under force control
+
+   in robotic polishing of the complex curved surfaces,” Applied Sciences,
+
+   vol. 9, no. 24, p. 5489, 2019.
+
+[2] S. Schneyer, A. Sachtler, T. Eiband, and K. Nottensteiner, “Segmentation
+
+   and coverage planning of freeform geometries for robotic surface finishing,”
+
+   IEEE Robotics and Automation Letters, vol. 8, no. 8, pp. 5267–5274,
+
+   2023. [Online]. Available: https://elib.dlr.de/196051/
+
+[3] B. Alt, F. Stöckl, S. Müller, C. Braun, J. Raible, S. Alhasan,
+
+   O. Rettig, L. Ringle, D. Katic, R. Jäkel, M. Beetz, M. Strand, and
+
+   M. F. Huber, “RoboGrind: Intuitive and interactive surface treatment
+
+   with industrial robots,” in 2024 IEEE International Conference
+
+   on Robotics and Automation (ICRA), 2024. [Online]. Available:
+
+   https://arxiv.org/abs/2402.16542
+
+[4] T. Z. Zhao, V. Kumar, S. Levine, and C. Finn, “Learning fine-grained bi-
+
+   manual manipulation with low-cost hardware,” in Proceedings of Robotics:
+
+   Science and Systems, 2023.
+
+[5] C. Chi, S. Feng, Y. Du, Z. Xu, E. Cousineau, B. Burchfiel, and S. Song,
+
+   “Diffusion policy: Visuomotor policy learning via action diffusion,” in
+
+   Proceedings of Robotics: Science and Systems, 2023. [Online]. Available:
+
+   https://diffusion-policy.cs.columbia.edu/
+
+[6] C. Chen, Z. Yu, H. Choi, M. Cutkosky, and J. Bohg, “DexForce:
+
+   Extracting force-informed actions from kinesthetic demonstrations
+
+
+                                    75
+    for dexterous manipulation,” arXiv preprint arXiv:2501.10356, 2025.
+
+    [Online]. Available: https://arxiv.org/html/2501.10356v2
+
+ [7] W. Liu, J. Wang, Y. Wang, W. Wang, and C. Lu, “ForceMimic:
+
+    Force-centric imitation learning with force-motion capture system for
+
+    contact-rich manipulation,” in 2025 IEEE International Conference
+
+    on Robotics and Automation (ICRA), 2025. [Online]. Available:
+
+    https://arxiv.org/html/2410.07554v3
+
+ [8] B. Zhou, R. Jiao, Y. Li, X. Yuan, F. Fang, and S. Li,
+
+   “Admittance visuomotor policy learning for general-purpose contact-
+
+    rich manipulations,” arXiv preprint arXiv:2409.14440, 2024. [Online].
+
+    Available: https://arxiv.org/abs/2409.14440
+
+ [9] Z. He, H. Fang, J. Chen, H.-S. Fang, and C. Lu, “FoAR:
+
+    Force-aware reactive policy for contact-rich robotic manipulation,”
+
+    arXiv preprint arXiv:2411.15753, 2025, version 2. [Online]. Available:
+
+    https://arxiv.org/html/2411.15753v2
+
+[10] Y. Lipman, R. T. Q. Chen, H. Ben-Hamu, M. Nickel, and
+
+    M. Le, “Flow matching for generative modeling,” in International
+
+    Conference on Learning Representations, 2023. [Online]. Available:
+
+    https://arxiv.org/abs/2210.02747
+
+[11] O. Siméoni, H. V. Vo, M. Seitzer, F. Baldassarre, M. Oquab, C. Jose,
+
+    V. Khalidov, M. Szafraniec, S. Yi, M. Ramamonjisoa, F. Massa,
+
+    D. Haziza, L. Wehrstedt, J. Wang, T. Darcet, T. Moutakanni,
+
+    L. Sentana, C. Roberts, A. Vedaldi, J. Tolan, J. Brandt, C. Couprie,
+
+    J. Mairal, H. Jégou, P. Labatut, and P. Bojanowski, “DINOv3,”
+
+    arXiv preprint arXiv:2508.10104, 2025. [Online]. Available: https:
+
+    //arxiv.org/abs/2508.10104
+
+                                   76
+[12] N. Hogan, “Impedance control: An approach to manipulation: Part i—
+
+    theory,” Journal of Dynamic Systems, Measurement, and Control, vol.
+
+    107, no. 1, pp. 1–7, 1985.
+
+[13] A. Q. L. Keemink, H. van der Kooij, and A. H. A. Stienen, “Admittance
+
+    control for physical human–robot interaction,” The International Journal
+
+    of Robotics Research, vol. 37, no. 11, pp. 1421–1444, 2018.
+
+
+
+
+                                    77
+Appendix A
+Coordinates, Signals, and
+Reproduction
+
+A.1       Pose and Force Signal Definitions
+   The position vector is expressed in millimeters and orientation as a ro-
+tation vector in radians. The matrix R = Exp([ρ]× ) maps a vector in the
+calibrated tool frame to the robot base when it represents RB←E . [ρ]× is the
+skew-symmetric matrix associated with ρ. The saved dataset transformation
+subtracts only (cx , cy ). The optional inference transformation additionally
+rotates center-relative XY by R2 (α), with inverse rotation followed by center
+addition on output (Section 3.5). Both retain Z, tool rotation vectors, and
+force channels. The evaluated E1/E2 settings use α = 0.
+   Teaching force is a three-component post-publisher measurement. Its asso-
+ciated tool orientation supplies the base-axis rotation in Equation (4.3). Robot
+wrench feedback is already base expressed. A torque reference-point transfor-
+mation would require a moment arm, but no torque transfer is needed for the
+three-force-component base projection used here. The available analysis does
+not infer a calibrated compliant contact point from a TCP-center trajectory.
+
+
+A.2       Learning and Temporal Parameters
+   The force-cleanup dataset contains 15,963 paired frames in 42 compact
+episodes. The optimization and validation sets contain 38 and four episodes.
+Validation episode identifiers are 35, 39, 22, and 37. Each epoch’s training
+window construction uses 50 starts per episode, a 128-step target, and the
+archived phase-sampling weights. The partition stored in each normalizer
+matches the dataset manifest.
+   The force-history dimension is three, its sample count is 30, and the selected
+
+                                      78
+              Table A.1: Force signal roles used throughout the thesis.
+
+ Signal                       Interpretation
+ Teaching intention           Operator’s approximate loading intention; not a
+                              numeric command trace.
+ Teaching recorded force      Measured interaction after the published processing
+                              path; used to construct learning supervision.
+ Policy force action          Denormalized output of the generator before
+                              executor gating and slew.
+ Executor transmitted         Command-side force after shared processing;
+ target                       tangential target channels disabled in these
+                              comparisons.
+ Controller-applied           Target after internal controller processing;
+ reference                    synchronized trace unavailable.
+ Robot measured force         Processed base-frame feedback used by the common
+                              gate, policy adapter, and recorded analysis.
+
+
+recurrent layer is a one-layer GRU with hidden size 64. The state encoder
+receives pose and current force together in B/C. A removes the force state
+dimensions and history encoder. B retains the history architecture with zeroed
+conditioning. Physical force remains available to common execution in all
+conditions.
+   The training horizon, reference stride, inference timer, command period,
+and logging cap describe different mechanisms:
+
+
+A.3       Reproducing the Manuscript and Figures
+   The revised project is independent of the original thesis outputs. Its build
+retains the original pdfLaTeX/KoTeX/BibTeX chain and copies the existing
+school style without editing it. The body retains equal top and bottom margins
+of 25 mm. The cover remains a draft because the source did not establish
+author, adviser, committee, or submission details.
+   From this revised project directory, the full manuscript and separate cover
+are built with
+
+bash build.sh
+
+The figures and tables can be regenerated from the bundled extracted data
+without the robot repository:
+
+                                         79
+               Table A.2: Distinct clocks and sampling settings.
+
+ Mechanism                        Value or meaning
+ Teaching paired sample grid      Nominal 30 Hz; original receipt times
+                                  retained in merged HDF5.
+ Action sequence                  128 samples, nominal 30 Hz.
+ Nominal new-plan stride          120 action samples, approximately 4 s.
+ Inference callback timer         5 Hz, subject to plan-age gating.
+ Flow integration                 10 dimensionless updates per generated
+                                  chunk.
+ Command publication              Nominal 125 Hz (0.008 s).
+ E1 actual receipt-event          Approximately 125 Hz in the 15 October
+ recording                        primary cohort; distinct subscription receipts.
+ E2 feedback CSV logging          20 Hz cap; approximately 18 Hz observed in
+                                  the 13 October archive.
+ Analysis support                 Receipt-time ZOH force and within-support
+                                  pose interpolation; maximum gap 0.2 s.
+
+
+python3 scripts/plot_results_20261016.py
+python3 scripts/make_tables.py
+bash build.sh
+
+The optional scripts/collect_results_20261016.py rereads only the se-
+lected report inventories, per-run precision results, original receipt events,
+and runtime metadata needed for this revision. It writes only into this thesis
+directory and imports no ROS or policy model. E1 force integrals are recalcu-
+lated; existing E1 evaluator/storage checks and E2 native force/path checks
+are reused. E2 original event bounds and the A4 interpretation are preserved
+separately. Full source paths and read-file hashes are in provenance/results_
+20261016/. The earlier evidence/plot scripts are retained as historical source
+and are not the result-update entry points.
+   The figure manifest records original files, run identifiers, frame indices or
+video offsets, transformations, and manuscript locations. Conceptual diagrams
+reside in the chapter LaTeX and are distinguished from measured plots in
+their captions. No generated photograph is used.
+
+
+
+
+                                      80
+Appendix B
+Experiment Versions and
+Provenance
+
+B.1       Selected Models and Dataset
+   The dataset and models are the force-cleanup revision dated 12 October,
+with training completed on 13 October 2026. All three selected checkpoints
+have their own normalizer. The best epochs are 39, 42, and 42, while final
+epoch is 499. The stored checkpoint selection rule is minimum validation
+loss over 500 epochs. Checkpoint metadata was read on CPU without policy
+execution or retraining.
+   The compact replay episode is linked to the source merged HDF5 recorded
+at 16:18 on 19 August 2026, source episode ep 0003. Its compact action and
+observation pose/force arrays contain 443 frames. The original source-time
+array is retained for T rather than replaced by an assumed constant period.
+The exact source paths and extraction fields are recorded in the supplied
+episode metadata.
+
+
+B.2       Primary E1 Version and Membership
+   The physically executed primary cohort is
+      E1_CT_pass_height_v2_nominal_dev_20261015
+
+Table B.1: Short SHA-256 identifiers of the selected checkpoints and normalizers.
+Complete values are included in the supplied model manifest.
+
+                 Model     Checkpoint prefix   Normalizer prefix
+                 A         2ea204ab65fb        ae7d07adf65a
+                 B         080103e6c2ed        d7c917b8246c
+                 C         60d55e7092cb        09111fa4acc3
+
+
+
+                                       81
+with configuration e1ct 46de718a23a2a7cf, evaluator pass height ref v2,
+and observer received observations v2. The source report freezes the 15
+planned run identifiers. Each planned slot has one started primary execution,
+and the original C5 remains the run ending in 230120 b45d2f021b. Its full
+identifier and the additional C6 identifier are recorded in the cohort manifest.
+   C6 is the later execution ending in 233551 9021584d0a. It retains repeat
+index 5 and the source retry link in the original archive, but is displayed as
+C6 for diagnostic interpretation. The subsequent session list therefore has 16
+entries, while the primary E1 set remains the report-frozen 15. The explicit
+selection uses planned slots and original identifiers rather than the most recent
+record per repeated index. The same C checkpoint and frozen execution setting
+are retained.
+   The handoff baseline_manifest.json still contains preparation-era zero-
+attempt fields. The actual report, original execution evidence, and frozen
+report membership supersede those status fields for this thesis. The nominal
+placement is operator reported; the configured approximate surface Z is not a
+per-trial physical measurement. LOW/HIGH and reference-offset robustness
+are outside the completed evaluation scope.
+
+
+B.3      Historical E1 Development and Height-
+         Only Replay
+   The 14 October development session, E1 CT sync confirm dev 20261014,
+uses configuration e1ct 61a19f7d7337a82c and the initial-contact height
+reference. Its started order is R, then T, then C. All 15 started runs show
+the required loaded pass, while the old exit criterion reports R 3/5, T 4/5,
+and C 5/5. Table B.2 preserves this historical comparison separately from the
+primary 15 October results.
+   The old release requirement was
+
+                            Z(t) ≥ zcontact + 5 mm,                        (B.1)
+
+with OFF and rise sustained together for 0.2 s. R1, R3, and T4 were sensi-
+tive to the early height reference. The archived height-only replay changes
+
+                                       82
+Table B.2: Historical 14 October E1 development cohort with the initial-contact
+height reference. Completed-time means use n = 3, 4, 5 for R/T/C; excess-force
+summaries retain five started runs per method. These executions are not pooled
+with the primary cohort.
+
+          Method        Completed/started    Completed time (s)    Jexcess (N s)
+          R                   3/5                  29.58 ± 0.03   0.000 ± 0.000
+          T                   4/5                  12.86 ± 0.01   0.005 ± 0.011
+          C                   5/5                  15.67 ± 3.60   2.323 ± 2.493
+
+Table B.3: Height-only offline replay of the 14 October records. This secondary
+sensitivity analysis changes the release reference, retains the recorded trajectories,
+and adds no independent trials.
+
+                    Method      Replay completed      Replay time (s)
+                    R                  5/5               27.24 ± 1.28
+                    T                  5/5               12.84 ± 0.02
+                    C                  5/5               15.64 ± 3.59
+
+
+that reference for the same observations and reports 5/5 for every method
+(Table B.3). It supplies no new physical executions and does not reconstruct
+the later receipt-event observer.
+   An original 14 October R5 registration did not reach execution start and
+was followed by a started retry. Its source identifiers remain in the historical
+provenance. This bookkeeping does not apply to the 15 October primary cohort,
+whose original 15 slots contain no non-start or retry. Earlier prepared but
+unexecuted sessions are historical preparation records and are not incomplete
+requirements of the present thesis.
+
+
+B.4       E2 Versions and the A4 Correction
+   The selected E2 cohort uses the force-cleanup revision of 13 October. Each
+actual runtime.json names its model revision, observation settings, and
+common executor. The run inventory orders the attempts A1–A5, B1–B5, and
+C1–C5. Preparation-only runtime files are not used as substitutes for these
+actual run files.
+   The old E2 report applied a common operator-confirmed completion inter-
+pretation to all 15 attempts. The later task instruction specifically corrects A4.
+
+                                             83
+                                210
+Base Z release threshold (mm)
+
+
+                                200
+
+
+
+                                190
+
+
+
+                                180
+
+                                           Original: initial contact reference +5 mm
+                                           Replay: loaded-pass reference +5 mm
+                                170
+                                      R1
+
+
+                                             R2
+
+
+                                                    R3
+
+
+                                                           R4
+
+
+                                                                  R5
+
+
+                                                                         T1
+
+
+                                                                                T2
+
+
+                                                                                            T3
+
+
+                                                                                                 T4
+
+
+                                                                                                      T5
+
+
+                                                                                                           C1
+
+
+                                                                                                                C2
+
+
+                                                                                                                     C3
+
+
+                                                                                                                          C4
+
+
+                                                                                                                               C5
+Figure B.1: Historical 14 October release thresholds using the initial-contact and
+successful-pass references. Both are derived from the same stored TCP traces. This
+diagnostic is distinct from the physically executed 15 October primary evaluator.
+
+
+This thesis adopts that field correction and stores it in data/e2_operator_
+correction.json. The original software event remains operator finish, fol-
+lowed by the original normal-completion stop-path event. The derived task
+outcome is separately marked incomplete contact release. The original elapsed
+time 28.750087346 s remains the interruption interval.
+                                The correction changes only the successful-time aggregation and task
+interpretation. A4 remains in all five-attempt statistics for force, travel, and
+elapsed interval. No surface image, raw force sample, event timestamp, or
+checkpoint is edited. The corrected table can be reconstructed from data/e2_
+runs_corrected.csv.
+
+
+B.5                                   Sources for Implemented Extensions
+                                The execution heatmap is generated by the existing polishing-removal
+recorder. The finite blending path and dose tools are in the local blending
+module and the 13 October extension package. The adaptive-velocity develop-
+ment records are versioned separately under the 14 October results directory.
+Their runtime metadata identifies them as adaptive-execution development
+rather than the primary E2 force ablation.
+
+
+
+
+                                                                                       84
+Appendix C
+Individual Outcomes and
+Evidence Boundaries
+
+C.1       E1 Primary Executions
+   Table C.1 lists all original primary E1 executions on 15 October. Every
+row completes the specified contact–pass–exit procedure, including C5. The
+recorded order identifies the shuffled blocks. C6 is reported separately in
+Table 7.3 and is not a sixth observation in any primary C mean.
+
+
+C.2       E2 All Attempts
+   Table C.2 distinguishes successful completion intervals from time to inter-
+ruption. All original stop requests are retained. In particular, the missing A4
+completion time is not a missing raw record.
+   The archived video inventory contains B/C videos but no A videos. The
+illustrated C1 WebM has an incomplete container ending; only decodable
+frames are used. It is not treated as a continuous independent proof of full task
+completion. Snapshot timing and varying tool viewpoint also limit before/after
+interpretation.
+
+
+C.3       Cohort Membership and Interpretation
+   The supplied data/cohort_manifest.csv and JSON counterpart identify
+the primary E1 15 runs, primary E2 15 attempts, and additional diagnostic C6
+separately. Fields include experiment, cohort, original run identifier, display
+label, date, model/evaluator version, primary or diagnostic status, inclusion
+reason, and source path. Source repeat numbers and retry links are preserved
+rather than used to replace an earlier execution.
+
+
+                                       85
+Table C.1: All 15 primary E1 executions under pass height ref v2. All are
+procedurally completed. Full run identifiers, original labels, and source paths are
+preserved in the cohort manifest.
+
+                                Completion      Jexcess   Peak FzB
+                 Run    Order
+                                   (s)           (N s)      (N)
+                 R1        2          29.424     0.000        22.81
+                 R2        5          29.516     0.000        23.18
+                 R3        7          29.546     0.000        22.90
+                 R4       10          29.573     0.000        22.52
+                 R5       13          29.625     0.000        22.02
+                 T1        1          12.828     0.037        32.85
+                 T2        4          12.908     0.001        30.96
+                 T3        9          12.896     0.580        38.24
+                 T4       11          12.920     0.010        31.91
+                 T5       15          12.931     0.000        30.43
+                 C1        3          11.694     0.048        32.89
+                 C2        6          12.876     0.431        34.35
+                 C3        8          12.740     0.237        33.43
+                 C4       12          11.766     0.068        32.65
+                 C5       14          18.024     6.413        40.21
+
+
+Table C.2: Individual E2 task outcomes after the A4 field correction. “Operator
+completed” uses the recorded operator interpretation; it is not an automatic E1
+evaluation.
+
+        Run    Task outcome          Completion (s)       Interval to stop (s)
+        A1     operator completed              16.787                  16.787
+        A2     operator completed              16.445                  16.445
+        A3     operator completed              18.581                  18.581
+        A4     interrupted                         —                   28.750
+        A5     operator completed              18.777                  18.777
+        B1     operator completed              18.690                  18.690
+        B2     operator completed              18.511                  18.511
+        B3     operator completed              19.508                  19.508
+        B4     operator completed              18.693                  18.693
+        B5     operator completed              18.671                  18.671
+        C1     operator completed              15.902                  15.902
+        C2     operator completed              15.297                  15.297
+        C3     operator completed              15.597                  15.597
+        C4     operator completed              16.751                  16.751
+        C5     operator completed              15.618                  15.618
+
+
+                                        86
+   The primary tables, prose macros, and updated E1 plots derive from the
+same precision-level data. The A4 outcome correction changes successful-time
+aggregation and task interpretation while retaining all-attempt force and
+travel statistics and the original events. Historical tables and figures are dated
+explicitly and are not pooled with either primary cohort. These boundaries
+preserve the actual evidence supporting the stated conclusions.
+
+
+
+
+                                       87
+국문요약
+    인간의 영역 지정과 동작–힘 결합 표현 및 힘 조건부
+        모방학습을 활용한 국소 로봇 폴리싱
+
+  표면 마무리 공정에서 부품 전체의 균일 처리와 지정된 영역 주변의 국소
+재작업은 서로 다른 요구를 가진다. 국소 폴리싱에서는 대상 영역에 맞추어
+공구 이동, 접촉 힘, 작업 시간을 함께 구성해야 한다. 본 연구는 현재 장비로
+미세 스크래치를 자율 판별하는 대신 사람이 처리 영역을 지정하는 설정을 사
+용한다. 공간 지시 이후에도 남는 동작 · 힘 · 시간 구성 문제에 대해, 규칙 기반
+전략과 교시 재생에 비해 관측 조건부 학습이 어떤 수행 가치를 추가하는지
+검토한다.
+  추적 기반 교시 장치로 공구 위치 · 자세, 3축 힘, RGB 영상을 시간적으로
+대응하여 기록한다. 얼룩 중심 상대위치를 학습하고 얼룩 방향을 학습 기준에
+정렬한다. Flow Matching 정책은 영상, 로봇 상태, 측정 힘 이력으로 위치 · 자
+세 · 목표 힘 시퀀스를 생성한다. 공통 실행 계층은 좌표 복원, 계획 연결, 명령
+후처리를 수행하고 기존 하위 힘제어기가 접촉을 조절한다. 스킬 생성, 접촉
+제어, 절차 완료 판정의 역할을 분리한다.
+  E1/E2는 방향 정규화 없이 평가한다. E1은 고정된 기준조건에서 규칙 기
+반 경로, 힘 포함 교시 재생, 힘 조건부 정책을 비교한다. 세 방법 모두 각 5
+회에서 접촉–부하 통과–이탈 절차를 완료했다. 교시 재생은 학습 정책보다 평
+균 완료시간과 시간 분산이 작았고, 학습 정책의 초과 힘 적분은 더 컸다. E2
+는 동작 전용 학습과 힘 관측 유무에 따른 동작–힘 학습 구성을 비교한다. 힘
+관측 정책은 힘 관측을 차단한 구성보다 평균 작업자 기준 완료시간이 15.8%
+짧았다. 동작 전용 구성의 한 시행은 이탈로 전환하지 못해 작업자가 중단했다.
+결과는 인간 지정 국소 작업에서 학습 스킬의 실행 가능성과 구성별 시간 · 단계
+진행 · 힘 사용의 차이를 보여준다. 고정 작업에서는 규칙과 교시 재생도 유효한
+대안이었다. 평가는 접촉 절차 수행에 한정되며 표면 품질 향상이나 조건 변화
+강건성을 입증하지 않는다.
+
+주요어: 국소 로봇 폴리싱, 인간 작업 지정, 동작–힘 스킬, 모방학습, Flow
+Matching, 접촉 작업 평가
+
+                        88
+

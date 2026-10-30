@@ -1,0 +1,37 @@
+[
+  {
+    "file": "/home/eunseop/master_thesis_eunseopsong/ThesisMain.pdf",
+    "sha256": "d01a924f8a8ea24d0c720c4c64e24580aa54eb8150b2fae70504245e7c6ce64e",
+    "bytes": 2659932
+  },
+  {
+    "file": "/home/eunseop/master_thesis_eunseopsong/ThesisMain.tex",
+    "sha256": "4ebcd8ffb1b83b8936bb595af1761453ec3d3954ae0cc84188b5b57ba00e302f",
+    "bytes": 4518
+  },
+  {
+    "file": "/home/eunseop/master_thesis_eunseopsong/ThesisCover.tex",
+    "sha256": "dd2978f234a0864c9e99af9623419f49fe743b40677931714daa43d48f7b8af2",
+    "bytes": 865
+  },
+  {
+    "file": "/home/eunseop/master_thesis_eunseopsong/Bibliography/ThesisRef.bib",
+    "sha256": "684cb66d937e6622c1e896816dea0185537208f7433c21d98fa538b005993468",
+    "bytes": 15759
+  },
+  {
+    "file": "/home/eunseop/master_thesis_eunseopsong/XThesis_skku_eng.sty",
+    "sha256": "fa09ac1b02aa0b3db2f24a4a2bb4603e7449cffe8f516890a531506ca06a740a",
+    "bytes": 24316
+  },
+  {
+    "file": "/home/eunseop/master_thesis_eunseopsong/IEEEtran.cls",
+    "sha256": "da751920a317ed318b7b5cd7fa585a6cc7d28502d457856382e9be24b10a3bd7",
+    "bytes": 281957
+  },
+  {
+    "file": "/home/eunseop/master_thesis_eunseopsong/IEEEtran.bst",
+    "sha256": "314f0ece704568faf827011bac498650691b2b5ee06320720830e782416d5a5f",
+    "bytes": 57748
+  }
+]

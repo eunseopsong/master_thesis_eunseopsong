@@ -1,0 +1,178 @@
+{
+  "all_passed": true,
+  "pages": 98,
+  "checks": [
+    {
+      "check": "no_latex_errors",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "references_and_citations_resolved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_overfull_boxes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_missing_glyphs",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "equal_vertical_margins",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "korean_summary_extracts",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bibliography_toc_entry_once",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "thirteen_cited_sources",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "twenty_figures",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "eighteen_tables",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "both_cohorts_fifteen",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e1_all_required_loaded_passes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e1_original_completion_counts",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e2_a4_interruption_not_completion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e2_five_attempts_each",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e2_completed_four_five_five",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "a4_elapsed_preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "forty_two_unique_source_episodes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "episode_level_split",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "revised_height_sessions_not_run",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "thirty_native_csv_checks",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:ThesisMain.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:ThesisMain.tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:ThesisCover.tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:ThesisRef.bib",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:XThesis_skku_eng.sty",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:IEEEtran.cls",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:IEEEtran.bst",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "style_byte_identical:XThesis_skku_eng.sty",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "style_byte_identical:IEEEtran.cls",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "style_byte_identical:IEEEtran.bst",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "style_byte_identical:notebook.sty",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "pdf_words_inside_page_bounds",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "unresolved_warnings": [
+    "Package microtype Warning: Command \\pickup@font is not defined as expected.",
+    "pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored"
+  ],
+  "physical_experiments_started_by_this_work": false,
+  "poppler_xml_math_controls_removed_for_parsing_only": 6,
+  "scope": "manuscript and existing evidence only; no new robot or model evaluation"
+}

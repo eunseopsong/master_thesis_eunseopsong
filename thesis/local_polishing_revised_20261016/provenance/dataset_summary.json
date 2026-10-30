@@ -1,0 +1,89 @@
+{
+  "schema": "e2_force_cleanup_dataset_v1",
+  "status": "validated",
+  "source_dataset": "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/20260910_90deg_rel_single/imitation_form",
+  "dataset": "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form",
+  "rules": {
+    "schema": "e2_force_cleanup_v1",
+    "noncontact_z_mm": 175.0,
+    "noncontact_comparison": "z > boundary",
+    "fz_rule": "max(fz, 0)",
+    "noncontact_force": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_fx_fy": "preserve original signed values",
+    "channels": [
+      "action/force",
+      "observations/force"
+    ],
+    "position_unit": "mm",
+    "force_unit": "N"
+  },
+  "split": {
+    "train": [
+      "episode_38.hdf5",
+      "episode_25.hdf5",
+      "episode_12.hdf5",
+      "episode_32.hdf5",
+      "episode_34.hdf5",
+      "episode_33.hdf5",
+      "episode_29.hdf5",
+      "episode_10.hdf5",
+      "episode_11.hdf5",
+      "episode_41.hdf5",
+      "episode_6.hdf5",
+      "episode_1.hdf5",
+      "episode_18.hdf5",
+      "episode_19.hdf5",
+      "episode_30.hdf5",
+      "episode_27.hdf5",
+      "episode_28.hdf5",
+      "episode_36.hdf5",
+      "episode_7.hdf5",
+      "episode_8.hdf5",
+      "episode_24.hdf5",
+      "episode_0.hdf5",
+      "episode_3.hdf5",
+      "episode_5.hdf5",
+      "episode_17.hdf5",
+      "episode_14.hdf5",
+      "episode_4.hdf5",
+      "episode_31.hdf5",
+      "episode_26.hdf5",
+      "episode_40.hdf5",
+      "episode_16.hdf5",
+      "episode_23.hdf5",
+      "episode_20.hdf5",
+      "episode_2.hdf5",
+      "episode_15.hdf5",
+      "episode_9.hdf5",
+      "episode_13.hdf5",
+      "episode_21.hdf5"
+    ],
+    "validation": [
+      "episode_35.hdf5",
+      "episode_39.hdf5",
+      "episode_22.hdf5",
+      "episode_37.hdf5"
+    ]
+  },
+  "totals": {
+    "action": {
+      "frames": 15963,
+      "noncontact_frames": 7356,
+      "negative_fz_before": 6069,
+      "force_changed_frames": 7834
+    },
+    "observations": {
+      "frames": 15963,
+      "noncontact_frames": 7356,
+      "negative_fz_before": 6069,
+      "force_changed_frames": 7834
+    }
+  },
+  "use_relative_position": true,
+  "relative_transform_version": "stain_relative_v1",
+  "rotation_aligned": false
+}

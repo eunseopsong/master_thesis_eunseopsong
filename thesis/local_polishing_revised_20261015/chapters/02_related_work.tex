@@ -1,0 +1,70 @@
+\chapter{Related Work}
+\label{chap:related_work}
+
+\section{Robotic Polishing and Surface Coverage}
+Surface-treatment planning and contact control address complementary aspects of a finishing operation. Mohsin et al.~\cite{mohsin2019path} combine tool-path planning, force-controlled contact, and process-parameter optimization for curved-surface polishing. Their evaluation includes an eyeglass-frame application and surface-quality measurements. This supports the practical importance of considering force and motion together, while also illustrating the additional measurements needed to make a claim about the finished surface.
+
+Schneyer et al.~\cite{schneyer2023segmentation} segment freeform geometries into regions with compatible machining strategies. Their method uses tool and workpiece geometry, varies the contact point on a finishing disk, and adapts path spacing to the contact area. The geometric region in that work organizes coverage of a known surface. The local region in the present study instead supplies a human-selected processing target, after which the choice of a temporal motion--force sequence remains.
+
+These approaches make geometric planning a substantive baseline rather than a weak alternative. When geometry, material, and process requirements admit a stable recipe, explicit planning can directly express the intended treatment. The narrower question considered here is whether demonstrations and online observations add useful execution behavior in a specified local task. The current experiments do not compare surface finish against the published systems under matched tooling or materials.
+
+\section{Human Instruction and Local Task Specification}
+RoboGrind~\cite{alt2024robogrind} integrates surface scanning, defect identification, interactive robot-program construction, planning, and force-controlled treatment. It also evaluates fiberglass wind-turbine-blade refurbishment. Its user interaction helps select and parameterize processing, while geometric planning and hybrid force--position control execute the resulting program. This is a useful example of human participation within an automated surface-treatment system.
+
+The present work uses a simpler instruction channel: the person marks or specifies the local region and provides demonstrations. Region registration is separated from learning how to traverse and load it. This choice avoids requiring a fine-scratch detector in the available setup. It neither replaces the broader perception problem nor demonstrates that a marked region carries sufficient information for an optimal process strategy.
+
+A task-relative origin also has a limited but clear purpose. It removes an absolute XY offset from the pose representation so that the local motion can be restored at a registered origin. An image-to-plane homography provides a registration mechanism, whereas rotation canonicalization is a separate transformation. Neither a task-origin subtraction nor a calibrated image mapping alone demonstrates orientation generalization. The experiments must establish that claim independently.
+
+\section{Rules and Demonstration Replay}
+Rules specify a finite program by composing a path, force schedule, and phase transitions. Replay preserves an example's motion--force association and timing without fitting a policy. In a repetitive, narrowly specified task, these methods can be sufficient and easier to inspect than a learned generator. Their adequacy is an empirical property of the task and execution environment.
+
+The distinction between replay and learning is particularly relevant here because the replay baseline contains force as well as motion. A comparison against pose-only replay would mix the value of retaining force demonstrations with the value of generating from observations. E1 instead retains the selected demonstration's force sequence. Both rules and replay also retain contact-start synchronization and lower-level force feedback. They are therefore fixed strategy providers with feedback during execution, rather than robots operating without contact sensing.
+
+\section{Force in Demonstrations, Observations, and Actions}
+DexForce~\cite{chen2025dexforce} makes a particularly relevant distinction between observed motion and an action capable of producing the demonstrated force. It measures fingertip forces during kinesthetic demonstrations and constructs force-informed position targets using a quasi-static force--displacement relation. These targets are replayed through Cartesian impedance control to collect robot-only visual demonstrations. Its diffusion policy observes images and, in the force-enabled condition, measured forces and moments; it outputs force-informed positions rather than a separate desired-force vector. The paper also ablates force observations. This motivates treating force in supervision and force in observation as different design choices. Its dexterous-hand tasks and control interface differ from the tool-pose and target-force interface studied here.
+
+ForceMimic~\cite{liu2025forcemimic} records motion and wrench with a handheld device. Its HybridIL method conditions trajectory generation on point-cloud features and TCP pose, predicts pose and wrench parameters, and executes them with position or orthogonal hybrid force--position primitives. The described policy input does not list measured-force history. Thus, its force-inclusive action interface should not automatically be interpreted as the same force-observation design used by condition C in this thesis. Its reported task is vegetable peeling, rather than a human-specified polishing region.
+
+Admittance visuomotor policy learning~\cite{zhou2024admitdiff} explicitly uses vision, proprioception, and contact force to generate action trajectories and desired contact forces, followed by admittance execution. FoAR~\cite{he2025foar} takes another route: force/torque information and a future-contact predictor guide reactive refinement of position actions. It evaluates wiping, peeling, and chopping with an end-effector position-control interface. These works illustrate that force can inform an observation, a learned reference, or a deployment correction. Those roles should be compared directly rather than grouped under a single force-aware label.
+
+\begin{table}[tbp]
+\centering\footnotesize
+\caption[Force interfaces in related work]{Force interfaces verified from the cited methods. ``Not reported'' denotes an input absent from the described policy interface, rather than proof that the broader system has no such signal.}
+\label{tab:related_positioning}
+\begin{tabularx}{\textwidth}{P{0.18\textwidth}XXX}
+\toprule Method & Policy force observation & Learned action interface & Execution interface \\ \midrule
+DexForce~\cite{chen2025dexforce} & Forces and moments; ablated & Force-informed fingertip positions & Cartesian impedance \\
+ForceMimic~\cite{liu2025forcemimic} & Not reported in described input & Pose and wrench & Position / hybrid force--position primitives \\
+Admittance policy~\cite{zhou2024admitdiff} & Contact force & Motion and desired force & Admittance controller \\
+FoAR~\cite{he2025foar} & Force/torque & Position actions; future-contact prediction & Reactive position refinement \\
+This thesis, C & Three force components and history & Tool pose and target force & Shared conditioner and existing force controller \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Observation-Conditioned Sequence Generation}
+ACT~\cite{zhao2023act} predicts action chunks to reduce the effective decision horizon in demonstration learning. Diffusion Policy~\cite{chi2023diffusionpolicy} models a conditional distribution over action sequences and executes them with receding-horizon updates. Both provide methodological context for predicting temporally related actions. They do not, by themselves, define a polishing force recipe or prove an advantage over a suitable replay baseline.
+
+Flow Matching~\cite{lipman2023flow} trains a vector field along a prescribed probability path and generates samples by numerical integration. The implementation in this project uses linear interpolation between Gaussian noise and a normalized demonstrated action chunk. Its vector-field loss and integration rule are specified in Chapter~\ref{chap:force_il}. Choosing this generator determines how sequences are learned and sampled; it does not determine how physical contact is regulated.
+
+The image encoder uses the existing DINOv3 visual representation~\cite{simeoni2025dinov3}. Global and fixed interaction-region features condition the generator together with pose and force history. A pretrained visual model is an implementation component, not evidence that the policy recognizes scratch depth or remaining material. The present experiments evaluate the assembled policy rather than isolating the backbone's contribution.
+
+\section{Contact Regulation and Positioning of This Work}
+Interaction control distinguishes the dynamic relation between motion and force from the selection of a task strategy. Impedance control describes how mechanical interaction should respond to motion~\cite{hogan1985impedance}; admittance control uses measured interaction to alter a motion reference through virtual dynamics~\cite{keemink2018admittance}. The deployed lower-level system is an existing element shared within the experimental comparisons. Its role is to execute the selected force and motion references.
+
+This thesis occupies the connection between local human task specification, paired demonstrations, observation-conditioned sequence generation, and a common robot execution environment. Table~\ref{tab:related_task_scope} summarizes the task-level comparison. The evaluation asks whether the assembled choices change procedural execution, and which changes remain attributable to force output or force observation within the available design. It does not rank methods from different publications by their reported success rates.
+
+\begin{table}[tbp]
+\centering\footnotesize
+\caption[Task specification and evaluation scope]{Task specification and verified evaluation scope of representative work. These are descriptive comparisons of interfaces and tasks.}
+\label{tab:related_task_scope}
+\begin{tabularx}{\textwidth}{P{0.22\textwidth}XX}
+\toprule Work & Task/region specification & Demonstration or evaluation scope \\ \midrule
+Geometric coverage~\cite{schneyer2023segmentation} & Tool and workpiece geometry & Segmentation and coverage of freeform geometry \\
+RoboGrind~\cite{alt2024robogrind} & Scanning and interactive program parameters & Laboratory and blade-refurbishment treatment \\
+DexForce~\cite{chen2025dexforce} & Task-specific object arrangements & Kinesthetic fingertip motion/force; dexterous manipulation \\
+ForceMimic~\cite{liu2025forcemimic} & Visual scene and TCP state & Handheld motion/wrench capture; peeling \\
+This thesis & Human-specified marked region; frozen origin & Tool pose/force/RGB; nominal contact procedure and force-information comparison \\
+\bottomrule
+\end{tabularx}
+\end{table}

@@ -1,0 +1,104 @@
+{
+  "schema": "E1_contact_task_evaluation_v1",
+  "endpoints_base_mm": [
+    [
+      445.0,
+      395.0,
+      172.0
+    ],
+    [
+      487.0,
+      345.0,
+      172.0
+    ]
+  ],
+  "half_width_mm": 12.5,
+  "segment_count": 14,
+  "contact_on_N": 3.0,
+  "contact_off_N": 1.2,
+  "contact_event_confirm_s": 0.2,
+  "release_event_confirm_s": 0.2,
+  "event_confirm_s": 0.2,
+  "release_rise_mm": 5.0,
+  "max_gap_s": 0.2,
+  "force_reference_upper_N": 30.812396273,
+  "force_input_frame": "robot_base",
+  "force_processing": "none; already processed base-axis executor/wrench.csv",
+  "time_basis": "same_host_receipt_monotonic_ns",
+  "force_interpolation": "ZOH; no extrapolation",
+  "position_interpolation": "linear inside recorded intervals; no extrapolation",
+  "legacy_dwell_required_s": 0.4664236490661288,
+  "task_definition_file": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/task_definition.json",
+  "evaluation_only": true,
+  "force_limit_or_stop_threshold": false,
+  "provenance": {
+    "surface_reference_z_mm": {
+      "value": 172.0,
+      "origin": "user approximate physical surface height; no TCP contact gate"
+    },
+    "delta_h_mm": {
+      "value": 1.0,
+      "origin": "new experiment development default; physical placement by operator"
+    },
+    "roi": {
+      "origin": "user approximate endpoints/width adopted as new fixed task definition"
+    },
+    "fixed_task_datum_xy_mm": {
+      "value": [
+        457.4,
+        375.0
+      ],
+      "origin": "audited original demonstration relative-coordinate registration; not stain midpoint"
+    },
+    "event_confirm_s": {
+      "value": 0.2,
+      "origin": "new event evaluation development default"
+    },
+    "release_rise_mm": {
+      "value": 5.0,
+      "origin": "new displacement evaluation development default"
+    },
+    "contact_gate": {
+      "on_N": 3.0,
+      "off_N": 1.2,
+      "origin": "existing E1 executor measured base Fz hysteresis"
+    },
+    "force_reference_upper_N": {
+      "value": 30.812396273,
+      "origin": "force audit v2 A; all42 demo base-axis Q95; analysis only"
+    },
+    "common_execution": {
+      "path": "/home/eunseop/nrs_imitation/experiments/e1_contact_coverage_20261012/versions/20261013_force_cleanup_C/execution_C.json",
+      "sha256": "7118f2582d92d8d42e88fb0c815314a0b233949324cdabb940ef90a0f217aaf8"
+    },
+    "actual_C_run": {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E1_contact_coverage/E1_contact_coverage_20261013/C/E1_CC_C_r1_20261013T195506_375fde77fd/execution_config.json",
+      "sha256": "8d0e6ee1f85fc1dd67c19c1983f854cda24b28af81ee115aec23d01e215f19b6"
+    },
+    "stain_mask": {
+      "origin": "user excluded mask validation; existing image interface retained"
+    }
+  },
+  "evaluation_version": "pass_height_ref_v2",
+  "observer_version": "received_observations_v2",
+  "observation_source": "received_observations_v2",
+  "z_release_reference": "successful_pass_time_weighted_median",
+  "release_height_reference_definition": {
+    "source": "measured TCP Z over the first successful continuous loaded ordered pass",
+    "support": "positive observed time inside fixed ROI, contact ON, valid force and position only",
+    "definition": "time-weighted median; shared online/offline implementation",
+    "causal": true,
+    "frozen_at": "first REQUIRED_PASS_OBSERVED",
+    "failed_candidate_buffer": "discard",
+    "no_pass_reference": null,
+    "include_approach": false,
+    "include_exit_or_recovery": false
+  },
+  "observation_provenance": {
+    "source": "actual new position/force subscription receipts, not command-cache samples",
+    "recording": "existing asynchronous executor events; source receipt IDs and timestamps retained",
+    "original_low_rate_CSV": "preserved",
+    "source_timestamp": "retain only if present",
+    "command_or_control_gate_changed": false
+  }
+}

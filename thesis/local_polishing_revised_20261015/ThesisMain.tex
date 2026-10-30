@@ -1,0 +1,157 @@
+\documentclass[12pt,titlepage,headings,oneside,openany]{book}
+\usepackage{kotex}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{subfigure}
+\usepackage{rotating}
+\usepackage{enumitem}
+\usepackage{amsfonts,amssymb}
+\usepackage{pifont}
+\usepackage{indentfirst}
+\usepackage{lscape}
+\usepackage{booktabs,longtable,adjustbox,caption,array}
+\usepackage{soul}
+\soulregister{\ref}{1}
+\soulregister{\cite}{1}
+\usepackage{xcolor}
+\usepackage{fvextra}
+\usepackage{algorithmic}
+\usepackage{stfloats}
+\usepackage{verbatim}
+\usepackage[cmex10]{amsmath}
+\usepackage{newlfont}
+\usepackage{XThesis_skku_eng}
+\usepackage[active]{srcltx}
+\usepackage{notebook}
+\usepackage{fancyhdr}
+\usepackage{cite}
+\usepackage[hyphens]{url}
+\usepackage{array,tabularx}
+\usepackage{bm,upgreek}
+\usepackage{textcomp}
+\usepackage{makecell,multirow}
+\usepackage{ifpdf}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{mathtools}
+\usepackage{microtype}
+\ifpdf
+  \usepackage[CJKbookmarks]{hyperref}
+  \hypersetup{hidelinks}
+\else
+  \usepackage[dvipdfm,CJKbookmarks]{hyperref}
+  \hypersetup{hidelinks}
+  \AtBeginDvi{\special{pdf: tounicode KSCms-UHC-UCS2}}
+\fi
+% Symmetric vertical margins for the thesis body.
+% The previous template used a large positive \voffset and the default book-class
+% chapter spacing, which pushed chapter titles far below the top of the page.
+\usepackage[
+  a4paper,
+  top=25mm,
+  bottom=25mm,
+  left=36mm,
+  right=36mm,
+  includefoot,
+  footskip=10mm
+]{geometry}
+
+% Place chapter headings at the top of the text area instead of adding the
+% default 50 pt blank space used by the book class.
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{0pt}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \huge\bfseries \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 14\p@
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 28\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{0pt}%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 28\p@
+  }}
+\makeatother
+\hfuzz2pt
+\newlength{\defbaselineskip}
+\setlength{\defbaselineskip}{\baselineskip}
+\newcommand{\setlinespacing}[1]{\setlength{\baselineskip}{#1 \defbaselineskip}}
+\newcommand{\doublespacing}{\setlength{\baselineskip}{2.0 \defbaselineskip}}
+\newcommand{\singlespacing}{\setlength{\baselineskip}{\defbaselineskip}}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc,shapes.geometric}
+\tikzset{block/.style={draw=black!65,rounded corners=2pt,align=center,fill=blue!4,inner sep=6pt,font=\small},
+ link/.style={-{Latex[length=2mm]},thick},note/.style={align=center,font=\footnotesize}}
+\newcommand{\thesistitle}{Human-Guided Local Robotic Polishing via Joint Motion--Force Representation and Force-Conditioned Imitation Learning}
+\newcommand{\thesistitlekr}{인간의 영역 지정과 동작--힘 결합 표현 및 힘 조건부 모방학습을 활용한 국소 로봇 폴리싱}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\NA}{\textemdash}
+\expandafter\def\csname short@fig:mark_example\endcsname{Marked local region and registration}
+\expandafter\def\csname short@fig:faire_architecture\endcsname{System overview and module interfaces}
+\expandafter\def\csname short@fig:apparatus\endcsname{Archived robot apparatus photograph}
+\expandafter\def\csname short@fig:teaching_frames\endcsname{Actual teaching-camera frames}
+\expandafter\def\csname short@fig:demo_transfer\endcsname{Coordinate-processing chain}
+\expandafter\def\csname short@fig:force_processing\endcsname{Recorded force-processing stages}
+\expandafter\def\csname short@fig:dataset_split\endcsname{Episode lengths and dataset partition}
+\expandafter\def\csname short@fig:teaching_motion_force\endcsname{Representative motion--force teaching}
+\expandafter\def\csname short@fig:force_history_policy\endcsname{Implemented policy architecture}
+\expandafter\def\csname short@fig:execution_architecture\endcsname{Command processing and contact execution}
+\expandafter\def\csname short@fig:e1_primary_metrics\endcsname{E1 completion and excess-force results}
+\expandafter\def\csname short@fig:e1_force_all\endcsname{All E1 measured force traces}
+\expandafter\def\csname short@fig:e1_xy_all\endcsname{All E1 measured XY trajectories}
+\expandafter\def\csname short@fig:e1_height_reference\endcsname{E1 exit-height reference sensitivity}
+\expandafter\def\csname short@fig:e2_primary_metrics\endcsname{E2 timing, force peaks, and travel}
+\expandafter\def\csname short@fig:e2_force_all\endcsname{All E2 measured force traces}
+\expandafter\def\csname short@fig:e2_transition_cases\endcsname{E2 A4 and B4 transition cases}
+\expandafter\def\csname short@fig:e1_photos\endcsname{First-run E1 initial and final snapshots}
+\expandafter\def\csname short@fig:e2_sequence\endcsname{Frames from the first E2 C video}
+\expandafter\def\csname short@fig:diagnostic_heatmap\endcsname{Uncalibrated execution heatmap}
+\newcommand{\figfull}[3]{\begin{figure}[tbp]\centering\includegraphics[width=\linewidth]{figures/#1}\caption[\csname short@#3\endcsname]{#2}\label{#3}\end{figure}}
+\captionsetup{font=small,labelfont=bf}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\renewcommand{\tabularxcolumn}[1]{P{#1}}
+\renewcommand{\arraystretch}{1.15}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+\hypersetup{pdftitle={Human-Guided Local Robotic Polishing},pdfsubject={Revised master's thesis draft}}
+
+\begin{document}
+\setlinespacing{1.7}
+\def\baselinestretch{1}
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}
+\input{titlepage}
+\pagenumbering{roman}
+\tableofcontents\clearpage
+\phantomsection\addcontentsline{toc}{chapter}{List of Tables}\listoftables\clearpage
+\phantomsection\addcontentsline{toc}{chapter}{List of Figures}\listoffigures\clearpage
+\include{abstract_eng}
+\include{chapters/00_notation}
+\pagenumbering{arabic}\setcounter{page}{1}
+\include{chapters/01_introduction}
+\include{chapters/02_related_work}
+\include{chapters/03_problem_system}
+\include{chapters/04_demonstration_dataset}
+\include{chapters/05_skill_learning}
+\include{chapters/06_execution_evaluation}
+\include{chapters/07_experiments}
+\include{chapters/08_discussion_extensions}
+\include{chapters/09_conclusions}
+\clearpage
+\bibliographystyle{IEEEtran}\bibliography{Bibliography/ThesisRef}
+\setlinespacing{1.44}
+\include{chapters/10_appendices}
+\include{abstract_kr}
+\end{document}

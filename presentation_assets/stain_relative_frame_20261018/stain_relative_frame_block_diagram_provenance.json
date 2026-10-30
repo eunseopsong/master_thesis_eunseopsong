@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-18",
+  "figure_id": "stain_relative_frame_block_diagram",
+  "revision": "English, picture-first",
+  "kind": "implementation schematic",
+  "aspect_ratio": "16:9",
+  "png_pixels": [
+    3840,
+    2160
+  ],
+  "sources": [
+    {
+      "path": "/home/eunseop/nrs_imitation/behavior_ws/src/stain_relative_frame/stain_relative_frame/stain_detect.py",
+      "functions": [
+        "dark_cloud_origin"
+      ],
+      "sha256": "202dbc2874b6f6d49ceb7b1e1860dffe3302af3cf96f964f7e2416a9ab767f58"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/behavior_ws/src/stain_relative_frame/stain_relative_frame/inference_adapter.py",
+      "functions": [
+        "_on_origin"
+      ],
+      "sha256": "eb0ac82d85f84fb3c29acb0d0d7f1a374db0fa0098e0eed6707d58ce166c2834"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/behavior_ws/src/stain_relative_frame/stain_relative_frame/relative_frame.py",
+      "functions": [
+        "to_relative",
+        "to_absolute"
+      ],
+      "sha256": "b1b38a2be900419c8d9dc7ea020a3cf1870bfdb5d04fba65541c527d9bd44288"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/behavior_ws/src/stain_relative_frame/stain_relative_frame/dataset_relativize.py",
+      "functions": [
+        "convert_episode"
+      ],
+      "sha256": "ecb10edcc9fd154c6c27d8bc42f817f06f2285653ca11c0f965d33772f540880"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/behavior_ws/src/nrs_imitation/nrs_imitation/inference_core.py",
+      "functions": [
+        "_wrap_axis_delta",
+        "_canon_setup",
+        "_canon_obs_pose6",
+        "_canon_rotate_image",
+        "_canon_cmd_seq",
+        "_srf_observation_pose6",
+        "_srf_command_seq"
+      ],
+      "sha256": "f6c1d746ed20c3aaab3e9ed7d8e679e97ff578c2c723eaa9d4897a1fbe9d6d6b"
+    }
+  ],
+  "existing_evidence_reused": true,
+  "new_model_or_experiment_analysis": false,
+  "drawing": "Illustrative point cloud, strip angle and strokes; no experimental values or trajectories.",
+  "scope": "Center-only training; optional inference XY/image alignment; inverse XY restoration.",
+  "exclusions": "Z/orientation/force are not rotated by this XY adapter; no measured generalization claim; E1/E2 alignment was OFF.",
+  "mathematical_notes": {
+    "alpha": "wrap_pi(theta_ref - theta_live)",
+    "wrap_pi": "((delta + pi/2) mod pi) - pi/2",
+    "c": "Frozen live stain center; same c and alpha in forward/inverse transforms."
+  },
+  "unchanged": "Robot code, model, dataset, experimental log and thesis source/PDF.",
+  "visible_text": [
+    "Stain-Relative Coordinates",
+    "Train",
+    "$-c_{\\mathrm{demo}}$",
+    "Detect",
+    "Center",
+    "Align",
+    "Generate",
+    "Restore",
+    "X",
+    "Y",
+    "$\\theta$",
+    "$c,\\;\\theta_{\\mathrm{live}}$",
+    "X",
+    "Y",
+    "$-c$",
+    "0",
+    "$p_{xy}-c$",
+    "X",
+    "Y",
+    "$\\alpha$",
+    "Optional",
+    "$R(\\alpha)$",
+    "Flow",
+    "$q$",
+    "$\\widehat{u},\\;z,\\;\\rho,\\;F^*$",
+    "X",
+    "Y",
+    "$R(-\\alpha)\\widehat{u}+c$",
+    "$c,\\;\\alpha$",
+    "XY only",
+    "$z,\\;\\rho,\\;F$ unchanged"
+  ],
+  "outputs": {
+    "png": "b608a1ff35a945f4b0ae1f4a98033bba2ff2e04bd5335a19409c65ff1adca42e",
+    "svg": "4345ab477be07fc4566cfe9ecf0b7335df8c2f4dc590cf038388b86eb4c2e6d4",
+    "pdf": "d5e23e7c4a4b58cfbeff10c6dd72cc4ec6b5c4a09e7baa66143d3469744b1ca0"
+  }
+}

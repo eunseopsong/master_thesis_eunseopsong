@@ -1,0 +1,39 @@
+{
+  "pdf_sha256": "fdd276fd0b918fd4a63e72e298d41c8737e0e8351c5917baddf1e10de9a0a78a",
+  "pdf_pages": 98,
+  "render_directory": "review/revision_stain_frame_fdd276fd0b91",
+  "selected_pdf_pages": [
+    8,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    26,
+    28,
+    29,
+    30,
+    31,
+    33,
+    34,
+    35,
+    38,
+    46,
+    50,
+    77,
+    83,
+    84,
+    85,
+    89,
+    98
+  ],
+  "review_scope": "Changed text/equations/coordinate diagram and adjacent reflow; reused original full-document review for unchanged assets",
+  "contact_sheets": [
+    "review/revision_stain_frame_fdd276fd0b91/contact_1.png",
+    "review/revision_stain_frame_fdd276fd0b91/contact_2.png",
+    "review/revision_stain_frame_fdd276fd0b91/contact_3.png"
+  ]
+}

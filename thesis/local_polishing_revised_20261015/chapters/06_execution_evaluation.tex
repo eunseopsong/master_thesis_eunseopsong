@@ -1,0 +1,110 @@
+\chapter{Robot Execution and Contact-Task Evaluation}
+\label{chap:execution}
+
+\section{From a Skill Sequence to Robot Commands}
+The generated sequence is an upper-level reference. Its physical meaning depends on the execution system that samples it, connects new plans, gates force, and transmits commands to the existing controller. A common execution layer is therefore necessary for interpreting differences between providers.
+
+The provider interface supplies a time array, pose--force values, a plan identifier, and whether the plan is finite. R supplies a prescribed finite path with a recipe force. T supplies a finite teaching sequence with its original time axis. C supplies successively generated chunks from observations. Relative XY positions are restored using the frozen task origin before commands are interpreted in robot-base position coordinates. In the optional direction-transfer path, inverse XY rotation precedes that addition; the evaluated E1/E2 configuration uses translation alone. This restoration occurs before downstream command conditioning. The accompanying force values remain controller targets, with their frame interpreted by the lower-level configuration.
+
+The timed sampler uses elapsed reference time rather than selecting the closest spatial waypoint. It linearly interpolates position and force and interpolates orientation on \(SO(3)\). This preserves the association between a source time and its requested pose/force. It does not guarantee identical physical feed velocity, because downstream conditioning and contact dynamics can alter motion.
+
+\section{Shared Pose Conditioning and Plan Connection}
+The evaluated E1 configuration applies the same archived pose conditioner to R, T, and C. Earlier metadata within the profile still refers to its initial C-only introduction; the active shared R/T/C wrapper and recorded runtime establish the later comparison's actual scope. R/T are presented through a private 30 Hz, 128-point pose view with a 120-point stride, while their original finite force/time plans remain the source for force sampling and phase boundaries.
+
+The conditioner smooths XYZ with a 35-point moving average and orientation with a quaternion mean. The latter avoids averaging rotation vectors through their branch cut near \(\pi\). Edge padding is confined to the filter's window construction. A replacement plan is joined to the preceding reference and velocity over 0.5 s. Its quintic connection weight is
+\begin{equation}
+ \beta(u)=10u^3-15u^4+6u^5,\qquad
+ u=\min(1,(t-t_b)/0.5),
+ \label{eq:plan_connection}
+\end{equation}
+where \(t_b\) is the connection start. Position connects from a velocity-extended anchor; orientation uses a bounded relative rotation. The conditioner also retains its velocity state across replacement plans and bounds the change in commanded velocity.
+
+These operations alter the reference actually presented to the command loop. They are shared processing choices, rather than evidence that the generated raw chunks are intrinsically smooth. Likewise, T's time scaling of one describes its source-time replay, not equality between the demonstrator's and robot's measured instantaneous speed.
+
+\begin{figure}[tbp]\centering
+\begin{tikzpicture}[node distance=6mm]
+\node[block,text width=103mm] (p) {Provider sequence\\raw learned / prescribed pose and target force};
+\node[block,text width=103mm,below=of p] (c) {Task-origin restoration and timed sampling\\35-point pose conditioning; 0.5 s connection};
+\node[block,text width=103mm,below=of c] (g) {Common contact gate and command conditioning\\tangential force disabled; gain, speed, acceleration, force slew};
+\node[block,text width=103mm,below=of g] (s) {Transmitted Cartesian pose + controller target force\\125 Hz command publication};
+\node[block,text width=103mm,below=of s] (l) {Existing contact controller and robot\\measured TCP and base-frame wrench};
+\draw[link](p)--(c);\draw[link](c)--(g);\draw[link](g)--(s);\draw[link](s)--(l);
+\end{tikzpicture}
+\caption[Command processing and contact execution]{Execution interface and distinct command stages. The transmitted target is observable in executor logs; the controller-applied target is not available as a synchronized time series. This conceptual diagram describes command processing, not measured force-tracking performance.}
+\label{fig:execution_architecture}
+\end{figure}
+
+\section{Command Rates, Limits, and Force Gating}
+The command loop uses a nominal 0.008 s period, corresponding to 125 Hz. The common proportional command-update gain is 15 s\(^{-1}\), with per-axis position speed cap 10 mm/s and angular cap 40 degrees/s. The pose-conditioning acceleration settings are 25 mm/s\(^2\) and 100 degrees/s\(^2\). The force-command slew limit is 30 N/s. These are command-processing settings, not experimentally measured limits of physical tool speed or contact force.
+
+For a scalar translational component, the shared update can be represented as
+\begin{equation}
+ \delta x_i=\operatorname{clip}\bigl(\min(1,K\Delta t)(x_i^\star-x_i^{\mathrm{cmd}}),
+                    -v_i^{\max}\Delta t,v_i^{\max}\Delta t\bigr),
+ \label{eq:command_update}
+\end{equation}
+followed by the existing acceleration conditioning. \(x_i^\star\) is the sampled conditioned reference, \(K=15\) s\(^{-1}\), and \(\Delta t\) is bounded by the nominal control period. Orientation uses a relative-rotation increment instead of direct component-wise interpolation across a branch cut.
+
+The operational gate reads measured robot-base \(F_z^B\), enters contact at 3.0 N, and leaves at 1.2 N. While the gate is OFF, the requested normal target is suppressed. The command's tangential force components are set to zero in the evaluated common executor. Thus B/C learn a three-component force action, but the deployed comparison transmits only its normal-force component as a nonzero target. Their three-component measured-force observations can still inform generation.
+
+The target's final approach to its requested value is affected by gain and slew conditioning. A nominal constant recipe is therefore distinct from the full transmitted force curve, particularly around contact onset and release. In E1, R uses 18 N. In E2, A uses an external 23 N target. The operator's approximate 20 N teaching intention, those recipe values, and the measured base-force distribution describe different quantities.
+
+\section{Existing Lower-Level Contact Regulation}
+The archived controller receives a Cartesian pose reference and a signed target-force vector. Its TCP-coordinate path rotates measured base vectors into the local frame, performs contact-control computation there, and restores the resulting motion to the robot frame. The stored controller configuration identifies TCP force coordinates and an existing mass/damping adaptation mode. This lower-level adaptation is a shared control asset; it is not the upper-level residual surface-repair policy proposed in the old thesis.
+
+The underlying admittance implementation defines position error \(e=x_d-x_c\) and force error \(F_d-F_{\mathrm{ext}}\). Its scalar virtual dynamics can be written as
+\begin{equation}
+ M\ddot e+D\dot e+Ke=F_d-F_{\mathrm{ext}},\qquad x_c=x_d-e,
+ \label{eq:admittance_il}
+\end{equation}
+where \(x_d\) is the supplied motion reference, \(x_c\) the compliant motion output, and \(M,D,K\) the virtual mass, damping, and stiffness. This controller calculation converts position to meters internally; its translational parameter units are kg, N\,s/m, and N/m. The source discretizes the relation using the Tustin form and contains mode-dependent parameter updates. Equation~\eqref{eq:admittance_il} explains the interaction role; it does not replace the deployed switching and adaptation logic with a newly designed controller.
+
+Teaching force, policy output, transmitted target, and measured force must remain distinct. The available axis correspondence permits rotating teaching measurements into robot-base coordinates for analysis. It does not provide the actual controller-applied reference after all internal processing. For that reason, the thesis does not subtract published TCP target \(F_z\) directly from measured base \(F_z\) and call the result tracking RMSE.
+
+\section{Approach and Contact-Start Synchronization}
+R and T retain an existing one-time contact-start synchronization. Before confirmed contact, their approach reference continues to progress up to the prescribed processing boundary. Once distinct received force observations sustain the existing ON state for 0.2 s, the reference clock is aligned to that boundary. After the alignment, the finite strategy advances from its source timing; repeated synchronization is not applied.
+
+This mechanism matters because the physical surface can be encountered before or after a nominal geometric boundary. It supplies feedback to fixed strategies without learning a policy. C instead generates its own approach and later chunks from observations. Common contact gating and lower-level force regulation remain active in all methods.
+
+The normal departure is also provider dependent. R includes a planned zero-force upward segment, T contains the selected teaching exit, and C can generate an exit within its pose--force sequence. The evaluator recognizes the result of these actions. It does not insert a new retraction to make a deficient sequence satisfy the task.
+
+\section{The Executed E1 Contact Procedure}
+E1 uses a fixed 25 mm-wide XY band between \(P_0=(445,395)\) mm and \(P_1=(487,345)\) mm. Its length is 65.299 mm and it is divided into 14 longitudinal segments. The band concerns the TCP center; it is not a measurement of the contact footprint.
+
+Let \(d=(P_1-P_0)/\ell\), \(\ell=\|P_1-P_0\|\), and let \(n\) be a unit vector perpendicular to \(d\) in the XY plane. For TCP XY position \(p_{xy}\), define longitudinal and transverse coordinates
+\begin{equation}
+ u=d^\mathsf{T}(p_{xy}-P_0),\qquad
+ v=n^\mathsf{T}(p_{xy}-P_0).
+ \label{eq:task_band}
+\end{equation}
+Band occupancy requires \(0\leq u\leq\ell\) and \(|v|\leq12.5\) mm. An ordered loaded candidate starts at an end segment and advances through adjacent first visits toward the opposite end. Contact OFF, missing support, or leaving the band breaks a candidate. Revisiting a previously visited segment does not create additional forward progress. Completion of the 14-segment sequence establishes the required pass. There is no per-segment 0.466 s dwell requirement in this primary criterion.
+
+The executed evaluator first confirms contact for 0.2 s. Its original height reference \(z_{\mathrm{contact}}\) is a time-weighted median over the initial contact-confirmation support. After the required pass, it requires both the OFF state and
+\begin{equation}
+ z(t)\geq z_{\mathrm{contact}}+5\ \mathrm{mm}
+ \label{eq:original_release}
+\end{equation}
+continuously for 0.2 s. Contact formation, ordered loaded pass, and this exit conjunction define \texttt{TASK\_COMPLETED}. A higher initial reference can prevent the last conjunction even when the subsequent trace shows unloading and a rise from the working surface.
+
+The prepared \texttt{pass\_height\_ref\_v2} changes the reference to the time-weighted median measured Z of the first successful loaded pass. It freezes the reference when that pass completes and retains the same 5 mm rise and simultaneous OFF confirmation. This is a separate evaluation version. Its height-only replay on old records and its unexecuted revised-observer sessions are reported separately in Chapter~\ref{chap:experiments}.
+
+\section{Completion, Observation Support, and Time Windows}
+The online evaluator used for the recorded E1 cohort consumes the bracketed recorded pose and force observations. Force is held by zero-order hold (ZOH) and position is interpolated within recorded support; gaps longer than 0.2 s are treated as unobserved. The final offline replay can use a bracket already recorded before stopping that was not yet available when an online decision was made. It does not manufacture 125 Hz sensor samples from the command loop's cached state.
+
+In the prepared revised observer, distinct receipt events and consumed intervals are recorded explicitly. That change improves reproducibility of the online observation stream but cannot reconstruct events that were never logged in the older cohort. It remains separate from the height-only sensitivity analysis.
+
+The primary completion time is the first procedural-completion time measured from execution start. Incomplete attempts have no completion time. The E1 force-analysis window begins at execution start and ends at first completion, or at the first stop if the procedure is incomplete. Subsequent return or hold is excluded. The same window rule is applied to every provider.
+
+Within this window, excess-force exposure is
+\begin{equation}
+ J_{\mathrm{excess}}=\int_{t_0}^{t_1}
+ \max\!\left(F_z^B(t)-Q_{95},0\right)\,dt,
+ \qquad Q_{95}=30.812396273\ \mathrm{N}.
+ \label{eq:excess_force}
+\end{equation}
+The reference is the existing episode-balanced, actual-time-weighted teaching cleanup distribution rotated to base axes, with the archived stored-Z candidate convention. It includes validation episodes because it describes the common teaching reference, not a fitted policy input. It is an empirical analysis upper reference, not a damage, safety, or effective-polishing limit. The lower quantile, approximately 0.4498 N, is not used as a contact threshold. Low or zero native-force samples can have nonzero projected base components and do not establish meaningful contact.
+
+E2 has a different stopping protocol: the recorded window ends at the first operator finish request. A terminal software event labeled normal completion verifies the existing stop path rather than task achievement. A4 demonstrates why the two must be separated. The first request time is retained even when the later operator report identifies the task as incomplete.
+
+\section{Execution Timing and Checks}
+The action grid (30 Hz), inference timer (5 Hz), plan stride (about 4 s), command publication (125 Hz), and recorded feedback (about 18 Hz) describe different mechanisms. Receipt timestamps and a 20 Hz CSV cap do not identify sensor acquisition or physical response. Existing timing, freshness, workspace, and stop/hold checks remain common infrastructure.

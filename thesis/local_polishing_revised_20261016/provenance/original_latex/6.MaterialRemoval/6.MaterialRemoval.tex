@@ -1,0 +1,96 @@
+\chapter{Execution-Derived Material-Removal Estimation}
+\label{chap:removal_estimation}
+
+\section{Process-Data Logging during IL Execution}
+Removal estimation uses the process that the robot actually executed, not the policy command alone. For every sample, the log distinguishes commanded TCP pose, measured robot/TCP pose, and estimated contact-point pose. It also records the raw and processed wrench, measured tangential feed velocity, spindle angular speed when available, contact state, timestamps, and safety interventions. The execution record is \(\mathcal{T}_{\mathrm{IL}}\) in Eq.~\eqref{eq:il_execution_log}.
+
+Commanded pose is retained for controller analysis but is not substituted for contact location when following error or compliance is significant. The mapping from TCP to contact point uses the calibrated offset and pad/tool geometry from Eq.~\eqref{eq:contact_pose}. Any compliance-related contact-location correction is \todoexp{TBD}.
+
+\section{Contact Frame and Normal-Force Computation}
+Let \(f_t\) be the compensated force expressed in a common frame, and let \(n_t\) be the unit tool or estimated surface normal used by the removal model. Normal force is the projection
+\begin{equation}
+  F_n(t)=f_t^\mathsf{T}n_t,
+  \label{eq:normal_force_projection}
+\end{equation}
+with sign chosen so that compressive contact is positive. Sensor \(F_z\) is not assumed to be the normal force unless the sensor frame is verified to be aligned with \(n_t\).
+
+The online system does not assume access to a perfect CAD normal. During IL map construction, \(n_t\) may be obtained from the measured tool orientation under an aligned-tool assumption, from a verified local estimator, or from another implemented source. The chosen method and its uncertainty are \todoexp{to be determined from the final implementation}. Samples below a validated contact threshold are excluded from material removal.
+
+\section{Preston-Based Spatial Removal Model}
+A discrete spatial model is
+\begin{equation}
+  \hat h_{\mathrm{IL}}(q)
+  =
+  \sum_{t=1}^{T}
+  K\,F_n(t)\,
+  G(q;p_t,R_t)\,
+  v_{\mathrm{rel}}(q,t)\,\Delta t,
+  \label{eq:preston_spatial}
+\end{equation}
+where \(K\) is the calibrated Preston coefficient, \(G\) is a normalized TIF centered and oriented by the contact pose, and \(v_{\mathrm{rel}}(q,t)\) is the magnitude of true tool--surface relative velocity at \(q\). The model accumulates overlapping dwell and repeated passes.
+
+Tangential robot feed velocity and true relative sliding are distinct. If the pad rotates, spindle motion may dominate \(v_{\mathrm{rel}}\), while feed changes dwell and the path of the influence footprint. The final implementation must calculate \(v_{\mathrm{rel}}\) from the available kinematics and tool geometry rather than replacing it automatically with \(v_{\mathrm{feed}}\).
+
+\section{Tool Influence Function}
+The TIF \(G(q;p_t,R_t)\) describes the normalized spatial distribution of removal around a tool pose:
+\begin{equation}
+  G(q;p_t,R_t)\geq 0,
+  \qquad
+  \int_{\Omega}G(q;p_t,R_t)\,dq=1
+  \label{eq:tif_normalization}
+\end{equation}
+over a sufficiently large local domain. Its shape may depend on pad geometry, compliance, force, tilt, spindle speed, abrasive state, and material. FAIRE will use the simplest calibrated parameterization supported by measurements; a Gaussian, measured lookup map, or another shape is not assumed before calibration.
+
+\section{Calibration and Metrology}
+Controlled polishing tests will vary one declared factor at a time over safe operating ranges and measure the resulting removal. Calibration must cover force dependence, relative-velocity or dwell dependence, spatial TIF shape, and repeated-pass accumulation. The Preston coefficient \(K\) is fitted only after defining units and the specific tool--abrasive--material condition.
+
+Removal maps will be measured by a verified method such as profilometry, confocal measurement, laser measurement, or another metrology system whose resolution and registration are documented. \todoexp{Select the metrology instrument, calibration specimens, factor levels, fitting procedure, and validation split.} The validation compares predicted and measured depth maps on held-out process conditions or specimens. Until this is complete, \(\hat h\) is reported only as a removal proxy or relative processing-intensity map.
+
+\section{Estimated IL Removal Map}
+The logged trajectory is rasterized in the local repair coordinates, and each valid contact sample contributes the shifted and oriented TIF weighted by normal force, relative velocity, and sample duration. Registration between robot coordinates and the measured surface map must be reported. Map resolution should be fine enough to represent the TIF without implying precision beyond the metrology system.
+
+\begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.22\textheight][c]{0.90\textwidth}
+    \centering
+    actual IL contact poses \(+\) compensated normal force\\
+    \(+\) true relative velocity \(+\) calibrated \(K,G\)\\
+    \(\downarrow\) spatial accumulation\\
+    \(\hat h_{\mathrm{IL}}(q)\)
+    \(\quad\) compared with \(\quad h^*(q)\)\\
+    \(\downarrow\) \(\Delta h(q)=\max(0,h^*-\hat h_{\mathrm{IL}})\)
+  \end{minipage}}
+  \caption{Conceptual construction of the execution-derived removal map and residual-removal map. Experimental maps will replace the placeholder after calibration and metrology.}
+  \label{fig:removal_and_residual_maps}
+\end{figure}
+
+\section{Target Core and Transition Profiles}
+The target profile is defined by Eq.~\eqref{eq:target_profile_overview}. The core contains the defect and is regularized toward a constant \(h_c\). The transition band connects this plateau to zero additional removal on the intact surface. A smooth weight can satisfy
+\begin{equation}
+  w(0)=1,\quad w(D)=0,\quad
+  w'(0)=w'(D)=0,\quad 0\leq w(d)\leq 1,
+  \label{eq:transition_conditions}
+\end{equation}
+where \(d\in[0,D]\) measures outward distance through a band of width \(D\). The final taper function and definition of distance are \todoexp{TBD}.
+
+\begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.21\textheight][c]{0.90\textwidth}
+    \centering
+    \(\underbrace{\rule{0.22\textwidth}{1.2pt}}_{\Omega_{\mathrm{core}}:\ h_c}\)
+    \(\;\searrow\;\)
+    \(\underbrace{\text{smooth decay to }0}_{\Omega_{\mathrm{transition}}}\)\\[1.5ex]
+    uniformize the inner repair region \(\rightarrow\)
+    blend gradually into the intact surface
+  \end{minipage}}
+  \caption{Target removal profile with a uniform core and a smoothly decaying transition band.}
+  \label{fig:target_profile}
+\end{figure}
+
+The selection of \(h_c\) must be explicit and conservative. Candidate rules include a measured defect-depth estimate, a robust percentile or plateau of the IL removal map, or a process-specific target under a coating-thickness safety bound. A noisy maximum is not used without statistical and physical justification. The final rule is \todoexp{TBD}.
+
+\section{Residual-Removal Map}
+The residual map in Eq.~\eqref{eq:residual_removal_overview} assigns minimal additional processing where IL has already reached the target and additional removal where it has not. It also adds the controlled transition processing needed to connect the repaired core to the intact surface. An uncertainty margin or conservative dead band may be required to prevent model error from causing over-removal; its definition is \todoexp{TBD}.
+
+\section{Model Limitations and Uncertainty}
+Preston behavior may deviate from linearity because of pad wear, abrasive loading, temperature, saturation, compliance, changing contact area, material heterogeneity, and tool tilt. A fixed TIF approximates a process that may vary with force and orientation. Pose, normal, clock, and metrology registration errors propagate into the spatial map. Most importantly, the model can request additional removal but cannot add material after IL over-removes. These limitations motivate conservative targets, held-out validation, uncertainty reporting, and eventual post-pass inspection.

@@ -1,0 +1,36 @@
+{
+  "source": "user instruction for this thesis rewrite, 2026-10-15",
+  "run_id": "E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601",
+  "observation_ko": "접촉 해제 단계로 넘어가지 못하고 계속 접촉을 유지해 작업자가 중단했다.",
+  "execution_duration_s": 28.750087346,
+  "completion_time_s": null,
+  "included_in_all_attempt_statistics": true,
+  "raw_operator_finish_and_normal_completion_unchanged": true,
+  "causal_attribution_to_force_ablation": "not established",
+  "supersedes": "reports/20261013_E2_pdf_report/operator_completion_criterion.json for A4 only",
+  "reaffirmed_source": "User field confirmation and fixed thesis scope, 2026-10-16",
+  "raw_log_evidence": {
+    "source": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601/executor/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601_executor_20261013T200529_1791889529692307773_a7plxs7b/events.jsonl",
+    "duration_s": 28.750087346,
+    "original_first_stop_details": {
+      "session_id": "E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601",
+      "state": "stopping",
+      "processing": true,
+      "force_source": "external_F0",
+      "external_force_fz_N": 23.0,
+      "external_force_ramp_sec": 0.0,
+      "external_force_ramped_fz_N": 23.0,
+      "command_supply_active": false,
+      "controller_applied_force": null,
+      "reason": "operator_finish",
+      "details": null,
+      "initial_reset": false,
+      "physical_stop_verified": false,
+      "spindle_stop_commanded": false
+    },
+    "original_terminal_events": [
+      "normal_completion"
+    ],
+    "label": "A4"
+  }
+}

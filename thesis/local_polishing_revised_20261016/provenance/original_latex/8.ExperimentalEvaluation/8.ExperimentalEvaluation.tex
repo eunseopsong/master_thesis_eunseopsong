@@ -1,0 +1,184 @@
+\chapter{Experimental Evaluation}
+\label{chap:experiments}
+
+\section{Research Questions and Evaluation Strategy}
+The evaluation follows RQ1--RQ4 from Chapter~\ref{chap:introduction} through six staged experiments. Each stage isolates one responsibility before the end-to-end comparison: the need for expert treatment, force-aware representation, removal-model validity, blending contribution, residual adaptation on unseen geometry, and complete repair progression. All numerical fields remain blank until supported by traceable logs and metrology.
+
+\section{Robot, Tool, Sensor, Camera, and Specimens}
+The experimental system requires a robot with a Cartesian command interface, a polishing or repair tool, a six-axis force/torque sensor, a visual sensor, and specimens containing reproducible localized defects. The robot, tool, sensor, camera, spindle, abrasive, material, coating, and metrology hardware are \todoexp{to be determined from the final implementation}.
+
+Specimens should cover smooth flat, convex, and concave geometries within a declared curvature range. Sharp edges and discontinuities are excluded. Defect variations may include severity, depth, width, local nonuniformity, required repetition, or removal difficulty only when those conditions can be produced and measured reliably.
+
+\section{Dataset and Train/Validation/Test Splits}
+Demonstration windows are split by episode, defect, or specimen rather than by adjacent timestamps. Model-selection trials are separated from final tests. For geometry generalization, RL training surfaces may include flat and selected convex/concave radii, while test surfaces use previously unseen smooth curvature values or combinations. Material, tool, abrasive, and process conditions remain fixed during the geometry study unless cross-material generalization is explicitly evaluated.
+
+Dataset size, split ratios, defect distribution, surface assignments, and seed count are \todoexp{TBD}. The split manifest and preprocessing statistics will be stored with the reproducibility records.
+
+\section{Experiment I: Necessity of Expert Imitation}
+Experiment~I tests whether localization plus a predefined skill determines sufficient treatment. The planned comparison includes a geometric/ROI path with a fixed motion--force recipe, vision-only IL, vision--force IL, and full force-history IL. Conditions should include visually similar regions that require measurably different process intensity, repetition, or stopping behavior.
+
+Metrics include defect-removal ratio, task success, collateral removal outside the defect, force-tracking error, pass or repetition count, termination error when defined, and task time. The defect-removal and termination metrics require explicit pre/post measurements and reference criteria before use.
+
+\begin{table}[t]
+\centering
+\caption{Planned expert IL baseline comparison. Blank entries await experimental results.}
+\label{tab:expert_il_baselines}
+\small
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}XXXX}
+\toprule
+Method & \makecell{Defect\\removal} & \makecell{Collateral\\removal} & \makecell{Repetition/\\termination} & \makecell{Task\\time} \\
+\midrule
+Geometric/ROI fixed recipe & & & & \\
+Vision-only IL & & & & \\
+Vision--force IL & & & & \\
+Full wrench-history IL & & & & \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Experiment II: Force-Aware IL Representation}
+Experiment~II provides subsystem evidence for RQ1. Action-interface comparisons include pose only, force observation without desired-force output, fixed-force admittance, phase-based force, one-step desired force, and horizon desired-force trajectory. Observation/encoder comparisons include current wrench versus wrench history and MLP, LSTM, and GRU variants. All methods in each subcomparison retain the same data split, policy backbone where applicable, controller, and IL-stage velocity rule.
+
+\begin{sidewaystable}[p]
+\centering
+\caption{Planned force-aware IL ablations. Blank entries await experimental results.}
+\label{tab:force_il_ablation}
+\scriptsize
+\resizebox{\textheight}{!}{%
+\begin{tabular}{lllccccc}
+\toprule
+Variant & Force observation & Policy force output & Force RMSE & Contact loss & Defect removal & Collateral removal & Success \\
+\midrule
+Pose only & None & None & & & & & \\
+Force observation, pose output & Current/history & None & & & & & \\
+Fixed-force admittance & History & Fixed reference & & & & & \\
+Phase-based force & History & Phase reference & & & & & \\
+One-step desired force & History & One step & & & & & \\
+Horizon desired-force trajectory & History & Short horizon & & & & & \\
+Current-wrench MLP & Current & Short horizon & & & & & \\
+Wrench-history MLP & History & Short horizon & & & & & \\
+Wrench-history LSTM & History & Short horizon & & & & & \\
+Wrench-history GRU & History & Short horizon & & & & & \\
+\bottomrule
+\end{tabular}}
+\end{sidewaystable}
+\clearpage
+
+\section{Experiment III: Removal-Model Calibration and Validation}
+Controlled tests calibrate \(K\) and \(G\), verify force and velocity/dwell dependence, and evaluate repeated-pass accumulation. Predicted maps are registered to measured maps obtained with the selected metrology system. Training and validation process conditions or specimens are separated.
+
+Depth RMSE is defined after registration as
+\begin{equation}
+  \operatorname{RMSE}_h
+  =
+  \sqrt{\frac{1}{|\mathcal{Q}|}
+  \sum_{q\in\mathcal{Q}}
+  \bigl(\hat h(q)-h_{\mathrm{meas}}(q)\bigr)^2},
+  \label{eq:depth_rmse}
+\end{equation}
+where \(\mathcal{Q}\) is the declared valid measurement set. Spatial correlation, peak and mean removal error, profile error, map similarity, and repeatability are included only after their registration, masking, and aggregation procedures are specified.
+
+\begin{table}[t]
+\centering
+\caption{Planned removal-model calibration and validation results.}
+\label{tab:removal_calibration}
+\scriptsize
+\begin{tabularx}{\textwidth}{p{0.25\textwidth}XXXXX}
+\toprule
+Condition & \makecell{Depth\\RMSE} & Correlation & \makecell{Peak\\error} & \makecell{Mean\\error} & \makecell{Repeat-\\ability} \\
+\midrule
+Force dependence & & & & & \\
+Velocity/dwell dependence & & & & & \\
+Repeated-pass accumulation & & & & & \\
+Held-out map validation & & & & & \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Experiment IV: Residual-Removal-Based Blending}
+Experiment~IV compares IL only, IL followed by fixed uniform surrounding processing, and IL followed by model-based residual-removal blending. It evaluates whether the proposed target regularizes the core and produces a smooth transition without unnecessary overprocessing.
+
+Core uniformity is reported using a stated dispersion measure over \(\Omega_{\mathrm{core}}\). Residual-removal RMSE compares achieved and target profiles. Transition-profile error is measured only inside \(\Omega_{\mathrm{transition}}\), and boundary slope or gradient is computed using a declared spatial derivative and sampling method. Surface roughness, gloss, haze, or another appearance metric is reported only if a verified instrument or controlled protocol is available.
+
+\begin{table}[t]
+\centering
+\caption{Planned comparison of IL-only repair and blending strategies.}
+\label{tab:blending_ablation}
+\scriptsize
+\begin{tabularx}{\textwidth}{p{0.26\textwidth}XXXXX}
+\toprule
+Method & \makecell{Core\\uniformity} & \makecell{Residual\\RMSE} & \makecell{Transition\\error} & \makecell{Over-\\processing} & Appearance \\
+\midrule
+IL only & & & & & \\
+IL + uniform surrounding process & & & & & \\
+IL + residual-removal blending & & & & & \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Experiment V: Residual RL on Unseen Surface Geometries}
+The residual study compares fixed orientation with nominal model velocity, classical moment-based orientation adaptation with nominal velocity, orientation-only residual RL, and full residual orientation--velocity RL. Training and test geometries are disjoint. A classical moment-based method is included only after its gains, frames, and saturation rules are specified.
+
+Normal-force RMSE uses the projected force from Eq.~\eqref{eq:normal_force_projection}. Other metrics include contact-loss rate, tangential-force magnitude, \(\tau_x/\tau_y\), orientation smoothness, residual-removal error, core uniformity, transition error, task time, safety interventions, and policy saturation frequency.
+
+\begin{sidewaystable}[p]
+\centering
+\caption{Planned residual RL ablation on unseen smooth surface geometries.}
+\label{tab:residual_rl_ablation}
+\scriptsize
+\resizebox{\textheight}{!}{%
+\begin{tabular}{lcccccccc}
+\toprule
+Method & Force RMSE & Contact loss & Tangential force & Orientation smoothness & Removal error & Task time & Interventions & Saturation \\
+\midrule
+Fixed orientation + nominal velocity & & & & & & & & \\
+Moment-based orientation + nominal velocity & & & & & & & & \\
+Orientation-only residual RL & & & & & & & & \\
+Residual orientation + velocity RL & & & & & & & & \\
+\bottomrule
+\end{tabular}}
+\end{sidewaystable}
+\clearpage
+
+\section{Experiment VI: End-to-End Surface Repair}
+End-to-end evaluation records the surface before repair, after IL selective removal, and after model-based blending. The intended analysis asks whether IL removes the defect selectively, whether IL-only removal remains spatially nonuniform, and whether blending brings the core and transition closer to the declared target. These are hypotheses, not current findings.
+
+\begin{table}[t]
+\centering
+\caption{Planned end-to-end results at each repair stage.}
+\label{tab:end_to_end}
+\scriptsize
+\begin{tabularx}{\textwidth}{p{0.24\textwidth}XXXXX}
+\toprule
+Stage & \makecell{Defect\\measure} & \makecell{Core\\uniformity} & \makecell{Transition\\error} & \makecell{Collateral\\removal} & Appearance \\
+\midrule
+Before repair & & & & & \\
+After expert IL & & & & & \\
+After model-based blending & & & & & \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.20\textheight][c]{0.90\textwidth}
+    \centering
+    before repair \(\mid\) after expert IL \(\mid\) after blending\\[1ex]
+    registered appearance, surface profile, and removal-map panels\\
+    \todoexp{to be populated from experimental results}
+  \end{minipage}}
+  \caption{Planned end-to-end visualization of selective removal and subsequent spatial regularization.}
+  \label{fig:end_to_end_results}
+\end{figure}
+
+\section{Metrics}
+Every metric will state its physical meaning, units, instrument or data source, valid spatial/temporal mask, registration method, aggregation, and treatment of failed trials. Force-tracking error uses desired and projected measured force in a common frame. Contact loss uses a calibrated threshold. Defect-removal ratio requires a reproducible defect measure. Collateral removal is evaluated outside the defect or target region using a declared mask. Core uniformity and transition error use the regions defined for \(h^*\).
+
+\section{Statistical Protocol}
+The independent experimental unit, sample size, repetitions, randomization or counterbalancing, and exclusion criteria are \todoexp{TBD}. Method order should control abrasive wear, temperature, and specimen variation. Paired analyses are preferred when methods can use matched defects or regions. Reports will include central tendency, dispersion, confidence intervals, the planned statistical test, effect sizes where meaningful, and multiple-comparison handling. Safety-stopped trials remain visible in success and intervention statistics.
+
+\section{Qualitative Analysis}
+Qualitative evidence includes synchronized policy trajectories, force traces, repetition behavior, actual execution paths, estimated and measured removal maps, core/transition profiles, residual action traces, and registered before/after surface observations. Failure cases, over-removal, contact loss, and policy saturation are shown alongside representative successes.
+
+\section{Current Result Status}
+The repository does not yet contain completed calibration, trial measurements, or statistical analysis for the redesigned scenario. No method is therefore described as outperforming another. All table cells are intentionally blank and will be populated only from experimental results with traceable raw data and metrology.

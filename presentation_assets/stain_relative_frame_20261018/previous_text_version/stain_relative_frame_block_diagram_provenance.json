@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-18",
+  "figure_id": "stain_relative_frame_block_diagram",
+  "kind": "implementation block diagram",
+  "aspect_ratio": "16:9",
+  "png_pixels": [
+    3840,
+    2160
+  ],
+  "sources": [
+    {
+      "path": "/home/eunseop/nrs_imitation/behavior_ws/src/stain_relative_frame/stain_relative_frame/stain_detect.py",
+      "functions": [
+        "dark_cloud_origin"
+      ],
+      "sha256": "202dbc2874b6f6d49ceb7b1e1860dffe3302af3cf96f964f7e2416a9ab767f58"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/behavior_ws/src/stain_relative_frame/stain_relative_frame/inference_adapter.py",
+      "functions": [
+        "_on_origin (one-shot frozen origin and optional angle)"
+      ],
+      "sha256": "eb0ac82d85f84fb3c29acb0d0d7f1a374db0fa0098e0eed6707d58ce166c2834"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/behavior_ws/src/stain_relative_frame/stain_relative_frame/relative_frame.py",
+      "functions": [
+        "to_relative",
+        "to_absolute"
+      ],
+      "sha256": "b1b38a2be900419c8d9dc7ea020a3cf1870bfdb5d04fba65541c527d9bd44288"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/behavior_ws/src/stain_relative_frame/stain_relative_frame/dataset_relativize.py",
+      "functions": [
+        "convert_episode"
+      ],
+      "sha256": "ecb10edcc9fd154c6c27d8bc42f817f06f2285653ca11c0f965d33772f540880"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/behavior_ws/src/nrs_imitation/nrs_imitation/inference_core.py",
+      "functions": [
+        "_wrap_axis_delta",
+        "_canon_setup",
+        "_canon_obs_pose6",
+        "_canon_rotate_image",
+        "_canon_cmd_seq",
+        "_srf_observation_pose6",
+        "_srf_command_seq"
+      ],
+      "sha256": "f6c1d746ed20c3aaab3e9ed7d8e679e97ff578c2c723eaa9d4897a1fbe9d6d6b"
+    }
+  ],
+  "scope": "XY translation; optional inference-time XY/image alignment; inverse XY restoration",
+  "not_claimed": "No new generalization experiment or performance measurement.",
+  "unmodified": "Robot code, model, datasets, experiment logs, and thesis manuscript.",
+  "outputs": {
+    "png": "bd2dbda4c744c665b09a41e16d34d73d8d84c64d8d0df55ebf209a22113763fc",
+    "svg": "dcb7f18c62405ac01cbd4322fdf99b621272fd6f457d73bfcbb6da4ffc09e6f9",
+    "pdf": "dc5e8142aff136d5492680867891cff4d3a4ff0235ae62fde1e755291b041330"
+  }
+}

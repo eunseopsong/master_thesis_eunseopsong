@@ -1,0 +1,116 @@
+\chapter{Problem Formulation and FAIRE Overview}
+\label{chap:faire_overview}
+
+\section{Surface-Repair Objective}
+Let \(\Omega\) denote a bounded local repair workspace on a surface, and let \(q\in\Omega\) denote a point in its local two-dimensional parameterization. The objective is first to remove a visually observed defect selectively and then to obtain a spatial material-removal profile that is uniform around the defect and smoothly connected to the intact surface. The system must avoid excessive force, workspace violation, contact loss, and overprocessing subject to implementation-specific safety limits.
+
+\section{Skill--Expert Problem Formulation}
+A geometric skill receives a target region and process parameters and executes them. An expert instead infers appropriate treatment from uncertain evidence. FAIRE assigns the mapping from visual/contact evidence to selective repair behavior to expert IL, while assigning a quantitatively defined residual-removal objective to the blending skill.
+
+\begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.21\textheight][c]{0.90\textwidth}
+    \centering
+    \textbf{Geometric skill:}\\
+    predefined target \(+\) process parameters \(\rightarrow\) structured execution\\[1.3ex]
+    \textbf{Expert IL:}\\
+    image \(+\) robot state \(+\) wrench history\\
+    \(\rightarrow\) treatment, process intensity, local repetition, and termination
+  \end{minipage}}
+  \caption{Skill--expert distinction used throughout FAIRE. Termination is a policy responsibility only if the final implementation supports learned continuation or stopping.}
+  \label{fig:skill_expert}
+\end{figure}
+
+\section{Expert IL for Selective Defect Removal}
+The conceptual IL observation is
+\begin{equation}
+  o_t^{\mathrm{IL}}=\{I_t,s_t,w_{t-K:t}\},
+  \label{eq:il_observation}
+\end{equation}
+where \(I_t\) is the visual observation, \(s_t\) is the current robot/tool state, and \(w_{t-K:t}\) is recent six-axis wrench history. The policy predicts
+\begin{equation}
+  \pi_{\mathrm{IL}}(o_t^{\mathrm{IL}})
+  \rightarrow
+  \{x^{\mathrm{ref}}_{t:t+H},
+    R^{\mathrm{ref}}_{t:t+H},
+    f^{\mathrm{des}}_{t:t+H}\},
+  \label{eq:il_policy_overview}
+\end{equation}
+where \(f^{\mathrm{des}}\in\mathbb{R}^{3}\) is the desired three-axis force trajectory unless the final implementation establishes a different output. The demonstrated tangential feed velocity is preserved:
+\begin{equation}
+  v_{\mathrm{cmd}}^{\mathrm{IL}}=v_{\mathrm{IL}}.
+  \label{eq:preserve_il_velocity}
+\end{equation}
+Only a deterministic safety governor may reduce or stop IL motion.
+
+\section{Execution-Derived Material-Removal Estimation}
+The system logs actual IL execution as
+\begin{equation}
+  \mathcal{T}_{\mathrm{IL}}
+  =
+  \{p_t,R_t,w_t,v_{\mathrm{feed},t},\omega_{\mathrm{spindle},t}\}_{t=1}^{T},
+  \label{eq:il_execution_log}
+\end{equation}
+using available measured or estimated values. Commanded pose, measured robot/TCP pose, and estimated contact-point pose are separate quantities. After wrench compensation and contact-frame transformation, this history is converted into a Preston-model-based estimated material-removal map \(\hat h_{\mathrm{IL}}(q)\). Until calibration and metrology validate its units, it is called a removal proxy or relative processing-intensity map.
+
+\section{Target Profile and Residual-Removal Formulation}
+The target profile contains a defect-covering core \(\Omega_{\mathrm{core}}\) and an outer transition band \(\Omega_{\mathrm{transition}}\):
+\begin{equation}
+  h^{*}(q)=
+  \begin{cases}
+    h_c, & q\in\Omega_{\mathrm{core}},\\
+    h_c w(d(q)), & q\in\Omega_{\mathrm{transition}},\\
+    0, & \text{otherwise},
+  \end{cases}
+  \label{eq:target_profile_overview}
+\end{equation}
+where \(w(d)\) decreases smoothly from one to zero. The required additional removal is
+\begin{equation}
+  \Delta h(q)=\max\{0,h^{*}(q)-\hat h_{\mathrm{IL}}(q)\}.
+  \label{eq:residual_removal_overview}
+\end{equation}
+Because removal is irreversible, the nonnegative residual cannot compensate for IL over-removal.
+
+\section{CAD-Free Adaptive Blending}
+The residual map determines where additional processing is required and provides a quantitative demand for a local raster or contour planner. The planner selects nominal force, tangential feed velocity, overlap, path spacing, and pass count. Admittance control adjusts normal position for unknown height, and residual RL adapts orientation and feed velocity on smooth unseen geometry.
+
+\begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.31\textheight][c]{0.91\textwidth}
+    \centering
+    \textbf{VR-calibrated handheld teaching}\\
+    \(\downarrow\) synchronized image--pose--orientation--wrench data\\
+    \textbf{Expert IL selective repair}\\
+    \(\downarrow\) actual execution logging\\
+    \textbf{Preston-model-based removal map}\\
+    \(\downarrow\) target core/transition profile and residual map\\
+    \textbf{Model-based local blending plan}\\
+    \(\downarrow\) admittance height adaptation\\
+    \(\quad+\) residual roll/pitch and feed-velocity adaptation
+  \end{minipage}}
+  \caption{End-to-end FAIRE architecture. Residual orientation and velocity policies operate during model-based blending only.}
+  \label{fig:faire_architecture}
+\end{figure}
+
+\section{Module Responsibilities}
+\begin{table}[t]
+\centering
+\caption{Responsibility allocation in the end-to-end system.}
+\label{tab:module_responsibilities}
+\small
+\begin{tabularx}{\textwidth}{p{0.22\textwidth}XX}
+\toprule
+Module & Determines & Does not determine \\
+\midrule
+Expert IL & Defect-dependent motion, force, repetition, and implemented stopping behavior & Post-repair spatial regularization \\
+Removal estimator & Spatial effect of the executed process & New material addition or defect semantics \\
+Target-profile rule & Desired core depth and transition shape & Robot contact response \\
+Blending planner & Coverage geometry and nominal process conditions & Original defect severity \\
+Admittance & Normal-direction height correction & Tangential coverage direction \\
+Residual RL & Bounded blending-only roll, pitch, and feed-velocity corrections & IL execution or global path topology \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Assumptions and Safety Boundary}
+The framework assumes a local parameterizable region, smooth continuous surface variation, moderate curvature, a compatible compliant tool, and calibrated process conditions. It does not assume online access to a CAD-derived perfect normal. Any surface normal used as privileged training reward information must remain outside the online observation unless actually measured. Deterministic force, velocity, orientation, workspace, and cumulative-process limits bound both stages. Exact limits are \todoexp{to be determined from the final implementation}.

@@ -1,0 +1,2691 @@
+Contents
+
+List of Tables                                                                   v
+
+List of Figures                                                                 vi
+
+Abstract                                                                       viii
+
+1 Introduction                                                                   1
+
+   1.1   Background and Motivation . . . . . . . . . . . . . . . . . . .         1
+
+   1.2   Localized Defect Removal versus Surface Restoration . . . . .           1
+
+   1.3 Why Defect Localization Is Not Sufficient . . . . . . . . . . . .         2
+
+   1.4   Skill and Expert Roles in Robotic Surface Repair . . . . . . .          3
+
+   1.5   Research Questions . . . . . . . . . . . . . . . . . . . . . . . .      3
+
+   1.6   Contributions . . . . . . . . . . . . . . . . . . . . . . . . . . .     4
+
+   1.7   Scope, Assumptions, and Thesis Status . . . . . . . . . . . . .         5
+
+   1.8 Thesis Organization . . . . . . . . . . . . . . . . . . . . . . . .       5
+
+2 Related Work                                                                   7
+
+   2.1   Robotic Surface Repair and Polishing . . . . . . . . . . . . . .        7
+
+   2.2 Vision-Based Defect Localization and Geometric Repair Planning            7
+
+   2.3   Imitation Learning for Contact-Rich Manipulation . . . . . . .          8
+
+   2.4   Force-Aware Motion–Force Demonstration Learning . . . . . .             8
+
+   2.5 Admittance and Compliant Contact Control . . . . . . . . . .              8
+
+   2.6   Material-Removal Modeling and Tool Influence Functions . . .            9
+
+   2.7   Robotic Blending and Coverage Planning . . . . . . . . . . . .          9
+
+   2.8   Residual Learning for Surface and Process Adaptation . . . .            9
+
+   2.9   Positioning of FAIRE . . . . . . . . . . . . . . . . . . . . . . .     10
+
+3 Problem Formulation and FAIRE Overview                                        11
+
+   3.1   Surface-Repair Objective . . . . . . . . . . . . . . . . . . . . .     11
+
+                                        i
+  3.2   Skill–Expert Problem Formulation . . . . . . . . . . . . . . . .      11
+
+  3.3   Expert IL for Selective Defect Removal . . . . . . . . . . . . .      11
+
+  3.4   Execution-Derived Material-Removal Estimation . . . . . . . .         12
+
+  3.5 Target Profile and Residual-Removal Formulation . . . . . . .           13
+
+  3.6   CAD-Free Adaptive Blending . . . . . . . . . . . . . . . . . .        13
+
+  3.7   Module Responsibilities . . . . . . . . . . . . . . . . . . . . . .   14
+
+  3.8 Assumptions and Safety Boundary . . . . . . . . . . . . . . .           14
+
+4 VR-Calibrated Motion–Force Demonstration Collection                         16
+
+  4.1 Teaching-System Purpose . . . . . . . . . . . . . . . . . . . .         16
+
+  4.2   Coordinate Frames and Pose Transfer . . . . . . . . . . . . . .       16
+
+  4.3 Wrench Processing and Contact-Point Representation . . . . .            17
+
+  4.4   Synchronization and Dataset Construction . . . . . . . . . . .        18
+
+  4.5   Episode Segmentation and Training Windows . . . . . . . . .           18
+
+  4.6   Demonstration Quality, Metadata, and Safety . . . . . . . . .         19
+
+5 Force-Aware Expert Imitation for Selective Defect Removal 20
+
+  5.1   Expert Repair Objective . . . . . . . . . . . . . . . . . . . . .     20
+
+  5.2 Visual, Robot-State, and Wrench-History Observation . . . . .           20
+
+  5.3   Motion–Force Trajectory Prediction . . . . . . . . . . . . . . .      21
+
+  5.4   Supervised Learning Objective . . . . . . . . . . . . . . . . . .     21
+
+  5.5 Why Force History Is Required . . . . . . . . . . . . . . . . .         22
+
+  5.6 Why Geometric Localization Alone Is Insufficient . . . . . . .          22
+
+  5.7 Admittance-Based Desired-Force Execution . . . . . . . . . . .          22
+
+  5.8   Preservation of Demonstrated Feed Velocity . . . . . . . . . .        23
+
+  5.9   Local Repetition and Termination . . . . . . . . . . . . . . . .      23
+
+  5.10 Online Execution and Safety Governor . . . . . . . . . . . . .         24
+
+6 Execution-Derived Material-Removal Estimation                               25
+
+  6.1   Process-Data Logging during IL Execution . . . . . . . . . . .        25
+
+
+                                      ii
+  6.2   Contact Frame and Normal-Force Computation . . . . . . . .           25
+
+  6.3   Preston-Based Spatial Removal Model . . . . . . . . . . . . .        26
+
+  6.4 Tool Influence Function . . . . . . . . . . . . . . . . . . . . . .    27
+
+  6.5   Calibration and Metrology . . . . . . . . . . . . . . . . . . . .    27
+
+  6.6   Estimated IL Removal Map . . . . . . . . . . . . . . . . . . .       28
+
+  6.7 Target Core and Transition Profiles . . . . . . . . . . . . . . .      28
+
+  6.8   Residual-Removal Map . . . . . . . . . . . . . . . . . . . . . .     29
+
+  6.9   Model Limitations and Uncertainty . . . . . . . . . . . . . . .      29
+
+7 CAD-Free Model-Based Blending with Residual RL                             31
+
+  7.1   Blending Objective . . . . . . . . . . . . . . . . . . . . . . . .   31
+
+  7.2   Local Coverage-Path Generation . . . . . . . . . . . . . . . . .     31
+
+  7.3   Nominal Force, Velocity, Overlap, and Pass Planning . . . . .        32
+
+  7.4 Admittance-Based Surface-Height Adaptation . . . . . . . . .           32
+
+  7.5   Residual Tool-Orientation Adaptation . . . . . . . . . . . . . .     32
+
+  7.6   Residual-Removal-Aware Feed-Velocity Adaptation . . . . . .          33
+
+  7.7   Residual Policy Observation, Action, and Reward . . . . . . .        33
+
+  7.8   Interaction between Orientation and Velocity Policies . . . . .      34
+
+  7.9   Iterative Removal-Map Update and Replanning . . . . . . . .          35
+
+  7.10 Safety Limits and Expected Failure Modes . . . . . . . . . . .        35
+
+8 Experimental Evaluation                                                    36
+
+  8.1   Research Questions and Evaluation Strategy . . . . . . . . . .       36
+
+  8.2   Robot, Tool, Sensor, Camera, and Specimens . . . . . . . . . .       36
+
+  8.3   Dataset and Train/Validation/Test Splits . . . . . . . . . . . .     37
+
+  8.4   Experiment I: Necessity of Expert Imitation . . . . . . . . . .      37
+
+  8.5   Experiment II: Force-Aware IL Representation . . . . . . . . .       38
+
+  8.6   Experiment III: Removal-Model Calibration and Validation . .         40
+
+  8.7   Experiment IV: Residual-Removal-Based Blending . . . . . . .         40
+
+
+                                      iii
+  8.8   Experiment V: Residual RL on Unseen Surface Geometries . .             41
+
+  8.9   Experiment VI: End-to-End Surface Repair . . . . . . . . . . .         43
+
+  8.10 Metrics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   43
+
+  8.11 Statistical Protocol . . . . . . . . . . . . . . . . . . . . . . . .    44
+
+  8.12 Qualitative Analysis . . . . . . . . . . . . . . . . . . . . . . .      44
+
+  8.13 Current Result Status . . . . . . . . . . . . . . . . . . . . . .       44
+
+9 Conclusions and Future Work                                                  45
+
+  9.1   Conclusions . . . . . . . . . . . . . . . . . . . . . . . . . . . .    45
+
+  9.2   Limitations . . . . . . . . . . . . . . . . . . . . . . . . . . . .    46
+
+  9.3   Future Work . . . . . . . . . . . . . . . . . . . . . . . . . . . .    46
+
+Bibliography                                                                   48
+
+A Reproducibility and Completion Checklist                                     51
+
+  A.1 Demonstration Metadata . . . . . . . . . . . . . . . . . . . . .         51
+
+  A.2 Calibration and Wrench Processing . . . . . . . . . . . . . . .          51
+
+  A.3 Removal Model and Metrology . . . . . . . . . . . . . . . . . .          52
+
+  A.4 Planning, Control, and RL . . . . . . . . . . . . . . . . . . . .        52
+
+  A.5 Experimental and Statistical Reporting . . . . . . . . . . . . .         53
+
+  A.6 Evidence Status . . . . . . . . . . . . . . . . . . . . . . . . . .      53
+
+국문요약                                                                           54
+
+
+
+
+                                      iv
+List of Tables
+
+ 2.1   Functional positioning of FAIRE. Entries describe responsibili-
+
+       ties rather than claims of algorithmic novelty. . . . . . . . . .        10
+
+ 3.1   Responsibility allocation in the end-to-end system.        . . . . . .   15
+
+ 8.1   Planned expert IL baseline comparison. Blank entries await
+
+       experimental results. . . . . . . . . . . . . . . . . . . . . . . .      38
+
+ 8.2   Planned force-aware IL ablations. Blank entries await experi-
+
+       mental results. . . . . . . . . . . . . . . . . . . . . . . . . . . .    39
+
+ 8.3   Planned removal-model calibration and validation results. . . .          40
+
+ 8.4   Planned comparison of IL-only repair and blending strategies.            41
+
+ 8.5   Planned residual RL ablation on unseen smooth surface geome-
+
+       tries. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   42
+
+ 8.6   Planned end-to-end results at each repair stage. . . . . . . . .         43
+
+
+
+
+                                       v
+List of Figures
+
+ 1.1   Motivation for separating selective defect removal from complete
+
+       surface restoration. The final illustrated result sequence will be
+
+       populated from verified experiments. . . . . . . . . . . . . . .         2
+
+ 3.1   Skill–expert distinction used throughout FAIRE. Termination is
+
+       a policy responsibility only if the final implementation supports
+
+       learned continuation or stopping. . . . . . . . . . . . . . . . .       12
+
+ 3.2   End-to-end FAIRE architecture. Residual orientation and ve-
+
+       locity policies operate during model-based blending only. . . .         14
+
+ 4.1   Coordinate chain for VR-to-robot demonstration transfer and
+
+       contact-point representation. Numerical calibration results and
+
+       the final apparatus drawing remain TBD. . . . . . . . . . . . .         17
+
+ 5.1   Force-aware expert imitation architecture. The desired three-
+
+       axis force trajectory is a controller-level reference; exact network
+
+       dimensions remain TBD. . . . . . . . . . . . . . . . . . . . . .        21
+
+ 6.1   Conceptual construction of the execution-derived removal map
+
+       and residual-removal map. Experimental maps will replace the
+
+       placeholder after calibration and metrology. . . . . . . . . . .        28
+
+ 6.2 Target removal profile with a uniform core and a smoothly
+
+       decaying transition band. . . . . . . . . . . . . . . . . . . . . .     29
+
+ 7.1   Blending command composition. The residual policies modify
+
+       model-based blending and never correct the demonstrated IL
+
+       trajectory. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   34
+
+                                      vi
+8.1   Planned end-to-end visualization of selective removal and sub-
+
+      sequent spatial regularization. . . . . . . . . . . . . . . . . . .   43
+
+
+
+
+                                    vii
+Abstract
+
+          FAIRE: Force-Aware Imitation with
+         Residual-Removal-Aware Blending for
+           CAD-Free Robotic Surface Repair
+
+   Localized surface defects must be removed selectively because unnecessary
+
+processing can damage intact material, whereas insufficient processing leaves
+
+the defect visible or functionally significant. Conventional perception-and-
+
+planning approaches can localize a defect and generate a geometric repair
+
+path, but defect geometry alone does not specify the process intensity, local
+
+repetition, desired contact behavior, or termination condition required for
+
+removal when depth, severity, and removal difficulty are not explicitly available.
+
+FAIRE therefore uses visual and force-conditioned imitation learning as an
+
+expert repair policy. From an image, robot state, and recent six-axis wrench
+
+history, the policy predicts short-horizon Cartesian pose and desired three-axis
+
+force trajectories that represent the operator’s defect-dependent decisions
+
+about how to process, how much to process, where to repeat, and when to
+
+terminate. The desired contact force is a controller-level reference, and the
+
+demonstrated tangential feed velocity is preserved during this selective-removal
+
+stage.
+
+   Successful defect removal, however, does not guarantee a spatially uniform
+
+and smoothly restored surface. Concentrated processing can leave a local
+
+depression, nonuniform removal, turning-point overlap, or a visible boundary
+
+to the untreated surface. FAIRE therefore logs the actual executed pose,
+
+orientation, wrench, and velocity history and converts it into a Preston-model-
+
+based estimated material-removal map using a calibrated Preston coefficient
+
+
+                                       viii
+and tool influence function. A target profile regularizes the defect-containing
+
+core toward a uniform target depth and smoothly decreases removal across an
+
+outer transition region. The difference between this profile and the estimated
+
+removal map defines the residual-removal demand.
+
+   A model-based planner generates a local CAD-free blending path and nom-
+
+inal process conditions from that demand. Admittance control compensates
+
+for unknown surface height, while bounded residual reinforcement learning
+
+adapts roll, pitch, and feed velocity during blending on unseen smooth curved
+
+surfaces. Velocity adaptation is residual-removal-aware and is not applied
+
+during expert imitation. Evaluation is planned through staged comparisons
+
+of expert imitation, force-history representations, removal-model calibration,
+
+blending, residual policies, and end-to-end repair. Quantitative findings will
+
+be populated only from completed experiments.
+
+
+Keywords: Robotic Surface Repair, Force-Aware Imitation Learning, Material-
+
+Removal Estimation, Model-Based Blending, Admittance Control, Residual
+
+Reinforcement Learning, CAD-Free Surface Processing
+
+
+
+
+                                      ix
+Chapter 1
+Introduction
+
+1.1      Background and Motivation
+
+   Localized surface repair must remove a defect without unnecessarily pro-
+
+cessing the intact material around it. This requirement is more demanding
+
+than visiting a region with a tool. Contact force, true tool–surface relative
+
+velocity, orientation, dwell, overlap, and material response jointly determine
+
+what is physically removed [1–3]. A robot must therefore decide how a defect
+
+should be treated, how much processing it requires, which locations require
+
+repetition, and when selective removal should terminate.
+
+   Geometric perception and coverage planning provide essential information
+
+about where the robot can move [4–6]. They do not, by themselves, reveal
+
+defect depth, local severity, removal difficulty, or the appropriate process
+
+intensity. These variables may be only partially observable in an RGB image
+
+and may become apparent only through interaction. FAIRE addresses this gap
+
+with a force-aware imitation policy that learns an operator’s defect-conditioned
+
+repair decisions from visual context and contact history.
+
+
+1.2      Localized Defect Removal versus Surface
+         Restoration
+
+   Selective removal and surface restoration are related but distinct objectives.
+
+The first objective is to eliminate the defect while limiting collateral processing.
+
+The second is to leave a spatially regular surface that connects smoothly to its
+
+surroundings. An imitation policy may successfully remove a visible scratch
+
+
+                                         1
+                            Localized defect
+                       ↓ expert IL selective removal
+    Defect removed, but localized depression or nonuniformity
+                              may remain
+     ↓ execution-derived removal estimation and model-based blending
+    Uniform core and smoothly decaying transition to the intact
+                                 surface
+
+
+
+Figure 1.1: Motivation for separating selective defect removal from complete
+surface restoration. The final illustrated result sequence will be populated
+from verified experiments.
+
+
+while concentrating material removal near the defect. The resulting surface
+
+may contain a local depression, nonuniform removal, excessive overlap at
+
+turning points, or a height and appearance discontinuity at the processed
+
+boundary.
+
+   Consequently, defect removal does not imply complete surface restoration.
+
+FAIRE assigns uncertain, defect-conditioned selective removal to expert im-
+
+itation learning (IL). It assigns quantitative spatial regularization after IL
+
+to a model-based blending stage. The executed IL process is measured and
+
+converted into a spatial removal estimate so that blending responds to what
+
+the robot actually produced rather than to the commanded path alone.
+
+
+1.3      Why Defect Localization Is Not Sufficient
+
+   Conventional perception-and-planning approaches can localize a defect and
+
+generate a geometric path through its image-space or surface-space region. A
+
+region of interest nevertheless does not uniquely determine the necessary force,
+
+tangential feed velocity, number of passes, local repetition pattern, or stopping
+
+condition. Two defects with similar visible footprints may differ in depth or
+
+removal difficulty, while different parts of one defect may demand unequal
+
+
+                                       2
+treatment. A purely geometric recipe must receive these process decisions
+
+from another source.
+
+   FAIRE does not claim a separate explicit autonomous detector. Within a
+
+bounded task workspace, the visual policy may implicitly localize and interpret
+
+the defect together with the robot state and recent six-axis wrench history.
+
+Its role is summarized as follows: the imitation policy determines how and to
+
+what extent a visually observed defect should be selectively removed from visual
+
+context and interaction history.
+
+
+1.4      Skill and Expert Roles in Robotic Surface
+         Repair
+
+   A skill executes a process whose region, target, and parameters have already
+
+been specified. An expert interprets uncertain observations and determines
+
+the appropriate behavior, process intensity, repetition, and termination. This
+
+distinction prevents geometric execution from being conflated with defect-
+
+dependent decision making.
+
+   In FAIRE, force-aware IL acts as the expert repair policy. Model-based
+
+blending acts as a structured restoration skill. The latter uses the material-
+
+removal distribution produced by IL to regularize the inner repair region toward
+
+a target depth and to reduce removal gradually across an outer transition
+
+region. It therefore receives a quantitatively defined target instead of deciding
+
+the severity of the original defect.
+
+
+1.5      Research Questions
+
+      RQ1: Can force-aware imitation learning infer and reproduce a defect-
+
+             conditioned expert repair strategy when the required process
+
+             intensity and removal termination are not explicitly specified?
+
+
+                                       3
+      RQ2: Can the executed pose–wrench–velocity history be converted into
+
+             an accurate spatial material-removal estimate using a calibrated
+
+             Preston model and tool influence function?
+
+      RQ3: Does residual-removal-based model planning improve the uni-
+
+             formity of the defect-containing core and the smoothness of the
+
+             transition to the surrounding surface compared with IL-only repair
+
+             or predefined uniform processing?
+
+      RQ4: Do bounded residual orientation and feed-velocity policies improve
+
+             contact stability and target-removal accuracy during CAD-free
+
+             blending on previously unseen smooth curved surfaces?
+
+
+Force-action interfaces and recurrent wrench representations are evaluated as
+
+subsystem ablations under RQ1 rather than as thesis-level objectives.
+
+
+1.6      Contributions
+
+   The intended integrated contributions are:
+
+  1. a VR-calibrated motion–force teaching and force-aware imitation frame-
+
+      work that transfers an operator’s defect-conditioned selective repair
+
+      strategy rather than only reproducing a predefined geometric path;
+
+  2. an execution-derived spatial material-removal representation that con-
+
+      verts actual pose, wrench, and velocity history into a calibrated Preston-
+
+      model-based removal map;
+
+  3. a residual-removal-aware model-based blending method that regularizes
+
+      the defect-containing core to a target removal depth and gradually
+
+      reduces removal across a transition band; and
+
+
+
+                                       4
+   4. a CAD-free adaptive execution architecture in which admittance control
+
+      handles unknown surface height and bounded residual RL adapts tool
+
+      orientation and local feed velocity during blending on unseen smooth
+
+      surface geometries.
+
+Preston’s equation, admittance control, GRUs, coverage planning, and residual
+
+RL are not claimed as novel in isolation.
+
+
+1.7      Scope, Assumptions, and Thesis Status
+
+   The scope is local repair on smooth, continuously varying surfaces with
+
+moderate convex or concave curvature. It excludes sharp edges, steps, grooves,
+
+discontinuities, and extreme curvature unless later verified experimentally.
+
+CAD-free means that the planner does not require a complete CAD model
+
+or full 3D reconstruction; it does not mean geometry-free. A bounded local
+
+workspace, a viable local 2D coverage parameterization, and compliant contact
+
+are still assumed.
+
+   Hardware identifiers, network dimensions, control parameters, removal-
+
+model calibration, RL details, metrology settings, and quantitative results are
+
+not yet established in the source repository. They are marked [Planned/TBD:
+
+to be determined from the final implementation] or [Planned/TBD: to be
+
+populated from experimental results]. No unmeasured performance advantage
+
+is asserted.
+
+
+1.8      Thesis Organization
+
+   Chapter 2 reviews the relevant literature. Chapter 3 formulates the prob-
+
+lem and allocates module responsibilities. Chapter 4 presents motion–force
+
+demonstration collection. Chapter 5 defines expert IL and its compliant ex-
+
+ecution. Chapter 6 derives the execution-based removal and residual maps.
+
+                                      5
+Chapter 7 presents CAD-free blending with residual RL. Chapter 8 defines the
+
+staged evaluation. Chapter 9 concludes the thesis, and Appendix A records
+
+reproducibility requirements.
+
+
+
+
+                                     6
+Chapter 2
+Related Work
+
+2.1      Robotic Surface Repair and Polishing
+
+   Robotic surface processing combines task specification, path planning,
+
+contact regulation, and process monitoring. Coverage planners reason about
+
+workpiece boundaries, tool footprints, reachability, and collision constraints,
+
+while polishing controllers regulate contact along curved surfaces [2, 4, 5].
+
+Integrated surface-treatment systems demonstrate the value of connecting
+
+inspection, planning, and controlled execution [6,7]. FAIRE focuses specifically
+
+on the division between uncertain defect-dependent treatment and quantitative
+
+post-removal blending.
+
+
+2.2      Vision-Based Defect Localization and Ge-
+         ometric Repair Planning
+
+   Vision can identify candidate defect regions and provide geometry for a
+
+local path. Such localization answers where a defect appears, but a repair
+
+controller also needs a target removal amount and process conditions. These
+
+values are especially uncertain when appearance is an incomplete proxy for
+
+depth and material response. FAIRE therefore treats visual context as part of
+
+an expert policy observation instead of assuming that an image-space region
+
+fully specifies the repair.
+
+
+
+
+                                       7
+2.3      Imitation Learning for Contact-Rich Ma-
+         nipulation
+
+   Visuomotor imitation policies learn temporally coherent actions from
+
+demonstrations [8, 9]. Contact-rich manipulation adds latent interaction state:
+
+similar images and poses can correspond to approach, stable contact, excessive
+
+loading, or contact loss. Force-aware methods incorporate wrench observations
+
+or force-related actions to reduce this ambiguity [10–13]. FAIRE uses this
+
+principle to learn defect-conditioned selective treatment rather than generic
+
+trajectory replay.
+
+
+2.4      Force-Aware Motion–Force
+         Demonstration Learning
+
+   External teaching devices can capture human motion independently of a
+
+robot embodiment, while force/torque instrumentation records the accompa-
+
+nying interaction. ForceMimic provides a relevant precedent for force–motion
+
+capture in contact-rich tasks [11]. FAIRE retains a handheld device equipped
+
+with a six-axis force/torque sensor, VR-to-robot calibration, and synchronized
+
+image, pose, orientation, and wrench recording. Its subsystem study compares
+
+current-wrench and wrench-history observations and MLP, LSTM, and GRU
+
+encoders without claiming novelty for recurrence itself.
+
+
+2.5      Admittance and Compliant Contact Con-
+         trol
+
+   Impedance and admittance control specify compliant relations between
+
+motion and interaction force [14–16]. Admittance control is appropriate when a
+
+policy provides a desired contact force but the robot accepts Cartesian motion
+
+references. In FAIRE, desired contact force always denotes a controller-level
+
+
+                                      8
+reference. The controller changes the normal-direction position to track it; the
+
+policy output is not a direct actuator force.
+
+
+2.6      Material-Removal Modeling and Tool In-
+         fluence Functions
+
+   Preston’s model relates removal to pressure and relative velocity [1]. Spatial
+
+polishing models further require a tool influence function (TIF) describing
+
+how contact distributes removal around a tool pose. A usable repair map
+
+must combine calibrated process response, normal force, true tool–surface
+
+relative velocity, dwell, overlap, and tool geometry. FAIRE introduces this
+
+established modeling principle as the bridge from executed IL behavior to a
+
+spatial estimate; it does not claim Preston’s relation or the TIF concept as
+
+new.
+
+
+2.7      Robotic Blending and Coverage Planning
+
+   Coverage planning generates raster, contour, or related paths over a defined
+
+region and assigns spacing, overlap, and process conditions [4, 5]. For localized
+
+blending, uniform processing with an abrupt boundary is undesirable because
+
+it can preserve a step between processed and intact material. FAIRE instead
+
+defines a uniform target in a core region and a smoothly decreasing target in
+
+a transition band, then plans only the additional removal demanded by their
+
+residual map.
+
+
+2.8     Residual Learning for Surface and Process
+        Adaptation
+
+   Residual learning places bounded learned corrections around a nominal
+
+controller, limiting the policy’s responsibility and preserving an interpretable
+
+
+                                       9
+Table 2.1: Functional positioning of FAIRE. Entries describe responsibilities
+rather than claims of algorithmic novelty.
+
+ Component           Input or target        Responsibility         Boundary
+ Expert IL           Image,      robot      Infer       defect-    Does not produce
+                     state,    six-axis     conditioned            a     quantitative
+                     wrench history         selective     treat-   restoration profile
+                                            ment
+ Removal model       Actual execution       Estimate        spa-   Proxy until K and
+                     history                tial       process-    TIF are calibrated
+                                            ing/removal
+                                            produced by IL
+ Blending planner    Target       and       Specify local cov-     Does not infer
+                     residual-removal       erage and nominal      original      defect
+                     maps                   process conditions     severity
+ Admittance          Desired contact        Adapt normal po-       Force      is      a
+                     force                  sition to unknown      controller-level
+                                            height                 reference
+ Residual RL         Local    blending      Adapt roll, pitch,     Active only during
+                     state and residual     and      tangential    blending
+                     demand                 feed velocity
+
+
+baseline. Related contact-rich work supports learned reactive or compliance-
+
+aware corrections [17, 18]. In FAIRE, residual RL is restricted to the blending
+
+stage. Roll and pitch adapt tool orientation, and a feed-velocity residual
+
+responds to spatially varying removal demand and contact stability. Neither
+
+residual modifies the demonstrated expert IL stroke.
+
+
+2.9     Positioning of FAIRE
+
+   FAIRE is positioned as an integrated system in which IL acts as an expert
+
+and model-based blending acts as a structured restoration skill. Its research
+
+claim must be evaluated by the staged experiments in Chapter 8; the present
+
+draft reports no positive quantitative result.
+
+
+
+
+                                       10
+Chapter 3
+Problem Formulation and
+FAIRE Overview
+
+3.1     Surface-Repair Objective
+
+   Let Ω denote a bounded local repair workspace on a surface, and let
+
+q ∈ Ω denote a point in its local two-dimensional parameterization. The
+
+objective is first to remove a visually observed defect selectively and then to
+
+obtain a spatial material-removal profile that is uniform around the defect
+
+and smoothly connected to the intact surface. The system must avoid exces-
+
+sive force, workspace violation, contact loss, and overprocessing subject to
+
+implementation-specific safety limits.
+
+
+3.2     Skill–Expert Problem Formulation
+
+   A geometric skill receives a target region and process parameters and
+
+executes them. An expert instead infers appropriate treatment from uncertain
+
+evidence. FAIRE assigns the mapping from visual/contact evidence to selective
+
+repair behavior to expert IL, while assigning a quantitatively defined residual-
+
+removal objective to the blending skill.
+
+
+3.3     Expert IL for Selective Defect Removal
+
+   The conceptual IL observation is
+
+
+                             oIL
+                              t = {It , st , wt−K:t },                    (3.1)
+
+
+
+
+                                        11
+                            Geometric skill:
+      predefined target + process parameters → structured execution
+                               Expert IL:
+                  image + robot state + wrench history
+      → treatment, process intensity, local repetition, and termination
+
+
+
+Figure 3.1: Skill–expert distinction used throughout FAIRE. Termination
+is a policy responsibility only if the final implementation supports learned
+continuation or stopping.
+
+where It is the visual observation, st is the current robot/tool state, and wt−K:t
+
+is recent six-axis wrench history. The policy predicts
+
+                      πIL (oIL      ref      ref      des
+                            t ) → {xt:t+H , Rt:t+H , ft:t+H },               (3.2)
+
+where f des ∈ R3 is the desired three-axis force trajectory unless the final
+
+implementation establishes a different output. The demonstrated tangential
+
+feed velocity is preserved:
+                                        IL
+                                       vcmd = vIL .                          (3.3)
+
+Only a deterministic safety governor may reduce or stop IL motion.
+
+
+3.4      Execution-Derived Material-Removal Es-
+         timation
+
+   The system logs actual IL execution as
+
+                      TIL = {pt , Rt , wt , vfeed,t , ωspindle,t }Tt=1 ,     (3.4)
+
+using available measured or estimated values. Commanded pose, measured
+
+robot/TCP pose, and estimated contact-point pose are separate quantities.
+
+After wrench compensation and contact-frame transformation, this history is
+
+converted into a Preston-model-based estimated material-removal map ĥIL (q).
+
+                                             12
+Until calibration and metrology validate its units, it is called a removal proxy
+
+or relative processing-intensity map.
+
+
+3.5       Target Profile and Residual-Removal For-
+          mulation
+
+    The target profile contains a defect-covering core Ωcore and an outer tran-
+
+sition band Ωtransition :
+                               
+                                hc ,        q ∈ Ωcore ,
+                               
+                               
+                               
+                               
+                               
+                       h∗ (q) = hc w(d(q)), q ∈ Ωtransition ,              (3.5)
+                               
+                               
+                               
+                               0,
+                               
+                                            otherwise,
+
+where w(d) decreases smoothly from one to zero. The required additional
+
+removal is
+
+                            ∆h(q) = max{0, h∗ (q) − ĥIL (q)}.             (3.6)
+
+Because removal is irreversible, the nonnegative residual cannot compensate
+
+for IL over-removal.
+
+
+3.6       CAD-Free Adaptive Blending
+
+    The residual map determines where additional processing is required and
+
+provides a quantitative demand for a local raster or contour planner. The
+
+planner selects nominal force, tangential feed velocity, overlap, path spacing,
+
+and pass count. Admittance control adjusts normal position for unknown
+
+height, and residual RL adapts orientation and feed velocity on smooth unseen
+
+geometry.
+
+
+
+
+                                           13
+                   VR-calibrated handheld teaching
+            ↓ synchronized image–pose–orientation–wrench data
+                        Expert IL selective repair
+                          ↓ actual execution logging
+                   Preston-model-based removal map
+              ↓ target core/transition profile and residual map
+                    Model-based local blending plan
+                       ↓ admittance height adaptation
+               + residual roll/pitch and feed-velocity adaptation
+
+
+
+
+Figure 3.2: End-to-end FAIRE architecture. Residual orientation and velocity
+policies operate during model-based blending only.
+
+
+3.7     Module Responsibilities
+3.8     Assumptions and Safety Boundary
+
+   The framework assumes a local parameterizable region, smooth continuous
+
+surface variation, moderate curvature, a compatible compliant tool, and cali-
+
+brated process conditions. It does not assume online access to a CAD-derived
+
+perfect normal. Any surface normal used as privileged training reward infor-
+
+mation must remain outside the online observation unless actually measured.
+
+Deterministic force, velocity, orientation, workspace, and cumulative-process
+
+limits bound both stages. Exact limits are [Planned/TBD: to be determined
+
+from the final implementation].
+
+
+
+
+                                     14
+      Table 3.1: Responsibility allocation in the end-to-end system.
+
+Module              Determines                      Does not determine
+Expert IL           Defect-dependent motion,        Post-repair spatial regular-
+                    force, repetition, and imple-   ization
+                    mented stopping behavior
+Removal estima- Spatial effect of the executed      New material addition or de-
+tor                 process                         fect semantics
+Target-profile rule Desired core depth and tran-    Robot contact response
+                    sition shape
+Blending planner Coverage geometry and nom-         Original defect severity
+                    inal process conditions
+Admittance          Normal-direction height cor-    Tangential coverage direc-
+                    rection                         tion
+Residual RL         Bounded blending-only roll,     IL execution or global path
+                    pitch, and feed-velocity cor-   topology
+                    rections
+
+
+
+
+                                      15
+Chapter 4
+VR-Calibrated Motion–Force
+Demonstration Collection
+
+4.1      Teaching-System Purpose
+
+   The teaching system records how an operator interprets and treats a
+
+localized defect, including the motion pattern, tangential feed velocity, desired
+
+contact behavior, and local repetition. FAIRE retains a handheld teaching
+
+device equipped with a six-axis force/torque sensor and tracked in a virtual-
+
+reality (VR) coordinate frame. An RGB camera supplies visual task context.
+
+Image, position, orientation, and wrench streams are synchronized so that
+
+each action can be associated with the corresponding defect appearance and
+
+interaction history.
+
+
+4.2      Coordinate Frames and Pose Transfer
+
+   Let B, V , T , S, E, and C denote the robot base, VR tracking, tracker,
+
+force/torque sensor, TCP/tool, and contact-point frames. The demonstrated
+
+TCP pose in the robot base is
+
+                         B demo
+                          TE (t) = BTV V TT (t) TTE .                       (4.1)
+
+
+The transform BTV is obtained from VR-to-robot calibration, V TT (t) is tracked
+
+over time, and TTE is the fixed tracker-to-tool transform. Calibration observa-
+
+tions, estimation method, and validation residuals are [Planned/TBD: to be
+
+determined from the final implementation].
+
+
+
+                                       16
+                 Robot base B ← VR frame V ← tracker T
+                        ↓ tracker-to-tool calibration
+                TCP/tool frame E → contact-point frame C
+                synchronized It , pt , Rt , wt , and timestamps
+
+
+
+
+Figure 4.1: Coordinate chain for VR-to-robot demonstration transfer and
+contact-point representation. Numerical calibration results and the final appa-
+ratus drawing remain TBD.
+
+
+4.3     Wrench Processing and Contact-Point
+        Representation
+
+   The sensor produces a six-axis wrench
+
+
+                         wtS = [Fx , Fy , Fz , τx , τy , τz ]St .         (4.2)
+
+
+The usable wrench requires bias removal, gravity and tool-load compensation,
+
+filtering, and transformation to a declared contact or tool frame. When the
+
+reference point changes, the spatial wrench transform must account for the
+
+associated moment arm; rotating force components alone is insufficient. The
+
+same sign convention and reference point must be used in demonstrations,
+
+policy observations, force control, removal estimation, and evaluation.
+
+   The contact-point pose differs from the measured TCP pose by the TCP-
+
+to-contact transform:
+                              B
+                               TC (t) = BTE (t) ETC .                     (4.3)
+
+The offset ETC depends on pad/tool geometry and may vary with compliant
+
+deformation. The final implementation must state whether the contact pose is
+
+measured, estimated from a rigid offset, or corrected by a compliance model.
+
+Unverified deformation compensation is not assumed.
+
+                                           17
+4.4     Synchronization and Dataset Construc-
+        tion
+
+   An episode is stored conceptually as
+
+
+                      Di = {It , pt , Rt , wt , vfeed,t , mt }Tt=1
+                                                                i
+                                                                   ,     (4.4)
+
+
+where mt denotes available metadata or event labels. Each stream requires
+
+timestamps. The synchronization method must report acquisition rates, clock
+
+convention, interpolation or resampling, maximum accepted skew, missing-
+
+sample handling, and any measured delay. These values are [Planned/TBD:
+
+TBD]. Misalignment is particularly harmful because it pairs visual and pose
+
+context with a wrench produced at another contact phase.
+
+
+4.5     Episode Segmentation and Training Win-
+        dows
+
+   Episodes should separate approach, selective processing, local repetition,
+
+and release when these phases can be identified reliably. A training sample at
+
+time t contains the current image and robot state, the wrench history wt−K:t ,
+
+and a future reference horizon through t + H. Boundary handling, padding
+
+masks, stride, K, and H are [Planned/TBD: to be determined from the final
+
+implementation].
+
+   Dataset partitions are made at the episode, defect, or specimen-trial
+
+level. Adjacent windows from one episode must not be split across training
+
+and evaluation because that would leak nearly identical temporal context.
+
+Normalization statistics and augmentation are fitted using training data only.
+
+
+
+
+                                           18
+4.6      Demonstration Quality, Metadata, and
+         Safety
+
+   Episodes are rejected or labeled if they contain tracker loss, sensor satu-
+
+ration, timestamp discontinuity, accidental collision, unsafe load, or missing
+
+images. Transformed trajectories must pass reachability, collision, workspace,
+
+velocity, and force checks before robot execution. Calibration establishes
+
+coordinate correspondence but does not guarantee safe motion.
+
+   Required records include operator and specimen identifiers, defect prepara-
+
+tion, material and coating, tool and abrasive state, spindle setting if applicable,
+
+sensor zeroing, calibration version, contact threshold, start pose, processing
+
+annotations, and safety events. Appendix A provides the completion checklist.
+
+
+
+
+                                        19
+Chapter 5
+Force-Aware Expert Imitation
+for Selective Defect Removal
+
+5.1      Expert Repair Objective
+
+   The expert IL module determines how and to what extent a visually ob-
+
+served defect should be selectively removed from visual context and interaction
+
+history. It learns the operator’s defect-conditioned local motion pattern, de-
+
+sired contact force, demonstrated tangential feed-velocity profile, and repeated
+
+visits. It is not described as an explicit detector, and it is not reduced to
+
+replaying a path whose treatment parameters are already known.
+
+
+5.2      Visual, Robot-State, and Wrench-History
+         Observation
+
+   The policy observation follows Eq. (3.1). Separate encoders compute
+
+
+         ztI = fI (It ),      zts = fs (st ),       ztw = GRU(wt−K:t ),      (5.1)
+
+
+and a fusion module produces zt = Fusion(ztI , zts , ztw ). The force branch uses
+
+six-axis wrench history as a policy observation. Tangential forces and moments
+
+can distinguish partial contact, tool tilt, and unstable interaction that a scalar
+
+normal force may conceal. The image encoder, robot-state fields, dimensions,
+
+GRU hidden size, and fusion design are [Planned/TBD: TBD].
+
+
+
+
+                                         20
+                          It → visual encoder → ztI
+                       st → robot-state encoder → zts
+                wt−K:t → GRU wrench-history encoder → ztw
+                fused representation → {xref      ref      des
+                                         t:t+H , Rt:t+H , ft:t+H }
+
+
+
+
+Figure 5.1: Force-aware expert imitation architecture. The desired three-axis
+force trajectory is a controller-level reference; exact network dimensions remain
+TBD.
+
+
+5.3      Motion–Force Trajectory Prediction
+
+   The short-horizon prediction is
+
+
+                      πIL (zt ) → xref      ref      des
+                                 
+                                   t:t+H , Rt:t+H , ft:t+H .                (5.2)
+
+
+Position and orientation describe demonstrated motion. The desired three-axis
+
+force trajectory describes the contact reference to be realized compliantly.
+
+Overlapping-horizon selection, temporal ensembling, prediction frequency, and
+
+orientation parameterization are [Planned/TBD: to be determined from the
+
+final implementation].
+
+
+5.4      Supervised Learning Objective
+
+   A conceptual multitask objective is
+
+
+                         LIL = λx Lx + λR LR + λf Lf ,                      (5.3)
+
+
+where the terms penalize position, rotation, and desired-force trajectory error.
+
+A rotation-aware loss is required for the selected orientation representation.
+
+Loss definitions, weights, normalization, padding masks, optimizer, sched-
+
+ule, batch size, training duration, seeds, and checkpoint selection remain
+
+                                       21
+[Planned/TBD: TBD]. Equation (5.3) does not imply a finalized network or
+
+training recipe.
+
+
+5.5      Why Force History Is Required
+
+   An instantaneous wrench may be similar during contact establishment,
+
+stable processing, or recovery from overload. A history window provides
+
+contact trend, persistence, and phase information. The GRU is separated from
+
+the visual and robot-state encoders so that current-wrench, flattened-history,
+
+LSTM, and GRU variants can be compared while retaining the same policy
+
+output and controller. These comparisons test whether temporal contact
+
+context supports expert imitation; they do not claim that the GRU is novel.
+
+
+5.6      Why Geometric Localization Alone Is In-
+         sufficient
+
+   A localized region describes where processing is allowed or likely needed,
+
+but not the correct intensity at each point. Similar image-space defects may
+
+demand different force profiles or repetition, and the interaction history may
+
+reveal whether a local pass is effective. The expert policy therefore learns
+
+a conditional treatment rather than receiving a complete geometric recipe.
+
+Experiment I in Chapter 8 tests this necessity against fixed geometric/ROI
+
+processing and vision-only variants.
+
+
+5.7      Admittance-Based Desired-Force Execu-
+         tion
+
+   The desired contact force is tracked through admittance dynamics:
+
+
+                   Md ∆p̈t + Dd ∆ṗt + Kd ∆pt = ftmeas − ftdes ,         (5.4)
+
+
+
+                                        22
+with command composition
+
+
+                             pcmd
+                              t   = pref   adm
+                                     t + ∆pt   .                            (5.5)
+
+
+The selected controlled axes and sign convention must be stated. The discrete
+
+update, virtual parameters, filtering, saturation, contact-state reset, and robot
+
+interface are [Planned/TBD: TBD]. The learned force is never interpreted as
+
+a direct actuator command.
+
+
+5.8      Preservation of Demonstrated Feed Veloc-
+         ity
+
+   During expert IL, the commanded tangential feed velocity equals the
+
+demonstrated IL velocity as stated in Eq. (3.3). A residual velocity policy is
+
+not active because it would alter the operator strategy whose defect-dependent
+
+behavior is being reproduced. A deterministic governor may only reduce or
+
+stop motion when excessive force, contact loss, workspace violation, command
+
+discontinuity, or another declared safety condition is detected.
+
+
+5.9      Local Repetition and Termination
+
+   Repeated processing can appear implicitly in the predicted pose sequence
+
+or be represented by an explicit continuation decision. The current repository
+
+does not establish a learned stopping output. Accordingly, continuation and
+
+termination are [Planned/TBD: to be determined from the final implemen-
+
+tation]. If execution uses a fixed horizon, operator stop, visual threshold, or
+
+explicit rule, that mechanism must be reported and evaluated without being
+
+described as learned termination.
+
+
+
+
+                                       23
+5.10      Online Execution and Safety Governor
+
+   At each update, the system preprocesses the image, robot state, and
+
+compensated wrench; updates the six-axis history; predicts the reference
+
+horizon; selects the current pose and desired-force references; integrates the
+
+admittance correction; and applies deterministic safety bounds. The actual
+
+measured TCP pose, estimated contact pose, compensated wrench, tangential
+
+feed velocity, spindle speed if available, commanded references, contact state,
+
+and safety events are logged for Chapter 6. Residual RL remains disabled
+
+throughout this stage.
+
+
+
+
+                                      24
+Chapter 6
+Execution-Derived
+Material-Removal Estimation
+
+6.1     Process-Data Logging during IL Execu-
+        tion
+
+   Removal estimation uses the process that the robot actually executed, not
+
+the policy command alone. For every sample, the log distinguishes commanded
+
+TCP pose, measured robot/TCP pose, and estimated contact-point pose. It
+
+also records the raw and processed wrench, measured tangential feed velocity,
+
+spindle angular speed when available, contact state, timestamps, and safety
+
+interventions. The execution record is TIL in Eq. (3.4).
+
+   Commanded pose is retained for controller analysis but is not substituted
+
+for contact location when following error or compliance is significant. The
+
+mapping from TCP to contact point uses the calibrated offset and pad/tool
+
+geometry from Eq. (4.3). Any compliance-related contact-location correction
+
+is [Planned/TBD: TBD].
+
+
+6.2     Contact Frame and Normal-Force Compu-
+        tation
+
+   Let ft be the compensated force expressed in a common frame, and let
+
+nt be the unit tool or estimated surface normal used by the removal model.
+
+Normal force is the projection
+
+
+                                 Fn (t) = ftT nt ,                      (6.1)
+
+
+                                        25
+with sign chosen so that compressive contact is positive. Sensor Fz is not
+
+assumed to be the normal force unless the sensor frame is verified to be aligned
+
+with nt .
+
+   The online system does not assume access to a perfect CAD normal. During
+
+IL map construction, nt may be obtained from the measured tool orientation
+
+under an aligned-tool assumption, from a verified local estimator, or from
+
+another implemented source. The chosen method and its uncertainty are
+
+[Planned/TBD: to be determined from the final implementation]. Samples
+
+below a validated contact threshold are excluded from material removal.
+
+
+6.3         Preston-Based Spatial Removal Model
+
+   A discrete spatial model is
+                                T
+                                X
+                   ĥIL (q) =         K Fn (t) G(q; pt , Rt ) vrel (q, t) ∆t,   (6.2)
+                                t=1
+
+where K is the calibrated Preston coefficient, G is a normalized TIF centered
+
+and oriented by the contact pose, and vrel (q, t) is the magnitude of true tool–
+
+surface relative velocity at q. The model accumulates overlapping dwell and
+
+repeated passes.
+
+   Tangential robot feed velocity and true relative sliding are distinct. If the
+
+pad rotates, spindle motion may dominate vrel , while feed changes dwell and
+
+the path of the influence footprint. The final implementation must calculate
+
+vrel from the available kinematics and tool geometry rather than replacing it
+
+automatically with vfeed .
+
+
+
+
+                                                26
+6.4      Tool Influence Function
+
+   The TIF G(q; pt , Rt ) describes the normalized spatial distribution of re-
+
+moval around a tool pose:
+                                        Z
+                 G(q; pt , Rt ) ≥ 0,            G(q; pt , Rt ) dq = 1     (6.3)
+                                            Ω
+
+
+over a sufficiently large local domain. Its shape may depend on pad geometry,
+
+compliance, force, tilt, spindle speed, abrasive state, and material. FAIRE
+
+will use the simplest calibrated parameterization supported by measurements;
+
+a Gaussian, measured lookup map, or another shape is not assumed before
+
+calibration.
+
+
+6.5      Calibration and Metrology
+
+   Controlled polishing tests will vary one declared factor at a time over safe
+
+operating ranges and measure the resulting removal. Calibration must cover
+
+force dependence, relative-velocity or dwell dependence, spatial TIF shape,
+
+and repeated-pass accumulation. The Preston coefficient K is fitted only after
+
+defining units and the specific tool–abrasive–material condition.
+
+   Removal maps will be measured by a verified method such as profilome-
+
+try, confocal measurement, laser measurement, or another metrology system
+
+whose resolution and registration are documented. [Planned/TBD: Select the
+
+metrology instrument, calibration specimens, factor levels, fitting procedure,
+
+and validation split.] The validation compares predicted and measured depth
+
+maps on held-out process conditions or specimens. Until this is complete, ĥ is
+
+reported only as a removal proxy or relative processing-intensity map.
+
+
+
+
+                                       27
+            actual IL contact poses + compensated normal force
+                 + true relative velocity + calibrated K, G
+                             ↓ spatial accumulation
+                      ĥIL (q)    compared with h∗ (q)
+                          ↓ ∆h(q) = max(0, h∗ − ĥIL )
+
+
+
+
+Figure 6.1: Conceptual construction of the execution-derived removal map
+and residual-removal map. Experimental maps will replace the placeholder
+after calibration and metrology.
+
+
+6.6     Estimated IL Removal Map
+
+   The logged trajectory is rasterized in the local repair coordinates, and
+
+each valid contact sample contributes the shifted and oriented TIF weighted
+
+by normal force, relative velocity, and sample duration. Registration between
+
+robot coordinates and the measured surface map must be reported. Map
+
+resolution should be fine enough to represent the TIF without implying
+
+precision beyond the metrology system.
+
+
+6.7     Target Core and Transition Profiles
+
+   The target profile is defined by Eq. (3.5). The core contains the defect and
+
+is regularized toward a constant hc . The transition band connects this plateau
+
+to zero additional removal on the intact surface. A smooth weight can satisfy
+
+
+      w(0) = 1,   w(D) = 0,    w′ (0) = w′ (D) = 0,   0 ≤ w(d) ≤ 1,       (6.4)
+
+
+where d ∈ [0, D] measures outward distance through a band of width D. The
+
+final taper function and definition of distance are [Planned/TBD: TBD].
+
+   The selection of hc must be explicit and conservative. Candidate rules
+
+include a measured defect-depth estimate, a robust percentile or plateau of
+
+                                      28
+                   |       {z        } ↘ smooth
+                                         |
+                                                decay to 0
+                                                {z       }
+                        Ωcore : hc             Ωtransition
+
+    uniformize the inner repair region → blend gradually into the intact
+                                   surface
+
+
+
+
+Figure 6.2: Target removal profile with a uniform core and a smoothly decaying
+transition band.
+
+
+the IL removal map, or a process-specific target under a coating-thickness
+
+safety bound. A noisy maximum is not used without statistical and physical
+
+justification. The final rule is [Planned/TBD: TBD].
+
+
+6.8      Residual-Removal Map
+
+   The residual map in Eq. (3.6) assigns minimal additional processing where
+
+IL has already reached the target and additional removal where it has not. It
+
+also adds the controlled transition processing needed to connect the repaired
+
+core to the intact surface. An uncertainty margin or conservative dead band
+
+may be required to prevent model error from causing over-removal; its definition
+
+is [Planned/TBD: TBD].
+
+
+6.9      Model Limitations and Uncertainty
+
+   Preston behavior may deviate from linearity because of pad wear, abrasive
+
+loading, temperature, saturation, compliance, changing contact area, material
+
+heterogeneity, and tool tilt. A fixed TIF approximates a process that may vary
+
+with force and orientation. Pose, normal, clock, and metrology registration
+
+errors propagate into the spatial map. Most importantly, the model can request
+
+additional removal but cannot add material after IL over-removes. These
+
+                                        29
+limitations motivate conservative targets, held-out validation, uncertainty
+
+reporting, and eventual post-pass inspection.
+
+
+
+
+                                     30
+Chapter 7
+CAD-Free Model-Based
+Blending with Residual RL
+
+7.1      Blending Objective
+
+   The blending stage converts the residual-removal map into structured
+
+additional processing. Its objective is to reduce residual error in the core, follow
+
+the decaying transition target, preserve intact surroundings, and maintain
+
+stable contact. It is a model-based restoration skill: the spatial target and
+
+process demand have already been defined by Chapter 6.
+
+
+7.2      Local Coverage-Path Generation
+
+   The planner generates a local two-dimensional raster or contour path
+
+over cells where ∆h(q) exceeds a declared threshold. It does not require a
+
+complete CAD model or full 3D reconstruction. The local parameterization
+
+provides coverage direction and spatial indexing; unknown height is handled
+
+by admittance, and moderate orientation variation is handled by residual RL.
+
+   Path topology, boundary offset, turning strategy, and collision/reachability
+
+checks are [Planned/TBD: TBD]. The planned scope is limited to local,
+
+smooth, continuously varying surfaces without sharp edges, steps, grooves, or
+
+discontinuities.
+
+
+
+
+                                        31
+7.3     Nominal Force, Velocity, Overlap,
+        and Pass Planning
+
+   Using the calibrated process model, the planner assigns nominal desired
+               des
+contact force fnom , tangential feed velocity vnom (q), path spacing, overlap,
+
+and pass count. These quantities should be chosen together because they
+
+jointly determine dwell and accumulated removal. A conservative optimizer
+
+or rule-based inversion of Eq. (6.2) may be used; the implemented method is
+
+[Planned/TBD: TBD].
+
+
+7.4     Admittance-Based Surface-Height Adap-
+        tation
+
+   The planner produces nominal Cartesian position pnom . Admittance control
+
+changes its normal component:
+
+
+                            pcmd = pnom + ∆padm ,                         (7.1)
+
+
+so that unknown surface-height variation is accommodated while tracking
+
+the desired contact force. The desired contact force remains a controller-level
+
+reference. Tangential coverage direction is not generated by admittance.
+
+
+7.5     Residual Tool-Orientation Adaptation
+
+   During blending only, bounded roll and pitch corrections adapt the tool to
+
+smooth unseen curvature:
+
+
+                      Rcmd = Rnom Exp([∆ϕt , ∆θt , 0]× ) .                (7.2)
+
+
+Yaw and coverage direction remain the planner’s responsibility unless the
+
+final implementation establishes otherwise. The policy must not assume online
+
+access to a CAD-derived or perfect surface normal. A simulated normal may be
+
+
+                                      32
+used as privileged reward information during training only if that separation
+
+is stated.
+
+
+7.6      Residual-Removal-Aware Feed-Velocity
+         Adaptation
+
+   The velocity command is
+
+
+                      vcmd = clip (vnom (qt ) + ∆vt , vmin , vmax ) .                     (7.3)
+
+
+The objective is to achieve spatially varying target removal at the desired
+
+locations. The policy should slow where residual demand is large, move
+
+faster where little removal remains, reduce unnecessary processing near target
+
+completion, and slow when force, contact, or orientation becomes unstable.
+
+Feed velocity is not called true sliding velocity; the latter is reserved for actual
+
+tool–surface relative motion in the removal model.
+
+
+7.7      Residual Policy Observation, Action, and
+         Reward
+
+   The residual action is
+
+
+                                ∆aRL
+                                  t  = [∆ϕt , ∆θt , ∆vt ]T .                              (7.4)
+
+
+A conceptual observation may include local residual-removal demand, six-axis
+
+wrench, force-tracking error, current orientation, current and nominal feed
+
+velocity, and local path state:
+
+
+             oRL
+              t  = [∆hlocal , Fx , Fy , Fz , τx , τy , τz , eF , Rt , vt , vnom , ξt ].   (7.5)
+
+
+This is not an implemented state specification. [Planned/TBD: Finalize the RL
+
+observation, normalization, state estimator, algorithm, network, and update
+
+rate.]
+
+                                                33
+                      local 2D nominal coverage path
+                        + ∆padm for surface height
+               + [∆ϕ, ∆θ] for smooth orientation variation
+          + ∆v for residual-removal-aware tangential feed velocity
+                   ↓ final bounded Cartesian command
+
+
+
+
+Figure 7.1: Blending command composition. The residual policies modify
+model-based blending and never correct the demonstrated IL trajectory.
+
+
+   A conceptual reward may penalize residual-removal error, force-tracking
+
+error, tangential wrench, action magnitude, action change, contact loss, and
+
+safety violation:
+
+
+         rt = −ch eh − cF e2F − cw ∥wttan ∥2 − ca ∥∆aRL 2
+                                                     t ∥ − cs − csafety .   (7.6)
+
+
+Terms, weights, temporal credit assignment, privileged signals, and termination
+
+are [Planned/TBD: TBD]; Eq. (7.6) is only a design envelope.
+
+
+7.8      Interaction between Orientation and Ve-
+         locity Policies
+
+   Orientation changes contact distribution and measured wrench, while veloc-
+
+ity changes dwell, force transients, and removal accumulation. Their coupled
+
+effects require a common observation convention, compatible update rates, and
+
+final arbitration by safety limits. Experiment V compares nominal execution,
+
+classical moment-based orientation adaptation, orientation-only residual RL,
+
+and the full orientation–velocity residual. Separate and joint policies remain
+
+[Planned/TBD: to be determined from the final implementation].
+
+
+
+
+                                       34
+7.9      Iterative Removal-Map Update and Re-
+         planning
+
+   After blending pass k, the estimated increment can update the accumulated
+
+map:
+
+
+                       ĥk+1 (q) = ĥk (q) + ∆ĥblend,k (q),                (7.7)
+
+                     ∆hk+1 (q) = max{0, h∗ (q) − ĥk+1 (q)}.                (7.8)
+
+
+This defines the loop Plan → Execute → Update Removal Map → Replan.
+
+[Planned/TBD: Iterative replanning is a planned extension unless verified in
+
+the final implementation]; it must not be reported as completed before that
+
+verification.
+
+
+7.10       Safety Limits and Expected
+           Failure Modes
+
+   Actions are clipped before command composition. Deterministic limits
+
+cover normal and tangential force, moments, feed velocity, orientation cor-
+
+rection, correction rate, admittance displacement, workspace, contact loss,
+
+cumulative predicted removal, and emergency stop. Expected failures in-
+
+clude TIF mismatch, incorrect residual demand, policy saturation, oscillatory
+
+orientation or velocity, contact loss, conflict between residual channels, and ex-
+
+trapolation beyond trained curvature. Interventions and saturation frequency
+
+are reported as outcomes rather than silently discarded.
+
+
+
+
+                                         35
+Chapter 8
+Experimental Evaluation
+
+8.1      Research Questions and Evaluation Strat-
+         egy
+
+   The evaluation follows RQ1–RQ4 from Chapter 1 through six staged
+
+experiments. Each stage isolates one responsibility before the end-to-end
+
+comparison: the need for expert treatment, force-aware representation, removal-
+
+model validity, blending contribution, residual adaptation on unseen geometry,
+
+and complete repair progression. All numerical fields remain blank until
+
+supported by traceable logs and metrology.
+
+
+8.2      Robot, Tool, Sensor, Camera, and Speci-
+         mens
+
+   The experimental system requires a robot with a Cartesian command
+
+interface, a polishing or repair tool, a six-axis force/torque sensor, a visual sen-
+
+sor, and specimens containing reproducible localized defects. The robot, tool,
+
+sensor, camera, spindle, abrasive, material, coating, and metrology hardware
+
+are [Planned/TBD: to be determined from the final implementation].
+
+   Specimens should cover smooth flat, convex, and concave geometries within
+
+a declared curvature range. Sharp edges and discontinuities are excluded.
+
+Defect variations may include severity, depth, width, local nonuniformity,
+
+required repetition, or removal difficulty only when those conditions can be
+
+produced and measured reliably.
+
+
+
+
+                                        36
+8.3      Dataset and Train/Validation/Test Splits
+
+   Demonstration windows are split by episode, defect, or specimen rather
+
+than by adjacent timestamps. Model-selection trials are separated from final
+
+tests. For geometry generalization, RL training surfaces may include flat
+
+and selected convex/concave radii, while test surfaces use previously unseen
+
+smooth curvature values or combinations. Material, tool, abrasive, and process
+
+conditions remain fixed during the geometry study unless cross-material
+
+generalization is explicitly evaluated.
+
+   Dataset size, split ratios, defect distribution, surface assignments, and
+
+seed count are [Planned/TBD: TBD]. The split manifest and preprocessing
+
+statistics will be stored with the reproducibility records.
+
+
+8.4      Experiment I: Necessity of Expert Imita-
+         tion
+
+   Experiment I tests whether localization plus a predefined skill determines
+
+sufficient treatment. The planned comparison includes a geometric/ROI path
+
+with a fixed motion–force recipe, vision-only IL, vision–force IL, and full force-
+
+history IL. Conditions should include visually similar regions that require
+
+measurably different process intensity, repetition, or stopping behavior.
+
+   Metrics include defect-removal ratio, task success, collateral removal outside
+
+the defect, force-tracking error, pass or repetition count, termination error
+
+when defined, and task time. The defect-removal and termination metrics
+
+require explicit pre/post measurements and reference criteria before use.
+
+
+
+
+                                          37
+Table 8.1: Planned expert IL baseline comparison. Blank entries await experi-
+mental results.
+
+                          Defect       Collateral     Repetition/   Task
+ Method
+                         removal        removal       termination   time
+ Geometric/ROI
+ fixed recipe
+ Vision-only IL
+ Vision–force IL
+ Full wrench-history
+ IL
+
+
+8.5       Experiment II: Force-Aware IL Represen-
+          tation
+
+   Experiment II provides subsystem evidence for RQ1. Action-interface
+
+comparisons include pose only, force observation without desired-force output,
+
+fixed-force admittance, phase-based force, one-step desired force, and horizon
+
+desired-force trajectory. Observation/encoder comparisons include current
+
+wrench versus wrench history and MLP, LSTM, and GRU variants. All methods
+
+in each subcomparison retain the same data split, policy backbone where
+
+applicable, controller, and IL-stage velocity rule.
+
+
+
+
+                                      38
+                               Table 8.2: Planned force-aware IL ablations. Blank entries await experimental results.
+
+     Variant                            Force observation   Policy force output   Force RMSE   Contact loss   Defect removal   Collateral removal   Success
+     Pose only                          None                None
+     Force observation, pose output     Current/history     None
+     Fixed-force admittance             History             Fixed reference
+
+
+
+
+39
+     Phase-based force                  History             Phase reference
+     One-step desired force             History             One step
+     Horizon desired-force trajectory   History             Short horizon
+     Current-wrench MLP                 Current             Short horizon
+     Wrench-history MLP                 History             Short horizon
+     Wrench-history LSTM                History             Short horizon
+     Wrench-history GRU                 History             Short horizon
+    Table 8.3: Planned removal-model calibration and validation results.
+
+                             Depth                 Peak       Mean      Repeat-
+ Condition                           Correlation
+                             RMSE                  error      error     ability
+ Force dependence
+ Velocity/dwell dependence
+ Repeated-pass accumula-
+ tion
+ Held-out map validation
+
+
+
+8.6          Experiment III: Removal-Model Calibra-
+             tion and Validation
+
+   Controlled tests calibrate K and G, verify force and velocity/dwell depen-
+
+dence, and evaluate repeated-pass accumulation. Predicted maps are registered
+
+to measured maps obtained with the selected metrology system. Training and
+
+validation process conditions or specimens are separated.
+
+   Depth RMSE is defined after registration as
+                          s
+                               1 X                     2
+               RMSEh =                ĥ(q) − hmeas (q) ,                    (8.1)
+                             |Q| q∈Q
+
+where Q is the declared valid measurement set. Spatial correlation, peak
+
+and mean removal error, profile error, map similarity, and repeatability are
+
+included only after their registration, masking, and aggregation procedures
+
+are specified.
+
+
+8.7          Experiment IV: Residual-Removal-Based
+             Blending
+
+   Experiment IV compares IL only, IL followed by fixed uniform surrounding
+
+processing, and IL followed by model-based residual-removal blending. It
+
+evaluates whether the proposed target regularizes the core and produces a
+
+smooth transition without unnecessary overprocessing.
+
+   Core uniformity is reported using a stated dispersion measure over Ωcore .
+
+Residual-removal RMSE compares achieved and target profiles. Transition-
+
+profile error is measured only inside Ωtransition , and boundary slope or gradient
+
+                                         40
+ Table 8.4: Planned comparison of IL-only repair and blending strategies.
+
+                                   Core      Residual   Transition     Over-
+ Method                                                                           Appearance
+                                uniformity    RMSE        error      processing
+ IL only
+ IL + uniform surrounding
+ process
+ IL + residual-removal blend-
+ ing
+
+
+
+is computed using a declared spatial derivative and sampling method. Surface
+
+roughness, gloss, haze, or another appearance metric is reported only if a
+
+verified instrument or controlled protocol is available.
+
+
+8.8        Experiment V: Residual RL on Unseen
+           Surface Geometries
+
+    The residual study compares fixed orientation with nominal model ve-
+
+locity, classical moment-based orientation adaptation with nominal velocity,
+
+orientation-only residual RL, and full residual orientation–velocity RL. Train-
+
+ing and test geometries are disjoint. A classical moment-based method is
+
+included only after its gains, frames, and saturation rules are specified.
+
+    Normal-force RMSE uses the projected force from Eq. (6.1). Other met-
+
+rics include contact-loss rate, tangential-force magnitude, τx /τy , orientation
+
+smoothness, residual-removal error, core uniformity, transition error, task time,
+
+safety interventions, and policy saturation frequency.
+
+
+
+
+                                               41
+                                      Table 8.5: Planned residual RL ablation on unseen smooth surface geometries.
+
+     Method                                        Force RMSE   Contact loss   Tangential force   Orientation smoothness   Removal error   Task time   Interventions   Saturation
+
+
+
+
+42
+     Fixed orientation + nominal velocity
+     Moment-based orientation + nominal velocity
+     Orientation-only residual RL
+     Residual orientation + velocity RL
+           Table 8.6: Planned end-to-end results at each repair stage.
+
+                            Defect       Core      Transition   Collateral
+ Stage                                                                       Appearance
+                            measure   uniformity     error       removal
+ Before repair
+ After expert IL
+ After model-based blend-
+ ing
+
+
+
+
+                   before repair | after expert IL | after blending
+         registered appearance, surface profile, and removal-map panels
+           [Planned/TBD: to be populated from experimental results]
+
+
+
+
+Figure 8.1: Planned end-to-end visualization of selective removal and subse-
+quent spatial regularization.
+
+
+8.9       Experiment VI: End-to-End Surface Re-
+          pair
+
+   End-to-end evaluation records the surface before repair, after IL selective
+
+removal, and after model-based blending. The intended analysis asks whether
+
+IL removes the defect selectively, whether IL-only removal remains spatially
+
+nonuniform, and whether blending brings the core and transition closer to the
+
+declared target. These are hypotheses, not current findings.
+
+
+8.10         Metrics
+
+   Every metric will state its physical meaning, units, instrument or data
+
+source, valid spatial/temporal mask, registration method, aggregation, and
+
+treatment of failed trials. Force-tracking error uses desired and projected
+
+measured force in a common frame. Contact loss uses a calibrated threshold.
+
+Defect-removal ratio requires a reproducible defect measure. Collateral removal
+
+
+
+                                          43
+is evaluated outside the defect or target region using a declared mask. Core
+
+uniformity and transition error use the regions defined for h∗ .
+
+
+8.11          Statistical Protocol
+
+   The independent experimental unit, sample size, repetitions, randomization
+
+or counterbalancing, and exclusion criteria are [Planned/TBD: TBD]. Method
+
+order should control abrasive wear, temperature, and specimen variation.
+
+Paired analyses are preferred when methods can use matched defects or regions.
+
+Reports will include central tendency, dispersion, confidence intervals, the
+
+planned statistical test, effect sizes where meaningful, and multiple-comparison
+
+handling. Safety-stopped trials remain visible in success and intervention
+
+statistics.
+
+
+8.12          Qualitative Analysis
+
+   Qualitative evidence includes synchronized policy trajectories, force traces,
+
+repetition behavior, actual execution paths, estimated and measured re-
+
+moval maps, core/transition profiles, residual action traces, and registered
+
+before/after surface observations. Failure cases, over-removal, contact loss,
+
+and policy saturation are shown alongside representative successes.
+
+
+8.13          Current Result Status
+
+   The repository does not yet contain completed calibration, trial mea-
+
+surements, or statistical analysis for the redesigned scenario. No method is
+
+therefore described as outperforming another. All table cells are intentionally
+
+blank and will be populated only from experimental results with traceable
+
+raw data and metrology.
+
+
+
+
+                                      44
+Chapter 9
+Conclusions and Future Work
+
+9.1      Conclusions
+
+   FAIRE separates localized surface repair into responsibilities that require
+
+different forms of reasoning. Force-aware expert imitation determines defect-
+
+specific selective treatment from visual context, robot state, and six-axis
+
+wrench history. It predicts short-horizon Cartesian pose and desired three-
+
+axis force trajectories, preserves the demonstrated tangential feed velocity,
+
+and executes desired contact force as a controller-level reference through
+
+admittance control.
+
+   Actual IL execution is then logged to estimate what the process physically
+
+produced. A calibrated Preston model and TIF convert contact pose, normal
+
+force, relative velocity, and dwell into a spatial removal map. A target profile
+
+regularizes the defect-containing core toward a uniform target depth and tapers
+
+removal smoothly across a transition band. The resulting residual-removal
+
+map drives structured model-based blending rather than uniform reprocessing.
+
+   During blending, admittance handles unknown surface height and bounded
+
+residual RL adapts roll, pitch, and local tangential feed velocity on unseen
+
+smooth surface geometries. This architecture is CAD-free in the sense that
+
+it avoids a complete CAD model or full reconstruction, while still using
+
+local path geometry and process models. The staged evaluation is defined,
+
+but quantitative conclusions remain [Planned/TBD: to be populated from
+
+experimental results].
+
+
+
+
+                                      45
+9.2      Limitations
+
+   Removal accuracy depends on calibration of the Preston coefficient and on
+
+the validity of the TIF approximation. Force, orientation, pad wear, abrasive
+
+condition, and material response may change the influence function. Pose and
+
+metrology registration error further limit map accuracy and spatial resolution.
+
+   The system can remove material but cannot add it when IL over-removes.
+
+Conservative selection of hc therefore depends on available coating or material
+
+thickness and uncertainty margins. Termination is not yet established as
+
+learned or autonomous. The supported geometry range is limited to local
+
+smooth surfaces with moderate continuous curvature; sharp edges, steps,
+
+grooves, discontinuities, and extreme curvature are outside the current scope.
+
+   Residual RL introduces sim-to-real and training-distribution limitations.
+
+Orientation and velocity residuals interact through contact and dwell, and
+
+their independent benefits cannot be assumed without ablation. Generaliza-
+
+tion claims are limited primarily to geometry while material, tool, abrasive,
+
+and process conditions remain fixed unless separate cross-condition studies
+
+are performed. Metrology resolution bounds the smallest defensible removal
+
+difference.
+
+
+9.3      Future Work
+
+   Future work should add closed-loop post-pass visual or profilometric in-
+
+spection, uncertainty-aware residual planning, online adaptation of K and
+
+the TIF, and calibrated models for multiple materials and coating systems.
+
+Safety-filtered residual RL and explicit uncertainty-aware termination could
+
+reduce the risk of irreversible over-removal.
+
+   The geometry scope may be expanded through richer local surface estima-
+
+tion and training on more complex smooth convex–concave combinations. More
+
+                                      46
+varied defect shapes, severity distributions, and removal difficulties should be
+
+evaluated after they can be produced and measured reliably. Iterative map
+
+updating and replanning should be implemented and validated before being
+
+promoted from a planned extension to a system contribution.
+
+
+
+
+                                      47
+Bibliography
+
+[1] F. W. Preston, “The theory and design of plate glass polishing machines,”
+
+   Journal of the Society of Glass Technology, vol. 11, pp. 214–256, 1927.
+
+[2] I. Mohsin, K. He, Z. Li, and R. Du, “Path planning under force control
+
+   in robotic polishing of complex curved surfaces,” Applied Sciences, vol. 9,
+
+   no. 24, p. 5489, 2019.
+
+[3] K. Min et al., “A force control method integrating human skills for
+
+   complex surface finishing,” Machines, vol. 12, no. 11, p. 756, 2024.
+
+[4] S. Schneyer, A. Sachtler, T. Eiband, and K. Nottensteiner, “Segmentation
+
+   and coverage planning of freeform geometries for robotic surface finishing,”
+
+   IEEE Robotics and Automation Letters, 2023.
+
+[5] K. McGovern and J. Xiao, “A general approach for constrained robotic
+
+   coverage path planning on 3d freeform surfaces,” IEEE Transactions on
+
+   Automation Science and Engineering, vol. 21, no. 4, pp. 5546–5557, 2024.
+
+[6] A. Tafuro, C. Ghalloub, A. M. Zanchettin, and P. Rocco, “Autonomous
+
+   robotic polishing of free-form poly-surfaces: Planning from scanning in
+
+   realistic industrial setting,” in Procedia Computer Science, 2024.
+
+[7] B. Alt, F. Stöckl, S. Müller, C. Braun, J. Raible, S. Alhasan, O. Rettig,
+
+   L. Ringle, D. Katic, R. Jäkel, M. Beetz, M. Strand, and M. F. Huber,
+
+   “Robogrind: Intuitive and interactive surface treatment with industrial
+
+   robots,” in 2024 IEEE International Conference on Robotics and Au-
+
+   tomation (ICRA), 2024, pp. 2140–2146, arXiv:2402.16542.
+
+
+
+                                     48
+ [8] T. Z. Zhao, V. Kumar, S. Levine, and C. Finn, “Learning fine-grained
+
+    bimanual manipulation with low-cost hardware,” in Robotics: Science
+
+    and Systems, 2023, arXiv:2304.13705.
+
+ [9] C. Chi, Z. Xu, S. Feng, E. Cousineau, Y. Du, B. Burchfiel, R. Tedrake,
+
+    and S. Song, “Diffusion policy: Visuomotor policy learning via action
+
+    diffusion,” The International Journal of Robotics Research, vol. 44, no.
+
+    10–11, pp. 1684–1704, 2025, arXiv:2303.04137.
+
+[10] B. Zhou, R. Jiao, Y. Li, X. Yuan, F. Fang, and S. Li, “Admittance vi-
+
+    suomotor policy learning for general-purpose contact-rich manipulations,”
+
+    arXiv preprint arXiv:2409.14440, 2024.
+
+[11] W. Liu, J. Wang, Y. Wang, W. Wang, and C. Lu, “Forcemimic: Force-
+
+    centric imitation learning with force-motion capture system for contact-
+
+    rich manipulation,” in 2025 IEEE International Conference on Robotics
+
+    and Automation (ICRA), 2025, arXiv:2410.07554.
+
+[12] Z. He, H. Fang, J. Chen, H.-S. Fang, and C. Lu, “Foar: Force-aware
+
+    reactive policy for contact-rich robotic manipulation,” IEEE Robotics and
+
+    Automation Letters, vol. 10, no. 6, pp. 5625–5632, 2025, arXiv:2411.15753.
+
+[13] T. Yang, Y. Jing, H. Wu, J. Xu, K. Sima, G. Chen, Q. Sima, and T. Kong,
+
+    “Moma-force: Visual-force imitation for real-world mobile manipulation,”
+
+    in IEEE/RSJ International Conference on Intelligent Robots and Systems,
+
+    2023, arXiv:2308.03624.
+
+[14] N. Hogan, “Impedance control: An approach to manipulation,” Journal
+
+    of Dynamic Systems, Measurement, and Control, vol. 107, no. 1, pp. 1–24,
+
+    1985.
+
+
+
+
+                                     49
+[15] L. Villani and J. De Schutter, “Force control,” in Springer Handbook of
+
+    Robotics, B. Siciliano and O. Khatib, Eds. Berlin, Heidelberg: Springer,
+
+    2008, pp. 161–185.
+
+[16] A. Q. L. Keemink, H. van der Kooij, and A. H. A. Stienen, “Admittance
+
+    control for physical human–robot interaction,” The International Journal
+
+    of Robotics Research, vol. 37, no. 11, pp. 1421–1444, 2018.
+
+[17] Y. Hou, Z. Liu, C. Chi, E. Cousineau, N. Kuppuswamy, S. Feng, B. Burch-
+
+    fiel, and S. Song, “Adaptive compliance policy: Learning approximate
+
+    compliance for diffusion guided control,” arXiv preprint arXiv:2410.09309,
+
+    2024.
+
+[18] H. Xue, J. Ren, W. Chen, G. Zhang, Y. Fang, G. Gu, H. Xu, and
+
+    C. Lu, “Reactive diffusion policy: Slow-fast visual-tactile policy learning
+
+    for contact-rich manipulation,” arXiv preprint arXiv:2503.02881, 2025.
+
+
+
+
+                                     50
+Appendix A
+Reproducibility and Completion
+Checklist
+
+A.1    Demonstration Metadata
+ • episode, operator, specimen, defect, material, coating, tool, abrasive,
+   and consumable identifiers;
+
+ • raw timestamps and rates for image, tracker, wrench, robot state, and
+   command streams;
+
+ • raw and transformed pose/orientation, raw and processed six-axis wrench,
+   contact labels, repetition annotations, and stopping events;
+
+ • episode acceptance, tracking loss, saturation, safety intervention, and
+   rejection reasons;
+
+ • episode-level train, validation, and test assignments with leakage checks.
+
+
+A.2    Calibration and Wrench Processing
+ • VR-to-robot, tracker-to-tool, sensor-to-tool, and TCP-to-contact-point
+   transforms with conventions and validation residuals;
+
+ • sensor zeroing, wrench bias, gravity/tool-load compensation, spatial
+   frame transformation, filter, delay, contact threshold, and sign conven-
+   tion;
+
+ • pad/tool geometry, spindle convention, tangential feed velocity compu-
+   tation, and true relative-velocity computation.
+
+
+
+
+                                   51
+A.3    Removal Model and Metrology
+ • Preston coefficient K, units, calibration range, fitting method, and
+   held-out validation;
+
+ • TIF calibration design, spatial parameterization, and normalization;
+
+ • TIF force/orientation dependence and uncertainty;
+
+ • metrology device, resolution, surface registration, sampling, preprocess-
+   ing, repeatability, and reference surface;
+
+ • target-profile core, transition width, taper function, hc selection, coating-
+   thickness bound, and residual-map threshold;
+
+ • map grid, interpolation, uncertainty margin, and repeated-pass accumu-
+   lation rule.
+
+
+A.4    Planning, Control, and RL
+ • coverage path type, boundary rule, spacing, overlap, turn strategy,
+   nominal force, nominal feed velocity, and pass-count rule;
+
+ • admittance frame, axes, discrete update, Md , Dd , Kd , filter, saturation,
+   reset, and contact-state logic;
+
+ • IL visual/state encoders, six-axis wrench-history encoder, history K,
+   horizon H, outputs, loss, training settings, and stopping implementation;
+
+ • RL observation/state, action, reward, algorithm, network, training envi-
+   ronment, privileged information, randomization, and sim-to-real proce-
+   dure;
+
+ • roll, pitch, velocity, rate, force, moment, workspace, cumulative-removal,
+   contact-loss, and emergency-stop bounds.
+
+
+
+
+                                     52
+A.5      Experimental and Statistical Reporting
+   • robot, tool, sensor, camera, spindle, specimens, materials, abrasives, and
+     environmental conditions;
+
+   • defect preparation, severity measurement, train/test surface geometries,
+     and controls for material and tool condition;
+
+   • sample sizes, independent unit, randomization or counterbalancing, trial
+     exclusions, failures, and safety-stopped trials;
+
+   • definition, units, instrument, aggregation, uncertainty, and analysis for
+     every reported metric;
+
+   • statistical hypotheses, paired or unpaired design, confidence intervals,
+     multiple-comparison handling, seeds, and raw-data provenance;
+
+   • every blank field in Tables 8.1, 8.2, 8.3, 8.4, 8.5, and 8.6.
+
+
+A.6      Evidence Status
+   At the present draft stage, implementation-specific values and numerical
+outcomes are [Planned/TBD: to be determined from the final implementa-
+tion] or [Planned/TBD: to be populated from experimental results]. Before
+submission, every placeholder must be replaced by a value traceable to code,
+configuration, calibration output, experiment log, or verified metrology record.
+
+
+
+
+                                      53
+국문요약
+
+FAIRE: CAD 형상 정보가 없는 로봇 표면 복원을
+위한 힘 인지 모방학습 및 잔여 제거량 기반 블렌딩
+  국부 표면 결함의 복원에서는 손상되지 않은 주변 재료를 보호하면서 결
+함만 선택적으로 제거해야 한다. 일반적인 인식 및 경로 계획 기법은 결함의
+위치를 찾고 기하학적 처리 경로를 생성할 수 있지만, 영상에서 확인되는 형
+상만으로는 결함의 깊이, 심각도, 제거 난이도에 따른 공정 강도, 반복 처리
+위치, 접촉 거동, 종료 시점을 결정하기 어렵다. FAIRE는 이러한 불확실한 판
+단을 수행하기 위해 힘 인지 모방학습을 단순 경로 생성기가 아닌 전문가 복원
+정책으로 사용한다. 정책은 영상, 로봇 상태, 최근 6축 렌치 이력을 관측하고
+짧은 구간의 직교좌표 위치 · 자세와 3축 목표 접촉력 궤적을 예측한다. 이를
+통해 작업자가 결함에 따라 선택한 처리 방식, 처리량, 국부 반복 및 종료 판단
+을 학습한다. 목표 접촉력은 액추에이터 명령이 아닌 제어기 수준의 기준이며,
+선택적 제거 단계에서는 시연된 접선 이송 속도를 유지한다.
+  그러나 결함이 보이지 않게 제거되었다고 해서 표면 복원이 완성되는 것은
+아니다. 결함 주변에 집중된 가공은 국부 함몰, 영역 내부의 불균일 제거, 방향
+전환부의 중첩 제거, 미가공 표면과의 경계 단차 또는 외관 차이를 남길 수
+있다. 이에 FAIRE는 모방학습 실행 중 실제 위치, 자세, 렌치 및 속도 이력을
+기록하고, 보정된 Preston 계수와 공구 영향 함수(tool influence function)를 이
+용하여 실행 기반 재료 제거량 지도를 추정한다. 결함을 포함하는 중심 영역은
+균일한 목표 깊이로 정규화하고, 바깥 전이 영역에서는 목표 제거량을 미가공
+표면까지 부드럽게 감소시킨다. 목표 지도와 추정 지도 사이의 부족분은 잔여
+제거량 지도로 정의된다.
+  모델 기반 계획기는 이 잔여 제거량으로부터 국부 2차원 블렌딩 경로와 공
+정 조건을 생성한다. 어드미턴스 제어는 미지의 표면 높이 변화를 보상하고,
+제한된 잔차 강화학습은 블렌딩 단계에서만 롤 · 피치 자세와 접선 이송 속도
+를 조정하여 학습에 사용되지 않은 완만한 곡면에 대응한다. 평가는 전문가
+모방학습, 힘 이력 표현, 제거 모델 보정, 블렌딩, 잔차 정책 및 전체 복원 과정
+의 단계별 실험으로 계획한다. 정량적 결과는 완료된 실험 자료를 바탕으로만
+
+                            54
+제시한다.
+
+주요어: 로봇 표면 복원, 힘 인지 모방학습, 재료 제거량 추정, 모델 기반 블렌딩,
+어드미턴스 제어, 잔차 강화학습, CAD 비의존 표면 가공
+
+
+
+
+                      55
+

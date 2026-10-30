@@ -28,3 +28,8 @@ The main outputs are `ThesisMain.pdf` and `ThesisCover.pdf`.
 - Fix compilation errors and broken references.
 - Review the generated PDF for missing figures, clipping, and layout problems.
 - Report unresolved warnings separately.
+
+## Follow-up revision scope
+- Edit the requested portions and directly dependent statements, captions, references, and evidence notes only.
+- Reuse existing evidence and assets. Regenerate only figures or tables affected by the request; do not repeat broad data collection or model inspection without a specific need.
+- Retain the required full thesis build, then focus visual review on changed and reflowed pages.

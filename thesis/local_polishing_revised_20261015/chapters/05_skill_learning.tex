@@ -1,0 +1,130 @@
+\chapter{Force-Conditioned Motion--Force Skill Learning}
+\label{chap:force_il}
+
+\section{Learning Objective and Observation Interface}
+The learning problem is to generate a future local skill from the execution context, while preserving a joint representation of movement and target loading. A conditioned sequence can change at a later inference call when the robot reaches a different pose or contact state. The policy is not asked to estimate scratch depth, choose an abrasive, or output a separate completion decision.
+
+For the force-observing model, the physical observation at index \(k\) is
+\begin{equation}
+ o_k=\left(I_k,\widetilde q_k,f_k^{\mathrm{meas}},
+       f_{k-L+1:k}^{\mathrm{meas}}\right),\qquad L=30.
+ \label{eq:il_observation}
+\end{equation}
+The numerical state has nine components: six Cartesian pose values and three current force values. History has shape \(30\times3\). Only \(F_x,F_y,F_z\) enter this observation; the sensor's torque channels do not. The input image is the single \(240\times424\) RGB view. Images are converted to floating-point tensors and normalized using the implemented RGB channel means and standard deviations.
+
+The action target is a normalized \(128\times9\) sequence of task-relative position, rotation vector, and teaching-derived target force. Position and orientation describe the tool reference, whereas force describes a controller-level target. Both appear in the same sequence so that their temporal correspondence can be learned. The action horizon corresponds to approximately 4.27 s on the nominal 30 Hz action grid. Its last sample is at \(127/30\) s relative to the first, which distinguishes a sample count from an endpoint-to-endpoint duration.
+
+\section{Implemented Observation Encoder}
+The active model is the Flow RGB policy in the archived training snapshot. It uses a frozen DINOv3 ViT-small patch-16 image backbone, a state MLP, a one-layer force-history GRU, and a fusion MLP. The separate encoder modules available elsewhere in the repository do not determine this checkpoint's architecture.
+
+The visual branch combines the global image feature with a feature pooled from a fixed TCP interaction ROI. The ROI is constructed internally from reference image dimensions \(424\times240\), center \((253,120)\), and area-fraction parameter 0.25. The DINO patch features in that ROI are pooled by the configured attention mechanism. Global and ROI features are each projected to 512 components. The ROI is a calibrated interaction-region prior, not an external defect mask and not a prediction of surface damage.
+
+The state MLP encodes all nine normalized state components into 256 components. A GRU with input dimension three and hidden dimension 64 encodes the force history, with its final hidden state contributing to fusion. The fused condition is 256-dimensional. Thus the current force appears both in the state vector and as the last history sample. There is no learned moment-history branch, LSTM comparison, or termination head in the evaluated configuration.
+
+\begin{figure}[tbp]\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[node distance=8mm]
+\node[block,text width=29mm] (rgb) {RGB\\$240\times424\times3$};
+\node[block,text width=29mm,right=5mm of rgb] (state) {State\\pose6 + force3};
+\node[block,text width=29mm,right=5mm of state] (history) {Force history\\$30\times3$};
+\node[block,text width=29mm,below=of rgb] (visual) {Frozen DINOv3\\global + TCP ROI\\$512+512$};
+\node[block,text width=29mm,below=of state] (mlp) {State MLP\\256};
+\node[block,text width=29mm,below=of history] (gru) {One-layer GRU\\64};
+\node[block,text width=98mm,below=14mm of mlp] (fuse) {Concatenate and fuse to 256-dimensional condition};
+\node[block,text width=98mm,below=of fuse] (unet) {Conditional temporal U-Net\\noisy action $z_s$ + flow-time embedding + condition};
+\node[block,text width=98mm,below=of unet] (out) {Vector field on $128\times9$ actions\\10 flow updates $\rightarrow$ pose--force sequence};
+\draw[link](rgb)--(visual);\draw[link](state)--(mlp);\draw[link](history)--(gru);
+\draw[link](visual.south)--(fuse.north west);\draw[link](mlp)--(fuse);\draw[link](gru.south)--(fuse.north east);
+\draw[link](fuse)--(unet);\draw[link](unet)--(out);
+\end{tikzpicture}}
+\caption[Implemented policy architecture]{Actual force-observing policy configuration, shown conceptually. In B, the current-force and history tensors are zeroed after normalization while the history branch remains. A uses pose6 state/action and omits force history. The flow vector field has the same sequence shape as its action input.}
+\label{fig:force_history_policy}
+\end{figure}
+
+\begin{table}[tbp]\centering\small
+\caption[Architecture and training settings]{Architecture and training settings for the force-cleanup checkpoints used in E1/E2.}
+\label{tab:learning_settings}
+\begin{tabularx}{\textwidth}{P{0.48\textwidth}X}
+\toprule Item & Stored value \\ \midrule
+Backbone / trainable status & DINOv3 ViT-small, patch 16 / frozen \\
+State / history / global condition & 256 / 64 / 256 components \\
+Temporal U-Net channel widths & 256, 512, 1024 \\
+Convolution kernel / groups & 5 / 8 \\
+Flow-time embedding & 256 components \\
+Action horizon / force-history length & 128 / 30 samples \\
+Loss / flow integration updates & Masked MSE / 10 \\
+Optimizer & AdamW, learning rate \(10^{-4}\) \\
+Weight decay / optimizer betas & \(10^{-5}\) / \((0.95,0.999)\) \\
+Batch size / training seed & 12 / 0 \\
+Training epochs / warmup & 500 / 10 epochs \\
+Learning-rate schedule & Cosine; minimum \(10^{-6}\) \\
+Gradient norm clip & 1.0 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Flow Matching Sample Construction}
+Flow Matching learns a field that transports a simple noise distribution toward the demonstrated sequence distribution~\cite{lipman2023flow}. The following equations describe the particular implemented construction, rather than all possible flow-matching paths.
+
+Let \(A\in\R^{H\times d_a}\) be a demonstrated action chunk after action normalization, with \(d_a=9\) for B/C and \(d_a=6\) for A. Independently sample a noise chunk \(Z_0\sim\mathcal N(0,I)\) with the same shape and a scalar flow time
+\begin{equation}
+ s\sim\mathcal U(\varepsilon,1-\varepsilon),\qquad\varepsilon=10^{-4}.
+\end{equation}
+The source implementation uses
+\begin{equation}
+ Z_s=(1-s)Z_0+sA,\qquad U=A-Z_0.
+ \label{eq:flow_training_path}
+\end{equation}
+The vector-field network \(v_\theta(Z_s,s,c_k)\) predicts \(U\), conditioned on the encoded observation \(c_k=E_\theta(o_k)\). The scalar \(s\) belongs to a dimensionless generative process. It is unrelated to the physical polishing time \(t\) or the future sample index \(j\).
+
+Let \(m_j\) equal one when future step \(j\) has actual episode support and zero when it is padded. The implemented per-batch objective is
+\begin{equation}
+ \mathcal L_{\mathrm{FM}}=
+ \frac{\displaystyle\sum_{b,j,d}m_{bj}
+ \left[v_\theta(Z_{s_b},s_b,c_b)_{jd}-(A_b-Z_{0,b})_{jd}\right]^2}
+ {d_a\,\max\!\left(1,\sum_{b,j}m_{bj}\right)}.
+ \label{eq:imitation_loss}
+\end{equation}
+Here \(b\) indexes batch elements, \(j\) future action steps, and \(d\) action coordinates. A new noise tensor and flow time are sampled for the training evaluation. All valid normalized coordinates contribute to the same MSE. There are no additional orientation-geodesic, target-force-tracking, material-removal, or completion losses in this configuration.
+
+The conditional temporal U-Net operates along the action-sequence dimension. Its residual blocks combine temporal convolutions with the global observation and flow-time condition. The configured channel levels are 256, 512, and 1024; convolutional blocks use GroupNorm and Mish nonlinearities. These choices parameterize the field rather than creating a separate head for each physical objective. In particular, a lower force-related loss is not computed independently from the motion coordinates.
+
+\section{Flow Integration and Physical Timing}
+At inference, a fresh Gaussian chunk \(Z^{(0)}\) is generated. With \(M=10\) and \(h=1/M\), the source applies
+\begin{equation}
+ Z^{(m+1)}=Z^{(m)}+h\,
+ v_\theta\!\left(Z^{(m)},(m+\tfrac12)h,c_k\right),
+ \quad m=0,\ldots,M-1.
+ \label{eq:flow_integration}
+\end{equation}
+This is the exact explicit update with a midpoint flow-time argument used in the code. It is not a two-stage midpoint Runge--Kutta solver: no intermediate state evaluation is computed. The final sequence is denormalized using the stored action bounds, and its relative XY coordinates are restored before execution. When the implemented direction-transfer option is active, observation XY and the single-camera policy image are aligned before conditioning, and generated XY is inversely rotated before center addition, as defined in Section~\ref{sec:stain_relative_generalization}. This adapter surrounds the learned generator without changing its training objective or adding a predicted direction channel. It is disabled in the evaluated E1/E2 runs.
+
+Ten flow updates generate an entire chunk. They are not ten physical polishing steps, and the physical action grid does not run at the flow-integration frequency. Online generation is triggered through a 5 Hz inference timer but is gated by existing plan age: the nominal stride is 120 samples at 30 Hz, or four seconds of reference progression. The actual recorded calls are separated by timer scheduling and inference latency as well. This gives observation-conditioned replanning at chunk boundaries, not a claim of continuous high-frequency strategy correction.
+
+The force history also has two time interpretations. In the dataset, 30 samples on a nominal 30 Hz grid describe approximately one second of historical context. Online, the adapter retains the most recent 30 force callback values and left-pads an insufficient history; it does not resample them onto an exact one-second clock. A 20 Hz recording cap for diagnostic CSV files does not specify the policy callback rate. The history length is therefore reported as a sample count, with its nominal training duration stated separately.
+
+\section{Separating Force Output from Force Observation}
+The three E2 conditions implement different information contracts. A has a six-dimensional pose state and six-dimensional pose action, with no force-history encoder or force supervision. An external constant target is supplied by the execution interface. B retains the nine-dimensional action and the same history architecture as C, but the current-force part of its normalized state and its normalized history tensor are replaced by zeros. C retains the measured-force inputs.
+
+Masking occurs in the dataset/model conditioning path during training and again at the inference boundary. It does not alter the force-action target. Because masking is applied after normalization, a zero conditioning value is a neutral network input, not a declaration that physical measured force is zero newtons. B remains a separately trained model, rather than C evaluated with a missing input it was never trained to receive.
+
+The force signal is still used by the common executor and lower-level controller in A and B. It is also used by the existing offline phase sampler. Thus ``force observation OFF'' refers specifically to the policy's conditioning channels. Chapter~\ref{chap:experiments} uses this distinction to interpret the A/B comparison as a force-output comparison and B/C as a force-observation comparison, subject to the limitations of separate single-seed training.
+
+\section{Training Completion and Checkpoint Selection}
+The recorded training completed 500 epochs per condition, ending at zero-based epoch 499. The deployed best checkpoints are selected by minimum validation loss, as confirmed by both the model manifest and the checkpoint metadata. Table~\ref{tab:checkpoints} distinguishes the configured duration from the selected epoch.
+
+\begin{table}[tbp]\centering\small
+\caption[Selected checkpoint epochs]{Selected checkpoints. Epoch values follow the stored zero-based convention. Validation losses have different action dimensions for A versus B/C and are not task-performance scores.}
+\label{tab:checkpoints}
+\begin{tabular}{lrrrr}
+\toprule Model & State/action dim. & Best epoch & Final epoch & Best val. loss \\ \midrule
+A & 6 / 6 & 39 & 499 & 0.049722 \\
+B & 9 / 9 & 42 & 499 & 0.069948 \\
+C & 9 / 9 & 42 & 499 & 0.066444 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Validation evaluates the same flow-field objective using held-out episodes. Its minimum selects a generative model according to that objective, not according to robot task completion or measured finish quality. Since noise and flow time enter the loss evaluation, the numerical minimum also should not be interpreted as a deterministic physical optimum. There is one recorded training seed per condition. Five robot repetitions per condition evaluate execution of that trained model; they do not constitute five independently trained policies.
+
+The resulting method offers a concrete mechanism for coupling motion and target loading under observations. Whether the mechanism improves a given local task remains an empirical question. Its demonstrated function is generation and deployment of the specified action representation; its broader value is assessed alongside rules and replay in the following chapters.

@@ -1,0 +1,475 @@
+%  v.4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% notebook.sty:  TeX and LaTeX macro file for the Mathematica 
+%%    TeXSave command.   This is still a preliminary version.  Look for
+%%    newer versions on MathSource that will be more complete and commented.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\long\def\wriifundefined#1#2#3{\expandafter\ifx\csname
+  #1\endcsname\relax#2\else#3\fi}
+
+\newif\iflatexversion
+
+\wriifundefined{LaTeX}
+{%  Macros needed for plain TeX
+  \global\latexversionfalse%
+  \gdef\makeatletter{\catcode`\@=11\relax}%
+  \gdef\makeatother{\catcode`\@=12\relax}%
+}{%  Macros needed for LaTeX
+  \global\latexversiontrue%
+}
+
+\makeatletter%
+
+\newif\if@firstamp 
+
+\iflatexversion%
+  \message{(LaTeX format used)}
+  \let\setspacetoken\relax
+  \def\Title#1{\title{#1}\author{}\maketitle}
+  \def\wriboldmath{\boldmath}
+\else%
+  \message{(plain TeX format used)}
+  \newbox\@tempboxa
+  \newbox\@arstrutbox
+  \newcount\@chclass
+  \newcount\@lastchclass
+  \newcount\@chnum
+  \newcount\@tempcnta
+  \newcount\@tempcntb
+  \newdimen\arraycolsep
+  \newdimen\tabcolsep
+  \newdimen\arrayrulewidth
+  \newdimen\doublerulesep
+  \let\wriboldmath\relax
+  \def\Title#1{\hbox to \hsize{\hss\bf #1\hss}}
+  \def\arraystretch{1}    % Default value.
+  \def\@nnil{\@nil}
+  \def\@empty{}
+  \def\@fornoop#1\@@#2#3{}
+  \def\@addamp{\if@firstamp \@firstampfalse \else 
+    \edef\@preamble{\@preamble &}\fi}
+  \def\@arrayacol{\edef\@preamble{\@preamble \hskip \arraycolsep}}
+  \def\@tabacol{\edef\@preamble{\@preamble \hskip \tabcolsep}}
+  \def\@ampacol{\@addamp \@acol}
+  \def\@acolampacol{\@acol\@addamp\@acol}
+  \def\@arstrut{\relax\ifmmode\copy\@arstrutbox\else\unhcopy\@arstrutbox\fi}
+  \def\@ifnextchar#1#2#3{\let\@tempe#1\def\@tempa{#2}%
+      \def\@tempb{#3}\futurelet\@tempc\@ifnch}
+  \def\@ifnch{\ifx \@tempc \@sptoken \let\@tempd\@xifnch
+      \else \ifx \@tempc \@tempe\let\@tempd\@tempa\else\let\@tempd\@tempb\fi
+      \fi \@tempd}
+  \def\@ifstar#1#2{\@ifnextchar *{\def\@tempa*{#1}\@tempa}{#2}}
+  \def\vspace{\@ifstar{\@vspacer}{\@vspace}}
+  \def\@vspace#1{\ifvmode 
+    \dimen@\prevdepth \expandafter\vskip #1\vskip \z@\prevdepth\dimen@
+       \else 
+        \@bsphack\vadjust{\dimen@\prevdepth 
+            \expandafter\vskip #1\vskip \z@\prevdepth\dimen@}\@esphack\fi}
+  \def\@vspacer#1{\ifvmode \dimen@\prevdepth 
+         \hrule height\z@ \nobreak \expandafter\vskip #1\vskip \z@
+           \prevdepth\dimen@
+        \else
+         \@bsphack\vadjust{\dimen@\prevdepth \hrule height\z@ \nobreak 
+            \expandafter\vskip #1\vskip \z@ \prevdepth\dimen@}\@esphack\fi}
+  \def\hspace{\protect\phspace}
+  \def\phspace{\@ifstar{\@hspacer}{\@hspace}}
+  \def\@hspace#1{\leavevmode\expandafter\hskip #1\relax}
+  \def\@hspacer#1{\leavevmode\vrule width\z@\nobreak\expandafter\hskip 
+                #1\hskip \z@\relax}  
+%%%%%%%%%%%%%%  Maybe remove this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \def\makebox{\@ifnextchar ({\@makepicbox}{\@ifnextchar
+     [{\@makebox}{\mbox}}}
+  \def\mbox#1{\leavevmode\hbox{#1}}
+\def\@makebox[#1]{\leavevmode\@ifnextchar [{\@imakebox[#1]}{\@imakebox[#1][x]}}
+  \long\def\@imakebox[#1][#2]#3{\hbox to#1{\let\mb@l\hss
+  \let\mb@r\hss \expandafter\let\csname mb@#2\endcsname\relax
+  \mb@l #3\mb@r}}
+  \def\@makepicbox(#1,#2){\leavevmode\@ifnextchar 
+    [{\@imakepicbox(#1,#2)}{\@imakepicbox(#1,#2)[]}}
+  \long\def\@imakepicbox(#1,#2)[#3]#4{\vbox to#2\unitlength
+   {\let\mb@b\vss \let\mb@l\hss\let\mb@r\hss
+    \let\mb@t\vss
+    \@tfor\@tempa :=#3\do{\expandafter\let
+        \csname mb@\@tempa\endcsname\relax}%
+   \mb@t\hbox to #1\unitlength{\mb@l #4\mb@r}\mb@b}}
+   \gdef\setspacetoken{\global\let\@sptoken= }
+   \def\:{\let\@sptoken= } \:  % this makes \@sptoken a space token
+   \def\:{\@xifnch} \expandafter\def\: {\futurelet\@tempc\@ifnch}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \def\rule{\@ifnextchar[{\@rule}{\@rule[0pt]}}
+  \newdimen\@tempdima
+
+  \def\@rule[#1]#2#3{\@tempdima#3\advance\@tempdima #1\leavevmode\hbox{\vrule
+    width #2 height\@tempdima depth -#1}}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Use Tom Rokicki's utility to import graphics
+\input epsf.sty
+%\def\graphic#1{\hbox to \hsize{\hss\epsfysize=2in\epsffile{#1}\hss}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\overfullrule=0pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Modified version of the LaTeX array environment that is 
+%% allowed to break across pages.  Still needs some work.
+%% LaTeX users may want to uncomment the following lines
+%% and move them to the end of the file so that LaTeX's array
+%% macro is used instead.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\let\MathBegin\begin
+%\let\MathEnd\end
+%\let\MathArray\array
+%\let\endMathArray\endarray
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\gdef\MathBegin#1{\def\tempa{\csname #1\endcsname}\begingroup\tempa}
+\gdef\MathEnd#1{\csname end#1\endcsname\endgroup%
+     \ifnomathmodewanted\global\nomathmodewantedfalse
+     \vskip-\parskip%
+     \vskip-2\abovedisplayskip%
+     $$\else\ignorespaces\fi}
+
+\newif\ifnomathmodewanted \nomathmodewantedfalse
+\def\MathArray{\@writabarray}
+\def\@wriarrayacol{\edef\@preamble{\@preamble \hskip \arraycolsep}}
+
+\def\@wriarrayclassz{\ifcase \@lastchclass \@acolampacol \or \@ampacol \or
+   \or \or \@addamp \or
+   \@acolampacol \or \@firstampfalse \@acol \fi
+\edef\@preamble{\@preamble
+  \ifcase \@chnum 
+     \hfil$\relax\@sharp$\hfil \or $\relax\@sharp$\hfil 
+    \or \hfil$\relax\@sharp$\fi}}
+
+\def\@wriarrayclassiv{\@addtopreamble{$ \@nextchar$}}
+\def\@addtopreamble#1{\edef\@preamble{\@preamble #1}}
+\def\@wriarraycr{${\ifnum0=`}\fi\@ifstar{\@wrixarraycr}{\@wrixarraycr}}
+\def\@wrixarraycr{\@ifnextchar[{\@argarraycr}{\ifnum0=`{\fi}${}\cr}}
+\def\@writabarray{\@ifnextchar[{\@wriarray}{\@wriarray[c]}}
+\def\@wriarray[#1]#2{%
+	\if#1p\endgroup$$
+	  \iflatexversion%
+         \vskip-\parskip\vskip-2\belowdisplayskip%
+      \else\vskip-\belowdisplayskip\fi%
+		\begingroup\global\nomathmodewantedtrue%
+	\else 
+		\global\nomathmodewantedfalse%
+	\fi%
+    \let\@acol\@wriarrayacol \let\@classz\@wriarrayclassz
+    \let\@classiv\@wriarrayclassiv \let\\\@wriarraycr\def\@halignto{}
+	\setbox\@arstrutbox=\hbox{\vrule 
+     height\arraystretch \ht\strutbox
+     depth\arraystretch \dp\strutbox
+     width\z@}\@wrimkpream{#2}\edef\@preamble{\halign \noexpand\@halignto
+\bgroup \tabskip\z@ \@arstrut \@preamble \tabskip\z@ \cr}%
+\let\@startpbox\@@startpbox \let\@endpbox\@@endpbox
+  \if #1t \vtop 
+  \else \if#1b \vbox 
+  \else \if#1p \relax 
+  \else \vcenter \fi\fi\fi
+  \bgroup \let\par\relax
+  \let\@sharp##\let\protect\relax \lineskip\z@\baselineskip\z@\@preamble}
+
+\def\@wrimkpream#1{\@firstamptrue\@lastchclass6
+\def\@preamble{}\def\protect{\noexpand\protect\noexpand}\let\@sharp\relax 
+\let\@startpbox\relax\let\@endpbox\relax
+\@wriexpast{#1}\expandafter\@writfor \expandafter
+  \@nextchar \expandafter:\expandafter=\@tempa\do{\@writestpach\@nextchar
+  \ifcase \@chclass \@classz \or \@classi \or \@classii \or \@classiii
+    \or \@classiv \or\@classv \fi\@lastchclass\@chclass}%
+\ifcase \@lastchclass \@acol
+    \or \or \@preamerr \@ne\or \@preamerr \tw@\or \or \@acol \fi}
+
+\def\@wriexpast#1{\@wrixexpast #1*0x\@@}
+\def\@wrixexpast#1*#2#3#4\@@{\edef\@tempa{#1}\@tempcnta#2\relax
+    \ifnum\@tempcnta >0 \@whilenum\@tempcnta >0\do
+       {\edef\@tempa{\@tempa#3}\advance\@tempcnta by \m@ne}\let\@tempb\@wrixexpast
+      \else \let\@tempb\@wrixexnoop\fi
+    \expandafter\@tempb \@tempa #4\@@}
+
+\def\@writestpach#1{\@chclass \ifnum \@lastchclass=\tw@ 4 \else 
+    \ifnum \@lastchclass=3 5 \else
+     \z@ \if #1c\@chnum \z@ \else
+                              \if #1l\@chnum \@ne \else
+                              \if #1r\@chnum \tw@ \else
+          \@chclass \if #1|\@ne \else
+                    \if #1@\tw@ \else
+                    \if #1p3 \else \z@ \@preamerr 0\fi
+  \fi  \fi  \fi  \fi  \fi  \fi  
+\fi}
+
+\def\@wrixexnoop #1\@@{}
+\def\@writfor#1:=#2\do#3{\xdef\@fortmp{#2}\ifx\@fortmp\@empty \else
+    \@writforloop#2\@nil\@nil\@@#1{#3}\fi}
+\def\@writforloop#1#2\@@#3#4{\def#3{#1}\ifx #3\@nnil 
+       \let\@nextwhile=\@fornoop \else
+      #4\relax\let\@nextwhile=\@writforloop\fi\@nextwhile#2\@@#3{#4}}
+
+\def\endMathArray{\crcr\egroup\egroup%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%% End of MathArray macros %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% Mathematica output macros %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newdimen\MPSwidth \newdimen\MPSheight
+\def\MPSsize#1#2{\global\MPSwidth=#1 \global\MPSheight=#2}
+
+\let\nils\nointerlineskip
+\def\abovemath{\vskip 0pt}  \let\beginom\abovemath
+\def\belowmath{\vskip 0pt}  \let\endom\belowmath
+
+\def\mathCap#1{}
+
+\newbox\Minbox  \newbox\Moutbox \newbox\Mgraphbox
+\newcount\promptcount \promptcount = 0
+\def\setpromptcount#1{\global\promptcount=#1}
+
+\catcode`\^^I=13  % make tab a character
+
+{\catcode`\^^M=13 {\catcode`\^^I=13 \catcode`\ =13 %\catcode`\-=13%
+\gdef\verbatimdefs{%
+\def^^M{\ \par\penalty70\relax}\let =\ \def^^I{        }}}%
+\gdef\verbatimgobble#1^^M{}}
+
+\def\mathIn{%
+\global\setbox\Moutbox=\hbox{}\gdef\MGRAPHNAME{}%
+\global\setbox\Minbox=\vtop\bgroup% 
+\parskip 0pt\parindent 0pt\mathfontsize\btt%
+\baselineskip 1.1\baselineskip%
+\raggedright\nils%\hsize=\rightcom%
+\def\do##1{\catcode`##1=12 }\dospecials%
+\catcode`\ =13 \catcode`\^^M=13 \catcode`\^^I=13\catcode`\\=0%
+\edef\\{\char"5C\relax} \def^^I{\ \ \ \ \ \ \ \ }% Width of "Tab"
+\verbatimdefs\verbatimgobble\monospace}
+
+\newif\ifprint \printfalse
+\def\mathOut{%
+\global\setbox\Moutbox=\vtop\bgroup% 
+\parskip 0pt\parindent 0pt\mathfontsize
+\baselineskip\MRunskip\tt\raggedright\nils% 	FONT SIZE/LEADING
+\def\do##1{\catcode`##1=12 }\dospecials%
+\catcode`\ =13 \catcode`\^^M=13 \catcode`\^^I=13\catcode`\\=0%
+%\catcode`\-=13%
+\edef\\{\char"5C\relax} \def^^I{\ \ \ \ \ \ \ \ }% Width of "Tab"
+\verbatimdefs\verbatimgobble\monospace}
+
+\def\mathText{%
+\global\setbox\Moutbox=\vtop\bgroup% 
+\parskip 0pt\parindent 0pt\mathfontsize%
+\baselineskip\MRunskip\tt\raggedright\nils% 	FONT SIZE/LEADING
+\def\do##1{\catcode`##1=12 }\dospecials%
+\catcode`\ =13 \catcode`\^^M=13 \catcode`\^^I=13\catcode`\\=0%
+%\catcode`\-=13%
+\edef\\{\char"5C\relax} \def^^I{\ \ \ \ \ \ \ \ }% Width of "Tab"
+\verbatimdefs\verbatimgobble\monospace}
+
+\catcode`\^^I=10  % make tab other
+
+\newif\ifprompt \promptfalse
+
+\def\endmathIn{\par\egroup\vskip .75\baselineskip{\parindent 0pt%
+        \ifinprompt%
+                \global\advance\promptcount by 1%
+                \setbox\@tempboxa=\hbox{\mathfontsize\In{\INPROMPT\ \relax}}
+                \leavevmode\ifpromptbreak\relax\else\hbox\fi%
+					\bgroup\mathfontsize\In{\INPROMPT\ \relax}%
+        \else%
+            \ifprompt%
+                \global\advance\promptcount by 1%
+                \setbox\@tempboxa=\hbox{\mathfontsize\In{In[\the\promptcount]:= }}%
+                \leavevmode\hbox\bgroup\mathfontsize\In{In[\the\promptcount]:= }%
+            \else%
+                \setbox\@tempboxa=\hbox{}\leavevmode\hbox\bgroup\mathfontsize
+                    \mbox{}%
+            \fi%
+        \fi%
+			\ifpromptbreak\hfill\break
+				\rule{0pt}{7pt}\leavevmode\kern 4pt\fi%
+            \vtop{%\baselineskip 12pt%
+            \ifpromptbreak\relax\else\advance\hsize -\wd\@tempboxa\fi%
+            \box\Minbox\par}\egroup%
+            \ifprompt\vskip .75\baselineskip%
+			\else\vskip 8pt\fi}%
+                        \global\inpromptfalse\global\promptbreakfalse}
+
+\newif\ifpromptbreak \promptbreakfalse
+
+\def\endmathOut{\par\egroup\@ifnextchar[{\@setoutdrop}{\@setoutdrop[0]}}
+\def\@setoutdrop[#1]{{\parindent 0pt%
+    \vskip -.5\baselineskip%
+    \ifoutprompt%
+        \setbox\@tempboxa=\hbox{\mathfontsize\Out{\OUTPROMPT\ \relax}}%
+    \else%
+        \ifprompt%
+            \setbox\@tempboxa=\hbox{\mathfontsize\Out{Out[\the\promptcount]=\ }}%
+        \else
+            \setbox\@tempboxa=\hbox{}
+        \fi%
+    \fi%
+    \baselineskip=\MRunskip%
+    \nils\leavevmode\ifpromptbreak\relax\else\hbox{\fi%
+    \ifprompt\lower #1\baselineskip\fi%
+    \ifoutprompt%
+        \hbox{\mathfontsize\Out{\OUTPROMPT\ \relax}}%
+    \else%
+        \ifprompt%
+            \hbox{\mathfontsize\Out{Out[\the\promptcount]=}}%
+        \else%
+            \mathfontsize\mbox{}%
+        \fi%
+    \fi%
+	\ifpromptbreak\hfill\break%
+			\rule{0pt}{7pt}\leavevmode\kern 4pt\fi%
+    \vtop{\advance\hsize -\wd\@tempboxa%
+        \box\Moutbox\par}\ifpromptbreak\relax\else}\fi
+    \vskip 2pt%
+}\global\outpromptfalse\global\promptbreakfalse%
+	\global\printfalse}
+
+\def\endmathText{\par\egroup
+    \vskip -.5\baselineskip%
+    \vtop{\baselineskip=\MRunskip\box\Moutbox\par}
+    \vskip \baselineskip}
+
+\let\mathin\mathIn
+\let\endmathin\endmathIn
+\let\mathout\mathOut
+\let\endmathout\endmathOut
+
+\newif\ifGraphicsPrompt \GraphicsPromptfalse
+
+\newif\ifinprompt  \newif\ifoutprompt
+\inpromptfalse \outpromptfalse
+
+\let\mathBegin\relax
+\def\inprompt#1{\global\inprompttrue\gdef\INPROMPT{#1}}
+\def\outprompt#1{\global\outprompttrue\gdef\OUTPROMPT{#1}}
+\def\OUTPROMPT{}
+
+\let\Outprompt\outprompt \let\Inprompt\inprompt
+
+\def\graphicprompt{\global\GraphicsPrompttrue\gdef\GRAPHICPROMPT{-Graphic-}}
+\def\soundprompt{\global\GraphicsPrompttrue\gdef\GRAPHICPROMPT{-Sound-}}
+
+\def\graphicdir#1{\gdef\GRAPHDIR{#1}}
+\graphicdir{}
+
+\newdimen\xgraphic \xgraphic=0pt
+\newdimen\ygraphic \ygraphic=0pt
+
+\def\graphic#1{%
+	\vskip .25\baselineskip
+	\ifdim\xgraphic > 0pt \MPSwidth\xgraphic\fi
+	{\parindent 0pt\epsfxsize=\MPSwidth%
+	\ifdim\ygraphic > 0pt \epsfysize\ygraphic\fi
+	\mbox{}\tt%\kern\wd\@tempboxa\ 
+	\hbox to \hsize{\hss\epsffile{\GRAPHDIR #1}\hss}}\par
+	\ifGraphicsPrompt%
+		\vskip 3pt
+		{\tt\mbox{}\kern\wd\@tempboxa\ \GRAPHICPROMPT}
+	\fi
+	\vskip 1.25\baselineskip\global\xgraphic=0pt\global\ygraphic=0pt
+}
+\let\mathGraph\graphic
+
+
+\def\mathTypeIn#1{\vskip-\lastskip\vskip\baselineskip%
+	{\mathfontsize\rm\parindent 0pt%
+        \ifinprompt\global\advance\promptcount by 1%
+                \setbox\@tempboxa=\hbox{\In{\INPROMPT\ \relax}}%
+                \leavevmode\hbox\bgroup\In{\INPROMPT\ \relax}%
+        \else\ifprompt%
+                \global\advance\promptcount by 1%
+                \setbox\@tempboxa=\hbox{\In{In[\the\promptcount]:= }}%
+				\leavevmode%
+                \ifpromptbreak\In{In[\the\promptcount]:= }\break
+			       		\hbox\bgroup\kern 12pt
+                \else\hbox\bgroup\In{In[\the\promptcount]:= }\fi%
+            \else%
+                    \hbox\bgroup\mbox{}\kern -8pt%
+            \fi\fi%
+            {\let\mv\mvb\def\mbox##1{\hbox{\tt ##1}}
+		%\nomathdelimstrue
+            $\wriboldmath\displaystyle #1$}\break
+            \egroup\vskip\baselineskip
+            \ifprompt\else\fi}%
+                        \global\inpromptfalse}
+\let\SFmathTypein\mathTypeIn
+\let\TFmathTypein\mathTypeIn
+
+\def\mathTypeOut#1{\vskip-.8\baselineskip%
+	{\mathfontsize\rm\parindent 0pt%
+    \ifoutprompt\hbox\bgroup\Out{\OUTPROMPT\ \relax}%
+    \else\ifprompt%
+		      \ifpromptbreak\Out{Out[\the\promptcount]= }\break
+			       \hbox\bgroup\kern 12pt
+		      \else\hbox\bgroup\Out{Out[\the\promptcount]= }\fi%
+		 \else\hbox\bgroup%
+    \fi\fi%
+     {\relax\def\mbox##1{\hbox{\tt ##1}}%
+		%\nomathdelimstrue
+         $\displaystyle #1$}\break
+            \egroup\vskip\baselineskip%
+			\ifprompt\else\fi}%
+                        \global\promptbreakfalse%
+			\global\outpromptfalse}
+
+\let\SFmathTypeout\mathTypeOut
+\let\TFmathTypeout\mathTypeOut
+\def\inlineSFinmath#1{$\wriboldmath #1$}
+\def\inlineSFoutmath#1{$#1$}
+\let\inlineTFinmath\inlineSFinmath
+\let\inlineTFoutmath\inlineSFoutmath
+
+\def\dispSFinmath#1{$$\wriboldmath #1$$}
+\def\dispSFoutmath#1{$$#1$$}
+\let\dispTFinmath\dispSFinmath
+\let\dispTFoutmath\dispSFoutmath
+\def\dispTFPrintmath#1{$#1$}
+\def\dispSFPrintmath#1{$#1$}
+
+
+\def\In#1{{\it #1}}
+\def\Inx#1{{\tt #1}}
+\def\Out#1{{\it\rule{0pt}{6pt}\kern -1.5pt#1}}
+\def\Outx{}
+\global\let\mathfontsize\relax
+\def\MRunskip{.7\baselineskip}
+\def\btt{\tt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\let\Null\relax
+\let\Times\times
+\def\DifferentialD{d}
+\def\Mfunction#1{\mathop{\rm #1}\nolimits}
+\def\Muserfunction#1{\mathop{\rm #1}\nolimits}
+\def\Mvariable#1{#1}
+\def\Mstring#1{\mbox{#1}}
+
+\def\SkeletonIndicator{-\relax}
+\def\ImaginaryI{I}
+\def\VerticalBar{|}
+\def\VerticalSeparator{|}
+\iflatexversion
+	\def\ScriptI{{\cal I}}
+	\def\ScriptJ{{\cal I}}
+\else
+	\def\ScriptI{I}
+	\def\ScriptJ{J}
+\fi
+\def\AGrave{\'a}
+\def\RawTilde{\char'176\relax}
+\def\RawWedge{\char'136\relax}
+\def\unknown#1{#1}
+\let\Section\section
+\let\Subsection\subsection
+
+
+\makeatother

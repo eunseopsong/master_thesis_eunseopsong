@@ -1,0 +1,69 @@
+# VR calibration matrix setting
+# Auto-capture + One-shot YAML update (T_AD, T_BC, T_SA)
+# saved_at: 2026.08.16 22:43
+# converted from meter-scale capture to mm during merge with the mm-unit update.
+
+meta:
+  t_sa_w_des_z: 2.356194490192
+  z_fix_enable: true
+  z_fix_max_tilt_deg: 5.000000000000
+  position_residual_enable: true
+  position_residual_max_correction_mm: 10.000000000000
+  handeye_outlier_reject_enable: true
+  handeye_outlier_max_reject: 2
+  handeye_outlier_abs_mm: 15.000000000000
+  handeye_outlier_mad_sigma: 4.000000000000
+  handeye_outlier_rejected_count: 0
+  handeye_used_samples: 47
+  note: "Runtime tool correction uses inv(T_BC); T_SA is right-multiplied."
+  migrated_to_mm: true
+
+T_AD:
+  - [-0.058645721234, -0.006058954407, -0.998260471246, -911.581691949000]
+  - [-0.998174726149, -0.014087266266, 0.058726186727, -50.524068227000]
+  - [-0.014418580349, 0.999882412087, -0.005221737266, 1595.623808258000]
+  - [0.000000000000, 0.000000000000, 0.000000000000, 1.000000000000]
+
+T_BC:
+  - [0.998867644673, 0.047448179848, 0.003478311950, 0.797800926000]
+  - [0.047436956961, -0.998868975789, 0.003241037035, -242.766711592000]
+  - [0.003628159203, -0.003072366495, -0.999988698449, 466.503706880000]
+  - [0.000000000000, 0.000000000000, 0.000000000000, 1.000000000000]
+
+# left-multiplied rigid z-plane correction (M_cal = T_FIX @ M_cal)
+T_FIX:
+  - [0.999978675585, 0.000000000000, 0.006530572413, 0.000000000000]
+  - [-0.000035841391, 0.999984939462, 0.005488129453, 0.000000000000]
+  - [-0.006530474059, -0.005488246487, 0.999963615368, 3.400215315000]
+  - [0.000000000000, 0.000000000000, 0.000000000000, 1.000000000000]
+
+# optional position residual correction after T_FIX:
+# (x,y,z) += (fx,fy,fz)((x-center_x)/scale_xy, (y-center_y)/scale_xy),
+# joint (dx,dy,dz) vector clamped to max_abs_correction_mm.
+POSITION_RESIDUAL:
+  enabled: true
+  model: quadratic_xy
+  center_x: 429.986833031000
+  center_y: 116.824681143000
+  scale_xy: 403.058571853000
+  max_abs_correction_mm: 10.000000000000
+  rms_before_mm: 4.809242454000
+  rms_after_mm: 3.178934224000
+  coeff_x: [1.112182693000, -0.614564706000, 4.075718358000, -21.842398714000, 0.959728198000, -5.391310532000]
+  coeff_y: [-1.322587672000, -0.319631111000, 1.422157677000, -0.823427791000, 0.913555784000, 1.152575192000]
+  coeff_z: [-0.392134885000, 0.424082392000, 0.277221250000, 12.758712778000, -1.552771089000, 0.046274735000]
+
+# final constant offset; runtime applies this last when apply_T_CE_extra=true
+# T_CE[2,3] is stored as a positive downward z correction knob.
+T_CE:
+  - [1.000000000000, 0.000000000000, 0.000000000000, 0.000000000000]
+  - [0.000000000000, 1.000000000000, 0.000000000000, 0.000000000000]
+  - [0.000000000000, 0.000000000000, 1.000000000000, 320.000000000000]
+  - [0.000000000000, 0.000000000000, 0.000000000000, 1.000000000000]
+
+# spatial-angle frame alignment (right-multiply)
+T_SA:
+  - [0.998811456742, 0.048556410319, 0.004236614146, 0.000000000000]
+  - [0.048605496408, -0.998741384323, -0.012375498468, 0.000000000000]
+  - [0.003630372093, 0.012566712393, -0.999914445412, 0.000000000000]
+  - [0.000000000000, 0.000000000000, 0.000000000000, 1.000000000000]

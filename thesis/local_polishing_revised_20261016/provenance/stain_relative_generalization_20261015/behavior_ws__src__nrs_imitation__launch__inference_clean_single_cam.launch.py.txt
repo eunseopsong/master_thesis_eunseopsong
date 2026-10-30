@@ -1,0 +1,7 @@
+# behavior_ws/src/nrs_imitation/launch/inference_clean_single_cam.launch.py:235-240 (declared launch defaults)
+            DeclareLaunchArgument("stain_canon_enable", default_value="false"),
+            DeclareLaunchArgument("stain_canon_train_angle_deg", default_value="132.0"),
+            DeclareLaunchArgument("stain_canon_live_angle_deg", default_value="-1.0"),
+            DeclareLaunchArgument("stain_canon_rotate_image", default_value="true"),
+            DeclareLaunchArgument("stain_canon_image_angle_sign", default_value="1.0"),
+            DeclareLaunchArgument("stain_canon_max_angle_deg", default_value="65.0"),

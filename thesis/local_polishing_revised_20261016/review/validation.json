@@ -1,0 +1,318 @@
+{
+  "all_passed": true,
+  "pages": 99,
+  "checks": [
+    {
+      "check": "no_latex_errors",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "references_and_citations_resolved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_overfull_boxes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_missing_glyphs",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "equal_vertical_margins",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "korean_summary_extracts",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bibliography_toc_entry_once",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "thirteen_cited_sources",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "twenty_one_figures",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "nineteen_tables",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "both_cohorts_fifteen",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e1_all_required_loaded_passes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e1_primary_five_completions_each",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e1_executed_version",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "thirty_primary_one_diagnostic",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "c6_separate_original_identity",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_c5_preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e1_report_frozen_membership",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "one_primary_per_planned_slot",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e2_a4_interruption_not_completion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e2_five_attempts_each",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e2_completed_four_five_five",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "a4_elapsed_preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "forty_two_unique_source_episodes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "episode_level_split",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bc_descriptive_percentage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "a_time_n_four_and_interval_n_five",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "sixteen_e1_receipt_force_integrals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "e1_actual_receipt_rate",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_obsolete_required_height_work",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "inherited_native_csv_checks_retained_as_prior_validation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "unchanged_method_module:02_related_work.tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "unchanged_method_module:03_problem_system.tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "unchanged_method_module:04_demonstration_dataset.tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "unchanged_method_module:05_skill_learning.tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "unchanged_metadata_or_bibliography:Bibliography/ThesisRef.bib",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "unchanged_metadata_or_bibliography:titlepage.tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "unchanged_metadata_or_bibliography:ThesisCover.tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "previous_review_preserved:ThesisMain.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "previous_review_preserved:ThesisCover.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "previous_review_preserved:ThesisMain.tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "previous_review_preserved:local_polishing_revised_20261015.zip",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "reused_figure_byte_identical:e2_primary_metrics.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "reused_figure_byte_identical:e2_force_all.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "reused_figure_byte_identical:e2_transition_cases.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "reused_figure_byte_identical:e2_sequence.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "reused_figure_byte_identical:teaching_motion_force.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "reused_figure_byte_identical:force_processing.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "reused_figure_byte_identical:dataset_split.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:ThesisMain.pdf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:ThesisMain.tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:ThesisCover.tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:ThesisRef.bib",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:XThesis_skku_eng.sty",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:IEEEtran.cls",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original_preserved:IEEEtran.bst",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "style_byte_identical:XThesis_skku_eng.sty",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "style_byte_identical:IEEEtran.cls",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "style_byte_identical:IEEEtran.bst",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "style_byte_identical:notebook.sty",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "pdf_words_inside_page_bounds",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "unresolved_warnings": [
+    "Package microtype Warning: Command \\pickup@font is not defined as expected.",
+    "pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored"
+  ],
+  "physical_experiments_started_by_this_work": false,
+  "poppler_xml_math_controls_removed_for_parsing_only": 8,
+  "scope": "manuscript and existing evidence only; no new robot or model evaluation"
+}

@@ -1,0 +1,167 @@
+[
+  {
+    "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+    "report_label": "T1",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/executor/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_executor_20261015T224658_1792072018227298562_uj9d3y17/events.jsonl",
+    "events_sha256": "e43dce414f642559f283020fc413106ccf227b1f636bd076f94956449ff9d02d",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 124.44424605075478,
+    "pose_receipt_hz": 124.44368951517102
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+    "report_label": "R1",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/executor/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_executor_20261015T224839_1792072119545411642_4ctu89qh/events.jsonl",
+    "events_sha256": "7c46909aa54ad931f3ef5a312113d7818eab06742d332732ca6d2ec5babf111f",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 125.00908788963261,
+    "pose_receipt_hz": 125.00053758814963
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+    "report_label": "C1",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/executor/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_executor_20261015T224952_1792072192283776480_3sfmtpn6/events.jsonl",
+    "events_sha256": "a5594719d45fa6425919462dd25ceca5a75f850cac47deeda6e8bc09ef43ad0f",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 124.9972062568288,
+    "pose_receipt_hz": 125.00045054919413
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+    "report_label": "T2",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/executor/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85_executor_20261015T225046_1792072246144936371_n54c3n3v/events.jsonl",
+    "events_sha256": "50b33e040d073536171bd9939992aa6d0b4224e2195a3c6d08b2742667a66c7d",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 125.00116211170287,
+    "pose_receipt_hz": 125.0083992585458
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+    "report_label": "R2",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/executor/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee_executor_20261015T225138_1792072298297392052_v7nr59i8/events.jsonl",
+    "events_sha256": "a0cebe5e80180a24785666eaf8a8d1d957acf4e8a3d74d4ee8a62e459ef4382d",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 124.9885450014997,
+    "pose_receipt_hz": 124.9896037279028
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+    "report_label": "C2",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/executor/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792_executor_20261015T225245_1792072365380786054_adv1fjx1/events.jsonl",
+    "events_sha256": "e6a55ba156445e75f9fac524e0382341921842a9c41d4bc93a768166f496d95d",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 125.01459905764199,
+    "pose_receipt_hz": 125.01464421464632
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+    "report_label": "R3",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/executor/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2_executor_20261015T225439_1792072479516638119_08gur7jd/events.jsonl",
+    "events_sha256": "77ca1a9f7bc9789fa2da12dbe3b62be8f50de46779a7c2f7f508f77612caf2dd",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 125.00429246016749,
+    "pose_receipt_hz": 125.00560071731304
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+    "report_label": "C3",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/executor/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797_executor_20261015T225546_1792072546323850500_juh6gbe0/events.jsonl",
+    "events_sha256": "22c29e2ed1d7758aeb345015d6db7f0ba6134cc445f0c8becab753c54256d99c",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 125.01202696631148,
+    "pose_receipt_hz": 125.00915516255165
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+    "report_label": "T3",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/executor/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6_executor_20261015T225640_1792072600004096294_lx8199pz/events.jsonl",
+    "events_sha256": "ed8ee9ff08c17016ac063117e419f68b44959e8c9337b70c62215f662bdcc113",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 125.02017797347,
+    "pose_receipt_hz": 125.01413823767096
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+    "report_label": "R4",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/executor/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81_executor_20261015T225730_1792072650680158187_rd9cmmm1/events.jsonl",
+    "events_sha256": "b9aa50a6bf9280b3f8c47947a1e09e3351509a11f1638e0ea1169789058801ce",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 125.00279703904705,
+    "pose_receipt_hz": 125.0024842637249
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+    "report_label": "T4",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/executor/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec_executor_20261015T225835_1792072715530435969_x_tbhk_4/events.jsonl",
+    "events_sha256": "3d992b054f7fa98ff5669613ee26b55ee1c29c4b14f63222ee4d7ef0eb8bfaf0",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 125.00691086967593,
+    "pose_receipt_hz": 125.00216620079773
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+    "report_label": "C4",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/executor/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884_executor_20261015T225925_1792072765893819930_qt_v3pr8/events.jsonl",
+    "events_sha256": "fda86b58990253f07dffe286021ae115cc137d5e1454e54f421f8661fd31e1bd",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 124.9924873350516,
+    "pose_receipt_hz": 124.99607081866468
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+    "report_label": "R5",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/executor/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7_executor_20261015T230015_1792072815224111471_6qpme6sm/events.jsonl",
+    "events_sha256": "589f0206f1b899229ae1d0530856d79985ea89d7a25522e181e40fe47a6facb8",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 125.0049412533631,
+    "pose_receipt_hz": 125.0050280334807
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+    "report_label": "C5",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/executor/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b_executor_20261015T230122_1792072882379712619_vkqm1_m3/events.jsonl",
+    "events_sha256": "cbe79cc69e730cd796a90798e93b594d39667b0f05ef49b27a5863bf2dc6e609",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 125.00654806446902,
+    "pose_receipt_hz": 124.99915140590525
+  },
+  {
+    "run_id": "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+    "report_label": "T5",
+    "raw_directory": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6",
+    "events": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/executor/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6_executor_20261015T230218_1792072938530336273_t2wt3l82/events.jsonl",
+    "events_sha256": "d8fa6a8b6ec1c6526dc9e709f6a89b03532a62317ca8b5295ea3ab9a49946b4e",
+    "original_outcome": "completed",
+    "source": "actual task_observation_received rows",
+    "force_receipt_hz": 124.99195647561774,
+    "pose_receipt_hz": 124.98701677048071
+  }
+]

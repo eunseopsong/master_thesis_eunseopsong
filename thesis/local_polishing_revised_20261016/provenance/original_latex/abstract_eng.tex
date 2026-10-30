@@ -1,0 +1,14 @@
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\begin{center}
+\Large\textbf{FAIRE: Force-Aware Imitation with Residual-Removal-Aware Blending for CAD-Free Robotic Surface Repair}
+\end{center}
+
+Localized surface defects must be removed selectively because unnecessary processing can damage intact material, whereas insufficient processing leaves the defect visible or functionally significant. Conventional perception-and-planning approaches can localize a defect and generate a geometric repair path, but defect geometry alone does not specify the process intensity, local repetition, desired contact behavior, or termination condition required for removal when depth, severity, and removal difficulty are not explicitly available. FAIRE therefore uses visual and force-conditioned imitation learning as an expert repair policy. From an image, robot state, and recent six-axis wrench history, the policy predicts short-horizon Cartesian pose and desired three-axis force trajectories that represent the operator's defect-dependent decisions about how to process, how much to process, where to repeat, and when to terminate. The desired contact force is a controller-level reference, and the demonstrated tangential feed velocity is preserved during this selective-removal stage.
+
+Successful defect removal, however, does not guarantee a spatially uniform and smoothly restored surface. Concentrated processing can leave a local depression, nonuniform removal, turning-point overlap, or a visible boundary to the untreated surface. FAIRE therefore logs the actual executed pose, orientation, wrench, and velocity history and converts it into a Preston-model-based estimated material-removal map using a calibrated Preston coefficient and tool influence function. A target profile regularizes the defect-containing core toward a uniform target depth and smoothly decreases removal across an outer transition region. The difference between this profile and the estimated removal map defines the residual-removal demand.
+
+A model-based planner generates a local CAD-free blending path and nominal process conditions from that demand. Admittance control compensates for unknown surface height, while bounded residual reinforcement learning adapts roll, pitch, and feed velocity during blending on unseen smooth curved surfaces. Velocity adaptation is residual-removal-aware and is not applied during expert imitation. Evaluation is planned through staged comparisons of expert imitation, force-history representations, removal-model calibration, blending, residual policies, and end-to-end repair. Quantitative findings will be populated only from completed experiments.
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} Robotic Surface Repair, Force-Aware Imitation Learning, Material-Removal Estimation, Model-Based Blending, Admittance Control, Residual Reinforcement Learning, CAD-Free Surface Processing

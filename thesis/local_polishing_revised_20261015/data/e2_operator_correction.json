@@ -1,0 +1,11 @@
+{
+  "source": "user instruction for this thesis rewrite, 2026-10-15",
+  "run_id": "E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601",
+  "observation_ko": "접촉 해제 단계로 넘어가지 못하고 계속 접촉을 유지해 작업자가 중단했다.",
+  "execution_duration_s": 28.750087346,
+  "completion_time_s": null,
+  "included_in_all_attempt_statistics": true,
+  "raw_operator_finish_and_normal_completion_unchanged": true,
+  "causal_attribution_to_force_ablation": "not established",
+  "supersedes": "reports/20261013_E2_pdf_report/operator_completion_criterion.json for A4 only"
+}

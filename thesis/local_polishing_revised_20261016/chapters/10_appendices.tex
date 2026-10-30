@@ -1,0 +1,155 @@
+\appendix
+\chapter{Coordinates, Signals, and Reproduction}
+\label{chap:appendix}
+\label{app:signals}
+
+\section{Pose and Force Signal Definitions}
+The position vector is expressed in millimeters and orientation as a rotation vector in radians. The matrix \(R=\operatorname{Exp}([\rho]_\times)\) maps a vector in the calibrated tool frame to the robot base when it represents \(R_{B\leftarrow E}\). \([\rho]_\times\) is the skew-symmetric matrix associated with \(\rho\). The saved dataset transformation subtracts only \((c_x,c_y)\). The optional inference transformation additionally rotates center-relative XY by \(R_2(\alpha)\), with inverse rotation followed by center addition on output (Section~\ref{sec:stain_relative_generalization}). Both retain Z, tool rotation vectors, and force channels. The evaluated E1/E2 settings use \(\alpha=0\).
+
+Teaching force is a three-component post-publisher measurement. Its associated tool orientation supplies the base-axis rotation in Equation~\eqref{eq:normal_force_projection}. Robot wrench feedback is already base expressed. A torque reference-point transformation would require a moment arm, but no torque transfer is needed for the three-force-component base projection used here. The available analysis does not infer a calibrated compliant contact point from a TCP-center trajectory.
+
+\begin{table}[tbp]\centering\small
+\caption[Force signal definitions]{Force signal roles used throughout the thesis.}
+\label{tab:force_roles}
+\begin{tabularx}{\textwidth}{P{0.31\textwidth}X}
+\toprule Signal & Interpretation \\ \midrule
+Teaching intention & Operator's approximate loading intention; not a numeric command trace. \\
+Teaching recorded force & Measured interaction after the published processing path; used to construct learning supervision. \\
+Policy force action & Denormalized output of the generator before executor gating and slew. \\
+Executor transmitted target & Command-side force after shared processing; tangential target channels disabled in these comparisons. \\
+Controller-applied reference & Target after internal controller processing; synchronized trace unavailable. \\
+Robot measured force & Processed base-frame feedback used by the common gate, policy adapter, and recorded analysis. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Learning and Temporal Parameters}
+The force-cleanup dataset contains 15,963 paired frames in 42 compact episodes. The optimization and validation sets contain 38 and four episodes. Validation episode identifiers are 35, 39, 22, and 37. Each epoch's training window construction uses 50 starts per episode, a 128-step target, and the archived phase-sampling weights. The partition stored in each normalizer matches the dataset manifest.
+
+The force-history dimension is three, its sample count is 30, and the selected recurrent layer is a one-layer GRU with hidden size 64. The state encoder receives pose and current force together in B/C. A removes the force state dimensions and history encoder. B retains the history architecture with zeroed conditioning. Physical force remains available to common execution in all conditions.
+
+The training horizon, reference stride, inference timer, command period, and logging cap describe different mechanisms:
+\begin{table}[tbp]\centering\small
+\caption[Distinct clocks and sampling settings]{Distinct clocks and sampling settings.}
+\label{tab:clock_definitions}
+\begin{tabularx}{\textwidth}{P{0.39\textwidth}X}
+\toprule Mechanism & Value or meaning \\ \midrule
+Teaching paired sample grid & Nominal 30 Hz; original receipt times retained in merged HDF5. \\
+Action sequence & 128 samples, nominal 30 Hz. \\
+Nominal new-plan stride & 120 action samples, approximately 4 s. \\
+Inference callback timer & 5 Hz, subject to plan-age gating. \\
+Flow integration & 10 dimensionless updates per generated chunk. \\
+Command publication & Nominal 125 Hz (0.008 s). \\
+E1 actual receipt-event recording & Approximately 125 Hz in the 15 October primary cohort; distinct subscription receipts. \\
+E2 feedback CSV logging & 20 Hz cap; approximately 18 Hz observed in the 13 October archive. \\
+Analysis support & Receipt-time ZOH force and within-support pose interpolation; maximum gap 0.2 s. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Reproducing the Manuscript and Figures}
+The revised project is independent of the original thesis outputs. Its build retains the original pdfLaTeX/KoTeX/BibTeX chain and copies the existing school style without editing it. The body retains equal top and bottom margins of 25 mm. The cover remains a draft because the source did not establish author, adviser, committee, or submission details.
+
+From this revised project directory, the full manuscript and separate cover are built with
+\begin{verbatim}
+bash build.sh
+\end{verbatim}
+The figures and tables can be regenerated from the bundled extracted data without the robot repository:
+\begin{verbatim}
+python3 scripts/plot_results_20261016.py
+python3 scripts/make_tables.py
+bash build.sh
+\end{verbatim}
+The optional \path{scripts/collect_results_20261016.py} rereads only the selected report inventories, per-run precision results, original receipt events, and runtime metadata needed for this revision. It writes only into this thesis directory and imports no ROS or policy model. E1 force integrals are recalculated; existing E1 evaluator/storage checks and E2 native force/path checks are reused. E2 original event bounds and the A4 interpretation are preserved separately. Full source paths and read-file hashes are in \path{provenance/results_20261016/}. The earlier evidence/plot scripts are retained as historical source and are not the result-update entry points.
+
+The figure manifest records original files, run identifiers, frame indices or video offsets, transformations, and manuscript locations. Conceptual diagrams reside in the chapter LaTeX and are distinguished from measured plots in their captions. No generated photograph is used.
+
+\chapter{Experiment Versions and Provenance}
+\label{app:provenance}
+
+\section{Selected Models and Dataset}
+The dataset and models are the force-cleanup revision dated 12 October, with training completed on 13 October 2026. All three selected checkpoints have their own normalizer. The best epochs are 39, 42, and 42, while final epoch is 499. The stored checkpoint selection rule is minimum validation loss over 500 epochs. Checkpoint metadata was read on CPU without policy execution or retraining.
+
+\begin{table}[tbp]\centering\small
+\caption[Selected model identifiers]{Short SHA-256 identifiers of the selected checkpoints and normalizers. Complete values are included in the supplied model manifest.}
+\label{tab:model_provenance}
+\begin{tabular}{lll}
+\toprule Model & Checkpoint prefix & Normalizer prefix \\ \midrule
+A & \texttt{2ea204ab65fb} & \texttt{ae7d07adf65a} \\
+B & \texttt{080103e6c2ed} & \texttt{d7c917b8246c} \\
+C & \texttt{60d55e7092cb} & \texttt{09111fa4acc3} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The compact replay episode is linked to the source merged HDF5 recorded at 16:18 on 19 August 2026, source episode \texttt{ep\_0003}. Its compact action and observation pose/force arrays contain 443 frames. The original source-time array is retained for T rather than replaced by an assumed constant period. The exact source paths and extraction fields are recorded in the supplied episode metadata.
+
+\section{Primary E1 Version and Membership}
+The physically executed primary cohort is
+\begin{quote}\small\path{E1_CT_pass_height_v2_nominal_dev_20261015}\end{quote}
+with configuration \texttt{e1ct\_46de718a23a2a7cf}, evaluator \texttt{pass\_height\_ref\_v2}, and observer \texttt{received\_observations\_v2}. The source report freezes the 15 planned run identifiers. Each planned slot has one started primary execution, and the original C5 remains the run ending in \texttt{230120\_b45d2f021b}. Its full identifier and the additional C6 identifier are recorded in the cohort manifest.
+
+C6 is the later execution ending in \texttt{233551\_9021584d0a}. It retains repeat index 5 and the source retry link in the original archive, but is displayed as C6 for diagnostic interpretation. The subsequent session list therefore has 16 entries, while the primary E1 set remains the report-frozen 15. The explicit selection uses planned slots and original identifiers rather than the most recent record per repeated index. The same C checkpoint and frozen execution setting are retained.
+
+The handoff \path{baseline_manifest.json} still contains preparation-era zero-attempt fields. The actual report, original execution evidence, and frozen report membership supersede those status fields for this thesis. The nominal placement is operator reported; the configured approximate surface Z is not a per-trial physical measurement. LOW/HIGH and reference-offset robustness are outside the completed evaluation scope.
+
+\section{Historical E1 Development and Height-Only Replay}
+\label{app:e1_history}
+The 14 October development session, \texttt{E1\_CT\_sync\_confirm\_dev\_20261014}, uses configuration \texttt{e1ct\_61a19f7d7337a82c} and the initial-contact height reference. Its started order is R, then T, then C. All 15 started runs show the required loaded pass, while the old exit criterion reports R 3/5, T 4/5, and C 5/5. Table~\ref{tab:e1_historical_primary} preserves this historical comparison separately from the primary 15 October results.
+
+\begin{table}[tbp]\centering\footnotesize
+\caption[Historical 14 October E1 results]{Historical 14 October E1 development cohort with the initial-contact height reference. Completed-time means use \(n=3,4,5\) for R/T/C; excess-force summaries retain five started runs per method. These executions are not pooled with the primary cohort.}
+\label{tab:e1_historical_primary}\input{tables/e1_historical_primary}
+\end{table}
+
+The old release requirement was
+\begin{equation}
+ Z(t)\geq z_{\mathrm{contact}}+5\ \mathrm{mm},
+ \label{eq:original_release}
+\end{equation}
+with OFF and rise sustained together for 0.2 s. R1, R3, and T4 were sensitive to the early height reference. The archived height-only replay changes that reference for the same observations and reports 5/5 for every method (Table~\ref{tab:e1_replay}). It supplies no new physical executions and does not reconstruct the later receipt-event observer.
+
+\begin{table}[tbp]\centering\small
+\caption[Historical E1 height-only replay]{Height-only offline replay of the 14 October records. This secondary sensitivity analysis changes the release reference, retains the recorded trajectories, and adds no independent trials.}
+\label{tab:e1_replay}\input{tables/e1_replay}
+\end{table}
+
+\figfull{e1_height_reference.pdf}{Historical 14 October release thresholds using the initial-contact and successful-pass references. Both are derived from the same stored TCP traces. This diagnostic is distinct from the physically executed 15 October primary evaluator.}{fig:e1_height_reference}
+
+An original 14 October R5 registration did not reach execution start and was followed by a started retry. Its source identifiers remain in the historical provenance. This bookkeeping does not apply to the 15 October primary cohort, whose original 15 slots contain no non-start or retry. Earlier prepared but unexecuted sessions are historical preparation records and are not incomplete requirements of the present thesis.
+
+\section{E2 Versions and the A4 Correction}
+The selected E2 cohort uses the force-cleanup revision of 13 October. Each actual \texttt{runtime.json} names its model revision, observation settings, and common executor. The run inventory orders the attempts A1--A5, B1--B5, and C1--C5. Preparation-only runtime files are not used as substitutes for these actual run files.
+
+The old E2 report applied a common operator-confirmed completion interpretation to all 15 attempts. The later task instruction specifically corrects A4. This thesis adopts that field correction and stores it in \path{data/e2_operator_correction.json}. The original software event remains \texttt{operator\_finish}, followed by the original normal-completion stop-path event. The derived task outcome is separately marked incomplete contact release. The original elapsed time 28.750087346 s remains the interruption interval.
+
+The correction changes only the successful-time aggregation and task interpretation. A4 remains in all five-attempt statistics for force, travel, and elapsed interval. No surface image, raw force sample, event timestamp, or checkpoint is edited. The corrected table can be reconstructed from \path{data/e2_runs_corrected.csv}.
+
+\section{Sources for Implemented Extensions}
+The execution heatmap is generated by the existing polishing-removal recorder. The finite blending path and dose tools are in the local blending module and the 13 October extension package. The adaptive-velocity development records are versioned separately under the 14 October results directory. Their runtime metadata identifies them as adaptive-execution development rather than the primary E2 force ablation.
+
+\chapter{Individual Outcomes and Evidence Boundaries}
+\label{app:runs}
+
+\section{E1 Primary Executions}
+Table~\ref{tab:e1_all} lists all original primary E1 executions on 15 October. Every row completes the specified contact--pass--exit procedure, including C5. The recorded order identifies the shuffled blocks. C6 is reported separately in Table~\ref{tab:e1_c5_c6} and is not a sixth observation in any primary C mean.
+
+\begin{table}[tbp]\centering\small
+\caption[Individual primary E1 outcomes]{All 15 primary E1 executions under \texttt{pass\_height\_ref\_v2}. All are procedurally completed. Full run identifiers, original labels, and source paths are preserved in the cohort manifest.}
+\label{tab:e1_all}\input{tables/e1_all}
+\end{table}
+
+\section{E2 All Attempts}
+Table~\ref{tab:e2_all} distinguishes successful completion intervals from time to interruption. All original stop requests are retained. In particular, the missing A4 completion time is not a missing raw record.
+
+\begin{table}[tbp]\centering\small
+\caption[Individual E2 corrected task outcomes]{Individual E2 task outcomes after the A4 field correction. ``Operator completed'' uses the recorded operator interpretation; it is not an automatic E1 evaluation.}
+\label{tab:e2_all}\input{tables/e2_all}
+\end{table}
+
+The archived video inventory contains B/C videos but no A videos. The illustrated C1 WebM has an incomplete container ending; only decodable frames are used. It is not treated as a continuous independent proof of full task completion. Snapshot timing and varying tool viewpoint also limit before/after interpretation.
+
+\section{Cohort Membership and Interpretation}
+The supplied \path{data/cohort_manifest.csv} and JSON counterpart identify the primary E1 15 runs, primary E2 15 attempts, and additional diagnostic C6 separately. Fields include experiment, cohort, original run identifier, display label, date, model/evaluator version, primary or diagnostic status, inclusion reason, and source path. Source repeat numbers and retry links are preserved rather than used to replace an earlier execution.
+
+The primary tables, prose macros, and updated E1 plots derive from the same precision-level data. The A4 outcome correction changes successful-time aggregation and task interpretation while retaining all-attempt force and travel statistics and the original events. Historical tables and figures are dated explicitly and are not pooled with either primary cohort. These boundaries preserve the actual evidence supporting the stated conclusions.
