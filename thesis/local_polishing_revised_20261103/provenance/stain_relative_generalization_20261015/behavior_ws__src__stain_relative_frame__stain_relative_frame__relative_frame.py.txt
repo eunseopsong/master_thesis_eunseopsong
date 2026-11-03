@@ -1,0 +1,42 @@
+# behavior_ws/src/stain_relative_frame/stain_relative_frame/relative_frame.py:113-135 (to_relative)
+def to_relative(pose_xyzrpy: np.ndarray, stain_origin, use_relative: bool = True) -> np.ndarray:
+    """Absolute robot pose -> stain-relative pose.
+
+    Args:
+        pose_xyzrpy: (T, D) or (D,) with D >= 2. Columns 0,1 are x,y in mm.
+                     Every other column is passed through untouched.
+        stain_origin: StainOrigin or (x, y) in mm.
+        use_relative: when False this is the identity -- bit-for-bit the same
+                      array values as the input (the [3] "flag off == old
+                      path" guarantee).
+
+    Returns:
+        Array with the same shape and dtype as the input.
+    """
+    arr = _check_pose(pose_xyzrpy)
+    out = arr.copy()
+    if use_relative:
+        origin = _as_xy(stain_origin)
+        out[:, 0] -= origin[0]
+        out[:, 1] -= origin[1]
+    if np.ndim(pose_xyzrpy) == 1:
+        out = out.reshape(-1)
+    return out.astype(np.asarray(pose_xyzrpy).dtype, copy=False)
+
+
+# behavior_ws/src/stain_relative_frame/stain_relative_frame/relative_frame.py:138-152 (to_absolute)
+def to_absolute(pose_xyzrpy: np.ndarray, stain_origin, use_relative: bool = True) -> np.ndarray:
+    """Stain-relative pose -> absolute robot pose. Inverse of `to_relative`.
+
+    Called on the policy output immediately before the robot command, so the
+    controller always receives absolute base coordinates.
+    """
+    arr = _check_pose(pose_xyzrpy)
+    out = arr.copy()
+    if use_relative:
+        origin = _as_xy(stain_origin)
+        out[:, 0] += origin[0]
+        out[:, 1] += origin[1]
+    if np.ndim(pose_xyzrpy) == 1:
+        out = out.reshape(-1)
+    return out.astype(np.asarray(pose_xyzrpy).dtype, copy=False)

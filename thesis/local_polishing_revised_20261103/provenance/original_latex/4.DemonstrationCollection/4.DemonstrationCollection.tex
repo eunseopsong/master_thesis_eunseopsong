@@ -1,0 +1,62 @@
+\chapter{VR-Calibrated Motion--Force Demonstration Collection}
+\label{chap:demonstration_collection}
+
+\section{Teaching-System Purpose}
+The teaching system records how an operator interprets and treats a localized defect, including the motion pattern, tangential feed velocity, desired contact behavior, and local repetition. FAIRE retains a handheld teaching device equipped with a six-axis force/torque sensor and tracked in a virtual-reality (VR) coordinate frame. An RGB camera supplies visual task context. Image, position, orientation, and wrench streams are synchronized so that each action can be associated with the corresponding defect appearance and interaction history.
+
+\section{Coordinate Frames and Pose Transfer}
+Let \(B\), \(V\), \(T\), \(S\), \(E\), and \(C\) denote the robot base, VR tracking, tracker, force/torque sensor, TCP/tool, and contact-point frames. The demonstrated TCP pose in the robot base is
+\begin{equation}
+  {}^{B}\!T_{E}^{\mathrm{demo}}(t)
+  =
+  {}^{B}\!T_{V}\,
+  {}^{V}\!T_{T}(t)\,
+  {}^{T}\!T_{E}.
+  \label{eq:demo_transfer}
+\end{equation}
+The transform \({}^{B}\!T_V\) is obtained from VR-to-robot calibration, \({}^{V}\!T_T(t)\) is tracked over time, and \({}^{T}\!T_E\) is the fixed tracker-to-tool transform. Calibration observations, estimation method, and validation residuals are \todoexp{to be determined from the final implementation}.
+
+\begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.21\textheight][c]{0.90\textwidth}
+    \centering
+    Robot base \(B\) \(\leftarrow\) VR frame \(V\) \(\leftarrow\) tracker \(T\)\\
+    \(\downarrow\) tracker-to-tool calibration\\
+    TCP/tool frame \(E\) \(\rightarrow\) contact-point frame \(C\)\\[1ex]
+    synchronized \(I_t,\ p_t,\ R_t,\ w_t,\) and timestamps
+  \end{minipage}}
+  \caption{Coordinate chain for VR-to-robot demonstration transfer and contact-point representation. Numerical calibration results and the final apparatus drawing remain TBD.}
+  \label{fig:demo_transfer}
+\end{figure}
+
+\section[Wrench Processing and Contact-Point Representation]{Wrench Processing and Contact-Point\\ Representation}
+The sensor produces a six-axis wrench
+\begin{equation}
+  w_t^S=[F_x,F_y,F_z,\tau_x,\tau_y,\tau_z]_t^{S}.
+\end{equation}
+The usable wrench requires bias removal, gravity and tool-load compensation, filtering, and transformation to a declared contact or tool frame. When the reference point changes, the spatial wrench transform must account for the associated moment arm; rotating force components alone is insufficient. The same sign convention and reference point must be used in demonstrations, policy observations, force control, removal estimation, and evaluation.
+
+The contact-point pose differs from the measured TCP pose by the TCP-to-contact transform:
+\begin{equation}
+  {}^{B}\!T_C(t)={}^B\!T_E(t)\,{}^E\!T_C.
+  \label{eq:contact_pose}
+\end{equation}
+The offset \({}^E\!T_C\) depends on pad/tool geometry and may vary with compliant deformation. The final implementation must state whether the contact pose is measured, estimated from a rigid offset, or corrected by a compliance model. Unverified deformation compensation is not assumed.
+
+\section{Synchronization and Dataset Construction}
+An episode is stored conceptually as
+\begin{equation}
+  D_i=\{I_t,p_t,R_t,w_t,v_{\mathrm{feed},t},m_t\}_{t=1}^{T_i},
+  \label{eq:demonstration_dataset}
+\end{equation}
+where \(m_t\) denotes available metadata or event labels. Each stream requires timestamps. The synchronization method must report acquisition rates, clock convention, interpolation or resampling, maximum accepted skew, missing-sample handling, and any measured delay. These values are \todoexp{TBD}. Misalignment is particularly harmful because it pairs visual and pose context with a wrench produced at another contact phase.
+
+\section{Episode Segmentation and Training Windows}
+Episodes should separate approach, selective processing, local repetition, and release when these phases can be identified reliably. A training sample at time \(t\) contains the current image and robot state, the wrench history \(w_{t-K:t}\), and a future reference horizon through \(t+H\). Boundary handling, padding masks, stride, \(K\), and \(H\) are \todoexp{to be determined from the final implementation}.
+
+Dataset partitions are made at the episode, defect, or specimen-trial level. Adjacent windows from one episode must not be split across training and evaluation because that would leak nearly identical temporal context. Normalization statistics and augmentation are fitted using training data only.
+
+\section{Demonstration Quality, Metadata, and Safety}
+Episodes are rejected or labeled if they contain tracker loss, sensor saturation, timestamp discontinuity, accidental collision, unsafe load, or missing images. Transformed trajectories must pass reachability, collision, workspace, velocity, and force checks before robot execution. Calibration establishes coordinate correspondence but does not guarantee safe motion.
+
+Required records include operator and specimen identifiers, defect preparation, material and coating, tool and abrasive state, spindle setting if applicable, sensor zeroing, calibration version, contact threshold, start pose, processing annotations, and safety events. Appendix~\ref{chap:appendix} provides the completion checklist.

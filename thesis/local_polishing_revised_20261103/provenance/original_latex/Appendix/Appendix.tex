@@ -1,0 +1,51 @@
+\appendix
+\chapter{Reproducibility and Completion Checklist}
+\label{chap:appendix}
+
+\section{Demonstration Metadata}
+\begin{itemize}
+  \item episode, operator, specimen, defect, material, coating, tool, abrasive, and consumable identifiers;
+  \item raw timestamps and rates for image, tracker, wrench, robot state, and command streams;
+  \item raw and transformed pose/orientation, raw and processed six-axis wrench, contact labels, repetition annotations, and stopping events;
+  \item episode acceptance, tracking loss, saturation, safety intervention, and rejection reasons;
+  \item episode-level train, validation, and test assignments with leakage checks.
+\end{itemize}
+
+\section{Calibration and Wrench Processing}
+\begin{itemize}
+  \item VR-to-robot, tracker-to-tool, sensor-to-tool, and TCP-to-contact-point transforms with conventions and validation residuals;
+  \item sensor zeroing, wrench bias, gravity/tool-load compensation, spatial frame transformation, filter, delay, contact threshold, and sign convention;
+  \item pad/tool geometry, spindle convention, tangential feed velocity computation, and true relative-velocity computation.
+\end{itemize}
+
+\section{Removal Model and Metrology}
+\begin{itemize}
+  \item Preston coefficient \(K\), units, calibration range, fitting method, and held-out validation;
+  \item TIF calibration design, spatial parameterization, and normalization;
+  \item TIF force/orientation dependence and uncertainty;
+  \item metrology device, resolution, surface registration, sampling, preprocessing, repeatability, and reference surface;
+  \item target-profile core, transition width, taper function, \(h_c\) selection, coating-thickness bound, and residual-map threshold;
+  \item map grid, interpolation, uncertainty margin, and repeated-pass accumulation rule.
+\end{itemize}
+
+\section{Planning, Control, and RL}
+\begin{itemize}
+  \item coverage path type, boundary rule, spacing, overlap, turn strategy, nominal force, nominal feed velocity, and pass-count rule;
+  \item admittance frame, axes, discrete update, \(M_d\), \(D_d\), \(K_d\), filter, saturation, reset, and contact-state logic;
+  \item IL visual/state encoders, six-axis wrench-history encoder, history \(K\), horizon \(H\), outputs, loss, training settings, and stopping implementation;
+  \item RL observation/state, action, reward, algorithm, network, training environment, privileged information, randomization, and sim-to-real procedure;
+  \item roll, pitch, velocity, rate, force, moment, workspace, cumulative-removal, contact-loss, and emergency-stop bounds.
+\end{itemize}
+
+\section{Experimental and Statistical Reporting}
+\begin{itemize}
+  \item robot, tool, sensor, camera, spindle, specimens, materials, abrasives, and environmental conditions;
+  \item defect preparation, severity measurement, train/test surface geometries, and controls for material and tool condition;
+  \item sample sizes, independent unit, randomization or counterbalancing, trial exclusions, failures, and safety-stopped trials;
+  \item definition, units, instrument, aggregation, uncertainty, and analysis for every reported metric;
+  \item statistical hypotheses, paired or unpaired design, confidence intervals, multiple-comparison handling, seeds, and raw-data provenance;
+  \item every blank field in Tables~\ref{tab:expert_il_baselines}, \ref{tab:force_il_ablation}, \ref{tab:removal_calibration}, \ref{tab:blending_ablation}, \ref{tab:residual_rl_ablation}, and \ref{tab:end_to_end}.
+\end{itemize}
+
+\section{Evidence Status}
+At the present draft stage, implementation-specific values and numerical outcomes are \todoexp{to be determined from the final implementation} or \todoexp{to be populated from experimental results}. Before submission, every placeholder must be replaced by a value traceable to code, configuration, calibration output, experiment log, or verified metrology record.

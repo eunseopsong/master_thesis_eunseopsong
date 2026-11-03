@@ -1,0 +1,435 @@
+{
+  "all_passed": true,
+  "pages": 119,
+  "checks": [
+    {
+      "check": "E1 original planned15 identities",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E1 original C5 retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "C6 excluded from original C",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "original E1 membership agrees with inherited frozen report",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "original E1 planned slots retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E1 R published precision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E1 R five completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E1 T published precision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E1 T five completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E1 C published precision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E1 C five completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E1 Rstar published precision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E1 Rstar five completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Rstar five, unavailable original IDs explicitly empty",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Rstar feed is peak parameter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "A4 null completion and original interruption",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E2 A completion/peak denominators",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E2 A corrected rounded results",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E2 B completion/peak denominators",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E2 B corrected rounded results",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E2 C completion/peak denominators",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E2 C corrected rounded results",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E2 B-C difference",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "61 manifest rows",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 archive25/main20/image19",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 25 distinct original IDs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio N-1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio N-2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio N-3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio N-4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio N-5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio P1-1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio P1-2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio P1-3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio P1-4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio P1-5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 null retained P2-1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 null retained P2-2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 null retained P2-3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 null retained P2-4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 null retained P2-5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio D1-1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio D1-2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio D1-3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 null retained D1-4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio D1-5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio D2-1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio D2-2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio D2-3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio D2-4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 exact integer ratio D2-5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 N ddof1 statistics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 P1 ddof1 statistics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 D1 ddof1 statistics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "E3 D2 ddof1 statistics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "P2 archive only all five occluded",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "D1-4 main but image null and manual_abort",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "D2-3 minimum not hidden",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "25 evidence panels hash intact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "entire baseline source snapshot unchanged",
+      "passed": true,
+      "detail": 84
+    },
+    {
+      "check": "unchanged titlepage.tex",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "unchanged ThesisCover.tex",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "unchanged build.sh",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "unchanged Bibliography/ThesisRef.bib",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "unchanged XThesis_skku_eng.sty",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "unchanged IEEEtran.cls",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "unchanged IEEEtran.bst",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "unchanged notebook.sty",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "equal 25mm top/bottom margins",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inherited active labels preserved",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "no obsolete E3 planned/unexecuted claims",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no assertion removal entirely unmeasured",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "B target force explicitly retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "current E3 table excludes P2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "full main and cover output PDFs exist",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no LaTeX errors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "references and citations resolved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no overfull boxes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no missing glyph warnings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "bibliography compiled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Korean summary extractable",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "PDF includes all three studies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "PDF text inside physical page bounds",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "unresolved_warnings": [
+    "Package microtype Warning: Command \\pickup@font is not defined as expected."
+  ],
+  "main_pdf_sha256": "116b84baeff84877d80e81f591a6493011315fef4f6756e30efb22f3da5a6b24",
+  "figures": 27,
+  "tables": 28,
+  "source_limitations": [
+    "original nrs_imitation unavailable",
+    "Rstar original run_ids/precision CSV/template not reopened",
+    "E3 original image_pair_manifest/annotations/raw images/masks/run_context not reopened; unchanged report evidence used"
+  ],
+  "new_robot_experiments": false,
+  "new_model_training_or_inference": false,
+  "new_segmentation_or_thresholds": false
+}

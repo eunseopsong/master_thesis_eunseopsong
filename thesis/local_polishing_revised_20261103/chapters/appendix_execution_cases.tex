@@ -1,0 +1,47 @@
+\section{Original E1 Strategy Traces and Additional Cases}
+\label{app:execution_cases}
+The original 15 October R/T/C summary is preserved here separately from the latest R*/T/C table. Each method has five completed executions. The following traces retain original C5 and exclude C6 from group statistics.
+
+\begin{table}[tbp]\centering\footnotesize
+\caption[Original 15 October E1 comparison]{Original R/T/C comparison on 15 October 2026; mean \(\pm\) sample SD, \(n=5\). This table preserves the original cohort and is not pooled with additional \(R^{*}\).}
+\label{tab:e1_original_comparison}\input{tables/e1_primary}
+\end{table}
+
+\figfull{e1_force_all.pdf}{Actual received robot-base \(F_z\) for all 15 original E1 runs, from execution start to first completion. Values use the archived ZOH display. The dashed teaching Q95 is an empirical analysis reference. C5 remains included.}{fig:e1_force_all}
+\figfull{e1_xy_all.pdf}{All 15 original E1 TCP-center XY paths through first completion. The shaded region is the fixed 25 mm evaluation band, not a contact footprint or removal map.}{fig:e1_xy_all}
+
+\subsection{Original C5 and Additional Diagnostic C6}
+The original primary C5 completes at \CfiveTime~s, with \(J_{\mathrm{excess}}=\CfiveExcess\) N\,s and observed peak \CfivePeak~N. Its required loaded pass completes at \CfivePass~s. These values remain in every primary C summary. The additional execution at 23:35 on the same date is displayed as C6. Its source retains repeat index 5 and a retry link to C5; those original fields are preserved in the manifest, while the analysis treats it as an additional post-comparison diagnostic rather than replacing the planned slot.
+
+\begin{table}[tbp]\centering\footnotesize
+\caption[Original C5 and additional diagnostic C6]{Individual E1 executions with the same recorded evaluator. C5 belongs to the original primary five; C6 is additional diagnostic evidence. Times are relative to each execution start. Single-run values are shown without mean or SD.}
+\label{tab:e1_c5_c6}\input{tables/e1_c5_c6}
+\end{table}
+
+C6 completes at \CsixTime~s, with \(J_{\mathrm{excess}}=\CsixExcess\) N\,s and peak \CsixPeak~N. The original outcome file and actual receipt events support these quantities. Figure~\ref{fig:e1_c5_c6} shows that C5's first successful pass occurs later, while initial contact confirmation occurs at a similar elapsed time. C5 records one contact loss and C6 none. These stage observations describe the traces and do not establish a failure mechanism.
+
+\figfull{e1_c5_c6.pdf}{Separate traces for original C5 and additional C6. Top: received force with teaching Q95 dashed. Bottom: measured Z with required exit height dashed. Vertical dotted gray, dashed blue, and solid orange lines mark confirmed contact, required-pass completion, and first procedural completion. Full analysis windows are shown with a common time axis. C6 is not included in the primary mean.}{fig:e1_c5_c6}
+
+C5's longer execution and larger excess integral are not reproduced in C6. One additional execution does not show that the variability is resolved, that C5 was erroneous, or that the model improved. The original five-run comparison remains the basis for R/T/C conclusions.
+
+
+\section{E2 Force Traces and Transition Cases}
+\figfull{e2_force_all.pdf}{All measured E2 base-force traces from execution start to first operator stop request. A4 remains in A's five curves. Each curve uses native recorded values with ZOH; the plots do not infer a controller-applied force target.}{fig:e2_force_all}
+\subsection{Phase Transitions and Execution Cases}
+A4 is a direct counterexample to treating every normal-completion software event as task success. The operator reports that the tool remained in contact rather than progressing to release, and interrupted the attempt after \AfourInterval~s. Its measured mean \(F_z^B\) is \AfourMeanForce~N and its interval with recorded force at or above 3 N is \AfourContactTime~s. The trace is consistent with prolonged loading. The field report establishes the task interpretation; the trace does not independently establish why the transition failed.
+
+\figfull{e2_transition_cases.pdf}{Two retained E2 transition cases. A4 is included because of the operator-confirmed release-transition failure. B4 is included because it has the maximum recorded contact-gate transition count, 38. Full force and Z traces are shown. Rapid gate transitions are a software contact diagnostic, not an independently counted number of physical impacts.}{fig:e2_transition_cases}
+
+B4 illustrates a different phenomenon: the common instantaneous gate toggles repeatedly near contact transitions, with 38 recorded changes. The group mean gate-transition counts are 2.6\(\pm\)0.9 for A, 12.4\(\pm\)14.8 for B, and 3.6\(\pm\)1.7 for C. B's dispersion is strongly influenced by B4; it is retained. Threshold crossings, baseline behavior, and transition timing can all affect these counts. They are not sufficient to diagnose an encoder failure or a physical contact-instability mechanism.
+
+E2 C shows a relatively compact range of operator-based intervals and XY travel, but B's completed-time SD is smaller. Repeatability therefore depends on the quantity being considered. A leave-one-out deviation from other executions, where used in earlier diagnostics, would measure between-run repeatability rather than agreement with the teaching or controller force-tracking accuracy. The present primary comparisons use the explicitly reported timing, force, and travel quantities.
+
+\section{E1/E2 Qualitative Image Evidence}
+Figure~\ref{fig:e1_photos} shows the first started run of each E1 method, selected by run index without screening for the best image or result. The provider's initial and final snapshots have different viewpoints and times as the tool moves. They can illustrate the marked task and visible appearance but cannot quantify common-area removal. All-trial numerical results accompany these examples.
+
+\figfull{e1_snapshot_panel.pdf}{Actual provider snapshots from the original E1 R1, T1, and C1 executions on 15 October 2026. Initial/final denote saved provider snapshots rather than matched metrology exposures; viewpoint, occlusion, and timing can differ. Visible marking changes do not measure scratch depth or surface restoration.}{fig:e1_photos}
+
+\figfull{e2_sequence.pdf}{Uniformly spaced camera-pane crops from the decodable portion of the first E2 C video. Only the adjacent diagnostic panel is omitted; camera overlays are retained. Times are video offsets, not synchronized stage-event times. The archived WebM ends prematurely and is not used to certify a complete exit sequence. A4 has no archived video.}{fig:e2_sequence}
+
+The existing heatmaps are execution-derived model diagnostics in arbitrary units. Their values are not measured removal depth, roughness reduction, or scratch-removal percentage. They are therefore outside the primary success criterion. A visually diminished marking and a completed contact procedure can be useful observations without supporting a stronger claim about metal surface quality.
+

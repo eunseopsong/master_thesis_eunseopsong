@@ -1,0 +1,52 @@
+# behavior_ws/src/stain_relative_frame/stain_relative_frame/stain_origin_node.py:258-287 (_resolve_dark)
+    def _resolve_dark(self) -> None:
+        frames = np.stack(self._frames[: self.n_frames])
+        poses = self._frame_poses[: self.n_frames]
+        Hs = np.stack([
+            per_frame_homography(self._h_meta_inner, poses[i]) for i in range(len(frames))
+        ])
+        rep = dark_cloud_origin(
+            frames, Hs, self._plate_roi, self._tool_box,
+            episode="online", std_tol_mm=6.0,
+            dark_thresh=self._dark_thresh, min_area=self._dark_min_area,
+        )
+        if rep.origin_mm is None:
+            self.get_logger().error(
+                f"[STAIN-ORIGIN] dark detection FAILED (ok {rep.n_ok}/{rep.n_frames} frames, "
+                f"failures={rep.failures[:3]}...). Not publishing. Call ~/new_episode to retry."
+            )
+            self._frames = []
+            self._frame_poses = []
+            self._deadline = time.monotonic() + self.timeout_sec
+            return
+        spread = "n/a" if rep.std_norm_mm != rep.std_norm_mm else f"{rep.std_norm_mm:.2f}mm"
+        ang = rep.angle_rad
+        note = f"per-frame spread={spread} ok={rep.n_ok}/{rep.n_frames}" + (
+            f" axis={np.degrees(ang):.1f}deg" if ang is not None else "")
+        if rep.unstable:
+            self.get_logger().warn(f"[STAIN-ORIGIN] dark origin flagged UNSTABLE ({note})")
+        self._publish_origin(
+            np.asarray(rep.origin_mm, float),
+            f"home_pose_dark_cloud_of_{rep.n_ok}_frames", note, angle_rad=ang,
+        )
+
+
+# behavior_ws/src/stain_relative_frame/stain_relative_frame/stain_origin_node.py:289-306 (_publish_origin)
+    def _publish_origin(self, origin_mm: np.ndarray, source: str, note: str,
+                        angle_rad: Optional[float] = None) -> None:
+        self._origin = StainOrigin(origin_mm, source=source, frame_index=0).freeze()
+        self._disarm()  # ★ no subscription survives -- origin cannot drift
+
+        msg = Float64MultiArray()
+        # [x, y] always; a 3rd element carries the strip's principal-axis angle
+        # (base-frame rad, [0,pi)) when the detector produced one. Consumers
+        # that only read [:2] are unaffected.
+        msg.data = [float(origin_mm[0]), float(origin_mm[1])]
+        if angle_rad is not None:
+            msg.data.append(float(angle_rad))
+        self.pub_origin.publish(msg)
+        self.pub_ready.publish(Bool(data=True))
+        self.get_logger().info(
+            f"[STAIN-ORIGIN] FROZEN stain_origin = ({origin_mm[0]:.3f}, {origin_mm[1]:.3f}) mm  "
+            f"[{self.method}] {note} | latched, subscriptions released"
+        )

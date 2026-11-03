@@ -1,0 +1,405 @@
+IEEE ROBOTICS AND AUTOMATION LETTERS — WORKING DRAFT, SEPTEMBER 2026                                                            1
+
+
+
+
+  Force-Aware Imitation Learning for Local Robotic
+      Polishing: An Execution-Level Evaluation
+                                                       Anonymous Authors
+
+
+
+
+   Abstract—Local robotic polishing requires transferring co-     action. ForceMimic addresses force–motion demonstration
+ordinated motion, force modulation, and timing, not merely        capture and execution with force-aware learned actions [3];
+relocating a geometric path. We present a force-aware imitation-  consequently, recording force and using it in imitation learning
+learning framework and an execution-level pilot evaluation
+of this transfer. A flow-matching policy generates pose-force     is not, on its own, a new principle. For local polishing, the
+sequences, while a shared execution layer performs smoothing,     empirical questions are whether a learned policy changes
+plan connection, and force-controlled command delivery. We        physical execution relative to rules or replay, and whether
+analyze two separately collected datasets: a 15-run comparison    observing measured force provides additional value when force
+of rule-based planning, force-inclusive demonstration replay,     actions are already learned. Lower-level force feedback must
+and a force-observing policy (E1), and a 10-run comparison of
+independently trained policies with and without measured-force    not be confused with policy-level force observation: a policy
+observations (E2). Each condition has five retained executions.   without force observations can still run above a force-feedback
+In E1, under shared reported postprocessing, the mean of the      controller.
+per-run logged robot-base Z-force peaks was 91.99 N for the          The command-processing interface is another source of
+learned policy, 117.84 N for replay, and 53.62 N for the rule-    possible differences. Changes in smoothing, segment con-
+based method. In E2, the force-observing policy had a shorter
+operator-terminated execution interval (16.05 versus 17.78 s)     nection, or motion limits can change the executed trajectory
+and shorter recorded planar travel (188.77 versus 208.87 mm).     independently of the policy that proposed it. Movement
+These descriptive differences do not establish superior material  Primitive Diffusion explicitly studies motion quality as well as
+removal or a causal observation benefit: stopping criteria, ordered
+                                                                  task success [4], illustrating why these evaluation dimensions
+collection, and unverified surface-normal force calibration limit should be distinguished. Here, a common reported command-
+interpretation. Force-profile reproduction errors, physical scratch
+reduction, and the motion-only ablation remain unmeasured. The    processing configuration is used within each comparison, and
+study documents deployed motion-force generation and identifies   both published commands and measured robot responses are
+the measurements required to establish its task-level value.      treated as separate signals.
+   Index Terms—Imitation learning, contact-rich manipulation,        We present an execution-level study of a flow-matching-
+robotic polishing, force feedback, experimental evaluation.       based   local polishing framework using two experimental
+                                                                  records. E1 compares a rule-based path (R), force-inclusive
+                        I. I NTRODUCTION                          teacher replay (T), and a learned policy with measured-force
+   Local polishing poses a skill-transfer problem beyond observations (C), with five retained executions per method on
+identifying a region and moving a tool across it. A treatment September 27, 2026 [5]. E2 compares independently trained
+strategy specifies where the tool moves, how contact force force-observation-off (B) and force-observation-on (C) policies,
+changes during the motion, and how long each part of the with five retained executions per condition on September 26,
+operation lasts. A geometric path alone does not specify all 2026 [6]. Both E2 policies retain the same nine-dimensional
+of these quantities. Conversely, commanding a demonstrated pose–force action interface and lower-level force control. The
+motion and force sequence does not establish that the resulting planned motion-only condition A is not part of the available
+physical contact reproduces that strategy. This distinction results.
+motivates learning a motion–force policy while evaluating its        The study makes three bounded contributions. First, it
+execution separately from the intended action.                    formulates complementary comparisons for learning versus
+   Demonstration learning offers a way to acquire coordinated rules/replay and for force observation with learned force actions
+actions without writing every motion and force adjustment as held present. Second, it reports measured force and travel
+an explicit rule. Generative approaches include diffusion-based together with a shared within-cohort execution configuration
+action-sequence learning [1] and conditional flow matching for and explicit termination events. Third, it distinguishes what
+manipulation [2]. Their ability to represent actions does not, by these records support from unmeasured force-profile fidelity
+itself, establish an advantage for polishing. A useful comparison and physical material removal. The numerical findings are
+must also include non-learning alternatives that exploit the same descriptive: E1 shows a lower mean logged peak for C than
+task specification. In particular, an already recorded force- T but not R; E2 shows shorter and less dispersed recorded
+inclusive demonstration can be replayed without learning a intervals and travel for C than B. These observations motivate,
+policy. Demonstration reuse and learning from demonstrations but do not replace, a quality-grounded evaluation.
+are therefore distinct sources of value.                             The empirical scope is the reported marked-surface task, not
+   Contact-rich learning also requires separating force infor- unseen-geometry generalization or autonomous scratch-depth
+mation in the observation from force information in the assessment. We do not interpret stopping a robot, removing
+IEEE ROBOTICS AND AUTOMATION LETTERS — WORKING DRAFT, SEPTEMBER 2026                                                                                                                  2
+
+
+
+                             TABLE I                                                                                   TABLE II
+      C OMPARISON CONDITIONS . A HAS NO REPORTED EXECUTIONS .                                 R EPORTED SHARED EXECUTION SETTINGS WITHIN THE TWO COHORTS .
+
+ Code Action provider                     Force obs. Force action source                     Parameter                                                            Setting
+ R       Rule-based path                      —         Fixed recipe                         Command publication                                                  125 Hz (8 ms)
+ T       Teacher replay                       —         Demonstrated sequence                Reported controller gain                                             15 s−1
+ B       Independently trained IL             Off       Learned output                       Pose smoothing / connection                                          35 points / 0.5 s
+ C       Independently trained IL             On        Learned output                       Pose action grid                                                     30 Hz
+ A       Motion-only IL (not tested)          Off       External reference                   Per-axis position speed limit                                        10 mm/s
+R/T are not policies ablated for force observation. All tested methods retain lower-level    Angular speed limit                                                  40 deg/s
+force control. E1: R/T/C [5]; E2: B/C [6].                                                   Force slew limit                                                     30 N/s
+                                                                                             Position acceleration limit                                          25 mm/s2
+                                                                                             Contact gate on / off                                                3.0 N / 1.2 N
+a visible mark, or obtaining a large removal-surrogate value                                 Feedback logging cap                                                 20 Hz
+as proof of scratch repair. The following sections describe the                             Sources: E1 p. 2 [5]; E2 p. 2 [6]. E1 additionally reports a 100 deg/s2 angular acceleration
+                                                                                            limit; E2 does not separately enumerate that value. These are reported operating settings,
+action interfaces, the exact observation windows, the results,                              not newly established safety ratings.
+and the measurements still needed to establish task-level
+benefit.
+                                                                 substituted. In E2, B and C share the same execution contract
+        II. F RAMEWORK AND C OMPARISON D ESIGN                   and the smoothing, connection, and limits derived from that
+                                                                 experiment’s C configuration [5], [6]. Shared numerical settings
+A. Policy and non-learning action providers
+                                                                 do not make the two dates a single pooled experiment.
+   The implementation separates an action provider from a           The reported common settings are summarized in Table II.
+command executor. Let oother
+                           t      denote the non-force observa- The contact gate uses base-frame Fz , with 3.0 N and 1.2
+tions and ft−H+1:t the measured-force history. The learned N activation and deactivation thresholds. This gate is an
+pose–force sequence is represented schematically as              internal contact estimate, not an independent annotation of
+              other ˜
+   Ât = πθ (ot    , ft−H+1:t ),                  ˆ       6+3
+                                     âj = (q̂j , fj ) ∈ R , (1) when   effective polishing occurs. The 0.5 s connection operation
+                                                                 joins command segments; it is not a peripheral surface-blending
+where q̂j is the six-component pose representation used by pass.
+the implementation and fˆj is its three-component force action.     The available signals should be distinguished as provider
+This notation specifies the interface, not a newly proposed predictions, node-published commands, controller-applied set-
+network or training objective. The reports do not supply points, and measured wrench feedback. E2 explicitly identifies
+enough detail to reconstruct the full network, demonstration its published force plots with the controller TCP convention,
+acquisition procedure, or training split; those details require whereas feedback statistics use robot-base Fz . E1 also leaves
+author completion rather than substitution from a related command-coordinate semantics and controller-applied force
+method.                                                          insufficiently established for force-error calculation. Conse-
+   In E2, B and C are separately trained checkpoints. B quently, no subtraction of these unaligned signals is reported
+sets the force conditioning to zero after normalization; C as tracking accuracy [5], [6].
+supplies the measured-force history. Both learn and produce
+force actions. Thus B is not a motion-only policy, nor is it             III. E XPERIMENTAL P ROTOCOL AND M ETRICS
+merely C tested with an unexpected zero input. The source A. Task and recorded cohorts
+report identifies the selected checkpoints as the respective
+independently trained “best” models, but does not establish         The experiments concern the reported marked-surface, one-
+multi-seed reproducibility [6].                                  direction   polishing task. Figure 1 reproduces an initial and
+   In E1, R provides a single one-way rule-based path with       final  stored   image from E1 for illustration. Image timing,
+a reported +18 N force recipe and 10 mm/s feed. T replays        occlusion,   and   illumination prevent these images from serving
+the timing and force of demonstration episode_29 with            as  independent     quantitative removal measurements. No second
+time scaling 1.0. C supplies generated pose–force segments;      geometry     or   unseen-task    evaluation is inferred from the
+the report specifies ten inference steps, a force history of 30  existence   of other   project  checkpoints.
+samples, and 128-point action segments on a 30 Hz grid, with        E1 contains 15 retained runs from September 27, with
+the next segment scheduled every 120 steps [5]. The latter is    five  runs per method collected in the order R, T, then C.
+approximately four seconds of nominal action progression, not    Its  manifest    also records one pre-execution R interruption,
+evidence of 30 complete policy inferences per second.            three  pre-execution     T interruptions, and a sixth T execution
+                                                                 excluded to retain exactly five T runs. The report characterizes
+                                                                 the retained cohort and does not estimate success over all
+B. Shared execution processing                                   attempted trials [5].
+   The September 27 E1 record reports the same 35-point pose        E2 contains five retained B runs followed by five C runs
+smoothing, 0.5 s segment connection, pose grid, rate limits, and from September 26. Two additional B attempts failed before
+acceleration limits for R, T, and C. This is the E1 cohort used execution-start events and commands and were deleted in
+here; no results from the earlier September 26 R/T/C cohort are the source archive; they are not part of the numerical table.
+IEEE ROBOTICS AND AUTOMATION LETTERS — WORKING DRAFT, SEPTEMBER 2026                                                                                                         3
+
+
+
+
+                                                                                                             120
+
+
+
+
+                                                                                   Logged peak base Fz (N)
+                                                                                                             100
+
+                                                                                                              80
+
+Fig. 1. Stored initial (left) and final (right) images of E1 run C1, reproduced                               60
+from p. 11 of the September 27 report [5]. These illustrate the apparatus and
+marked region; they are not synchronized surface-quality measurements. No                                     40
+quantitative scratch-removal claim is made from the photographs.
+                                                                                                              20
+
+Equal specimen state was an operator assumption rather                                                         0
+than independently verified specimen resetting. The ordered                                                        R: rule           T: replay        C: force obs.
+collection prevents separation of method and order effects. A is
+                                                                                                                   5 retained runs / condition; diamonds: mean ± sample SD
+not included, so E2 tests force observation with force actions
+present, not the complete force-action/observation ablation [6].
+   The result tables preserve the reported aggregates and their                   Fig. 2. E1 per-run logged base-Z-force peaks, redrawn from the printed table
+                                                                                  on p. 3 [5]. Dots are the five run-level values and diamonds are their mean
+precision. E2 travel and threshold-duration summaries are                         with sample SD. This is a peak in the recorded signal, not calibrated normal
+additionally calculated from the printed per-run values. The                      force or an inferred continuous-time maximum.
+redrawn plots use these tabulated values; no missing raw force
+curves are reconstructed. Archive integrity is described using
+                                                                                  C. Travel, contact state, and termination
+the source-reported checks, separately from the validity of the
+measured task outcome.                                                               Planar travel is calculated from measured TCP samples after
+                                                                                  linearly interpolating the endpoints of the analysis interval:
+                                                                                             (r)
+                                                                                                    Xp
+B. Observation window and force statistics                                                 LXY =           (xk+1 − xk )2 + (yk+1 − yk )2 .     (4)
+                                                                                                                        k
+   For each retained run r, define
+                        (r)      (r)             (r)                              It includes travel outside independently verified processing.
+                       tobs = tfirst stop − tstart .                       (2)    E1 also accumulates the node-published contact-gate state. Its
+The E1 start uses the receipt-monotonic execution-start times-                    automatic processing events derive from that gate and therefore
+tamp; initial reset events are excluded when selecting the first                  do not provide a separate ground-truth segmentation.
+stop request. E2 uses its reported monotonic execution start                         E2 reports the threshold duration
+and first stop request. Both intervals include approach. R’s                                      (r)
+                                                                                                        X
+                                                                                                                base
+                                                                                                 τ50 =      1[Fz,k   ≥ 50 N]∆tk .             (5)
+subsequent return is excluded from the main E1 numeric                                                                        k
+window. We use tobs , rather than “cycle time,” because neither
+                                                                                  The 50 N value is a descriptive analysis threshold, not a
+the stop event nor its definition verifies equivalent completed
+                                                                                  safety criterion. Gate transitions are recorded as state-machine
+processing.
+                                                                                  transitions, not automatically counted as physical loss-of-
+   For the zero-order-held feedback samples, let ∆tk be their
+                                                                                  contact events. Finally, trajectory supply ending, an operator
+overlap with the analysis window. The reported time-weighted
+                                                                                  requesting finish, controller hold verification, and physical
+mean is                        P base                                             processing success are kept separate throughout the analysis.
+                        (r)      k Fz,k ∆tk
+                  Fzbase =       P           ,
+                                    k ∆tk                    (3)
+                                                                                                                     IV. E XPERIMENTAL R ESULTS
+                   base (r)                 base
+                 Fz,max =        max Fz,k .
+                                    k in window                                   A. E1: rules, replay, and the force-observing policy
+These are statistics of the logged robot-base Z component, not    Table III summarizes the September 27 E1 cohort. With
+calibrated normal-contact-force metrics. The maximum is the common reported pose postprocessing, C’s mean logged peak
+largest recorded sample, not a guarantee about an unobserved was 91.99 ± 11.12 N, compared with 117.84 ± 2.10 N for T
+continuous-time peak. The source within-run temporal standard and 53.62 ± 2.80 N for R. Figure 2 shows all five retained
+deviation σt is distinct from the sample standard deviation peaks per method. Every retained C peak (73.14–101.39 N) was
+across five run-level metrics. All ± values in the main result below the retained T range (114.63–120.50 N); R’s range was
+tables are the latter, with denominator n − 1.                  lower still (49.16–56.54 N). Thus the observation supports a
+   A small raw force variance is not defined as superior C–T contrast in this recorded quantity, not universal superiority
+skill execution: a demonstration may intentionally vary force. of the learned method. The smaller T peak dispersion also
+The present mean and peak values are retained as diagnostic precludes describing C as uniformly more repeatable on every
+descriptors because the planned profile-error metrics cannot metric.
+yet be computed. No higher-is-better or lower-is-better ranking   T and C have the same rounded mean planar length,
+is assigned to average force.                                   188.18 mm, but different across-run SDs, 0.73 and 4.61 mm.
+IEEE ROBOTICS AND AUTOMATION LETTERS — WORKING DRAFT, SEPTEMBER 2026                                                                                       4
+
+
+
+                                                                   TABLE III
+                            E1: R/T/C EXECUTION DESCRIPTORS , S EPTEMBER 27, 2026. F IVE RETAINED RUNS PER METHOD .
+
+                                                                              base
+        Method                       tobs (s)             Fzbase (N)         Fz,max (N)           LXY (mm)              Final recorded event
+        R: rule-based           32.688 ± <0.001         11.96 ± 0.19        53.62 ± 2.80        145.89 ± 0.44           safety_stopa
+        T: teacher replay       14.920 ± <0.001         15.61 ± 0.27       117.84 ± 2.10        188.18 ± 0.73          trajectory_end
+        C: force-obs. ON         15.868 ± 0.583         15.17 ± 0.26       91.99 ± 11.12        188.18 ± 4.61        normal_completionb
+  Values reproduce the report summary, p. 1 [5]; ± is across-run sample SD, not within-run force variation. tobs includes approach and ends at the first
+  stop request. a R’s final event occurred during the subsequent return, outside the numeric observation window. b C’s event follows operator finish and
+  verified hold. None of these event labels establishes material-removal success. No best-value highlighting or statistical ranking is intended.
+
+
+
+Equal total length does not establish the same path, contact           The node-published force profiles differ even though B and
+distribution, or processing duration. R traveled 145.89 ± 0.44 C use the same execution processing. This establishes that
+mm. The source traces show an earlier force transient in T/C the two policies did not issue identical time histories, but it
+than in R and different subsequent force histories [5]. This does not identify which profile better matched the intended
+timing difference is not removed by aligning execution starts; treatment. In particular, without a common reference and
+the paths and approach schedules remain method dependent. validated coordinate/sign mapping, a force change cannot be
+   R and T have almost fixed observation durations of 32.688 classified as beneficial compensation rather than an action
+and 14.920 s, respectively, whereas C has 15.868±0.583 s. R/T difference. The report appropriately leaves the corresponding
+end command supply at the end of finite paths; C is stopped by profile and tracking errors uncomputed.
+the operator. These numbers cannot be converted into relative          All ten retained E2 runs ended with operator finish, normal
+polishing throughput. The mean gate-on durations, recomputed completion, and confirmed hold. Command-ID continuity, finite
+from the printed runs, are approximately 21.57 s for R, 5.62 s values, and timestamp ordering passed the report’s checks.
+for T, and 7.45 s for C. They describe unequal inferred-contact The maximum observed command-publication gap was 10.154
+intervals and do not establish which treatment achieved the ms, and the largest reported axis acceleration in the position
+required finish.                                                    commands was 25.000 mm/s2 . These are useful execution
+   Termination provides a separate diagnostic. All 15 retained diagnostics but not outcome-based success criteria. B’s two
+E1 runs report verified controller hold. R1–R4 subsequently deleted pre-execution starts and C5’s delayed video start remain
+timed out while confirming retract arrival or contact release; part of the source record and should not be concealed by the
+R5 reported renewed contact during home return. These final retained-run count [6].
+events occurred 10.40–12.90 s after the first stop request and
+are not included in Table III’s observation window. T’s final C. Archive quality and removal-surrogate outputs
+requested-to-measured TCP distance was 13.45–13.54 mm.
+This is a single terminal distance, not whole-trajectory tracking      The E1 report records matching checksums for 866 listed
+RMSE. In all final records, target arrival, retract completion, and files and zero internal logger drops or write errors; E2 reports
+home arrival were not verified, while physical contact release      the corresponding  verification of 810 experimental files. Neither
+remained unknown. C’s normal-completion label therefore             establishes  zero sensor-to-middleware    loss. E1 force records
+means operator-requested termination and hold, not verified         averaged  approximately   17.7–17.9  Hz despite 125 Hz command
+surface completion [5].                                             publication;   some  R/T   runs  contained   substantially  larger
+                                                                    feedback-record gaps than C. Faster unrecorded transients
+                                                                    cannot be recovered from these reported samples [5], [6].
+B. E2: force observation with force actions retained
+                                                                       E1’s inherited heatmap summaries were 0.1562 ± 0.0114
+   Table IV reports B and C without adding results for A. C’s arbitrary units for R, 0.2697±0.0071 for T, and 0.2670±0.0137
+recorded interval was 16.05 s compared with 17.78 s for B, and for C. These were uncalibrated outputs with K = 1, a 1 mm
+its planar travel was 188.77 mm compared with 208.87 mm. grid, and a configured 20 mm pad radius, not independently
+The respective across-run interval SDs were 0.73 and 1.78 s, measured contact area or removed depth. Their recorder
+and travel SDs were 4.74 and 19.91 mm. The individual values durations (50.82, 23.59, and 25.10 s on average) exceed the
+are displayed in Fig. 3. These are descriptive reductions in main execution windows and their visited-cell regions differ.
+elapsed execution and travel, not measurements of equal-quality Accordingly, neither these values nor the colors of separately
+time-to-clean.                                                      scaled source heatmaps are used to rank material removal.
+   The peak-force contrast in E2 is small relative to that in The photographs are likewise illustrative rather than calibrated
+E1: 105.88 ± 4.31 N for C versus 108.70 ± 6.78 N for B. removal measurements [5].
+Moreover, the mean time above the descriptive 50 N threshold
+is slightly longer for C, 1.158 s, than for B, 1.126 s. Hence              V. D ISCUSSION AND S COPE OF THE E VIDENCE
+the reported force summaries do not consistently favor C. Both
+conditions show a large initial base-Fz peak in the source A. What the comparisons establish
+figure, followed by lower-force portions with differing timing         E1 establishes that rules, force-inclusive replay, and learned
+and local fluctuations [6].                                         pose–force generation were exercised through common reported
+IEEE ROBOTICS AND AUTOMATION LETTERS — WORKING DRAFT, SEPTEMBER 2026                                                                                                                                                5
+
+
+
+                                                                                               TABLE IV
+                                                  E2: MEASURED - FORCE OBSERVATION ABLATION , S EPTEMBER 26, 2026. B OTH POLICIES LEARN FORCE ACTIONS .
+
+                                                                                                                                    base
+                                           Condition               n         tobs (s)           Fzbase (N)                         Fz,max (N)                     LXY (mm)a                τ50 (s)a
+                                           B: force-obs. OFF       5      17.78 ± 1.78         16.60 ± 1.10      108.70 ± 6.78                                  208.87 ± 19.91         1.126 ± 0.119
+                                           C: force-obs. ON        5      16.05 ± 0.73         16.08 ± 1.02      105.88 ± 4.31                                   188.77 ± 4.74         1.158 ± 0.176
+        Source: report pp. 1–3 [6]. ± is across-run sample SD. a Travel and threshold-duration summaries were recomputed from the rounded per-run entries on
+        p. 3; other aggregates reproduce p. 1. All intervals end with an operator finish request. The 50 N threshold is descriptive, not a safety bound. A has no
+        recorded results and is not assigned numerical entries.
+
+
+
+
+                                                                                                                 Recorded TCP planar travel (mm)
+ Start-to-stop-request interval (s)
+
+
+
+
+                                      22
+                                                                                                                                                   240
+
+                                      20
+                                                                                                                                                   220
+
+                                      18
+
+                                                                                                                                                   200
+                                      16
+
+                                                                                                                                                   180
+                                      14
+
+
+                                      12                                                                                                           160
+                                             B: force obs. off            C: force obs. on                                                               B: force obs. off           C: force obs. on
+                                               5 retained runs / condition; diamonds: mean ± sample SD                                                    5 retained runs / condition; diamonds: mean ± sample SD
+
+
+
+Fig. 3. E2 observation intervals (left) and recorded planar travel (right), reconstructed from the report’s printed per-run values [6]. Each panel is an independent
+summary figure; dots show retained runs and diamonds show mean ± sample SD. Operator-selected termination and B-then-C collection limit causal
+interpretation. No pairing between like-numbered B and C runs is implied.
+
+
+
+                                                              TABLE V                                         causal effect from checkpoint realization, specimen state,
+                                           E VIDENCE AVAILABLE IN THE TWO SOURCE REPORTS .                    ordered execution, or operator termination. Because A was
+                                                                                                              not measured, the results cannot answer whether learning force
+ Quantity / evidence                                                                      E1        E2
+                                                                                                              actions is beneficial relative to a motion-only policy with an
+ Logged base-frame force / TCP travel                                                   Reported Reported     externally specified force.
+ Controller hold at termination                                                          15/15    10/10
+                                                                                                                 The C cohorts from the two dates are not pooled. Matching
+ Independent processing interval                                                          NA       NA
+ Teacher-profile reproduction error                                                       NA       NA         condition labels or selected numerical limits does not establish
+ Applied-force tracking error                                                             NA       NA         identical initial conditions, physical specimens, calibrations,
+ Measured scratch-depth reduction                                                         NA       NA         or checkpoint provenance across experiments. Within-cohort
+ Motion-only A result                                                                     —       Absent      results remain the unit of interpretation; trial-level differences
+Sources: E1 pp. 2, 7–8, 15 [5]; E2 pp. 3, 9 [6]. Hold counts describe retained executions,
+not physical task-success rates. NA means not assessed, not zero error.
+                                                                                                              are not converted to a general claim about the learning
+                                                                                                              algorithm.
+
+motion postprocessing and yielded different recorded contact                                                  B. Measurements needed for the task-level claim
+histories. It does not establish that a rule-based solution                                                     Table V separates available diagnostics from the planned
+is inadequate: R had the lowest logged peaks, but also a                                                      endpoints. A meaningful force-profile reproduction error would
+different path, contact interval, and return outcome. Likewise,                                               require a fixed, independent reference Fref , a validated normal-
+T’s terminal mismatch identifies a command-to-execution                                                       force estimate, and a justified correspondence between task
+discrepancy that must be understood before using replay                                                       phases. Conceptually, for a predeclared common progression
+as a definitive quality baseline. A comparison with T is                                                      coordinate s, the endpoint would be
+more informative about learning’s additional value than a                                                                         v
+                                                                                                                                  u     M
+comparison with geometric rules alone, but requires matched                                                                       u 1 X                               2
+and independently verified task outcomes.                                                                             Eprofile = t           Fnmeas (sj ) − Fref (sj ) .    (6)
+                                                                                                                                    M j=1
+   E2 establishes a deployable comparison between indepen-
+dently trained policies differing in force conditioning while both                                            Equation (6) defines a future endpoint; it is not evaluated from
+retain learned force actions. It suggests a descriptive association                                           the current tables. E2 lacks independent processing markers
+between force observation and shorter, less dispersed recorded                                                and a frozen reference. E1’s gate-derived markers do not solve
+intervals and travel in this cohort. It does not isolate a                                                    that independence problem. Missing samples, omitted strokes,
+IEEE ROBOTICS AND AUTOMATION LETTERS — WORKING DRAFT, SEPTEMBER 2026                                                                               6
+
+
+
+or truncated runs must not be aligned away to manufacture a          for C than T, while R had a lower peak than either. E2 showed
+low error. Comparing measured force with an applied setpoint         shorter and less dispersed recorded intervals and planar travel
+additionally requires synchronized and coordinate-consistent         for the force-observing policy, without a consistent correspond-
+controller-applied data, which are not supplied.                     ing improvement in the available force summaries. The results
+   Even a small reproduction error would establish resemblance       document realized motion–force behavior and termination
+to the reference, not automatically optimal polishing. The           differences. Establishing learning’s task-level value still requires
+intended practical claim requires pre/post scratch-depth or          completed force-action ablation, calibrated and phase-aligned
+surface-profile measurements under a common processing               force-profile evaluation, and independent physical surface-
+budget, together with surrounding-surface deformation. The           quality measurements.
+supplied records contain neither these measurements nor an
+independently validated removal-success label. In particular,                                      R EFERENCES
+an uncalibrated contact–speed heatmap and a stationary final         [1] C. Chi, Z. Xu, S. Feng, E. Cousineau, Y. Du, B. Burchfiel, R. Tedrake,
+robot state are not substitutes for surface metrology.                   and S. Song, “Diffusion policy: Visuomotor policy learning via action
+   A subsequent confirmatory cohort should therefore prede-              diffusion,” arXiv preprint arXiv:2303.04137, 2023.
+                                                                     [2] E. Chisari, N. Heppert, M. Argus, T. Welschehold, T. Brox, and A. Valada,
+clare processing/termination criteria, preserve all attempts,            “Learning robotic manipulation policies from point clouds with conditional
+compare the conditions in a balanced order on controlled                 flow matching,” arXiv preprint arXiv:2409.07343, 2024.
+specimens, and include A after its motion-only model and             [3] W. Liu, J. Wang, Y. Wang, W. Wang, and C. Lu, “ForceMimic: Force-
+                                                                         centric imitation learning with force-motion capture system for contact-rich
+external-force condition are defined. This is a proposed contin-         manipulation,” arXiv preprint arXiv:2410.07554, 2024.
+uation, not an experiment already performed. No hypothesis test,     [4] P. M. Scheikl, N. Schreiber, C. Haas, N. Freymuth, G. Neumann, R. Li-
+safety certification, unseen-geometry capability, or statistically       outikov, and F. Mathis-Ullrich, “Movement primitive diffusion: Learning
+                                                                         gentle robotic manipulation of deformable objects,” IEEE Robot. Autom.
+established method ranking is claimed in this draft.                     Lett., vol. 9, no. 6, pp. 5338–5345, 2024, doi: 10.1109/LRA.2024.3382529.
+                                                                     [5] “E1 experiment log analysis report: Rule-based path, teacher replay, and
+                     VI. C ONCLUSION                                     force-observing learned policy,” internal experiment report supplied by the
+  We evaluated rule-based, replay, and force-aware learned               authors, 15 pp., experiment date Sep. 27, 2026; report generated Sep. 28,
+                                                                         2026. (Korean; report title translated for this draft).
+action generation using two local-polishing execution reports        [6] “B/C experiment data final report: Force-observation off/on with learned
+comprising 25 retained runs. E1 used shared reported motion              force outputs,” internal experiment report supplied by the authors, 9 pp.,
+postprocessing and showed a lower mean logged force peak                 Sep. 26, 2026. (Korean; report title translated for this draft).
+

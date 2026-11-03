@@ -1,0 +1,12 @@
+{
+  "schema": "E1_report_explicit_user_scope_exclusion_v1",
+  "user_instruction": "R5 미시작 등록은 비정상 맞아. R5 재시도 데이터만 남기고 최초 R5 제거. 나머지는 정상.",
+  "exclusion_scope": "Report input data, per-run tables, summary and figures only; original result files and source session manifest are preserved.",
+  "excluded_run_id": "E1_CT_NOMINAL_R_r5_20261014T191508_af5aecaa94",
+  "excluded_run_directory": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261014T191508_af5aecaa94",
+  "exclusion_reason": "Original unstarted R5 registration; explicitly excluded by user, not a numerical outlier rule.",
+  "execution_start_exists": false,
+  "original_raw_data_preserved": true,
+  "included_started_runs": 15,
+  "other_started_executions_excluded": 0
+}

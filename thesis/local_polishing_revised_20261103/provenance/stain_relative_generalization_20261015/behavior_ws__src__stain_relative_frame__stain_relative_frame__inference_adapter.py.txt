@@ -1,0 +1,27 @@
+# behavior_ws/src/stain_relative_frame/stain_relative_frame/inference_adapter.py:108-126 (_on_origin)
+    def _on_origin(self, msg) -> None:
+        if self._adapter is not None:
+            return  # already frozen; a republish cannot move it
+        data = np.asarray(msg.data, dtype=np.float64).reshape(-1)
+        xy = data[:2]
+        # Optional 3rd element: strip principal-axis angle (base-frame rad).
+        # The translation-only adapter ignores it; the inference-side
+        # rotation-canonicalization reads it via .stain_angle.
+        self._angle_rad = float(data[2]) if data.size >= 3 and np.isfinite(data[2]) else None
+        self._adapter = RelativeFrameAdapter(
+            StainOrigin(xy, source="latched_topic"),
+            use_relative=True, transform_version=self._version,
+        )
+        self._node.destroy_subscription(self._sub)  # ★ one-shot, like the publisher
+        self._sub = None
+        self._node.get_logger().info(
+            f"[SRF] stain_origin = ({xy[0]:.3f}, {xy[1]:.3f}) mm -- FROZEN for this "
+            f"episode; subscription released"
+        )
+
+
+# behavior_ws/src/stain_relative_frame/stain_relative_frame/inference_adapter.py:143-146 (stain_angle)
+    def stain_angle(self) -> Optional[float]:
+        """Strip principal-axis angle (base-frame rad, [0,pi)) if the detector
+        published one, else None. Frozen with the origin for the episode."""
+        return self._angle_rad

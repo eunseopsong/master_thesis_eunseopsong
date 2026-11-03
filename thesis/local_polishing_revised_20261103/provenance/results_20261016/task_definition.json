@@ -1,0 +1,86 @@
+{
+  "schema": "E1_contact_task_definition_v1",
+  "experiment_version": "pass_height_ref_v2_nominal_20261014",
+  "task": "contact formation, one loaded ordered end-to-end pass inside fixed XY band, unload and rise",
+  "endpoints_base_mm": [
+    [
+      445.0,
+      395.0,
+      172.0
+    ],
+    [
+      487.0,
+      345.0,
+      172.0
+    ]
+  ],
+  "fixed_task_datum_xy_mm": [
+    457.4,
+    375.0
+  ],
+  "length_mm": 65.29931086925804,
+  "width_mm": 25.0,
+  "half_width_mm": 12.5,
+  "segment_count": 14,
+  "TCP_center_occupancy": true,
+  "Z_height_gate_enabled": false,
+  "orientation_gate_enabled": false,
+  "pass_directions": [
+    "P0_to_P1",
+    "P1_to_P0"
+  ],
+  "pass_additional_reward": false,
+  "legacy_dwell_required_s": 0.4664236490661288,
+  "legacy_dwell_is_primary": false,
+  "actual_removal_claim": false,
+  "provenance": {
+    "surface_reference_z_mm": {
+      "value": 172.0,
+      "origin": "user approximate physical surface height; no TCP contact gate"
+    },
+    "delta_h_mm": {
+      "value": 1.0,
+      "origin": "new experiment development default; physical placement by operator"
+    },
+    "roi": {
+      "origin": "user approximate endpoints/width adopted as new fixed task definition"
+    },
+    "fixed_task_datum_xy_mm": {
+      "value": [
+        457.4,
+        375.0
+      ],
+      "origin": "audited original demonstration relative-coordinate registration; not stain midpoint"
+    },
+    "event_confirm_s": {
+      "value": 0.2,
+      "origin": "new event evaluation development default"
+    },
+    "release_rise_mm": {
+      "value": 5.0,
+      "origin": "new displacement evaluation development default"
+    },
+    "contact_gate": {
+      "on_N": 3.0,
+      "off_N": 1.2,
+      "origin": "existing E1 executor measured base Fz hysteresis"
+    },
+    "force_reference_upper_N": {
+      "value": 30.812396273,
+      "origin": "force audit v2 A; all42 demo base-axis Q95; analysis only"
+    },
+    "common_execution": {
+      "path": "/home/eunseop/nrs_imitation/experiments/e1_contact_coverage_20261012/versions/20261013_force_cleanup_C/execution_C.json",
+      "sha256": "7118f2582d92d8d42e88fb0c815314a0b233949324cdabb940ef90a0f217aaf8"
+    },
+    "actual_C_run": {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E1_contact_coverage/E1_contact_coverage_20261013/C/E1_CC_C_r1_20261013T195506_375fde77fd/execution_config.json",
+      "sha256": "8d0e6ee1f85fc1dd67c19c1983f854cda24b28af81ee115aec23d01e215f19b6"
+    },
+    "stain_mask": {
+      "origin": "user excluded mask validation; existing image interface retained"
+    }
+  },
+  "evaluation_version": "pass_height_ref_v2",
+  "release_height_reference": "first successful loaded ordered pass; measured TCP Z time-weighted median"
+}

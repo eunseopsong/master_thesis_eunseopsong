@@ -1,0 +1,21 @@
+\chapter{Conclusions and Future Work}
+\label{chap:conclusions}
+
+\section{Conclusions}
+FAIRE separates localized surface repair into responsibilities that require different forms of reasoning. Force-aware expert imitation determines defect-specific selective treatment from visual context, robot state, and six-axis wrench history. It predicts short-horizon Cartesian pose and desired three-axis force trajectories, preserves the demonstrated tangential feed velocity, and executes desired contact force as a controller-level reference through admittance control.
+
+Actual IL execution is then logged to estimate what the process physically produced. A calibrated Preston model and TIF convert contact pose, normal force, relative velocity, and dwell into a spatial removal map. A target profile regularizes the defect-containing core toward a uniform target depth and tapers removal smoothly across a transition band. The resulting residual-removal map drives structured model-based blending rather than uniform reprocessing.
+
+During blending, admittance handles unknown surface height and bounded residual RL adapts roll, pitch, and local tangential feed velocity on unseen smooth surface geometries. This architecture is CAD-free in the sense that it avoids a complete CAD model or full reconstruction, while still using local path geometry and process models. The staged evaluation is defined, but quantitative conclusions remain \todoexp{to be populated from experimental results}.
+
+\section{Limitations}
+Removal accuracy depends on calibration of the Preston coefficient and on the validity of the TIF approximation. Force, orientation, pad wear, abrasive condition, and material response may change the influence function. Pose and metrology registration error further limit map accuracy and spatial resolution.
+
+The system can remove material but cannot add it when IL over-removes. Conservative selection of \(h_c\) therefore depends on available coating or material thickness and uncertainty margins. Termination is not yet established as learned or autonomous. The supported geometry range is limited to local smooth surfaces with moderate continuous curvature; sharp edges, steps, grooves, discontinuities, and extreme curvature are outside the current scope.
+
+Residual RL introduces sim-to-real and training-distribution limitations. Orientation and velocity residuals interact through contact and dwell, and their independent benefits cannot be assumed without ablation. Generalization claims are limited primarily to geometry while material, tool, abrasive, and process conditions remain fixed unless separate cross-condition studies are performed. Metrology resolution bounds the smallest defensible removal difference.
+
+\section{Future Work}
+Future work should add closed-loop post-pass visual or profilometric inspection, uncertainty-aware residual planning, online adaptation of \(K\) and the TIF, and calibrated models for multiple materials and coating systems. Safety-filtered residual RL and explicit uncertainty-aware termination could reduce the risk of irreversible over-removal.
+
+The geometry scope may be expanded through richer local surface estimation and training on more complex smooth convex--concave combinations. More varied defect shapes, severity distributions, and removal difficulties should be evaluated after they can be produced and measured reliably. Iterative map updating and replanning should be implemented and validated before being promoted from a planned extension to a system contribution.

@@ -1,0 +1,63 @@
+\chapter{Introduction}
+\label{chap:introduction}
+
+\section{Background and Motivation}
+Localized surface repair must remove a defect without unnecessarily processing the intact material around it. This requirement is more demanding than visiting a region with a tool. Contact force, true tool--surface relative velocity, orientation, dwell, overlap, and material response jointly determine what is physically removed~\cite{preston1927theory,mohsin2019path,min2024force}. A robot must therefore decide how a defect should be treated, how much processing it requires, which locations require repetition, and when selective removal should terminate.
+
+Geometric perception and coverage planning provide essential information about where the robot can move~\cite{schneyer2023segmentation,mcgovern2024coverage,tafuro2024autonomous}. They do not, by themselves, reveal defect depth, local severity, removal difficulty, or the appropriate process intensity. These variables may be only partially observable in an RGB image and may become apparent only through interaction. FAIRE addresses this gap with a force-aware imitation policy that learns an operator's defect-conditioned repair decisions from visual context and contact history.
+
+\section{Localized Defect Removal versus Surface Restoration}
+Selective removal and surface restoration are related but distinct objectives. The first objective is to eliminate the defect while limiting collateral processing. The second is to leave a spatially regular surface that connects smoothly to its surroundings. An imitation policy may successfully remove a visible scratch while concentrating material removal near the defect. The resulting surface may contain a local depression, nonuniform removal, excessive overlap at turning points, or a height and appearance discontinuity at the processed boundary.
+
+Consequently, defect removal does not imply complete surface restoration. FAIRE assigns uncertain, defect-conditioned selective removal to expert imitation learning (IL). It assigns quantitative spatial regularization after IL to a model-based blending stage. The executed IL process is measured and converted into a spatial removal estimate so that blending responds to what the robot actually produced rather than to the commanded path alone.
+
+\begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.22\textheight][c]{0.90\textwidth}
+    \centering
+    \textbf{Localized defect}\\
+    $\downarrow$ expert IL selective removal\\
+    \textbf{Defect removed, but localized depression or nonuniformity may remain}\\
+    $\downarrow$ execution-derived removal estimation and model-based blending\\
+    \textbf{Uniform core and smoothly decaying transition to the intact surface}
+  \end{minipage}}
+  \caption{Motivation for separating selective defect removal from complete surface restoration. The final illustrated result sequence will be populated from verified experiments.}
+  \label{fig:motivation}
+\end{figure}
+
+\section{Why Defect Localization Is Not Sufficient}
+Conventional perception-and-planning approaches can localize a defect and generate a geometric path through its image-space or surface-space region. A region of interest nevertheless does not uniquely determine the necessary force, tangential feed velocity, number of passes, local repetition pattern, or stopping condition. Two defects with similar visible footprints may differ in depth or removal difficulty, while different parts of one defect may demand unequal treatment. A purely geometric recipe must receive these process decisions from another source.
+
+FAIRE does not claim a separate explicit autonomous detector. Within a bounded task workspace, the visual policy may implicitly localize and interpret the defect together with the robot state and recent six-axis wrench history. Its role is summarized as follows: \emph{the imitation policy determines how and to what extent a visually observed defect should be selectively removed from visual context and interaction history}.
+
+\section{Skill and Expert Roles in Robotic Surface Repair}
+A \emph{skill} executes a process whose region, target, and parameters have already been specified. An \emph{expert} interprets uncertain observations and determines the appropriate behavior, process intensity, repetition, and termination. This distinction prevents geometric execution from being conflated with defect-dependent decision making.
+
+In FAIRE, force-aware IL acts as the expert repair policy. Model-based blending acts as a structured restoration skill. The latter uses the material-removal distribution produced by IL to regularize the inner repair region toward a target depth and to reduce removal gradually across an outer transition region. It therefore receives a quantitatively defined target instead of deciding the severity of the original defect.
+
+\section{Research Questions}
+\begin{enumerate}[label=\textbf{RQ\arabic*:},leftmargin=2.2cm]
+  \item Can force-aware imitation learning infer and reproduce a defect-conditioned expert repair strategy when the required process intensity and removal termination are not explicitly specified?
+  \item Can the executed pose--wrench--velocity history be converted into an accurate spatial material-removal estimate using a calibrated Preston model and tool influence function?
+  \item Does residual-removal-based model planning improve the uniformity of the defect-containing core and the smoothness of the transition to the surrounding surface compared with IL-only repair or predefined uniform processing?
+  \item Do bounded residual orientation and feed-velocity policies improve contact stability and target-removal accuracy during CAD-free blending on previously unseen smooth curved surfaces?
+\end{enumerate}
+Force-action interfaces and recurrent wrench representations are evaluated as subsystem ablations under RQ1 rather than as thesis-level objectives.
+
+\section{Contributions}
+The intended integrated contributions are:
+\begin{enumerate}
+  \item a VR-calibrated motion--force teaching and force-aware imitation framework that transfers an operator's defect-conditioned selective repair strategy rather than only reproducing a predefined geometric path;
+  \item an execution-derived spatial material-removal representation that converts actual pose, wrench, and velocity history into a calibrated Preston-model-based removal map;
+  \item a residual-removal-aware model-based blending method that regularizes the defect-containing core to a target removal depth and gradually reduces removal across a transition band; and
+  \item a CAD-free adaptive execution architecture in which admittance control handles unknown surface height and bounded residual RL adapts tool orientation and local feed velocity during blending on unseen smooth surface geometries.
+\end{enumerate}
+Preston's equation, admittance control, GRUs, coverage planning, and residual RL are not claimed as novel in isolation.
+
+\section{Scope, Assumptions, and Thesis Status}
+The scope is local repair on smooth, continuously varying surfaces with moderate convex or concave curvature. It excludes sharp edges, steps, grooves, discontinuities, and extreme curvature unless later verified experimentally. CAD-free means that the planner does not require a complete CAD model or full 3D reconstruction; it does not mean geometry-free. A bounded local workspace, a viable local 2D coverage parameterization, and compliant contact are still assumed.
+
+Hardware identifiers, network dimensions, control parameters, removal-model calibration, RL details, metrology settings, and quantitative results are not yet established in the source repository. They are marked \todoexp{to be determined from the final implementation} or \todoexp{to be populated from experimental results}. No unmeasured performance advantage is asserted.
+
+\section{Thesis Organization}
+Chapter~\ref{chap:related_work} reviews the relevant literature. Chapter~\ref{chap:faire_overview} formulates the problem and allocates module responsibilities. Chapter~\ref{chap:demonstration_collection} presents motion--force demonstration collection. Chapter~\ref{chap:force_il} defines expert IL and its compliant execution. Chapter~\ref{chap:removal_estimation} derives the execution-based removal and residual maps. Chapter~\ref{chap:blending} presents CAD-free blending with residual RL. Chapter~\ref{chap:experiments} defines the staged evaluation. Chapter~\ref{chap:conclusions} concludes the thesis, and Appendix~\ref{chap:appendix} records reproducibility requirements.

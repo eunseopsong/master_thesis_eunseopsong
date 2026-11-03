@@ -1,0 +1,42 @@
+# behavior_ws/src/stain_relative_frame/stain_relative_frame/dataset_relativize.py:131-171 (convert_episode)
+def convert_episode(src_path: Path, dst_path: Path, origin: Optional[StainOrigin],
+                    use_relative: bool) -> Dict:
+    """Write one converted episode. Returns a per-episode audit record."""
+    with h5py.File(str(src_path), "r") as fi, h5py.File(str(dst_path), "w") as fo:
+        _copy_tree(fi, fo, skip=(OBS_POS, ACT_POS))
+
+        obs_abs = np.asarray(fi[OBS_POS])
+        act_abs = np.asarray(fi[ACT_POS])
+        obs_new = to_relative(obs_abs, origin, use_relative=use_relative)
+        act_new = to_relative(act_abs, origin, use_relative=use_relative)
+
+        for key, arr, src_ds in ((OBS_POS, obs_new, fi[OBS_POS]), (ACT_POS, act_new, fi[ACT_POS])):
+            d = fo.create_dataset(
+                key, data=arr, dtype=src_ds.dtype,
+                compression=src_ds.compression, compression_opts=src_ds.compression_opts,
+            )
+            for ak, av in src_ds.attrs.items():
+                d.attrs[ak] = av
+
+        for ak, av in fi.attrs.items():
+            fo.attrs[ak] = av
+
+        if use_relative:
+            # Absolute trajectories kept for analysis/logging only. The
+            # dataloader never reads under analysis/.
+            fo.create_dataset(ABS_OBS_POSITION_KEY, data=obs_abs, dtype=obs_abs.dtype,
+                              compression="gzip", compression_opts=4)
+            fo.create_dataset(ABS_ACT_POSITION_KEY, data=act_abs, dtype=act_abs.dtype,
+                              compression="gzip", compression_opts=4)
+            fo.attrs[STAIN_ORIGIN_ATTR] = np.asarray(origin.xy, dtype=np.float64)
+        fo.attrs[USE_RELATIVE_ATTR] = int(bool(use_relative))
+        fo.attrs[TRANSFORM_VERSION_ATTR] = TRANSFORM_VERSION
+        fo.attrs["rotation_aligned"] = 0  # ★ never; translation only
+
+    return {
+        "episode": src_path.stem,
+        "origin_x_mm": None if origin is None else round(float(origin.xy[0]), 3),
+        "origin_y_mm": None if origin is None else round(float(origin.xy[1]), 3),
+        "obs_xy_shift_mm": round(float(np.abs(obs_abs[:, :2] - obs_new[:, :2]).max()), 4),
+        "T": int(obs_abs.shape[0]),
+    }

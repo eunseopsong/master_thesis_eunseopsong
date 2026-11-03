@@ -1,0 +1,48 @@
+\chapter{Introduction}
+\label{chap:introduction}
+
+\section{Surface Rework and Local Polishing}
+Surface finishing changes the condition of a component through controlled interaction between a tool and its surface. Robotic polishing therefore involves more than reaching a geometric pose: tool contact, feed motion, and processing duration jointly determine the operation. Research on curved-surface polishing combines tool-path planning with force-controlled processing, while coverage planning accounts for the contact region produced by the tool and workpiece geometry~\cite{mohsin2019path,schneyer2023segmentation}. These studies establish an industrial and technical context for treating movement and contact as coupled process decisions.
+
+Uniform processing of a whole surface and local rework around a selected region have different spatial objectives. A coverage operation seeks to treat a prescribed surface systematically. A local operation concentrates movement and loading around a limited target while retaining an approach and an exit. In the latter case, the relevant questions include where contact begins, which part of the region is traversed under load, how force changes during movement, and how the tool unloads and rises afterward. A path that reaches both endpoints can still omit one of these procedural requirements.
+
+Interactive surface-treatment systems provide a practical precedent for combining human decisions, geometric planning, and robot execution~\cite{alt2024robogrind}. The present thesis adopts a specific division of work. A person indicates the local region, and demonstrations provide examples of how the tool moves and loads that region. The robot executes a generated or prescribed motion--force skill through an existing force-control system. This division is motivated by the equipment and task setting, rather than a general assertion that fine defects cannot be detected automatically.
+
+The experimental surface contains visible markings that make the local task observable in the available RGB stream. Such board-marker markings supply a spatial processing cue. E1/E2 measure contact-task execution, and E3 additionally measures image-based stain-area reduction from saved before/after photographs. The markings are not calibrated models of metal scratch depth, and erasing a mark is not equivalent to restoring a measured metal surface profile.
+
+\section{What Remains after a Region Is Specified}
+An identified region is an incomplete processing instruction. It can supply an origin, extent, and visual context without specifying a force schedule or the time spent in each phase. For example, traversing a narrow region with a constant recipe force and replaying a recorded pass can share the same region but differ in approach timing, loaded motion, repeated movement, and exit. The region alone does not select between these strategies.
+
+Human guidance enters through a marked region and task registration. Position is learned relative to the stain center; an implemented adapter aligns live XY and the policy image with the teaching direction and restores generated paths afterward. This supports reuse across planar placements and directions. The policy uses RGB and a fixed interaction ROI, with no external segmentation mask. E1 fixes the origin, and both E1/E2 disable direction alignment. E3 evaluates registered planar positions and directions, enabling alignment for its direction conditions.
+
+The second source of human guidance is a temporally paired demonstration. A demonstrator supplies tool movement and interaction force together, so that approach, processing, and release have a common temporal organization. This supplies information that a geometric boundary does not encode. It does not provide labels for defect severity or an independent measurement of remaining material. Learning from those demonstrations is intended to generate an executable skill, not to infer an unobserved surface state by assumption.
+
+\section{Rules, Replay, and Learned Generation}
+Several valid methods can turn a spatial instruction into a polishing sequence. Rules can combine an approach, a prescribed path, a force recipe, and a departure. Replay can reuse the position, orientation, force, and timing of a successful teaching episode. A learned policy can instead generate a new sequence from the current image, pose, and force history. The existence of several legitimate choices makes a comparison necessary: the insufficiency of geometry alone does not imply that imitation learning is the only solution.
+
+The lower-level controller also contributes feedback in every method. It regulates the physical interaction for the supplied target and operating mode. It does not independently choose the complete spatial and temporal strategy. Conversely, removing measured force from the learned policy does not remove the controller's force feedback. Distinguishing these two uses of force is necessary to interpret both baseline comparisons and ablations.
+
+Generative sequence policies offer a way to model temporally related actions from demonstration. Action chunking and diffusion-based policies motivate predicting a sequence rather than an isolated next action~\cite{zhao2023act,chi2023diffusionpolicy}. Here, conditional Flow Matching is the implemented generator. Its role is to produce normalized pose--force sequences; coordinate restoration and command conditioning remain explicit parts of execution. The thesis studies the combined representation and execution structure without proposing Flow Matching, force sensing, or a recurrent encoder as new algorithms.
+
+\section{Research Questions}
+Three questions organize the evaluation.
+\begin{enumerate}[label=\textbf{RQ\arabic*:},leftmargin=1.8cm]
+\item For the same local task, how do rule-based planning, force-inclusive demonstration replay, and force-conditioned imitation learning differ in procedural completion, completion time, and force use?
+\item How do learning a target-force sequence and observing measured force at the policy input relate to completion, execution time, phase progression, and force use?
+\item What image-based stain-area removal is observed when the same policy is applied, without new teaching or retraining, to task regions at different planar positions and directions?
+\end{enumerate}
+E1, \emph{Strategy Comparison}, addresses RQ1 with the original five nominal runs per strategy on 15 October 2026 and a separately identified five-run R retiming diagnostic on 19 October, denoted \(R^{*}\). E2, \emph{Force-Information Ablation}, addresses RQ2 with five attempts per condition on 13 October and the corrected A4 outcome. E3, \emph{Spatial Transfer of the Learned Skill}, addresses RQ3 through saved-image analysis of N/P1/D1/D2: \EthreeMainN{} selected runs, of which \EthreeImageN{} permit whole-stain image evaluation. P2's five executed runs remain in the \EthreeArchiveN{}-run archive but are excluded from the main removal evaluation because of final tool occlusion. Height-change robustness and independently measured metal surface-quality improvement remain outside the evaluated scope.
+
+\section{Contributions}
+The thesis makes three connected contributions at the system and experimental levels.
+\begin{enumerate}[leftmargin=0.8cm]
+\item It formulates a local polishing task that links human region specification with time-aligned motion--force demonstrations. It realizes stain-centered position learning and an optional direction-alignment/inverse-restoration path, distinguishes force signal roles and frames, and states the procedural scope of the resulting skill.
+\item It realizes observation-conditioned generation and execution of coupled pose--force sequences. The implemented policy, data construction, command conditioning, and existing contact controller form an explicit path from demonstration to robot action.
+\item It connects strategy execution, force-information composition, and spatial reuse through three complementary evaluations. These quantify procedural completion, protocol-specific timing, force use, and E3 image-based ink-area reduction. Original trials, incomplete attempts, and image-unavailable cases remain traceable, with additional diagnostics separated from the original comparisons.
+\end{enumerate}
+These contributions concern the connection between a particular task, representation, generator, and execution interface. They do not assert novelty for the individual encoder, relative-coordinate operation, controller, or logging state machine.
+
+\section{Scope and Organization}
+The implementation supports stain-centered learning and direction transfer for the marked-surface task. E1/E2 use a fixed tool, fixture, and region. E3 tests registered planar position/direction changes and quantifies board-marker area reduction, without establishing arbitrary-shape, curved-surface, or height robustness. Metal removal depth, mass, roughness, and micro-scratch restoration are not independently measured. There is no autonomous defect-completion detector or learned termination head.
+
+Chapters~\ref{chap:related_work} and~\ref{chap:faire_overview} position and formulate the task. Chapters~\ref{chap:demonstration_collection} and~\ref{chap:force_il} explain teaching and learning; Chapter~\ref{chap:execution} distinguishes the execution and evaluation protocols. Chapter~\ref{chap:experiments} reports E1--E3, Chapter~\ref{chap:discussion} discusses findings and extensions, and Chapter~\ref{chap:conclusions} concludes.

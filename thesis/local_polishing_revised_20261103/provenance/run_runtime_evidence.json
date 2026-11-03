@@ -1,0 +1,2417 @@
+[
+  {
+    "cohort": "E1",
+    "label": "R1",
+    "run_id": "E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261014T190924_0726b19435/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "50bd3ad4c675f6449a5fc9e4418d4dc5094a366f9d50b887cadb05e5d2279d0b"
+  },
+  {
+    "cohort": "E1",
+    "label": "R2",
+    "run_id": "E1_CT_NOMINAL_R_r2_20261014T191058_81b3ed524a",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261014T191058_81b3ed524a/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "c47503c4a3512066b0722c105a5ae21399e625bafbafdc4a0c7b059b39a93ff8"
+  },
+  {
+    "cohort": "E1",
+    "label": "R3",
+    "run_id": "E1_CT_NOMINAL_R_r3_20261014T191223_c5eab01344",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261014T191223_c5eab01344/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "c121fa54118a890aeb48653b0539fb3385978a028a04bbee036a53a31f3a46ed"
+  },
+  {
+    "cohort": "E1",
+    "label": "R4",
+    "run_id": "E1_CT_NOMINAL_R_r4_20261014T191354_7d902a3420",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261014T191354_7d902a3420/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "f09c9a1b7eff6d3d9f25865e5b3cd40c0e74f80923bd5f230fad750df64734a7"
+  },
+  {
+    "cohort": "E1",
+    "label": "R5",
+    "run_id": "E1_CT_NOMINAL_R_r5_20261014T191842_b6bc0bbdb3",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261014T191842_b6bc0bbdb3/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "4448436312a17da6520738f0e00f87bede5e3a39ebe0903c8f1408d01908d160"
+  },
+  {
+    "cohort": "E1",
+    "label": "T1",
+    "run_id": "E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261014T192009_7c322251d1/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "5b6d1e2cabea7a47e6779664095f77e67032aaf2eb18dfc931ffbf7457da7d26"
+  },
+  {
+    "cohort": "E1",
+    "label": "T2",
+    "run_id": "E1_CT_NOMINAL_T_r2_20261014T192108_f428d13ba7",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261014T192108_f428d13ba7/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "832edc3d3817bd2461d8fe711bbc43f911852adc58c88b74efa78f64188ece72"
+  },
+  {
+    "cohort": "E1",
+    "label": "T3",
+    "run_id": "E1_CT_NOMINAL_T_r3_20261014T192205_11467f4a6e",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261014T192205_11467f4a6e/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "70e3e00bee5e62b281590afa141b639567e40e41bc92d337845522b880969d0e"
+  },
+  {
+    "cohort": "E1",
+    "label": "T4",
+    "run_id": "E1_CT_NOMINAL_T_r4_20261014T192301_5dc969c805",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261014T192301_5dc969c805/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "df752fcbffa023e08e968057539fda3f0a7892ff1ca50662644f7a04b7986e97"
+  },
+  {
+    "cohort": "E1",
+    "label": "T5",
+    "run_id": "E1_CT_NOMINAL_T_r5_20261014T192359_3c4108ab4a",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261014T192359_3c4108ab4a/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "5cec7f5e21f04e2e9a0a7d3a9f08acee71302e4b6c2b3464cb1573ec2a4b5969"
+  },
+  {
+    "cohort": "E1",
+    "label": "C1",
+    "run_id": "E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "e5d6a4bf6a678c3c62b029ac5ecad7862a16331bc36faa451c80a263638a9f46"
+  },
+  {
+    "cohort": "E1",
+    "label": "C2",
+    "run_id": "E1_CT_NOMINAL_C_r2_20261014T192624_b09089a484",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261014T192624_b09089a484/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "e83371502ab9051897f4bb96e2073278229dfa5461bf22ab54f3fca10d71f0c4"
+  },
+  {
+    "cohort": "E1",
+    "label": "C3",
+    "run_id": "E1_CT_NOMINAL_C_r3_20261014T192739_d524cde898",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261014T192739_d524cde898/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "6d5e620e5a151ef6c52f7910f6701c715a304c1086ee0cc3e022fdfe3d43f27d"
+  },
+  {
+    "cohort": "E1",
+    "label": "C4",
+    "run_id": "E1_CT_NOMINAL_C_r4_20261014T192846_a5624f7264",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261014T192846_a5624f7264/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "cab62c2191c586c481b336849055ccd1811199ac32c0c65530a65baf6d6d608f"
+  },
+  {
+    "cohort": "E1",
+    "label": "C5",
+    "run_id": "E1_CT_NOMINAL_C_r5_20261014T192958_f3f83ee6c9",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261014T192958_f3f83ee6c9/execution_config.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "use_force_observation": true,
+      "force_action": true,
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "inference_mode": "timed_topic",
+      "previous_e1_inference_mode": "service_stream",
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05,
+      "provenance": {
+        "gain_rates": "inspected local dev_ws robot_command.cpp and singleArm_cmd.cpp; deployment confirmation required",
+        "contact_clip": "unchanged pinned C inference_core defaults",
+        "watchdogs": "explicit E2 software bounds; not a measured hardware timing guarantee"
+      }
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": {
+      "schema": "E1_RTC_shared_pose_v1",
+      "pose_sampling_hz": 30.0,
+      "profile": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295,
+        "scope": "C pose only; R/T, source time axes, signed force samples, common contact gate and existing gain/speed/force-rate limits unchanged",
+        "provenance": "35-point pose average restored from legacy C; SO3 quaternion mean; 0.5 s quintic handover; 0.4 s to reach the common per-axis speed limits from rest. Offline validation of recorded C input required; physical vibration clearance not yet verified.",
+        "authorization": "2026-09-26: user requested C execution patch while retaining today's R/T trials without rerunning them"
+      },
+      "reference_C_runs": [
+        {
+          "run_id": "RTC_C_20260926T184357",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184357/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184521",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184521/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184622",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184622/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184724",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184724/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        },
+        {
+          "run_id": "RTC_C_20260926T184820",
+          "config": "/home/eunseop/nrs_imitation/results/20260926/E1/C/RTC_C_20260926T184820/launch_context/config.json",
+          "sha256": "1c608378212193ebcea67e485bf5167d3bbf0bc5be72ed3c503f3ce51bd5d4bb"
+        }
+      ],
+      "created_at": "2026-09-27T14:52:47.740129+09:00",
+      "authorization": "2026-09-27 user requested R/T reruns with the same C stabilization patch, preserving yesterday C results.",
+      "scope": "Same archived C conditioner: 35-point XYZ/quaternion mean, 0.5 s handover and 25 mm/s^2 / 100 deg/s^2 acceleration limits. R/T private pose view uses 30 Hz / 128 points / 120-point stride, end-padded only inside the filter; source force/phase/time unchanged.",
+      "comparison_limits": "C replans from live policy observations; R/T consume fixed source paths through matching pose chunks. R post-work return and provider-specific completion remain outside shared processing comparison. Cross-day physical conditions remain operator-controlled.",
+      "hardware_executed_by_assistant": false,
+      "horizon_points": 128,
+      "stride_points": 120
+    },
+    "config_sha256": "17bf32d3ce2beae6dcf4bdc712ceaf1d07c0a90ccfed4b96caa9b22ba42274ec"
+  },
+  {
+    "cohort": "E2",
+    "label": "A1",
+    "run_id": "E2_force_cleanup_20261013_A_r1_20261013T195840_cfee7559de76",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r1_20261013T195840_cfee7559de76/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/A/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/A/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "2ea204ab65fbd0dcfb089e4638f78e7d2674bcb47c199ec70ea4777c5aeca95c",
+      "normalizer_sha256": "ae7d07adf65af560871d23a6cde9f58ff92a4e551ef7829f3b251a96a1f6a73f",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": false,
+      "use_force_history": false,
+      "motion_only": true,
+      "force_action": false,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": 23.0,
+    "common_conditioner": null,
+    "config_sha256": "c13e42c0710d5ac5b62f5aa20639e15aca478e411f561f48701b8ea5ddd10736"
+  },
+  {
+    "cohort": "E2",
+    "label": "A2",
+    "run_id": "E2_force_cleanup_20261013_A_r2_20261013T200254_da04a1075552",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r2_20261013T200254_da04a1075552/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/A/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/A/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "2ea204ab65fbd0dcfb089e4638f78e7d2674bcb47c199ec70ea4777c5aeca95c",
+      "normalizer_sha256": "ae7d07adf65af560871d23a6cde9f58ff92a4e551ef7829f3b251a96a1f6a73f",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": false,
+      "use_force_history": false,
+      "motion_only": true,
+      "force_action": false,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": 23.0,
+    "common_conditioner": null,
+    "config_sha256": "bb1895cb03e8cde7e890b7e97de148fa6f58cf5cc6a55cbf411e87380f70a207"
+  },
+  {
+    "cohort": "E2",
+    "label": "A3",
+    "run_id": "E2_force_cleanup_20261013_A_r3_20261013T200416_6ffeb5146764",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r3_20261013T200416_6ffeb5146764/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/A/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/A/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "2ea204ab65fbd0dcfb089e4638f78e7d2674bcb47c199ec70ea4777c5aeca95c",
+      "normalizer_sha256": "ae7d07adf65af560871d23a6cde9f58ff92a4e551ef7829f3b251a96a1f6a73f",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": false,
+      "use_force_history": false,
+      "motion_only": true,
+      "force_action": false,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": 23.0,
+    "common_conditioner": null,
+    "config_sha256": "5c64d17c2f5923174c449334575c40ad81e9b8210292688dc29898d95180d1b2"
+  },
+  {
+    "cohort": "E2",
+    "label": "A4",
+    "run_id": "E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/A/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/A/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "2ea204ab65fbd0dcfb089e4638f78e7d2674bcb47c199ec70ea4777c5aeca95c",
+      "normalizer_sha256": "ae7d07adf65af560871d23a6cde9f58ff92a4e551ef7829f3b251a96a1f6a73f",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": false,
+      "use_force_history": false,
+      "motion_only": true,
+      "force_action": false,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": 23.0,
+    "common_conditioner": null,
+    "config_sha256": "fb0984c73b76010684c2e9757cb5b5c975d52449eb9d47a7cc6a99c5035065c1"
+  },
+  {
+    "cohort": "E2",
+    "label": "A5",
+    "run_id": "E2_force_cleanup_20261013_A_r5_20261013T200711_ed37cc309c44",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r5_20261013T200711_ed37cc309c44/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/A/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/A/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "2ea204ab65fbd0dcfb089e4638f78e7d2674bcb47c199ec70ea4777c5aeca95c",
+      "normalizer_sha256": "ae7d07adf65af560871d23a6cde9f58ff92a4e551ef7829f3b251a96a1f6a73f",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": false,
+      "use_force_history": false,
+      "motion_only": true,
+      "force_action": false,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": 23.0,
+    "common_conditioner": null,
+    "config_sha256": "438af8b8454d0d6ed2430801bfe07dfcd99fed357ee5bc942ccd0d4d2685ee05"
+  },
+  {
+    "cohort": "E2",
+    "label": "B1",
+    "run_id": "E2_force_cleanup_20261013_B_r1_20261013T200856_b55a06b76524",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r1_20261013T200856_b55a06b76524/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/B/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/B/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "080103e6c2ed055a56a1fdd512aafa205cc3ac847ea6ebcbaa52ddc0e6cd99ad",
+      "normalizer_sha256": "d7c917b8246c1ff25bbec5c073fa3257d0fce9e9581a6186b211fad73e063bd6",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": false,
+      "use_force_history": true,
+      "motion_only": false,
+      "force_action": true,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": null,
+    "config_sha256": "5ca564b934d1c7e36d7f3a23f1f5230e46c67dd071a727381b25290727879ef7"
+  },
+  {
+    "cohort": "E2",
+    "label": "B2",
+    "run_id": "E2_force_cleanup_20261013_B_r2_20261013T201013_0fc3796e2d33",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r2_20261013T201013_0fc3796e2d33/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/B/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/B/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "080103e6c2ed055a56a1fdd512aafa205cc3ac847ea6ebcbaa52ddc0e6cd99ad",
+      "normalizer_sha256": "d7c917b8246c1ff25bbec5c073fa3257d0fce9e9581a6186b211fad73e063bd6",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": false,
+      "use_force_history": true,
+      "motion_only": false,
+      "force_action": true,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": null,
+    "config_sha256": "aa8f7a52b96ed67843d6b13d18b8f39c1b4975f802e4c931934769a7caedbde5"
+  },
+  {
+    "cohort": "E2",
+    "label": "B3",
+    "run_id": "E2_force_cleanup_20261013_B_r3_20261013T201128_ece39e727bc9",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r3_20261013T201128_ece39e727bc9/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/B/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/B/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "080103e6c2ed055a56a1fdd512aafa205cc3ac847ea6ebcbaa52ddc0e6cd99ad",
+      "normalizer_sha256": "d7c917b8246c1ff25bbec5c073fa3257d0fce9e9581a6186b211fad73e063bd6",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": false,
+      "use_force_history": true,
+      "motion_only": false,
+      "force_action": true,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": null,
+    "config_sha256": "fe40d014e73d7e3d38b17e458aa18312f49a1bdb6fc235295fe0afa14093abe1"
+  },
+  {
+    "cohort": "E2",
+    "label": "B4",
+    "run_id": "E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/B/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/B/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "080103e6c2ed055a56a1fdd512aafa205cc3ac847ea6ebcbaa52ddc0e6cd99ad",
+      "normalizer_sha256": "d7c917b8246c1ff25bbec5c073fa3257d0fce9e9581a6186b211fad73e063bd6",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": false,
+      "use_force_history": true,
+      "motion_only": false,
+      "force_action": true,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": null,
+    "config_sha256": "93807aafb51d6fbc93d7d40d69ab5753bdeafb0c3648cf2edd16753e252a93d4"
+  },
+  {
+    "cohort": "E2",
+    "label": "B5",
+    "run_id": "E2_force_cleanup_20261013_B_r5_20261013T201347_702cc1eae9be",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r5_20261013T201347_702cc1eae9be/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/B/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/B/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "080103e6c2ed055a56a1fdd512aafa205cc3ac847ea6ebcbaa52ddc0e6cd99ad",
+      "normalizer_sha256": "d7c917b8246c1ff25bbec5c073fa3257d0fce9e9581a6186b211fad73e063bd6",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": false,
+      "use_force_history": true,
+      "motion_only": false,
+      "force_action": true,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": null,
+    "config_sha256": "263aacae73150dc2190108b8ebec22bca4ea8fe5365f937cb70f595868fc887f"
+  },
+  {
+    "cohort": "E2",
+    "label": "C1",
+    "run_id": "E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": true,
+      "use_force_history": true,
+      "motion_only": false,
+      "force_action": true,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": null,
+    "config_sha256": "c03e4553d905cf620d0cdb8c50312eaf4a545f908229405c4ad762840224f244"
+  },
+  {
+    "cohort": "E2",
+    "label": "C2",
+    "run_id": "E2_force_cleanup_20261013_C_r2_20261013T201654_2c8a82453c1b",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r2_20261013T201654_2c8a82453c1b/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": true,
+      "use_force_history": true,
+      "motion_only": false,
+      "force_action": true,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": null,
+    "config_sha256": "07ea9980d650964ab97460fc89620a9a8f6b04f36d06f81a060ee7c17bb02988"
+  },
+  {
+    "cohort": "E2",
+    "label": "C3",
+    "run_id": "E2_force_cleanup_20261013_C_r3_20261013T201751_bb61fb537fa0",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r3_20261013T201751_bb61fb537fa0/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": true,
+      "use_force_history": true,
+      "motion_only": false,
+      "force_action": true,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": null,
+    "config_sha256": "77d853d72011d9b0968b5ad2657a24eb96510ee2ef2eebddde86f6d11f0c8972"
+  },
+  {
+    "cohort": "E2",
+    "label": "C4",
+    "run_id": "E2_force_cleanup_20261013_C_r4_20261013T201854_63aa9f0a5934",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r4_20261013T201854_63aa9f0a5934/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": true,
+      "use_force_history": true,
+      "motion_only": false,
+      "force_action": true,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": null,
+    "config_sha256": "fcd105fa9bac2c370823d67f1af7b16450907bc265b5e8ab1574f7b67cee0862"
+  },
+  {
+    "cohort": "E2",
+    "label": "C5",
+    "run_id": "E2_force_cleanup_20261013_C_r5_20261013T201958_870d2c89c24d",
+    "runtime_file": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r5_20261013T201958_870d2c89c24d/runtime.json",
+    "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+    "il": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "seed": 0,
+      "flow_infer_steps": 10,
+      "chunk_size": 128,
+      "replan_interval_steps": 120,
+      "trajectory_hz": 30.0,
+      "force_history_len": 30,
+      "use_force_observation": true,
+      "use_force_history": true,
+      "motion_only": false,
+      "force_action": true,
+      "pose_conditioning": {
+        "profile": "c_pose_conditioning_20260926_v1",
+        "pose_smooth_window": 35,
+        "handover_s": 0.5,
+        "linear_acceleration_mm_s2": 25.0,
+        "angular_acceleration_rad_s2": 1.7453292519943295
+      }
+    },
+    "executor": {
+      "transport": "e2_timed_topic_v1",
+      "control_period_s": 0.008,
+      "gain_hz": 15.0,
+      "linear_speed_mm_s": 10.0,
+      "angular_speed_rad_s": 0.6981317007977318,
+      "force_rate_N_s": 30.0,
+      "fz_hard_limit_N": 0.0,
+      "contact_on_N": 3.0,
+      "contact_off_N": 1.2,
+      "feedback_max_age_s": 0.2,
+      "max_tick_gap_s": 0.1,
+      "max_plan_age_s": 0.5,
+      "mode_timeout_s": 2.0,
+      "provider_timeout_s": 2.0,
+      "stop_window_s": 0.4,
+      "stop_timeout_s": 15.0,
+      "completion_position_tolerance_mm": 5.0,
+      "completion_rotation_tolerance_rad": 0.05
+    },
+    "common_force_observation": null,
+    "external_force_N": null,
+    "common_conditioner": null,
+    "config_sha256": "748df3d5437e5a920bcecbb427906666e945f04d3c6190d48ad167e5bc247aac"
+  }
+]

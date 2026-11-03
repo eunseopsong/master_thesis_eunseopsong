@@ -1,0 +1,117 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "run_id": "E2_force_cleanup_20261013_A_r1_20261013T195840_cfee7559de76",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_A_r2_20261013T200254_da04a1075552",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_A_r3_20261013T200416_6ffeb5146764",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_A_r5_20261013T200711_ed37cc309c44",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_B_r1_20261013T200856_b55a06b76524",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_B_r2_20261013T201013_0fc3796e2d33",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_B_r3_20261013T201128_ece39e727bc9",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_B_r5_20261013T201347_702cc1eae9be",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_C_r2_20261013T201654_2c8a82453c1b",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_C_r3_20261013T201751_bb61fb537fa0",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_C_r4_20261013T201854_63aa9f0a5934",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    },
+    {
+      "run_id": "E2_force_cleanup_20261013_C_r5_20261013T201958_870d2c89c24d",
+      "ZOH_mean_matches": true,
+      "native_peak_matches": true,
+      "TCP_XY_distance_matches": true,
+      "completion_time_is_original_event_duration": true
+    }
+  ],
+  "all_15_attempts_retained": true,
+  "original_template_unchanged": true,
+  "operator_completion_provenance_recorded": true,
+  "raw_stop_times_unchanged": true,
+  "all_recorded_peaks_below_50N": true,
+  "all_10_existing_videos_decodable": true,
+  "A_video_absence_preserved": true
+}

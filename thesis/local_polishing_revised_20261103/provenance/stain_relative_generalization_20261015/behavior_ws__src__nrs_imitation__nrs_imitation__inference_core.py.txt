@@ -1,0 +1,158 @@
+# behavior_ws/src/nrs_imitation/nrs_imitation/inference_core.py:703-707 (_wrap_axis_delta)
+def _wrap_axis_delta(theta: float) -> float:
+    """Smallest rotation (rad) that aligns one line direction onto another.
+    A stain strip is a line -> direction is mod pi, so the result is in
+    (-pi/2, pi/2]."""
+    return ((float(theta) + math.pi / 2.0) % math.pi) - math.pi / 2.0
+
+
+# behavior_ws/src/nrs_imitation/nrs_imitation/inference_core.py:2887-2941 (_canon_setup)
+    def _canon_setup(self) -> None:
+        """Resolve the rotation that maps the live stain axis onto the trained
+        one, once, when the frozen origin+angle arrive."""
+        self._canon_setup_done = True
+        self._canon_active = False
+        self._canon_alpha = 0.0
+        if not (self.rel_use_relative and self.stain_canon_enable):
+            return
+        if self.stain_canon_live_angle_deg >= 0.0:
+            theta = math.radians(self.stain_canon_live_angle_deg)
+            self.get_logger().warn(
+                f"[CANON] using operator-supplied live stain angle "
+                f"{self.stain_canon_live_angle_deg:.1f}deg (detection bypassed)"
+            )
+        else:
+            theta = getattr(self._srf, "stain_angle", None)
+        if theta is None:
+            self.get_logger().warn(
+                "[CANON] stain_canon_enable=True but no strip angle available "
+                "(dark method publishes one; or pass stain_canon_live_angle_deg). "
+                "Rotation canonicalization OFF."
+            )
+            return
+        alpha = _wrap_axis_delta(math.radians(self.stain_canon_train_angle_deg) - float(theta))
+        lim = math.radians(self.stain_canon_max_angle_deg) if self.stain_canon_max_angle_deg > 0 else None
+        if lim is not None and abs(alpha) > lim:
+            self.get_logger().error(
+                f"[CANON] live stain axis {math.degrees(theta):.1f}deg needs alpha="
+                f"{math.degrees(alpha):+.1f}deg, beyond stain_canon_max_angle_deg="
+                f"{self.stain_canon_max_angle_deg:.0f}. CANONICALIZATION OFF -- the policy "
+                f"will now stroke in the TRAINED direction (~{self.stain_canon_train_angle_deg:.0f}"
+                "deg), NOT along your stain. Ctrl-C now if that's wrong; else raise "
+                "stain_canon_max_angle_deg (image-rotation artifacts grow with it) or draw "
+                "the stain nearer the trained direction."
+            )
+            return
+        self._canon_alpha = float(alpha)
+        self._canon_active = True
+        # Safety: canon rotates the demo-start x,y about the (possibly far)
+        # stain origin -- a big alpha swings it tens of mm. The inference
+        # launches ship demo_start_max_align_dist_mm=0 (gate off); force a
+        # finite gate whenever canon is active so a mis-detected angle can't
+        # drive a violent alignment PTP.
+        if self.demo_start_max_align_dist_mm <= 0.0:
+            self.demo_start_max_align_dist_mm = 120.0
+            self.get_logger().warn(
+                "[CANON] demo_start_max_align_dist_mm was 0 (gate off) -> forcing 120mm "
+                "while canon is active"
+            )
+        self.get_logger().warn(
+            f"[CANON] live stain axis={math.degrees(theta):.1f}deg, trained="
+            f"{self.stain_canon_train_angle_deg:.1f}deg -> rotating obs x,y by "
+            f"{math.degrees(alpha):+.1f}deg (image_rotate={self.stain_canon_rotate_image}, "
+            f"sign={self.stain_canon_image_angle_sign:+.0f}); orientation NOT rotated"
+        )
+
+
+# behavior_ws/src/nrs_imitation/nrs_imitation/inference_core.py:2943-2954 (_canon_rotate_image)
+    def _canon_rotate_image(self, rgb: np.ndarray) -> np.ndarray:
+        """In-plane rotation of the policy's camera frame about the TCP-ROI
+        centre so the live stain presents at the trained direction."""
+        if not self._canon_active or not self.stain_canon_rotate_image or cv2 is None:
+            return rgb
+        h, w = rgb.shape[:2]
+        cx = float(np.clip(self.flow_vector_overlay_tcp_center_x, 0, w - 1))
+        cy = float(np.clip(self.flow_vector_overlay_tcp_center_y, 0, h - 1))
+        deg = self.stain_canon_image_angle_sign * math.degrees(self._canon_alpha)
+        M = cv2.getRotationMatrix2D((cx, cy), deg, 1.0)
+        return cv2.warpAffine(rgb, M, (w, h), flags=cv2.INTER_LINEAR,
+                              borderMode=cv2.BORDER_REFLECT)
+
+
+# behavior_ws/src/nrs_imitation/nrs_imitation/inference_core.py:2956-2969 (_canon_obs_pose6)
+    def _canon_obs_pose6(self, p6: np.ndarray) -> np.ndarray:
+        """Rotate a stain-relative pose into the canonical (trained-direction)
+        frame: x,y only (Rz(alpha)). The tool orientation channel is left
+        untouched -- the polishing pad is axisymmetric, so its yaw carries no
+        task signal, and composing it through rotvec<->matrix near the +/-pi
+        wrap flipped the representation and commanded a violent wrist move
+        (20260910 canon_rot45 test). z / rotation / force pass through."""
+        if not self._canon_active:
+            return p6
+        out = np.asarray(p6, dtype=np.float64).reshape(-1).copy()
+        c, s = math.cos(self._canon_alpha), math.sin(self._canon_alpha)
+        x, y = out[0], out[1]
+        out[0], out[1] = c * x - s * y, s * x + c * y
+        return out.astype(np.float32)
+
+
+# behavior_ws/src/nrs_imitation/nrs_imitation/inference_core.py:2971-2981 (_canon_cmd_seq)
+    def _canon_cmd_seq(self, seq_canon: np.ndarray) -> np.ndarray:
+        """Inverse of _canon_obs_pose6 on a whole (T,>=6) trajectory: x,y only
+        (Rz(-alpha)). Orientation and force columns untouched."""
+        if not self._canon_active:
+            return seq_canon
+        out = seq_canon
+        c, s = math.cos(-self._canon_alpha), math.sin(-self._canon_alpha)
+        x = out[:, 0].copy(); y = out[:, 1].copy()
+        out[:, 0] = c * x - s * y
+        out[:, 1] = s * x + c * y
+        return out
+
+
+# behavior_ws/src/nrs_imitation/nrs_imitation/inference_core.py:2983-3001 (_absolutize_demo_start_pose)
+    def _absolutize_demo_start_pose(self) -> None:
+        """demo_start_pose_mean is stored in the training (canonical) stain
+        frame; rotate its x,y back to the live stain direction, then translate
+        to absolute base coordinates so auto_move_to_demo_start PTPs correctly.
+        Orientation is NOT rotated (see _canon_obs_pose6)."""
+        if self._srf_demo_start_absolutized or self.demo_start_pose6 is None:
+            self._srf_demo_start_absolutized = True
+            return
+        canon = self.demo_start_pose6.astype(np.float64).copy()[:6].reshape(1, 6)
+        rel = self._canon_cmd_seq(canon)                       # x,y: Rz(-alpha)
+        absolute = np.asarray(self._srf.command(rel[0]), dtype=np.float64).reshape(-1)
+        self.demo_start_pose6[:2] = absolute[:2].astype(self.demo_start_pose6.dtype)
+        self._srf_demo_start_absolutized = True
+        self.get_logger().warn(
+            "[SRF] demo_start_pose_mean -> absolute via stain_origin "
+            f"{np.array2string(self._srf.stain_origin, precision=3, separator=', ')}"
+            + (f" + canon x,y {math.degrees(self._canon_alpha):+.1f}deg" if self._canon_active else "")
+            + f": {np.array2string(self.demo_start_pose6, precision=4, separator=', ')}"
+        )
+
+
+# behavior_ws/src/nrs_imitation/nrs_imitation/inference_core.py:3003-3009 (_srf_observation_pose6)
+    def _srf_observation_pose6(self, pose6: np.ndarray) -> np.ndarray:
+        """Absolute measured TCP pose -> what the policy was trained on
+        (stain-relative, then rotation-canonical if enabled)."""
+        if not self.rel_use_relative:
+            return pose6
+        rel = np.asarray(self._srf.observation(pose6.astype(np.float64)), dtype=np.float32)
+        return self._canon_obs_pose6(rel.reshape(-1)[:6])
+
+
+# behavior_ws/src/nrs_imitation/nrs_imitation/inference_core.py:3011-3023 (_srf_command_seq)
+    def _srf_command_seq(self, seq_den: np.ndarray) -> np.ndarray:
+        """Policy trajectory (canonical stain frame) -> absolute base commands:
+        Rz(-alpha) into the stain-relative frame, then + origin. z/force pass
+        through untouched (relative_frame.to_absolute contract)."""
+        if not self.rel_use_relative:
+            return seq_den
+        seq_den = self._canon_cmd_seq(seq_den)                 # canon -> relative
+        absolute_xy = np.asarray(
+            self._srf.command(seq_den[:, :6].astype(np.float64)), dtype=np.float32
+        )
+        seq_den[:, 0] = absolute_xy[:, 0]
+        seq_den[:, 1] = absolute_xy[:, 1]
+        return seq_den

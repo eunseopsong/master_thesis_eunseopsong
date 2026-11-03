@@ -1,0 +1,89 @@
+\chapter{Force-Aware Expert Imitation for Selective Defect Removal}
+\label{chap:force_il}
+
+\section{Expert Repair Objective}
+The expert IL module determines how and to what extent a visually observed defect should be selectively removed from visual context and interaction history. It learns the operator's defect-conditioned local motion pattern, desired contact force, demonstrated tangential feed-velocity profile, and repeated visits. It is not described as an explicit detector, and it is not reduced to replaying a path whose treatment parameters are already known.
+
+\section{Visual, Robot-State, and Wrench-History Observation}
+The policy observation follows Eq.~\eqref{eq:il_observation}. Separate encoders compute
+\begin{align}
+  z_t^I &= f_I(I_t),&
+  z_t^s &= f_s(s_t),&
+  z_t^w &= \operatorname{GRU}(w_{t-K:t}),
+  \label{eq:policy_encoders}
+\end{align}
+and a fusion module produces \(z_t=\operatorname{Fusion}(z_t^I,z_t^s,z_t^w)\). The force branch uses six-axis wrench history as a policy observation. Tangential forces and moments can distinguish partial contact, tool tilt, and unstable interaction that a scalar normal force may conceal. The image encoder, robot-state fields, dimensions, GRU hidden size, and fusion design are \todoexp{TBD}.
+
+\begin{figure}[t]
+  \centering
+  \fbox{\begin{minipage}[c][0.22\textheight][c]{0.90\textwidth}
+    \centering
+    \(I_t\rightarrow\) visual encoder \(\rightarrow z_t^I\)\\
+    \(s_t\rightarrow\) robot-state encoder \(\rightarrow z_t^s\)\\
+    \(w_{t-K:t}\rightarrow\) GRU wrench-history encoder \(\rightarrow z_t^w\)\\[1ex]
+    fused representation \(\rightarrow\)
+    \(\{x^{\mathrm{ref}}_{t:t+H},R^{\mathrm{ref}}_{t:t+H},
+    f^{\mathrm{des}}_{t:t+H}\}\)
+  \end{minipage}}
+  \caption{Force-aware expert imitation architecture. The desired three-axis force trajectory is a controller-level reference; exact network dimensions remain TBD.}
+  \label{fig:force_history_policy}
+\end{figure}
+
+\section{Motion--Force Trajectory Prediction}
+The short-horizon prediction is
+\begin{equation}
+  \pi_{\mathrm{IL}}(z_t)
+  \rightarrow
+  \left\{
+    x^{\mathrm{ref}}_{t:t+H},
+    R^{\mathrm{ref}}_{t:t+H},
+    f^{\mathrm{des}}_{t:t+H}
+  \right\}.
+  \label{eq:motion_force_prediction}
+\end{equation}
+Position and orientation describe demonstrated motion. The desired three-axis force trajectory describes the contact reference to be realized compliantly. Overlapping-horizon selection, temporal ensembling, prediction frequency, and orientation parameterization are \todoexp{to be determined from the final implementation}.
+
+\section{Supervised Learning Objective}
+A conceptual multitask objective is
+\begin{equation}
+  \mathcal{L}_{\mathrm{IL}}
+  =
+  \lambda_x\mathcal{L}_{x}
+  +\lambda_R\mathcal{L}_{R}
+  +\lambda_f\mathcal{L}_{f},
+  \label{eq:imitation_loss}
+\end{equation}
+where the terms penalize position, rotation, and desired-force trajectory error. A rotation-aware loss is required for the selected orientation representation. Loss definitions, weights, normalization, padding masks, optimizer, schedule, batch size, training duration, seeds, and checkpoint selection remain \todoexp{TBD}. Equation~\eqref{eq:imitation_loss} does not imply a finalized network or training recipe.
+
+\section{Why Force History Is Required}
+An instantaneous wrench may be similar during contact establishment, stable processing, or recovery from overload. A history window provides contact trend, persistence, and phase information. The GRU is separated from the visual and robot-state encoders so that current-wrench, flattened-history, LSTM, and GRU variants can be compared while retaining the same policy output and controller. These comparisons test whether temporal contact context supports expert imitation; they do not claim that the GRU is novel.
+
+\section{Why Geometric Localization Alone Is Insufficient}
+A localized region describes where processing is allowed or likely needed, but not the correct intensity at each point. Similar image-space defects may demand different force profiles or repetition, and the interaction history may reveal whether a local pass is effective. The expert policy therefore learns a conditional treatment rather than receiving a complete geometric recipe. Experiment~I in Chapter~\ref{chap:experiments} tests this necessity against fixed geometric/ROI processing and vision-only variants.
+
+\section{Admittance-Based Desired-Force Execution}
+\label{sec:admittance_il}
+The desired contact force is tracked through admittance dynamics:
+\begin{equation}
+  M_d\Delta\ddot p_t+
+  D_d\Delta\dot p_t+
+  K_d\Delta p_t
+  =
+  f_t^{\mathrm{meas}}-f_t^{\mathrm{des}},
+  \label{eq:admittance_il}
+\end{equation}
+with command composition
+\begin{equation}
+  p_t^{\mathrm{cmd}}=p_t^{\mathrm{ref}}+\Delta p_t^{\mathrm{adm}}.
+  \label{eq:il_position_command}
+\end{equation}
+The selected controlled axes and sign convention must be stated. The discrete update, virtual parameters, filtering, saturation, contact-state reset, and robot interface are \todoexp{TBD}. The learned force is never interpreted as a direct actuator command.
+
+\section{Preservation of Demonstrated Feed Velocity}
+During expert IL, the commanded tangential feed velocity equals the demonstrated IL velocity as stated in Eq.~\eqref{eq:preserve_il_velocity}. A residual velocity policy is not active because it would alter the operator strategy whose defect-dependent behavior is being reproduced. A deterministic governor may only reduce or stop motion when excessive force, contact loss, workspace violation, command discontinuity, or another declared safety condition is detected.
+
+\section{Local Repetition and Termination}
+Repeated processing can appear implicitly in the predicted pose sequence or be represented by an explicit continuation decision. The current repository does not establish a learned stopping output. Accordingly, continuation and termination are \todoexp{to be determined from the final implementation}. If execution uses a fixed horizon, operator stop, visual threshold, or explicit rule, that mechanism must be reported and evaluated without being described as learned termination.
+
+\section{Online Execution and Safety Governor}
+At each update, the system preprocesses the image, robot state, and compensated wrench; updates the six-axis history; predicts the reference horizon; selects the current pose and desired-force references; integrates the admittance correction; and applies deterministic safety bounds. The actual measured TCP pose, estimated contact pose, compensated wrench, tangential feed velocity, spindle speed if available, commanded references, contact state, and safety events are logged for Chapter~\ref{chap:removal_estimation}. Residual RL remains disabled throughout this stage.

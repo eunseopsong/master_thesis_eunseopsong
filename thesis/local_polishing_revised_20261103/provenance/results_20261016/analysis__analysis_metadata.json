@@ -1,0 +1,12 @@
+{
+  "evaluation_version": "pass_height_ref_v2",
+  "observer_version": "received_observations_v2",
+  "attempts": 15,
+  "started": 15,
+  "raw_data_modified": false,
+  "force_input": "processed robot_base Fz, unchanged",
+  "command_samples_are_not_sensor_samples": true,
+  "exact_online_interval_replay": true,
+  "gap_s": 0.2,
+  "completion_is_not_material_removal": true
+}

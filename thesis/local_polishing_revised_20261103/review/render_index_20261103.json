@@ -1,0 +1,37 @@
+{
+  "pages": 119,
+  "directory": "review/render_116b84baeff8",
+  "pdf_sha256": "116b84baeff84877d80e81f591a6493011315fef4f6756e30efb22f3da5a6b24",
+  "selected": {
+    "Information contracts for three": 51,
+    "Explanatory information-flow diagram": 52,
+    "Latest E1 summary:": 68,
+    "Original R and separate additional": 69,
+    "E2 results with A4": 71,
+    "Main E3 conditions:": 73,
+    "Main E3 removal results": 75,
+    "All 19 evaluable": 75,
+    "First-index examples": 76,
+    "All 20 main selected": 113,
+    "Unchanged report-embedded D1-4": 115,
+    "Unchanged P2-1 report evidence": 116,
+    "국문요약": 118
+  },
+  "detail_pages": [
+    1,
+    51,
+    52,
+    66,
+    68,
+    69,
+    71,
+    73,
+    75,
+    76,
+    88,
+    113,
+    115,
+    116,
+    118
+  ]
+}

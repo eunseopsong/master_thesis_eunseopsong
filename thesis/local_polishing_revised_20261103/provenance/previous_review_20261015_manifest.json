@@ -1,0 +1,22 @@
+[
+  {
+    "source": "/home/eunseop/master_thesis_eunseopsong/thesis/local_polishing_revised_20261015/ThesisMain.pdf",
+    "sha256": "fdd276fd0b918fd4a63e72e298d41c8737e0e8351c5917baddf1e10de9a0a78a",
+    "bytes": 5497624
+  },
+  {
+    "source": "/home/eunseop/master_thesis_eunseopsong/thesis/local_polishing_revised_20261015/ThesisCover.pdf",
+    "sha256": "e4f230115bc0c9b0a41c5895ab854890d005baf3acc90835d2698f2e9b9572c8",
+    "bytes": 876609
+  },
+  {
+    "source": "/home/eunseop/master_thesis_eunseopsong/thesis/local_polishing_revised_20261015/ThesisMain.tex",
+    "sha256": "85a82cb8aec3d402c2b2a920bdd2897329c7abe3434528eaf0333bd6e012b749",
+    "bytes": 6557
+  },
+  {
+    "source": "/home/eunseop/master_thesis_eunseopsong/thesis/local_polishing_revised_20261015.zip",
+    "sha256": "453cf6cc543382e2fb89331c1b6c78524acb024a031feeb2d88352c8dc09b4f2",
+    "bytes": 12252011
+  }
+]

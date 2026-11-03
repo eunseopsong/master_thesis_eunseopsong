@@ -1,0 +1,89 @@
+{
+  "schema": "E1_contact_task_experiment_v1",
+  "experiment_version": "pass_height_ref_v2_nominal_20261014",
+  "surface_reference_z_mm": 172.0,
+  "delta_h_mm": 1.0,
+  "height_conditions": {
+    "NOMINAL": 0.0,
+    "HIGH": 1.0,
+    "LOW": -1.0
+  },
+  "height_is_metadata_only": true,
+  "physical_height_changed_by_label": false,
+  "task_definition_file": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/task_definition.json",
+  "task_evaluation_file": "/home/eunseop/nrs_imitation/experiments/E1_contact_task_pass_height_v2/task_evaluation.json",
+  "seed": 20261014,
+  "planned_repeats": 5,
+  "planned_trials": 15,
+  "development_default": true,
+  "stage_immutable_at_session_creation": true,
+  "unattended_batch_execution": false,
+  "original_command_period_s": 0.008,
+  "original_C_trajectory_hz": 30.0,
+  "original_C_stride_points": 120,
+  "original_C_chunk_points": 128,
+  "RPM": null,
+  "physical_setup_record_required_for_height_claim": true,
+  "provenance": {
+    "surface_reference_z_mm": {
+      "value": 172.0,
+      "origin": "user approximate physical surface height; no TCP contact gate"
+    },
+    "delta_h_mm": {
+      "value": 1.0,
+      "origin": "new experiment development default; physical placement by operator"
+    },
+    "roi": {
+      "origin": "user approximate endpoints/width adopted as new fixed task definition"
+    },
+    "fixed_task_datum_xy_mm": {
+      "value": [
+        457.4,
+        375.0
+      ],
+      "origin": "audited original demonstration relative-coordinate registration; not stain midpoint"
+    },
+    "event_confirm_s": {
+      "value": 0.2,
+      "origin": "new event evaluation development default"
+    },
+    "release_rise_mm": {
+      "value": 5.0,
+      "origin": "new displacement evaluation development default"
+    },
+    "contact_gate": {
+      "on_N": 3.0,
+      "off_N": 1.2,
+      "origin": "existing E1 executor measured base Fz hysteresis"
+    },
+    "force_reference_upper_N": {
+      "value": 30.812396273,
+      "origin": "force audit v2 A; all42 demo base-axis Q95; analysis only"
+    },
+    "common_execution": {
+      "path": "/home/eunseop/nrs_imitation/experiments/e1_contact_coverage_20261012/versions/20261013_force_cleanup_C/execution_C.json",
+      "sha256": "7118f2582d92d8d42e88fb0c815314a0b233949324cdabb940ef90a0f217aaf8"
+    },
+    "actual_C_run": {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E1_contact_coverage/E1_contact_coverage_20261013/C/E1_CC_C_r1_20261013T195506_375fde77fd/execution_config.json",
+      "sha256": "8d0e6ee1f85fc1dd67c19c1983f854cda24b28af81ee115aec23d01e215f19b6"
+    },
+    "stain_mask": {
+      "origin": "user excluded mask validation; existing image interface retained"
+    }
+  },
+  "execution_order": "nominal_randomized_blocks",
+  "randomized": true,
+  "execution_order_provenance": "New NOMINAL: 5 complete R/T/C blocks randomized with seed 20261014",
+  "seed_usage": "seeded R/T/C shuffle independently inside each of 5 NOMINAL blocks",
+  "evaluation_version": "pass_height_ref_v2",
+  "observer_version": "received_observations_v2",
+  "source_session_id": "E1_CT_sync_confirm_dev_20261014",
+  "source_config_version_id": "e1ct_61a19f7d7337a82c",
+  "planned_height_conditions": [
+    "NOMINAL"
+  ],
+  "prepared_session_id": "E1_CT_pass_height_v2_nominal_dev_20261014",
+  "prepared_session_stage": "development",
+  "inherited_height_conditions_for_future_sessions": true
+}

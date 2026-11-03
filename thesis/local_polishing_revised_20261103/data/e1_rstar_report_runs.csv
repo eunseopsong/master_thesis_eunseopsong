@@ -1,0 +1,6 @@
+display_label,run_id,date,completion_time_s,J_excess_Ns,peak_Fz_base_N,pass_mean_xy_mm_s,source,value_precision,config_version
+R*1,,2026-10-19,22.481,0.0,21.488,10.696,"E1_report_20261019_R_dataset_mean_feed_5runs.pdf, p.5",printed 0.001; original per-run CSV unavailable,e1ct_6c29a198a24df7a2
+R*2,,2026-10-19,25.319,0.0,22.0,10.887,"E1_report_20261019_R_dataset_mean_feed_5runs.pdf, p.5",printed 0.001; original per-run CSV unavailable,e1ct_c5c424abc45fac4c
+R*3,,2026-10-19,25.52,0.0,20.541,10.886,"E1_report_20261019_R_dataset_mean_feed_5runs.pdf, p.5",printed 0.001; original per-run CSV unavailable,e1ct_c5c424abc45fac4c
+R*4,,2026-10-19,25.458,0.0,22.727,10.822,"E1_report_20261019_R_dataset_mean_feed_5runs.pdf, p.5",printed 0.001; original per-run CSV unavailable,e1ct_c5c424abc45fac4c
+R*5,,2026-10-19,25.42,0.0,20.944,10.915,"E1_report_20261019_R_dataset_mean_feed_5runs.pdf, p.5",printed 0.001; original per-run CSV unavailable,e1ct_c5c424abc45fac4c

@@ -1,0 +1,155 @@
+{
+  "session": "E1_CT_pass_height_v2_nominal_dev_20261015",
+  "config_version_id": "e1ct_46de718a23a2a7cf",
+  "evaluation_version": "pass_height_ref_v2",
+  "observer_version": "received_observations_v2",
+  "registered": 15,
+  "started": 15,
+  "completed": 15,
+  "page_count": 15,
+  "page_titles": [
+    "E1 NOMINAL 보완 실험 보고서",
+    "고정 설정과 기준 세션",
+    "15회 개별 실행 결과",
+    "완료시간·힘·반복 편차",
+    "실제 수신 힘의 시간 변화",
+    "실측 TCP 경로와 높이",
+    "성공 통과의 높이 기준과 이탈",
+    "로그 저장·관측·판정 재현 검증",
+    "R | 초기·최종 저장 사진",
+    "T | 초기·최종 저장 사진",
+    "C | 초기·최종 저장 사진",
+    "R | 원본 제거량 추정 히트맵",
+    "T | 원본 제거량 추정 히트맵",
+    "C | 원본 제거량 추정 히트맵",
+    "결과 해석과 LOW/HIGH 인계"
+  ],
+  "table_text_checks": [
+    {
+      "page": 1,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 2,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 3,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 4,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 5,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 6,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 7,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 8,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 9,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 10,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 11,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 12,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 13,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 14,
+      "figure_text_and_table_cells_fit": true
+    },
+    {
+      "page": 15,
+      "figure_text_and_table_cells_fit": true
+    }
+  ],
+  "axis_text_checks": [
+    {
+      "page": 1,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 2,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 3,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 4,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 5,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 6,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 7,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 8,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 9,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 10,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 11,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 12,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 13,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 14,
+      "plot_text_within_page": true
+    },
+    {
+      "page": 15,
+      "plot_text_within_page": true
+    }
+  ],
+  "outcome_sha256": "d07ed3ca45ccc8779421c77d1d49a954db874b862466cece0baeda9b79bab116",
+  "pdf_sha256": "a12a9d89ec96cace859d9d9f669e13f01ca426906aa27257f54931142a931870",
+  "target": "/home/eunseop/nrs_imitation/results/20261015/E1_report_20261015_nominal_pass_height_v2.pdf",
+  "raw_data_modified": false
+}

@@ -1,0 +1,252 @@
+{
+  "schema": "e2_force_cleanup_models_v1",
+  "status": "validated",
+  "dataset_manifest_sha256": "b506029ffa76ccdc8a917b79f26bd44df156f16b052bca010e239f9ed8fe0f7c",
+  "force_preprocessing": {
+    "schema": "e2_force_cleanup_v1",
+    "noncontact_z_mm": 175.0,
+    "noncontact_comparison": "z > boundary",
+    "fz_rule": "max(fz, 0)",
+    "noncontact_force": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "contact_fx_fy": "preserve original signed values",
+    "channels": [
+      "action/force",
+      "observations/force"
+    ],
+    "position_unit": "mm",
+    "force_unit": "N"
+  },
+  "position_frame": "stain_relative_v1",
+  "use_relative_position": true,
+  "rotation_aligned": false,
+  "models": {
+    "A": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/A/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "2ea204ab65fbd0dcfb089e4638f78e7d2674bcb47c199ec70ea4777c5aeca95c",
+      "normalizer_sha256": "ae7d07adf65af560871d23a6cde9f58ff92a4e551ef7829f3b251a96a1f6a73f",
+      "best_epoch_zero_based": 39,
+      "validation_loss": 0.049721652203622985,
+      "last_epoch_zero_based": 499,
+      "strict_state_load": true,
+      "finite_weights": true,
+      "offline_prediction_audit": [
+        {
+          "episode": "episode_35.hdf5",
+          "index": 0,
+          "finite_output": true
+        },
+        {
+          "episode": "episode_35.hdf5",
+          "index": 176,
+          "finite_output": true
+        },
+        {
+          "episode": "episode_39.hdf5",
+          "index": 0,
+          "finite_output": true
+        },
+        {
+          "episode": "episode_39.hdf5",
+          "index": 163,
+          "finite_output": true
+        },
+        {
+          "episode": "episode_22.hdf5",
+          "index": 0,
+          "finite_output": true
+        },
+        {
+          "episode": "episode_22.hdf5",
+          "index": 169,
+          "finite_output": true
+        },
+        {
+          "episode": "episode_37.hdf5",
+          "index": 0,
+          "finite_output": true
+        },
+        {
+          "episode": "episode_37.hdf5",
+          "index": 193,
+          "finite_output": true
+        }
+      ],
+      "state_dim": 6,
+      "action_dim": 6,
+      "motion_only": true,
+      "use_force_observation": false,
+      "use_force_history": false,
+      "force_action": false
+    },
+    "B": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/B/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "080103e6c2ed055a56a1fdd512aafa205cc3ac847ea6ebcbaa52ddc0e6cd99ad",
+      "normalizer_sha256": "d7c917b8246c1ff25bbec5c073fa3257d0fce9e9581a6186b211fad73e063bd6",
+      "best_epoch_zero_based": 42,
+      "validation_loss": 0.06994766785817988,
+      "last_epoch_zero_based": 499,
+      "strict_state_load": true,
+      "finite_weights": true,
+      "offline_prediction_audit": [
+        {
+          "episode": "episode_35.hdf5",
+          "index": 0,
+          "finite_output": true,
+          "raw_fz_min_N": -2.024312734603882,
+          "raw_fz_max_N": 22.142419815063477,
+          "raw_negative_fz_predictions": 47
+        },
+        {
+          "episode": "episode_35.hdf5",
+          "index": 176,
+          "finite_output": true,
+          "raw_fz_min_N": -0.33691805601119995,
+          "raw_fz_max_N": 25.036136627197266,
+          "raw_negative_fz_predictions": 2
+        },
+        {
+          "episode": "episode_39.hdf5",
+          "index": 0,
+          "finite_output": true,
+          "raw_fz_min_N": -2.7407495975494385,
+          "raw_fz_max_N": 23.30497932434082,
+          "raw_negative_fz_predictions": 62
+        },
+        {
+          "episode": "episode_39.hdf5",
+          "index": 163,
+          "finite_output": true,
+          "raw_fz_min_N": -0.7492250800132751,
+          "raw_fz_max_N": 30.7819881439209,
+          "raw_negative_fz_predictions": 9
+        },
+        {
+          "episode": "episode_22.hdf5",
+          "index": 0,
+          "finite_output": true,
+          "raw_fz_min_N": -2.801600217819214,
+          "raw_fz_max_N": 24.71673583984375,
+          "raw_negative_fz_predictions": 59
+        },
+        {
+          "episode": "episode_22.hdf5",
+          "index": 169,
+          "finite_output": true,
+          "raw_fz_min_N": -1.0057893991470337,
+          "raw_fz_max_N": 30.716127395629883,
+          "raw_negative_fz_predictions": 14
+        },
+        {
+          "episode": "episode_37.hdf5",
+          "index": 0,
+          "finite_output": true,
+          "raw_fz_min_N": -2.5188519954681396,
+          "raw_fz_max_N": 19.489294052124023,
+          "raw_negative_fz_predictions": 82
+        },
+        {
+          "episode": "episode_37.hdf5",
+          "index": 193,
+          "finite_output": true,
+          "raw_fz_min_N": -1.2571771144866943,
+          "raw_fz_max_N": 27.362512588500977,
+          "raw_negative_fz_predictions": 15
+        }
+      ],
+      "state_dim": 9,
+      "action_dim": 9,
+      "motion_only": false,
+      "use_force_observation": false,
+      "use_force_history": true,
+      "force_action": true
+    },
+    "C": {
+      "checkpoint": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "checkpoint_sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f",
+      "normalizer_sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49",
+      "best_epoch_zero_based": 42,
+      "validation_loss": 0.06644432400079335,
+      "last_epoch_zero_based": 499,
+      "strict_state_load": true,
+      "finite_weights": true,
+      "offline_prediction_audit": [
+        {
+          "episode": "episode_35.hdf5",
+          "index": 0,
+          "finite_output": true,
+          "raw_fz_min_N": -1.6107033491134644,
+          "raw_fz_max_N": 22.129804611206055,
+          "raw_negative_fz_predictions": 47
+        },
+        {
+          "episode": "episode_35.hdf5",
+          "index": 176,
+          "finite_output": true,
+          "raw_fz_min_N": 0.2726787328720093,
+          "raw_fz_max_N": 25.06568717956543,
+          "raw_negative_fz_predictions": 0
+        },
+        {
+          "episode": "episode_39.hdf5",
+          "index": 0,
+          "finite_output": true,
+          "raw_fz_min_N": -2.0672879219055176,
+          "raw_fz_max_N": 23.523481369018555,
+          "raw_negative_fz_predictions": 52
+        },
+        {
+          "episode": "episode_39.hdf5",
+          "index": 163,
+          "finite_output": true,
+          "raw_fz_min_N": 0.14167961478233337,
+          "raw_fz_max_N": 28.8769474029541,
+          "raw_negative_fz_predictions": 0
+        },
+        {
+          "episode": "episode_22.hdf5",
+          "index": 0,
+          "finite_output": true,
+          "raw_fz_min_N": -2.422614336013794,
+          "raw_fz_max_N": 25.082538604736328,
+          "raw_negative_fz_predictions": 50
+        },
+        {
+          "episode": "episode_22.hdf5",
+          "index": 169,
+          "finite_output": true,
+          "raw_fz_min_N": -0.10462810844182968,
+          "raw_fz_max_N": 29.669702529907227,
+          "raw_negative_fz_predictions": 2
+        },
+        {
+          "episode": "episode_37.hdf5",
+          "index": 0,
+          "finite_output": true,
+          "raw_fz_min_N": -2.323668956756592,
+          "raw_fz_max_N": 20.93904685974121,
+          "raw_negative_fz_predictions": 77
+        },
+        {
+          "episode": "episode_37.hdf5",
+          "index": 193,
+          "finite_output": true,
+          "raw_fz_min_N": 0.10567743331193924,
+          "raw_fz_max_N": 27.048635482788086,
+          "raw_negative_fz_predictions": 0
+        }
+      ],
+      "state_dim": 9,
+      "action_dim": 9,
+      "motion_only": false,
+      "use_force_observation": true,
+      "use_force_history": true,
+      "force_action": true
+    }
+  },
+  "checkpoint_selection": "minimum validation loss over 500 epochs",
+  "completed_at": "2026-10-13T11:27:55.873837+09:00"
+}

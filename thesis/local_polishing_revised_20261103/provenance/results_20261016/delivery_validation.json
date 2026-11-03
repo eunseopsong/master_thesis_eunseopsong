@@ -1,0 +1,31 @@
+{
+  "all_passed": true,
+  "checks": {
+    "all15_raw_storage_checks_pass": true,
+    "independent_numeric_checks_pass": true,
+    "renderer_15_pages": true,
+    "pdf_A4": true,
+    "pdf_hash_matches_renderer": true,
+    "outcomes_hash_matches_numeric": true,
+    "exact_statistics_and_evidence_in_text": true,
+    "all_run_labels_in_text": true,
+    "no_unicode_replacement_character": true,
+    "both_korean_fonts_embedded": true,
+    "all15_previews_present": true,
+    "old_20261014_pdf_unchanged": true
+  },
+  "pdf": "/home/eunseop/nrs_imitation/results/20261015/E1_report_20261015_nominal_pass_height_v2.pdf",
+  "pdf_sha256": "a12a9d89ec96cace859d9d9f669e13f01ca426906aa27257f54931142a931870",
+  "visual_review": {
+    "all_15_page_contact_sheet": "previews/contact_sheet.png",
+    "detailed_page": "previews/page_07.png",
+    "result": "all pages visually inspected; tables, charts, Korean text, all-run photo and heatmap grids legible, no observed overlap"
+  },
+  "scope": "NOMINAL actual session only; all fifteen attempts retained; robot not started by this verification",
+  "height_command_preview": {
+    "active_session": "E1_CT_pass_height_v2_heights_dev_20261014_v2",
+    "first_selected": "HIGH T repeat1",
+    "attempt_allocated": false,
+    "robot_started": false
+  }
+}

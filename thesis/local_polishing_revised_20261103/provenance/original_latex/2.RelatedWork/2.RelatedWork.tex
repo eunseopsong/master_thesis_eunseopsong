@@ -1,0 +1,50 @@
+\chapter{Related Work}
+\label{chap:related_work}
+
+\section{Robotic Surface Repair and Polishing}
+Robotic surface processing combines task specification, path planning, contact regulation, and process monitoring. Coverage planners reason about workpiece boundaries, tool footprints, reachability, and collision constraints, while polishing controllers regulate contact along curved surfaces~\cite{schneyer2023segmentation,mcgovern2024coverage,mohsin2019path}. Integrated surface-treatment systems demonstrate the value of connecting inspection, planning, and controlled execution~\cite{alt2024robogrind,tafuro2024autonomous}. FAIRE focuses specifically on the division between uncertain defect-dependent treatment and quantitative post-removal blending.
+% TODO: Add references on robotic defect repair and blending.
+
+\section{Vision-Based Defect Localization and Geometric Repair Planning}
+Vision can identify candidate defect regions and provide geometry for a local path. Such localization answers where a defect appears, but a repair controller also needs a target removal amount and process conditions. These values are especially uncertain when appearance is an incomplete proxy for depth and material response. FAIRE therefore treats visual context as part of an expert policy observation instead of assuming that an image-space region fully specifies the repair.
+% TODO: Add verified references on vision-based defect localization for robotic repair.
+
+\section{Imitation Learning for Contact-Rich Manipulation}
+Visuomotor imitation policies learn temporally coherent actions from demonstrations~\cite{zhao2023act,chi2025diffusionpolicy}. Contact-rich manipulation adds latent interaction state: similar images and poses can correspond to approach, stable contact, excessive loading, or contact loss. Force-aware methods incorporate wrench observations or force-related actions to reduce this ambiguity~\cite{zhou2024admitdiff,liu2025forcemimic,he2025foar,yang2023momaforce}. FAIRE uses this principle to learn defect-conditioned selective treatment rather than generic trajectory replay.
+
+\section[Force-Aware Motion--Force Demonstration Learning]{Force-Aware Motion--Force\\ Demonstration Learning}
+External teaching devices can capture human motion independently of a robot embodiment, while force/torque instrumentation records the accompanying interaction. ForceMimic provides a relevant precedent for force--motion capture in contact-rich tasks~\cite{liu2025forcemimic}. FAIRE retains a handheld device equipped with a six-axis force/torque sensor, VR-to-robot calibration, and synchronized image, pose, orientation, and wrench recording. Its subsystem study compares current-wrench and wrench-history observations and MLP, LSTM, and GRU encoders without claiming novelty for recurrence itself.
+
+\section{Admittance and Compliant Contact Control}
+Impedance and admittance control specify compliant relations between motion and interaction force~\cite{hogan1985impedance,villani2008forcecontrol,keemink2018admittance}. Admittance control is appropriate when a policy provides a desired contact force but the robot accepts Cartesian motion references. In FAIRE, desired contact force always denotes a controller-level reference. The controller changes the normal-direction position to track it; the policy output is not a direct actuator force.
+
+\section{Material-Removal Modeling and Tool Influence Functions}
+Preston's model relates removal to pressure and relative velocity~\cite{preston1927theory}. Spatial polishing models further require a tool influence function (TIF) describing how contact distributes removal around a tool pose. A usable repair map must combine calibrated process response, normal force, true tool--surface relative velocity, dwell, overlap, and tool geometry. FAIRE introduces this established modeling principle as the bridge from executed IL behavior to a spatial estimate; it does not claim Preston's relation or the TIF concept as new.
+% TODO: Add verified references on TIF calibration and spatial material-removal prediction.
+
+\section{Robotic Blending and Coverage Planning}
+Coverage planning generates raster, contour, or related paths over a defined region and assigns spacing, overlap, and process conditions~\cite{schneyer2023segmentation,mcgovern2024coverage}. For localized blending, uniform processing with an abrupt boundary is undesirable because it can preserve a step between processed and intact material. FAIRE instead defines a uniform target in a core region and a smoothly decreasing target in a transition band, then plans only the additional removal demanded by their residual map.
+
+\section{Residual Learning for Surface and Process Adaptation}
+Residual learning places bounded learned corrections around a nominal controller, limiting the policy's responsibility and preserving an interpretable baseline. Related contact-rich work supports learned reactive or compliance-aware corrections~\cite{hou2025adaptivecompliance,xue2025reactivediffusion}. In FAIRE, residual RL is restricted to the blending stage. Roll and pitch adapt tool orientation, and a feed-velocity residual responds to spatially varying removal demand and contact stability. Neither residual modifies the demonstrated expert IL stroke.
+
+\section{Positioning of FAIRE}
+\begin{table}[t]
+\centering
+\caption{Functional positioning of FAIRE. Entries describe responsibilities rather than claims of algorithmic novelty.}
+\label{tab:related_positioning}
+\small
+\begin{tabularx}{\textwidth}{p{0.22\textwidth}XXX}
+\toprule
+Component & Input or target & Responsibility & Boundary \\
+\midrule
+Expert IL & Image, robot state, six-axis wrench history & Infer defect-conditioned selective treatment & Does not produce a quantitative restoration profile \\
+Removal model & Actual execution history & Estimate spatial processing/removal produced by IL & Proxy until \(K\) and TIF are calibrated \\
+Blending planner & Target and residual-removal maps & Specify local coverage and nominal process conditions & Does not infer original defect severity \\
+Admittance & Desired contact force & Adapt normal position to unknown height & Force is a controller-level reference \\
+Residual RL & Local blending state and residual demand & Adapt roll, pitch, and tangential feed velocity & Active only during blending \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+FAIRE is positioned as an integrated system in which IL acts as an expert and model-based blending acts as a structured restoration skill. Its research claim must be evaluated by the staged experiments in Chapter~\ref{chap:experiments}; the present draft reports no positive quantitative result.

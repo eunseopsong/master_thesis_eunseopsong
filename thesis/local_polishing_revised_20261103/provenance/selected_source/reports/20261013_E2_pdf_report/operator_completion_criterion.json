@@ -1,0 +1,16 @@
+{
+  "schema": "E2_operator_completion_criterion_v1",
+  "scope": "all 15 E2_force_cleanup_20261013 A/B/C attempts",
+  "source": "operator statement in this conversation after the experiments",
+  "statement_ko": "작업자가 종료 시점을 정하기는 했으나, 로봇이 얼룩을 다 지워내고 접촉 해제 상승 이후 재하강하려는 시점 직후에 종료를 해서 달성시간이나 가공 효율 차이로 해석해도 좋아",
+  "completion_basis": "operator observed stain removal completed, followed by contact-release/lift and start of a further descent",
+  "time_definition": "execution_start receipt -> first operator_finish stop request; same event window as before",
+  "time_name_ko": "작업자 확인 기준의 작업 완료시간",
+  "comparison": "completion time and time-based processing efficiency under the operator-stated common completion criterion",
+  "earliest_stain_removal_timestamp_measured": false,
+  "physical_contact_release_independently_verified": false,
+  "post_observation_operator_response_delay_corrected": false,
+  "force_or_coverage_evaluation_thresholds_added": false,
+  "raw_data_or_stop_times_changed": false,
+  "interpretation_confirmed_after_runs": true
+}
