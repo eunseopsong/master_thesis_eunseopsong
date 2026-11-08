@@ -1,4 +1,4 @@
-\documentclass[12pt,titlepage,headings,oneside,openany]{book}
+\documentclass[11pt,titlepage,headings,oneside,openany]{book}
 \usepackage{kotex}
 \usepackage{graphicx}
 \usepackage{epsfig}
@@ -36,6 +36,8 @@
 \usepackage{placeins}
 \usepackage{mathtools}
 \usepackage{microtype}
+\usepackage{newtxtext}
+\usepackage{setspace}
 \ifpdf
   \usepackage[CJKbookmarks]{hyperref}
   \hypersetup{hidelinks}
@@ -49,12 +51,11 @@
 % chapter spacing, which pushed chapter titles far below the top of the page.
 \usepackage[
   a4paper,
-  top=25mm,
-  bottom=25mm,
-  left=36mm,
-  right=36mm,
-  includefoot,
-  footskip=10mm
+  top=38mm,
+  bottom=38mm,
+  left=30mm,
+  right=30mm,
+  footskip=23mm
 ]{geometry}
 
 % Place chapter headings at the top of the text area instead of adding the
@@ -65,29 +66,35 @@
   {\parindent \z@ \raggedright \normalfont
     \ifnum \c@secnumdepth >\m@ne
       \if@mainmatter
-        \huge\bfseries \@chapapp\space \thechapter
+      \fontsize{16}{21}\selectfont\bfseries \@chapapp\space \thechapter
         \par\nobreak
         \vskip 14\p@
       \fi
     \fi
     \interlinepenalty\@M
-    \Huge \bfseries #1\par\nobreak
-    \vskip 28\p@
+    \fontsize{16}{21}\selectfont \bfseries #1\par\nobreak
+    \vskip 22\p@
   }}
 \def\@makeschapterhead#1{%
   \vspace*{0pt}%
   {\parindent \z@ \raggedright \normalfont
     \interlinepenalty\@M
-    \Huge \bfseries #1\par\nobreak
-    \vskip 28\p@
+    \fontsize{16}{21}\selectfont \bfseries #1\par\nobreak
+    \vskip 22\p@
   }}
 \makeatother
+\usepackage{sectsty}
+\sectionfont{\fontsize{14}{18}\selectfont}
+\subsectionfont{\fontsize{12}{16}\selectfont}
+\setlength{\parindent}{2em}
+\hyphenpenalty=800
+\exhyphenpenalty=800
+\lefthyphenmin=3
+\righthyphenmin=3
+\emergencystretch=1em
+\widowpenalty=10000
+\clubpenalty=10000
 \hfuzz2pt
-\newlength{\defbaselineskip}
-\setlength{\defbaselineskip}{\baselineskip}
-\newcommand{\setlinespacing}[1]{\setlength{\baselineskip}{#1 \defbaselineskip}}
-\newcommand{\doublespacing}{\setlength{\baselineskip}{2.0 \defbaselineskip}}
-\newcommand{\singlespacing}{\setlength{\baselineskip}{\defbaselineskip}}
 
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,fit,calc,shapes.geometric}
@@ -95,6 +102,7 @@
  link/.style={-{Latex[length=2mm]},thick},note/.style={align=center,font=\footnotesize}}
 \newcommand{\thesistitle}{Human-Guided Local Robotic Polishing via Joint Motion--Force Representation and Force-Conditioned Imitation Learning}
 \newcommand{\thesistitlekr}{인간의 영역 지정과 동작--힘 결합 표현 및 힘 조건부 모방학습을 활용한 국소 로봇 폴리싱}
+\input{thesis_metadata}
 \newcommand{\vect}[1]{\bm{#1}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\NA}{\textemdash}
@@ -130,20 +138,22 @@
 \renewcommand{\arraystretch}{1.15}
 \setcounter{tocdepth}{1}
 \setcounter{secnumdepth}{2}
-\hypersetup{pdftitle={Human-Guided Local Robotic Polishing},pdfsubject={Revised master's thesis draft}}
+\hypersetup{pdftitle={\thesistitle},pdfauthor={\thesisauthor},pdfsubject={Master's thesis for examination}}
 
 \begin{document}
-\setlinespacing{1.7}
-\def\baselinestretch{1}
+\doublespacing
 \pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}
 \hypersetup{pageanchor=false}
 \input{titlepage}
+\input{examination_frontmatter}
 \pagenumbering{roman}
 \hypersetup{pageanchor=true}
+\begingroup\singlespacing
 \tableofcontents\clearpage
 \phantomsection\addcontentsline{toc}{chapter}{List of Tables}\listoftables\clearpage
 \phantomsection\addcontentsline{toc}{chapter}{List of Figures}\listoffigures\clearpage
+\endgroup
 \include{abstract_eng}
 \include{chapters/00_notation}
 \pagenumbering{arabic}\setcounter{page}{1}
@@ -158,7 +168,6 @@
 \include{chapters/09_conclusions}
 \clearpage
 \bibliographystyle{IEEEtran}\bibliography{Bibliography/ThesisRef}
-\setlinespacing{1.44}
 \include{chapters/10_appendices}
 \include{abstract_kr}
 \end{document}

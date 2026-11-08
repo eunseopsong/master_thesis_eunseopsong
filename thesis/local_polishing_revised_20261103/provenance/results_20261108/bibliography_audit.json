@@ -1,0 +1,25 @@
+{
+  "entries": 13,
+  "cited_keys": [
+    "schneyer2023segmentation",
+    "mohsin2019path",
+    "alt2024robogrind",
+    "chen2025dexforce",
+    "liu2025forcemimic",
+    "he2025foar",
+    "zhou2024admitdiff",
+    "zhao2023act",
+    "chi2023diffusionpolicy",
+    "lipman2023flow",
+    "simeoni2025dinov3",
+    "hogan1985impedance",
+    "keemink2018admittance"
+  ],
+  "missing_keys": [],
+  "unused_keys": [],
+  "bib_unchanged_from_baseline": true,
+  "verification": "Current cite-key, reference-list, local bibliography, and inherited primary-source audit correspondence checked; no new literature or bibliographic field inferred.",
+  "prior_primary_verification": "notes/literature_verification.md dated 2026-10-15; preserved locally",
+  "freshly_verified_fields": "No complete fresh publisher-by-publisher DOI verification is asserted",
+  "new_claims_or_references_added": false
+}

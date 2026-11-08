@@ -38,54 +38,18 @@ The contact procedure is a meaningful intermediate target for local polishing. A
 
 E3 adds a directly observed processing outcome: the percentage reduction of segmented board-marker ink area. N/P1/D1/D2 have means of \EthreeNRemoval, \EthreePoneRemoval, \EthreeDoneRemoval, and \EthreeDtwoRemoval\% across \EthreeImageN{} evaluable image pairs. These high condition means support practical reuse of the same policy with task registration and direction alignment within the tested placements. The 83.879\% D2-3 value remains an individual observation, while D1-4 and P2 remain image-unavailable; the range of means is not a minimum performance guarantee.
 
-A completed traversal, operator completion, and a reduced image stain are complementary observations. E3 provides a quantitative ink-area outcome that was absent from the earlier thesis, but that evidence belongs to its own cohort. It cannot establish E1/E2 removal quality or productivity at equal removal. Neither marker disappearance nor an execution-derived heatmap independently measures metal depth, roughness, or micro-scratch restoration. This distinction preserves the positive result while stating its physical scope.
+A completed traversal, operator completion, and a reduced image stain are complementary observations. E3 provides a quantitative ink-area outcome for its own spatial-transfer cohort. It cannot establish E1/E2 removal quality or productivity at equal removal. Neither marker disappearance nor an execution-derived heatmap independently measures metal depth, roughness, or micro-scratch restoration. This distinction preserves the positive result while stating its physical scope.
 
-\section{Execution-Derived Dose}
-\label{chap:removal_estimation}
-The repository includes an execution-derived heatmap recorder. It integrates a Preston-style force--speed product along the measured path and optionally spreads it over a nominal tool kernel. Its diagnostic quantity can be expressed as
-\begin{equation}
- D(x,y)=\sum_k\kappa\,F_{n,k}\,v_k\,\Delta t_k\,
-                 K_{\mathrm{tool}}(x-x_k,y-y_k),
- \label{eq:preston_spatial}
-\end{equation}
-where \((x_k,y_k)\) is the recorded path location, \(F_{n,k}\) the implementation's selected force component or projection, \(v_k\) its selected speed, \(\Delta t_k\) the observation duration, and \(K_{\mathrm{tool}}\) a spatial spreading kernel. Without a measured coefficient and tool-response calibration, \(\kappa\) defines relative scale and \(D\) has arbitrary units. Different recorder/extension versions also make different kernel and speed-model choices.
-
-\begin{figure}[tbp]\centering
-\includegraphics[width=\linewidth]{figures/E1_C1_diagnostic_heatmap.png}
-\caption[Uncalibrated execution heatmap]{Historical execution-derived heatmap from E1 C1 on 14 October 2026, reproduced with its original axes and colorbar. Values are an uncalibrated model diagnostic in arbitrary units. They are not measured removal depth, effective contact footprint, or surface-quality improvement. This historical illustration is separate from the 15 October primary E1 cohort.}
-\label{fig:diagnostic_heatmap}
-\end{figure}
-
-The implementation and generated artifact support calling this an implemented diagnostic extension. They do not support the older claim of a calibrated material-removal model. Its spatial distribution may help inspect where modeled processing exposure accumulated, but equal dose is not demonstrated equal removal on the actual specimen.
-
-\section{Blending and Adaptive Execution Assets}
-\label{chap:blending}
-The project also contains finite local blending-path generation from an existing dose map, construction of an additional spatial target, and time allocation along a path. The 13 October extension prepares a sequence in which an initial skill is followed by a separate blending pass and diagnostic displays. Its archived validation includes offline planning from an earlier execution. That is evidence of an implemented extension, not an E1--E3 surface-uniformity result.
-
-Separate 14 October adaptive-velocity records provide development experience with reference-clock progression and replanning. The located runtime files contain five online-OFF development attempts across multiple versions. Their completion status does not establish a controlled adaptive ON/OFF process-quality comparison. A later source revision addresses a recorded stalled reference-clock case, but its README explicitly distinguishes offline checking from a new physical run. These records are therefore kept outside the nominal E2 A/B/C cohort.
-
-\begin{table}[tbp]\centering\small
-\caption[Status of inherited extensions]{Status of inherited extensions relative to the main thesis evidence.}
-\label{tab:extension_status}
-\begin{tabularx}{\textwidth}{P{0.32\textwidth}X}
-\toprule Asset & Supported status \\ \midrule
-Execution heatmap & Implemented and generated from runs; uncalibrated arbitrary-unit diagnostic. \\
-Finite blending planner & Implemented; archived offline planning and integration preparation. Surface-quality improvement not established by the main comparisons. \\
-Adaptive reference-clock execution & Separate versioned development attempts and code; controlled ON/OFF outcome benefit not established. \\
-High-level residual RL for curved-surface restoration & Planned extension; completed skill-level training and quality-grounded evaluation not established in the selected evidence. \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-An earlier thesis concept proposed residual adjustments to orientation and feed velocity based on residual removal demand. That concept remains a possible extension, with its old formulation retained in the preserved source. Existing low-level learned mass/damping control is a different asset and does not validate that proposed high-level policy. The core motion--force skill in this thesis does not require a removal estimator, blending planner, or residual RL stage to count as an executable system.
+\section{Development Extensions}
+Execution-derived dose heatmaps, finite blending paths, and adaptive reference-clock execution are implemented development assets. The heatmap remains an uncalibrated diagnostic; the blending and adaptive records do not provide a controlled E1--E3 surface-quality comparison. High-level residual reinforcement learning for curved-surface restoration remains planned. Appendix~\ref{app:development_extensions} preserves the diagnostic formulation, example heatmap, version distinctions, and implementation-status table. These extensions are separate from the three evaluated contributions.
 
 \section{Scope and Limitations}
 E1/E2 assess the nominal local task; E3 extends the evidence to the reported planar placements and directions. Arbitrary shapes, curved surfaces, height changes, and reference-Z robustness remain outside those observations. The tested direction transfer includes an explicit observation/image adapter and XY inverse transformation. It is not an isolated test of policy equivariance or of force observation's causal contribution to spatial transfer. The inherited blending/RL assets retain their separate implementation or planned status.
 
 There is one recorded training seed per learned condition, distinct from the repeated robot executions. Original E1 shuffles R/T/C within five blocks, whereas \(R^{*}\) is a separate-date one-then-four diagnostic. E2 runs A, then B, then C, using separate checkpoints; A/B also changes action dimension and force-target composition. Small cohorts and sample SDs establish neither statistical significance nor equivalence or population reliability. Setup, execution order, and operator timing remain possible contributors to the observed differences.
 
-E3 is a selected development collection with retained retries and dates. N uses the existing HOME return, P1 uses PTP, and D1/D2 add commanded-release confirmation to PTP. These differences preclude treating duration or path length as a controlled removal-efficiency ranking. The image analysis is a post-hoc semiautomatic revision using stored photographs and saved visible-boundary annotations. D1's removal mean has \(n=4\); all five P2 final photographs and D1-4 are occluded. Hidden stain area is not estimated. The common 40/45/50 threshold sensitivity check describes segmentation dependence, not an uncertainty interval for future robot performance.
+E3 is a selected development collection with retained retries and dates. N uses the existing HOME return, P1 uses PTP, and D1/D2 add commanded-release confirmation to PTP. These differences preclude treating duration or path length as a controlled removal-efficiency ranking. The image analysis is post hoc and semiautomatic, using stored photographs and saved visible-boundary annotations. D1's removal mean has \(n=4\); all five P2 final photographs and D1-4 are occluded. Hidden stain area is not estimated. The common 40/45/50 threshold sensitivity check describes segmentation dependence, not an uncertainty interval for future robot performance.
 
-The thesis revision can reproduce the exact reported E3 integer-area calculation and the inherited E1/E2 precision aggregates. The original research repository, R* precision CSV/run identifiers, and E3 original image-pair/annotation files were not accessible on this PC. The supplied reports, unchanged embedded evidence panels, and explicit source-status manifest preserve the available evidence without claiming a fresh audit of those unavailable originals.
+The numerical evidence is traceable to frozen run identities and archived analysis inputs. E1/E2 precision aggregates agree with their source CSVs; the additional \(R^{*}\) retains unrounded per-run values and template/configuration identifiers. E3 reprocessing from the original RGB, saved annotations, and fixed ROI reproduces all 25 initial areas, 19 evaluable final areas, and 75 stored mask/ROI arrays. This verifies computational reproduction of the established image analysis. It does not independently validate its manual semantic labels or calibrate physical material removal.
 
-E1 automatic completion, E2 operator completion, and E3 image-area reduction remain distinct. A4's successful time is null; its \AfourInterval~s interruption and all-attempt force/path values remain. C5 stays in the original C group; C6 is additional. Metal depth, mass, roughness, and micro-scratch restoration are not independently measured, and an unrecorded controller-applied target still prevents force-tracking-error claims. These are limits of interpretation, not additional experiments required to complete this manuscript.
+E1 automatic completion, E2 operator completion, and E3 image-area reduction remain distinct. A4's successful time is null; its \AfourInterval~s interruption and all-attempt force/path values remain. C5 stays in the original C group; C6 is additional. Metal depth, mass, roughness, and micro-scratch restoration are not independently measured, and an unrecorded controller-applied target still prevents force-tracking-error claims.

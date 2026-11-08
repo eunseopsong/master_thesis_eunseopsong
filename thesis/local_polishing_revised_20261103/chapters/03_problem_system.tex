@@ -56,6 +56,8 @@ Figure~\ref{fig:faire_architecture} shows the implemented path from human guidan
 \label{fig:faire_architecture}
 \end{figure}
 
+Table~\ref{tab:module_responsibilities} assigns the component responsibilities.
+
 \begin{table}[tbp]\centering\small
 \caption[Module responsibilities]{Responsibilities of the human and system components.}
 \label{tab:module_responsibilities}
@@ -72,7 +74,7 @@ Task evaluator & Recognize E1's contact procedure, retain E2's operator outcome,
 \end{table}
 
 \section{Physical Platform and Observations}
-The robot interface is the UR10 system identified by the deployed \texttt{ur10skku} topics and Cartesian command services. The teaching side uses a Vive tracker, calibrated tool pose, force/torque sensing, and a RealSense RGB stream. Robot execution records TCP pose from robot feedback and a processed six-axis wrench. The policy uses only the three force components. Torques remain useful logged diagnostics but are not policy inputs or actions for these checkpoints.
+The robot interface is the UR10 system identified by the deployed \texttt{ur10skku} topics and Cartesian command services. The teaching side uses a Vive tracker, calibrated tool pose, force/torque sensing, and a RealSense RGB stream. Robot execution records TCP pose from robot feedback and a processed six-axis wrench. The policy uses only the three force components. Torques remain useful logged diagnostics but are not policy inputs or actions for these checkpoints. Figure~\ref{fig:apparatus} shows the archived physical apparatus.
 
 \begin{figure}[tbp]\centering
 \includegraphics[width=0.67\linewidth,height=0.49\textheight,keepaspectratio]{figures/apparatus_20260807.jpg}

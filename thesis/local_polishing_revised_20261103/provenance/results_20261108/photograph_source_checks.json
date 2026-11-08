@@ -1,0 +1,90 @@
+[
+  {
+    "figure": "fig:mark_example",
+    "asset": "figures/mark_detection_example.png",
+    "source": "/home/eunseop/nrs_imitation/images/home_pose_stain_detection.png",
+    "source_sha256": "57695e6cdc843bce40d1f1df14917442ea3aec39784110fe7971539dc577c1a5",
+    "decoded_pixels_identical": true,
+    "run_id": null
+  },
+  {
+    "figure": "fig:e1_photos",
+    "asset": "figures/E1_R1_initial.png",
+    "source": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/provider/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_20261015T224840_1792072120137997949_clecev5z/snapshots/initial_image.png",
+    "source_sha256": "a02e6c7c084eece8d0ad1e2b25aff678a52b29286444f5e1d8c86d7e77c5adb4",
+    "decoded_pixels_identical": true,
+    "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0"
+  },
+  {
+    "figure": "fig:e1_photos",
+    "asset": "figures/E1_R1_final.png",
+    "source": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/provider/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0_20261015T224840_1792072120137997949_clecev5z/snapshots/final_image.png",
+    "source_sha256": "c2a168541bf3934960270bbdeaff4b45939b34aa85e6243c3ef5e9c44156c42a",
+    "decoded_pixels_identical": true,
+    "run_id": "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0"
+  },
+  {
+    "figure": "fig:e1_photos",
+    "asset": "figures/E1_T1_initial.png",
+    "source": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/provider/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_20261015T224658_1792072018833284652_pyprfuz_/snapshots/initial_image.png",
+    "source_sha256": "d4e9539bbee139ee0611bdf2d2f16a0df500c0bb9dc407a534e963f955506568",
+    "decoded_pixels_identical": true,
+    "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c"
+  },
+  {
+    "figure": "fig:e1_photos",
+    "asset": "figures/E1_T1_final.png",
+    "source": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/provider/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c_20261015T224658_1792072018833284652_pyprfuz_/snapshots/final_image.png",
+    "source_sha256": "39b396e45002f157faec99a0da577c5cb3716d191bc9017395917cc4811d4e62",
+    "decoded_pixels_identical": true,
+    "run_id": "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c"
+  },
+  {
+    "figure": "fig:e1_photos",
+    "asset": "figures/E1_C1_initial.png",
+    "source": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/provider/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_20261015T224954_1792072194506443323_p_o9o77v/snapshots/initial_image.png",
+    "source_sha256": "e78cdf006f74cf6bd04a3be823a943f13aff6dd26f8705d31e074edadf743425",
+    "decoded_pixels_identical": true,
+    "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b"
+  },
+  {
+    "figure": "fig:e1_photos",
+    "asset": "figures/E1_C1_final.png",
+    "source": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/provider/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b_20261015T224954_1792072194506443323_p_o9o77v/snapshots/final_image.png",
+    "source_sha256": "76b49ff7696ef6e6c3fd09b6ba06d8022b00a633ccafbbd64cc77d42d82e4836",
+    "decoded_pixels_identical": true,
+    "run_id": "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b"
+  },
+  {
+    "figure": "fig:teaching_frames",
+    "asset": "figures/teaching_ep29_frame000.png",
+    "source": "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5",
+    "dataset": "observations/images/cam0",
+    "frame": 0,
+    "decoded_pixels_identical": true
+  },
+  {
+    "figure": "fig:teaching_frames",
+    "asset": "figures/teaching_ep29_frame085.png",
+    "source": "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5",
+    "dataset": "observations/images/cam0",
+    "frame": 85,
+    "decoded_pixels_identical": true
+  },
+  {
+    "figure": "fig:teaching_frames",
+    "asset": "figures/teaching_ep29_frame150.png",
+    "source": "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5",
+    "dataset": "observations/images/cam0",
+    "frame": 150,
+    "decoded_pixels_identical": true
+  },
+  {
+    "figure": "fig:teaching_frames",
+    "asset": "figures/teaching_ep29_frame400.png",
+    "source": "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5",
+    "dataset": "observations/images/cam0",
+    "frame": 400,
+    "decoded_pixels_identical": true
+  }
+]

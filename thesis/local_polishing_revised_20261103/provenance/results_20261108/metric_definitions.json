@@ -1,0 +1,9 @@
+{
+  "E1": "execution_start to first TASK_COMPLETED; J=integral max(base Fz-30.812396273,0), archived ZOH and 0.2s gap rules; no reevaluation",
+  "E2": "operator completed interval; A4 completion null, interval/peak/path retained; run peak means n5",
+  "E3": "100*(A_before-A_after)/A_before; original RGB and unchanged gray45/ROI/annotation integer px; unweighted run arithmetic mean, ddof1; 25 archive,20 main,19 images",
+  "segmentation": "frozen gray<=45/255 plus saved manual visible boundaries; 6px ROI margin; no new annotation or threshold selection",
+  "precision": "E1/E2 matched archived precision CSV; Rstar unrounded per-run values; E3 raw RGB-derived integer areas, pixel-identical saved masks",
+  "verification_record": "provenance/results_20261108/source_validation.json",
+  "no_robot_or_training": true
+}

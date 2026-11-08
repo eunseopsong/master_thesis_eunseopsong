@@ -1,0 +1,11 @@
+{
+  "python": "3.10.20 (main, Mar 11 2026, 17:46:40) [GCC 14.3.0]",
+  "platform": "Linux 6.8.0-138-generic",
+  "numpy": "2.2.6",
+  "matplotlib": "3.10.9",
+  "opencv": "4.10.0",
+  "pillow": "12.2.0",
+  "pdftex": "pdfTeX 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian)",
+  "bibtex": "BibTeX 0.99d (TeX Live 2022/dev/Debian)",
+  "poppler": "pdftotext version 22.02.0"
+}

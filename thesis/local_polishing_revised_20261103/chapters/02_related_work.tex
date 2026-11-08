@@ -27,6 +27,8 @@ ForceMimic~\cite{liu2025forcemimic} records motion and wrench with a handheld de
 
 Admittance visuomotor policy learning~\cite{zhou2024admitdiff} explicitly uses vision, proprioception, and contact force to generate action trajectories and desired contact forces, followed by admittance execution. FoAR~\cite{he2025foar} takes another route: force/torque information and a future-contact predictor guide reactive refinement of position actions. It evaluates wiping, peeling, and chopping with an end-effector position-control interface. These works illustrate that force can inform an observation, a learned reference, or a deployment correction. Those roles should be compared directly rather than grouped under a single force-aware label.
 
+Table~\ref{tab:related_positioning} compares these force interfaces.
+
 \begin{table}[tbp]
 \centering\footnotesize
 \caption[Force interfaces in related work]{Force interfaces verified from the cited methods. ``Not reported'' denotes an input absent from the described policy interface, rather than proof that the broader system has no such signal.}

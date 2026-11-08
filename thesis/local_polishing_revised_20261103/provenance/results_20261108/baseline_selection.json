@@ -1,0 +1,16 @@
+{
+  "literal_requested_filename_found": false,
+  "requested_name": "ThesisMain(2).pdf",
+  "actual_baseline": "thesis/local_polishing_revised_20261103/ThesisMain.pdf",
+  "pages": 119,
+  "pdf_sha256": "116b84baeff84877d80e81f591a6493011315fef4f6756e30efb22f3da5a6b24",
+  "git_commit": "a9d3e7938434de350b1218a2a14d1d651d920fff",
+  "clean_working_tree_before": true,
+  "selection_evidence": [
+    "thesis/README.md identifies this active project",
+    "119 pages; E1 Rstar, corrected A4, E3 main20/image19 in actual PDF",
+    "source include graph and existing result tables reproduce the baseline 119-page document in the initial full build",
+    "root PDF is older 64-page FAIRE draft; Downloads PDFs are older 63/64-page versions"
+  ],
+  "old_pc_limitation_resolved": "research repository exists at /home/eunseop/nrs_imitation; source claims checked individually"
+}

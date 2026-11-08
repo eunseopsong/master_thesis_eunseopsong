@@ -1,0 +1,95 @@
+{
+  "method": "identity_verified_by_immutable_surface_patches",
+  "valid": true,
+  "after_to_before_homography": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "patch_checks": [
+    {
+      "rect_xywh": [
+        197,
+        46,
+        24,
+        23
+      ],
+      "dx_after_px": 0,
+      "dy_after_px": 0,
+      "ncc": 0.9973303079605103,
+      "background_median_before": 153.0,
+      "background_median_after": 147.0
+    },
+    {
+      "rect_xywh": [
+        348,
+        70,
+        24,
+        43
+      ],
+      "dx_after_px": 0,
+      "dy_after_px": 0,
+      "ncc": 0.9953258037567139,
+      "background_median_before": 110.0,
+      "background_median_after": 105.0
+    },
+    {
+      "rect_xywh": [
+        163,
+        98,
+        16,
+        27
+      ],
+      "dx_after_px": 0,
+      "dy_after_px": 0,
+      "ncc": 0.9959313273429871,
+      "background_median_before": 144.0,
+      "background_median_after": 139.0
+    },
+    {
+      "rect_xywh": [
+        325,
+        116,
+        22,
+        25
+      ],
+      "dx_after_px": 0,
+      "dy_after_px": 0,
+      "ncc": 0.9906123876571655,
+      "background_median_before": 103.0,
+      "background_median_after": 99.0
+    },
+    {
+      "rect_xywh": [
+        121,
+        85,
+        19,
+        20
+      ],
+      "dx_after_px": 0,
+      "dy_after_px": 0,
+      "ncc": 0.998399019241333,
+      "background_median_before": 145.0,
+      "background_median_after": 140.0
+    }
+  ],
+  "scale_change": 1.0,
+  "resampling": "none",
+  "landmark_shift_px": [
+    0,
+    0
+  ],
+  "reason": "All five independent fixed plate patches peak at exactly zero native-pixel displacement. Robot, stain and reflections are not registration references."
+}

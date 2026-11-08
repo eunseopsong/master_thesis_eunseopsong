@@ -1,0 +1,1464 @@
+{
+  "coordinate_system": "native original RGB pixels (x,y); final polygons in final native coordinates",
+  "reviewer": "offline visual annotation by Codex; no user-provided pixel labels",
+  "runs": {
+    "N-1": {
+      "initial_visible_ink_polygon": [
+        [
+          298,
+          89
+        ],
+        [
+          294,
+          101
+        ],
+        [
+          232,
+          102
+        ],
+        [
+          231,
+          93
+        ],
+        [
+          232,
+          91
+        ],
+        [
+          236,
+          90
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 자동 어두운 후보는 원형/타원형 공구 반사와 케이블 반사에 해당하며, 독립적인 흑색 마카 경계는 식별되지 않음. 이는 해당 해상도·분할 기준의 미검출이며 실제 잉크 부재를 보증하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "N-2": {
+      "initial_visible_ink_polygon": [
+        [
+          301,
+          87
+        ],
+        [
+          296,
+          100
+        ],
+        [
+          231,
+          100
+        ],
+        [
+          233,
+          89
+        ],
+        [
+          241,
+          87
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 자동 어두운 후보는 원형/타원형 공구 반사와 케이블 반사에 해당하며, 독립적인 흑색 마카 경계는 식별되지 않음. 이는 해당 해상도·분할 기준의 미검출이며 실제 잉크 부재를 보증하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "N-3": {
+      "initial_visible_ink_polygon": [
+        [
+          296,
+          97
+        ],
+        [
+          294,
+          100
+        ],
+        [
+          236,
+          101
+        ],
+        [
+          234,
+          93
+        ],
+        [
+          235,
+          90
+        ],
+        [
+          294,
+          89
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 자동 어두운 후보는 원형/타원형 공구 반사와 케이블 반사에 해당하며, 독립적인 흑색 마카 경계는 식별되지 않음. 이는 해당 해상도·분할 기준의 미검출이며 실제 잉크 부재를 보증하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "N-4": {
+      "initial_visible_ink_polygon": [
+        [
+          304,
+          90
+        ],
+        [
+          300,
+          100
+        ],
+        [
+          239,
+          101
+        ],
+        [
+          240,
+          91
+        ],
+        [
+          243,
+          90
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 자동 어두운 후보는 원형/타원형 공구 반사와 케이블 반사에 해당하며, 독립적인 흑색 마카 경계는 식별되지 않음. 이는 해당 해상도·분할 기준의 미검출이며 실제 잉크 부재를 보증하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "N-5": {
+      "initial_visible_ink_polygon": [
+        [
+          299,
+          87
+        ],
+        [
+          294,
+          100
+        ],
+        [
+          241,
+          101
+        ],
+        [
+          238,
+          94
+        ],
+        [
+          238,
+          90
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 자동 어두운 후보는 원형/타원형 공구 반사와 케이블 반사에 해당하며, 독립적인 흑색 마카 경계는 식별되지 않음. 이는 해당 해상도·분할 기준의 미검출이며 실제 잉크 부재를 보증하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "P1-1": {
+      "initial_visible_ink_polygon": [
+        [
+          308,
+          56
+        ],
+        [
+          302,
+          70
+        ],
+        [
+          242,
+          69
+        ],
+        [
+          240,
+          59
+        ],
+        [
+          243,
+          55
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            268,
+            66
+          ],
+          [
+            281,
+            66
+          ],
+          [
+            301,
+            64
+          ],
+          [
+            302,
+            75
+          ],
+          [
+            278,
+            74
+          ],
+          [
+            268,
+            72
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "최종 원래 표식 하단의 가는 선과 우측 삼각 잉크 조각을 모두 포함."
+    },
+    "P1-2": {
+      "initial_visible_ink_polygon": [
+        [
+          307,
+          55
+        ],
+        [
+          299,
+          69
+        ],
+        [
+          249,
+          70
+        ],
+        [
+          244,
+          68
+        ],
+        [
+          245,
+          60
+        ],
+        [
+          248,
+          55
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            290,
+            64
+          ],
+          [
+            299,
+            64
+          ],
+          [
+            300,
+            74
+          ],
+          [
+            290,
+            74
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "최종 우측의 작은 삼각 조각을 포함하고 좌측 원형 공구 반사는 제외."
+    },
+    "P1-3": {
+      "initial_visible_ink_polygon": [
+        [
+          305,
+          57
+        ],
+        [
+          300,
+          68
+        ],
+        [
+          292,
+          69
+        ],
+        [
+          244,
+          69
+        ],
+        [
+          241,
+          60
+        ],
+        [
+          243,
+          56
+        ],
+        [
+          247,
+          55
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            269,
+            65
+          ],
+          [
+            280,
+            65
+          ],
+          [
+            299,
+            67
+          ],
+          [
+            299,
+            74
+          ],
+          [
+            269,
+            73
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "최종 가는 선의 떨어진 조각을 모두 포함."
+    },
+    "P1-4": {
+      "initial_visible_ink_polygon": [
+        [
+          296,
+          55
+        ],
+        [
+          292,
+          67
+        ],
+        [
+          234,
+          69
+        ],
+        [
+          235,
+          63
+        ],
+        [
+          240,
+          55
+        ],
+        [
+          262,
+          53
+        ],
+        [
+          289,
+          53
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            231,
+            64
+          ],
+          [
+            239,
+            64
+          ],
+          [
+            239,
+            73
+          ],
+          [
+            231,
+            73
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "최종 좌측의 작은 흑색 점도 잡음으로 삭제하지 않고 포함."
+    },
+    "P1-5": {
+      "initial_visible_ink_polygon": [
+        [
+          304,
+          55
+        ],
+        [
+          304,
+          61
+        ],
+        [
+          298,
+          70
+        ],
+        [
+          243,
+          69
+        ],
+        [
+          245,
+          58
+        ],
+        [
+          249,
+          55
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            268,
+            63
+          ],
+          [
+            298,
+            63
+          ],
+          [
+            299,
+            75
+          ],
+          [
+            268,
+            74
+          ]
+        ],
+        [
+          [
+            239,
+            63
+          ],
+          [
+            246,
+            63
+          ],
+          [
+            246,
+            72
+          ],
+          [
+            239,
+            72
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "최종 중앙의 가는 잔여 선과 좌측 작은 점을 모두 포함."
+    },
+    "P2-1": {
+      "initial_visible_ink_polygon": [
+        [
+          261,
+          102
+        ],
+        [
+          257,
+          113
+        ],
+        [
+          195,
+          116
+        ],
+        [
+          198,
+          105
+        ],
+        [
+          255,
+          101
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": true,
+      "final_occlusion_polygon_native": [
+        [
+          239,
+          121
+        ],
+        [
+          245,
+          116
+        ],
+        [
+          258,
+          115
+        ],
+        [
+          272,
+          117
+        ],
+        [
+          277,
+          124
+        ],
+        [
+          274,
+          137
+        ],
+        [
+          243,
+          139
+        ]
+      ],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 원본에서 공구가 초기 표식의 일부를 실제로 가림. 보이는 잔여 후보만 보존하고 전체 A_after 및 제거율은 null.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "P2-2": {
+      "initial_visible_ink_polygon": [
+        [
+          257,
+          100
+        ],
+        [
+          252,
+          111
+        ],
+        [
+          193,
+          114
+        ],
+        [
+          189,
+          109
+        ],
+        [
+          191,
+          104
+        ],
+        [
+          252,
+          99
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": true,
+      "final_occlusion_polygon_native": [
+        [
+          239,
+          121
+        ],
+        [
+          245,
+          116
+        ],
+        [
+          258,
+          115
+        ],
+        [
+          272,
+          117
+        ],
+        [
+          277,
+          124
+        ],
+        [
+          274,
+          137
+        ],
+        [
+          243,
+          139
+        ]
+      ],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 원본에서 공구가 초기 표식의 일부를 실제로 가림. 보이는 잔여 후보만 보존하고 전체 A_after 및 제거율은 null.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "P2-3": {
+      "initial_visible_ink_polygon": [
+        [
+          257,
+          102
+        ],
+        [
+          255,
+          112
+        ],
+        [
+          249,
+          114
+        ],
+        [
+          204,
+          117
+        ],
+        [
+          202,
+          110
+        ],
+        [
+          206,
+          105
+        ],
+        [
+          253,
+          101
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": true,
+      "final_occlusion_polygon_native": [
+        [
+          239,
+          121
+        ],
+        [
+          245,
+          116
+        ],
+        [
+          258,
+          115
+        ],
+        [
+          272,
+          117
+        ],
+        [
+          277,
+          124
+        ],
+        [
+          274,
+          137
+        ],
+        [
+          243,
+          139
+        ]
+      ],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 원본에서 공구가 초기 표식의 일부를 실제로 가림. 보이는 잔여 후보만 보존하고 전체 A_after 및 제거율은 null.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "P2-4": {
+      "initial_visible_ink_polygon": [
+        [
+          259,
+          103
+        ],
+        [
+          257,
+          114
+        ],
+        [
+          199,
+          117
+        ],
+        [
+          200,
+          107
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": true,
+      "final_occlusion_polygon_native": [
+        [
+          239,
+          121
+        ],
+        [
+          245,
+          116
+        ],
+        [
+          258,
+          115
+        ],
+        [
+          272,
+          117
+        ],
+        [
+          277,
+          124
+        ],
+        [
+          274,
+          137
+        ],
+        [
+          243,
+          139
+        ]
+      ],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 원본에서 공구가 초기 표식의 일부를 실제로 가림. 보이는 잔여 후보만 보존하고 전체 A_after 및 제거율은 null.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "P2-5": {
+      "initial_visible_ink_polygon": [
+        [
+          256,
+          101
+        ],
+        [
+          253,
+          112
+        ],
+        [
+          196,
+          115
+        ],
+        [
+          192,
+          112
+        ],
+        [
+          194,
+          104
+        ],
+        [
+          228,
+          101
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": true,
+      "final_occlusion_polygon_native": [
+        [
+          239,
+          121
+        ],
+        [
+          245,
+          116
+        ],
+        [
+          258,
+          115
+        ],
+        [
+          272,
+          117
+        ],
+        [
+          277,
+          124
+        ],
+        [
+          274,
+          137
+        ],
+        [
+          243,
+          139
+        ]
+      ],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 원본에서 공구가 초기 표식의 일부를 실제로 가림. 보이는 잔여 후보만 보존하고 전체 A_after 및 제거율은 null.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "D1-1": {
+      "initial_visible_ink_polygon": [
+        [
+          292,
+          86
+        ],
+        [
+          290,
+          90
+        ],
+        [
+          254,
+          110
+        ],
+        [
+          247,
+          106
+        ],
+        [
+          247,
+          103
+        ],
+        [
+          282,
+          80
+        ],
+        [
+          288,
+          82
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            261,
+            92
+          ],
+          [
+            278,
+            81
+          ],
+          [
+            284,
+            78
+          ],
+          [
+            288,
+            78
+          ],
+          [
+            288,
+            82
+          ],
+          [
+            279,
+            86
+          ],
+          [
+            263,
+            95
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "최종 대각선으로 남은 가는 마카 선을 포함. 그 아래 케이블 반사와 넓은 타원 반사는 제외."
+    },
+    "D1-2": {
+      "initial_visible_ink_polygon": [
+        [
+          244,
+          108
+        ],
+        [
+          292,
+          84
+        ],
+        [
+          300,
+          95
+        ],
+        [
+          251,
+          119
+        ],
+        [
+          244,
+          114
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 자동 어두운 후보는 원형/타원형 공구 반사와 케이블 반사에 해당하며, 독립적인 흑색 마카 경계는 식별되지 않음. 이는 해당 해상도·분할 기준의 미검출이며 실제 잉크 부재를 보증하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "초기 표식 왼쪽 끝과 인접한 케이블 반사를 가시 경계에서 구분. 연결 성분 전체를 잉크로 세지 않음."
+    },
+    "D1-3": {
+      "initial_visible_ink_polygon": [
+        [
+          242,
+          110
+        ],
+        [
+          291,
+          85
+        ],
+        [
+          300,
+          97
+        ],
+        [
+          249,
+          119
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 자동 어두운 후보는 원형/타원형 공구 반사와 케이블 반사에 해당하며, 독립적인 흑색 마카 경계는 식별되지 않음. 이는 해당 해상도·분할 기준의 미검출이며 실제 잉크 부재를 보증하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "초기 표식 왼쪽 끝과 인접한 케이블 반사를 가시 경계에서 구분. 연결 성분 전체를 잉크로 세지 않음."
+    },
+    "D1-4": {
+      "initial_visible_ink_polygon": [
+        [
+          297,
+          90
+        ],
+        [
+          297,
+          96
+        ],
+        [
+          253,
+          114
+        ],
+        [
+          247,
+          114
+        ],
+        [
+          242,
+          109
+        ],
+        [
+          258,
+          99
+        ],
+        [
+          293,
+          85
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            258,
+            113
+          ],
+          [
+            304,
+            102
+          ],
+          [
+            309,
+            103
+          ],
+          [
+            313,
+            111
+          ],
+          [
+            311,
+            117
+          ],
+          [
+            269,
+            128
+          ],
+          [
+            258,
+            123
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": true,
+      "final_occlusion_polygon_native": [
+        [
+          234,
+          107
+        ],
+        [
+          241,
+          102
+        ],
+        [
+          253,
+          101
+        ],
+        [
+          268,
+          105
+        ],
+        [
+          271,
+          113
+        ],
+        [
+          263,
+          123
+        ],
+        [
+          239,
+          123
+        ]
+      ],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 원본에서 공구가 초기 표식의 일부를 실제로 가림. 보이는 잔여 후보만 보존하고 전체 A_after 및 제거율은 null.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "D1-5": {
+      "initial_visible_ink_polygon": [
+        [
+          301,
+          96
+        ],
+        [
+          249,
+          116
+        ],
+        [
+          245,
+          112
+        ],
+        [
+          242,
+          105
+        ],
+        [
+          293,
+          84
+        ],
+        [
+          298,
+          85
+        ]
+      ],
+      "final_visible_ink_polygons": [],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음. 최종 자동 어두운 후보는 원형/타원형 공구 반사와 케이블 반사에 해당하며, 독립적인 흑색 마카 경계는 식별되지 않음. 이는 해당 해상도·분할 기준의 미검출이며 실제 잉크 부재를 보증하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null."
+    },
+    "D2-1": {
+      "initial_visible_ink_polygon": [
+        [
+          299,
+          111
+        ],
+        [
+          287,
+          117
+        ],
+        [
+          265,
+          105
+        ],
+        [
+          246,
+          88
+        ],
+        [
+          246,
+          84
+        ],
+        [
+          252,
+          81
+        ],
+        [
+          258,
+          81
+        ],
+        [
+          284,
+          98
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            243,
+            85
+          ],
+          [
+            252,
+            85
+          ],
+          [
+            252,
+            94
+          ],
+          [
+            243,
+            94
+          ]
+        ],
+        [
+          [
+            279,
+            104
+          ],
+          [
+            300,
+            103
+          ],
+          [
+            303,
+            113
+          ],
+          [
+            295,
+            119
+          ],
+          [
+            280,
+            119
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "최종 우하단의 경계가 뚜렷한 흑색 끝부분과 좌상단 작은 조각을 포함. 중앙 케이블 반사는 제외."
+    },
+    "D2-2": {
+      "initial_visible_ink_polygon": [
+        [
+          301,
+          104
+        ],
+        [
+          287,
+          112
+        ],
+        [
+          246,
+          84
+        ],
+        [
+          258,
+          77
+        ],
+        [
+          268,
+          82
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            270,
+            97
+          ],
+          [
+            281,
+            97
+          ],
+          [
+            282,
+            107
+          ],
+          [
+            270,
+            108
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "최종 중앙 아래의 작은 흑색 대시를 포함. 우측 넓고 흐린 타원 반사는 제외."
+    },
+    "D2-3": {
+      "initial_visible_ink_polygon": [
+        [
+          303,
+          104
+        ],
+        [
+          298,
+          108
+        ],
+        [
+          288,
+          112
+        ],
+        [
+          248,
+          86
+        ],
+        [
+          251,
+          78
+        ],
+        [
+          256,
+          75
+        ],
+        [
+          288,
+          93
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            277,
+            96
+          ],
+          [
+            304,
+            95
+          ],
+          [
+            308,
+            106
+          ],
+          [
+            300,
+            114
+          ],
+          [
+            278,
+            115
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "최종 우하단 삼각형 흑색 잔여를 포함. 좌상단 원형 공구 반사는 제외."
+    },
+    "D2-4": {
+      "initial_visible_ink_polygon": [
+        [
+          295,
+          99
+        ],
+        [
+          284,
+          106
+        ],
+        [
+          241,
+          79
+        ],
+        [
+          248,
+          70
+        ],
+        [
+          254,
+          71
+        ],
+        [
+          293,
+          96
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            275,
+            96
+          ],
+          [
+            288,
+            96
+          ],
+          [
+            288,
+            107
+          ],
+          [
+            275,
+            108
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "최종 중앙 아래의 작은 흑색 조각을 포함. 그 우측 넓고 흐린 타원 반사는 제외."
+    },
+    "D2-5": {
+      "initial_visible_ink_polygon": [
+        [
+          299,
+          102
+        ],
+        [
+          287,
+          109
+        ],
+        [
+          284,
+          109
+        ],
+        [
+          247,
+          83
+        ],
+        [
+          255,
+          78
+        ],
+        [
+          260,
+          77
+        ]
+      ],
+      "final_visible_ink_polygons": [
+        [
+          [
+            272,
+            98
+          ],
+          [
+            285,
+            98
+          ],
+          [
+            286,
+            108
+          ],
+          [
+            272,
+            109
+          ]
+        ]
+      ],
+      "initial_occluded": false,
+      "final_occluded": false,
+      "final_occlusion_polygon_native": [],
+      "annotation_type": "automatic_gray_candidates_with_manual_visible_ink_semantic_review",
+      "annotation_reason": "초기: 원본에서 확인한 전체 흑색 표식 경계. 최종: 금속면의 넓고 흐린 공구 반사·케이블 반사와 경계가 뚜렷한 잔여 마카 조각을 구분한 수동 의미 주석. 임계값은 전후 모두 동일하며, 작은 잉크 조각의 면적 필터는 사용하지 않음.",
+      "initial_support_expansion_px": 1,
+      "final_support_expansion_px": 0,
+      "reviewed_against_original_RGB": true,
+      "ink_spread_outside_ROI": false,
+      "review_note": "원본 전후 RGB와 동일 좌표 crop, 최종 mask 25회 전체를 시각 대조. 이동 공구·반사 후보 제외, 작은 가시 잉크 조각 유지. 표식 밖 번짐이 확인된 사례 없음. 가림6회 전체 제거율 null.",
+      "visible_boundary_review_detail": "최종 중앙 아래의 작은 흑색 대시를 포함. 우측 넓고 흐린 타원 반사는 제외."
+    }
+  }
+}

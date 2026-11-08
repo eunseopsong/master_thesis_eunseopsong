@@ -8,6 +8,8 @@ The position vector is expressed in millimeters and orientation as a rotation ve
 
 Teaching force is a three-component post-publisher measurement. Its associated tool orientation supplies the base-axis rotation in Equation~\eqref{eq:normal_force_projection}. Robot wrench feedback is already base expressed. A torque reference-point transformation would require a moment arm, but no torque transfer is needed for the three-force-component base projection used here. The available analysis does not infer a calibrated compliant contact point from a TCP-center trajectory.
 
+Table~\ref{tab:force_roles} distinguishes the force signal roles.
+
 \begin{table}[tbp]\centering\small
 \caption[Force signal definitions]{Force signal roles used throughout the thesis.}
 \label{tab:force_roles}
@@ -36,7 +38,9 @@ The training horizon, reference stride, inference timer, command period, and log
 \toprule Mechanism & Value or meaning \\ \midrule
 Teaching paired sample grid & Nominal 30 Hz; original receipt times retained in merged HDF5. \\
 Action sequence & 128 samples, nominal 30 Hz. \\
-Nominal new-plan stride & 120 action samples, approximately 4 s. \\
+Nominal new-plan stride & 120 action samples at 30 Hz: 4.0 s. \\
+E3 replanning lead / plan-age threshold & 0.5 s / \(4.0-0.5=3.5\) s, from saved configurations and runtime snapshot. \\
+Actual plan-generation intervals & Not measured here; affected by callback scheduling and inference latency. \\
 Inference callback timer & 5 Hz, subject to plan-age gating. \\
 Flow integration & 10 dimensionless updates per generated chunk. \\
 Command publication & Nominal 125 Hz (0.008 s). \\
@@ -47,28 +51,20 @@ Analysis support & Receipt-time ZOH force and within-support pose interpolation;
 \end{tabularx}
 \end{table}
 
-\section{Reproducing the Manuscript and Figures}
-The revised project is independent of the original thesis outputs. Its build retains the original pdfLaTeX/KoTeX/BibTeX chain and copies the existing school style without editing it. The body retains equal top and bottom margins of 25 mm. The cover remains a draft because the source did not establish author, adviser, committee, or submission details.
+\section{Data and Analysis Reproducibility}
+The run-level results retain the original identifiers, cohort membership, saved configurations, and analysis definitions. E1/E2 statistics use the archived precision CSVs matched to their frozen selections. E1's additional \(R^{*}\) cohort preserves its separate collection and unrounded values. The common result summary supplies the numerical tables and reported aggregates.
 
-From this revised project directory, the full manuscript and separate cover are built with
-\begin{verbatim}
-bash build.sh
-\end{verbatim}
-The figures and tables can be regenerated from the bundled extracted data without the robot repository:
-\begin{verbatim}
-python3 scripts/update_results_20261103.py
-python3 scripts/export_information_diagram_20261103.py
-bash build.sh
-\end{verbatim}
-The current regeneration entry point reads bundled E1/E2 precision CSVs and the unchanged report copies in \path{provenance/results_20261103/reports/}. It recalculates the E3 percentages from the report's integer pixel areas and uses the additional R report's authoritative summary. It performs no new segmentation, physical experiment, model loading, or evaluator audit. The earlier collection and plot scripts remain historical reproduction sources and are not the current result-update entry points. Source availability and precision are explicit in \path{results_manifest_20261103.csv} and \path{provenance/results_20261103/metric_definitions.json}.
+E3 reproduction uses the original before/after RGB hashes, saved visible-boundary annotations, fixed ROI construction, and archived segmentation algorithm. The reproduced initial/final ink masks and ROI arrays agree pixel by pixel with the stored analysis outputs. The displayed photographs and binary masks remain distinct from conceptual diagrams and from uncalibrated execution heatmaps. Display cropping and enlargement never supply the measured areas.
 
-The figure manifest records original files, run identifiers, frame indices or video offsets, transformations, and manuscript locations. Conceptual diagrams reside in the chapter LaTeX and are distinguished from measured plots in their captions. No generated photograph is used.
+The accompanying analysis manifests identify the source inputs, per-run configuration and image mapping, numerical precision, and software versions. Document construction uses the bundled figures, selected original photographs, bibliography, and LaTeX sources. Repeating the full image analysis additionally requires the original research archive. Both procedures preserve the recorded sample selection and unavailable measurements.
 
 \chapter{Experiment Versions and Provenance}
 \label{app:provenance}
 
 \section{Selected Models and Dataset}
-The dataset and models are the force-cleanup revision dated 12 October, with training completed on 13 October 2026. All three selected checkpoints have their own normalizer. The best epochs are 39, 42, and 42, while final epoch is 499. The stored checkpoint selection rule is minimum validation loss over 500 epochs. The inherited model manifest records the earlier CPU metadata inspection. This revision retains that evidence without loading checkpoints or retraining.
+The dataset and models are the force-cleanup revision dated 12 October, with training completed on 13 October 2026. All three selected checkpoints have their own normalizer. The best epochs are 39, 42, and 42, while final epoch is 499. The stored checkpoint selection rule is minimum validation loss over 500 epochs. The model manifest preserves the original CPU metadata inspection. The E3 C checkpoint and normalizer files also match the hashes in every selected execution configuration; they are hashed without model loading or retraining.
+
+Table~\ref{tab:model_provenance} lists the selected model identifiers.
 
 \begin{table}[tbp]\centering\small
 \caption[Selected model identifiers]{Short SHA-256 identifiers of the selected checkpoints and normalizers. Complete values are included in the supplied model manifest.}
@@ -114,6 +110,8 @@ with OFF and rise sustained together for 0.2 s. R1, R3, and T4 were sensitive to
 \label{tab:e1_replay}\input{tables/e1_replay}
 \end{table}
 
+Figure~\ref{fig:e1_height_reference} compares the historical exit-height references.
+
 \figfull{e1_height_reference.pdf}{Historical 14 October release thresholds using the initial-contact and successful-pass references. Both are derived from the same stored TCP traces. This diagnostic is distinct from the physically executed 15 October primary evaluator.}{fig:e1_height_reference}
 
 An original 14 October R5 registration did not reach execution start and was followed by a started retry. Its source identifiers remain in the historical provenance. This bookkeeping does not apply to the 15 October primary cohort, whose original 15 slots contain no non-start or retry. Earlier prepared but unexecuted sessions are historical preparation records and are not incomplete requirements of the present thesis.
@@ -150,9 +148,11 @@ Table~\ref{tab:e2_all} distinguishes successful completion intervals from time t
 The archived video inventory contains B/C videos but no A videos. The illustrated C1 WebM has an incomplete container ending; only decodable frames are used. It is not treated as a continuous independent proof of full task completion. Snapshot timing and varying tool viewpoint also limit before/after interpretation.
 
 \section{Cohort Membership and Interpretation}
-The original \path{data/cohort_manifest.csv} and JSON counterpart remain historical records of the original E1 15, E2 15, and diagnostic C6. The current \path{results_manifest_20261103.csv} adds the separate five \(R^{*}\) entries and all 25 E3 entries. E3 retains the report's original run identifiers, main/archive role, image availability, and occlusion reason. The additional R report does not print its original run identifiers; those fields remain empty, explicitly marked unavailable, rather than inferred from display labels.
+The original \path{data/cohort_manifest.csv} and JSON counterpart preserve the original E1 15, E2 15, and diagnostic C6. The current \path{results_manifest_20261108.csv} adds the five separate \(R^{*}\) executions and all 25 E3 records with their original run identifiers. It distinguishes main, additional-diagnostic, and archive-only roles, including incomplete and image-unavailable observations.
 
-The precision summary, prose macros, and regenerated result plots use \path{data/results_summary_20261103.json}. E1/E2 execution cohorts, original R and \(R^{*}\), and image versus procedure outcomes remain separate. Earlier analysis checks are retained as earlier checks; they are not relabeled as newly performed source validation.
+The precision summary, prose macros, tables, and affected plots use \path{data/results_summary_20261108.json}. The reported results use verified archived precision rows and reproduced E3 native-pixel counts. Original R and \(R^{*}\) are not pooled, and image evaluability remains distinct from procedural completion.
 
 \input{chapters/appendix_execution_cases}
 \input{chapters/appendix_e3_archive}
+
+\input{chapters/appendix_development_assets}

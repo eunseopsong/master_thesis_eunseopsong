@@ -12,12 +12,14 @@ E2 retains all 15 attempts from 13 October, five each in actual order A, B, then
 
 E3's image-report selection contains 25 runs, N/P1/P2/D1/D2 with five each. The main thesis evaluation uses N/P1/D1/D2, totaling \EthreeMainN{} selected runs and \EthreeImageN{} image-evaluable pairs. P2 remains five executed archive records, all occluded at the final image. D1-4 remains a selected D1 run but has no whole-stain removal value. These denominators describe inclusion and image support, not a common completion rate.
 
-The revision reaggregates inherited precision E1/E2 CSVs and the E3 report's exact integer pixel areas. The additional R report supplies its authoritative rounded summary and rounded per-run values. Report pages, extracted evidence, source precision, and unavailable source fields are recorded in the supplied results manifest and Appendix~\ref{app:e3_archive}.
+E1/E2 statistics are calculated from archived per-run precision CSVs matched to the frozen run lists. The additional \(R^{*}\) data include the original run identities and unrounded values. E3 integer areas are reproduced from the original RGB pairs with the saved annotations, ROI, and segmentation algorithm, and compared pixel by pixel with the stored masks. The supplied results manifest links each outcome to its cohort and source; Appendix~\ref{app:e3_archive} documents the reproduction level.
 
 \section{Platform and Metric Boundaries}
 The local task uses the UR10 platform, robot-mounted processing tool, and marked plate visible in RGB. The original E1 report identifies UR10 CB3 and an AIDIN AFT200-D80 force/torque sensor. E1/E2 share their respective archived command-processing and lower-level feedback configurations, while E3 retains condition-specific termination and return implementations. Measured spindle RPM, abrasive state, specimen alloy, scratch depth, mass loss, and roughness change are not independently supplied by these records.
 
 E1 time is \texttt{execution\_start} to the first \texttt{TASK\_COMPLETED}, including approach and exit but excluding initial PTP and later HOME. Its \(J_{\mathrm{excess}}\) uses the same whole execution window and the empirical teaching reference \ForceExposureReference~N. E2 completed time is the operator-based interval, with A4 completion null and its interruption interval retained. E3's primary outcome is Equation~\eqref{eq:e3_removal}; neither E1/E2 timing nor E3 automatic diagnostics supply a removal-completion timestamp. Means and sample SD use runs as the sample unit, not frames or pixels.
+
+Table~\ref{tab:expert_il_baselines} summarizes the strategy and force interfaces.
 
 \begin{table}[tbp]\centering\small
 \caption[Strategy and information configurations]{Strategy and force interfaces. All retain actual lower-level force feedback. Table~\ref{tab:e2_information_contracts} distinguishes E2 observations from supervision.}
@@ -38,14 +40,14 @@ E3 & C & Same checkpoint and normalizer; center-relative placement and D-conditi
 \FloatBarrier
 \section{E1: Strategy Comparison}
 \label{sec:e1_results}
-Table~\ref{tab:e1_primary} presents the latest \(R^{*}\)/T/C summary while explicitly retaining their collection dates. Each strategy completes the required procedure in its observed five runs. The original R also completes 5/5 and is preserved alongside \(R^{*}\) in Table~\ref{tab:e1_r_retiming} and the original R/T/C individual outcomes in Appendix~\ref{app:runs}.
+Figure~\ref{fig:e1_primary_metrics} shows the individual E1 outcomes. Table~\ref{tab:e1_primary} presents the \(R^{*}\)/T/C summary while explicitly retaining their collection dates. Each strategy completes the required procedure in its observed five runs. The original R also completes 5/5 and is preserved alongside \(R^{*}\) in Table~\ref{tab:e1_r_retiming} and the original R/T/C individual outcomes in Appendix~\ref{app:runs}.
 
 \begin{table}[H]\centering\footnotesize\setlength{\tabcolsep}{3pt}
-\caption[E1 latest strategy summary]{Latest E1 summary: \(R^{*}\) is the separate additional five-run diagnostic on 19 October 2026; T/C are the original five each on 15 October. The 15 displayed runs were not randomized together in a new common block. Time and excess integral are mean \(\pm\) sample SD, \(n=5\) per cell. Original R is retained separately; C5 remains included and C6 excluded.}
+\caption[E1 strategy summary]{E1 strategy summary: \(R^{*}\) is the separate additional five-run diagnostic on 19 October 2026; T/C are the original five each on 15 October. The 15 displayed runs were not randomized together in a new common block. Time and excess integral are mean \(\pm\) sample SD, \(n=5\) per cell. Original R is retained separately; C5 remains included and C6 excluded.}
 \label{tab:e1_primary}\input{tables/e1_latest}
 \end{table}
 
-\figfull{e1_latest_metrics.pdf}{E1 individual runs and mean \(\pm\) sample SD. Original R, additional \(R^{*}\), original T, and original C are kept separate, with dates on the axis. Each colored point is one run; R*1 and C5 identify the retained short first additional run and high-exposure original C5. C6 is excluded. \(R^{*}\) points use the report's printed 0.001-s values, while its summary uses the published mean/SD. Bars are dispersion, not confidence intervals.}{fig:e1_primary_metrics}
+\figfull{e1_latest_metrics.pdf}{E1 individual runs and mean \(\pm\) sample SD. Original R, additional \(R^{*}\), original T, and original C are kept separate, with dates on the axis. Each colored point is one run; R*1 and C5 identify the retained short first additional run and high-exposure original C5. C6 is excluded. \(R^{*}\) points and summaries use the verified unrounded per-run CSV; displayed numbers are rounded only for presentation. Bars are dispersion, not confidence intervals.}{fig:e1_primary_metrics}
 
 T has a shorter mean completion time and smaller time SD than C: \EoneTTime\(\pm\)\EoneTTimeSD~s versus \EoneCTime\(\pm\)\EoneCTimeSD~s. Their mean excess integrals are \EoneTExcess{} and \EoneCExcess~N\,s, respectively; \(R^{*}\) and original R have zero observed excess. The common \(Q_{95}\) is a teaching-derived analysis reference, not a target force or safety/damage boundary. These outcomes establish procedure execution and different time--force characteristics. They do not measure ink-removal success or surface quality.
 
@@ -68,7 +70,7 @@ Only processing is retimed, from 12.243621 to 8.194767 s. The source approach, f
 \section{E2: Force-Information Ablation}
 E2 separates the two force roles by comparing A/B/C under the shared execution environment. A learns motion and uses an external constant force; B learns motion and force without policy force conditioning; C learns both with measured-force conditioning. The A/B comparison changes both the action dimension and the learned reference schedule. The B/C comparison retains the action and history architecture while changing force-conditioning information. All three are independently trained single-seed checkpoints.
 
-Table~\ref{tab:e2_times} applies the corrected field outcome. A has four operator-reported completed attempts and one interrupted attempt. B and C have five operator-reported completed attempts each. A4 remains in the all-attempt statistics and has no successful completion time.
+Figure~\ref{fig:e2_primary_metrics} displays all E2 attempts. Table~\ref{tab:e2_times} applies the corrected field outcome. A has four operator-reported completed attempts and one interrupted attempt. B and C have five operator-reported completed attempts each. A4 remains in the all-attempt statistics and has no successful completion time.
 
 \begin{table}[H]\centering\footnotesize
 \caption[E2 corrected completion, timing, and peaks]{E2 results with A4 corrected to incomplete release and operator interruption. Completed-time statistics use A \(n=4\), B/C \(n=5\). Mean observed peak is the mean of the five per-run peaks in every condition, including A4, not the whole-signal mean or pooled maximum. Values are mean \(\pm\) sample SD.}
@@ -88,6 +90,8 @@ It describes the recorded operator-based timing difference. It does not establis
 
 \figfull{e2_primary_metrics.pdf}{All E2 attempts. A4 is shown as a cross at its interruption time. The time summary marks use completed attempts only. Force peaks and XY travel include all five attempts in each condition. Axes retain the full observed ranges.}{fig:e2_primary_metrics}
 
+Table~\ref{tab:e2_force_travel} reports the corresponding all-attempt force and travel statistics.
+
 \begin{table}[tbp]\centering\footnotesize
 \caption[E2 all-attempt force and travel]{E2 all-attempt force and motion statistics, \(n=5\) per condition. ``Peak'' is the mean of per-run measured peaks. Whole-window mean force includes approach and exit and is not a contact-only force-quality measure.}
 \label{tab:e2_force_travel}
@@ -98,16 +102,16 @@ The mean measured peaks are similar in scale across A, B, and C; C is not below 
 
 The mean time with recorded \(F_z^B\geq3\) N is \EtwoAContactTime\(\pm\)\EtwoAContactTimeSD~s for A, \EtwoBContactTime\(\pm\)\EtwoBContactTimeSD~s for B, and \EtwoCContactTime\(\pm\)\EtwoCContactTimeSD~s for C. These existing contact diagnostics describe temporal organization on the observed window; they do not define a new threshold for effective polishing.
 
-Full force traces and transition cases are retained in Appendix~\ref{app:execution_cases}.
+Full force traces and transition cases are retained in Appendix~\ref{app:e2_cases}, Figures~\ref{fig:e2_force_all} and~\ref{fig:e2_transition_cases}.
 
 
 \FloatBarrier
 \section{E3: Spatial Transfer of the Learned Skill}
 \label{sec:e3_results}
-E3 evaluates reuse of the same C checkpoint and normalizer without new teaching or retraining. N is nominal, P1 translates the registered region, and D1/D2 change its in-plane direction while also retaining their small center offsets. Table~\ref{tab:e3_placements} gives the actual registered values supplied in the confirmed execution record, replacing earlier planning examples. They are registration values rather than independent precision surface measurements.
+E3 evaluates reuse of the same C checkpoint and normalizer without new teaching or retraining. N is nominal, P1 translates the registered region, and D1/D2 change its in-plane direction while also retaining their small center offsets. Figure~\ref{fig:e3_registered_layout} plots the registered positions and directions. Table~\ref{tab:e3_placements} gives the actual registered values verified in the saved per-run registration and execution contexts. They are registration values rather than independent precision surface measurements.
 
 \begin{table}[H]\centering\small
-\caption[E3 actual registered placements]{Main E3 conditions: registered offsets from nominal and direction change. D1/D2 include the listed center shifts. These are the executed task-registration values; nominal planning examples of \(\pm10\) mm or \(\pm30^\circ\) are not used.}
+\caption[E3 actual registered placements]{Main E3 conditions: registered offsets from nominal and direction change. D1/D2 include the listed center shifts. Each value is consistent across the five selected run contexts for its condition.}
 \label{tab:e3_placements}\input{tables/e3_placements}
 \end{table}
 
@@ -116,9 +120,9 @@ E3 evaluates reuse of the same C checkpoint and normalizer without new teaching 
 Position transfer uses center-relative XY and restoration to the live center. D1/D2 additionally align observation XY and the policy image to the teaching reference, then inversely transform generated XY. Z, tool posture, force actions, and measured-force channels are not jointly rotated as a full \(SE(3)\) transform. The result evaluates the policy together with its registration/direction adapter; it does not isolate spontaneous rotation generalization of the policy.
 
 \subsection{Selection and Image Evaluation}
-The image report preserves the original 25-run final selection rather than selecting new successful or latest runs. N is from 21 October and the selected P/D executions are from 23 October. P1 combines earlier repeats 2/4 with repeats 1/3/5; P2 includes retries of 1/2/3 and retained 4/5; D1/D2 include the final confirmed repeat-5 retries. The source report's identities, not numerical repeat order, define membership. D1-4 retains its original \texttt{manual\_abort}. The experiment is a selected development collection, not a randomized controlled transfer study.
+The image report preserves the original 25-run final selection rather than selecting new successful or latest runs. N is from 21 October and the selected P/D executions are from 23 October. P1 combines earlier repeats 2/4 with repeats 1/3/5; P2 includes retries of 1/2/3 and retained 4/5; D1/D2 include the final confirmed repeat-5 retries. The frozen selection manifests and original run identifiers define membership. D1-4 retains its original \texttt{manual\_abort}. The experiment is a selected development collection, not a randomized controlled transfer study.
 
-The main thesis removal comparison excludes P2 because every final P2 image is tool-occluded. P2 was executed and remains in the archive. In D1, all five selected runs remain, but D1-4's final tool occlusion prevents whole-stain measurement. Thus the main evaluation contains \EthreeMainN{} selected runs and \EthreeImageN{} evaluable image pairs. The semiautomatic gray-threshold and saved-boundary analysis is defined in Section~\ref{sec:e3_image_method}. No new segmentation is introduced for this revision.
+Table~\ref{tab:e3_main_results} reports the image-area results, and Figure~\ref{fig:e3_removal_metrics} shows every evaluable run. The main removal comparison excludes P2 because every final P2 image is tool-occluded. P2 was executed and remains in the archive. In D1, all five selected runs remain, but D1-4's final tool occlusion prevents whole-stain measurement. Thus the main evaluation contains \EthreeMainN{} selected runs and \EthreeImageN{} evaluable image pairs. The semiautomatic gray-threshold and saved-boundary analysis is defined in Section~\ref{sec:e3_image_method}. The established analysis is reproduced without changing its annotations or pixel criteria.
 
 \begin{table}[H]\centering\footnotesize
 \caption[E3 image-based stain-area removal]{Main E3 removal results, mean \(\pm\) sample SD over image-evaluable runs. All conditions contain five selected executions. D1 image \(n=4\) means four evaluable pairs, not a 4/5 success rate; D1-4 is final-tool-occluded. P2's five occluded runs are archived outside this main table.}
@@ -129,13 +133,19 @@ The main thesis removal comparison excludes P2 because every final P2 image is t
 
 Condition means range from \EthreeDtwoRemoval\% (D2) to \EthreeNRemoval\% (N). This is a range of \emph{condition means}, not a lower bound for individual runs. D2 includes the 83.879\% observation, and D1-4 and P2 remain unquantified. A 100\% value denotes no residual black ink detected at the original image resolution and established segmentation criterion.
 
-\FloatBarrier
-\subsection{Before/After Evidence and Retained Occlusion}
-Figure~\ref{fig:e3_first_index_evidence} uses repeat 1 in each main condition, a fixed selection independent of the measured outcome. The unchanged report-embedded panels show recorded RGB with ROI and saved ink masks. Their fixed display crops are documented in the evidence-panel manifest; they are not new segmentations or reconstructed photographs. All 25 report evidence panels, including the 19 evaluable pairs and six occluded cases, are supplied with run/page correspondence. Original image-pair JSON and raw-image paths could not be independently reopened on this PC, so these reproductions retain their report-level provenance.
+Figures~\ref{fig:e3_first_index_evidence} and~\ref{fig:e3_direction_evidence} show first-index original RGB and unchanged masks at identical scale. Appendix~\ref{app:e3_archive} retains the occluded D1-4/P2 records and lowest observed removal, D2-3.
 
-\figfull{e3_first_index_evidence.pdf}{First-index examples N-1/P1-1/D1-1/D2-1. Columns show the report's before/after RGB with the same cyan ROI and the saved magenta ink masks on their display crops. The source is the 39-page image report, pp.10, 15, 25, and 30; identical fixed rectangles are extracted from its embedded evidence panels for display only. No occlusion is reconstructed and no pixel area is recalculated from these resized panels.}{fig:e3_first_index_evidence}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth]{figures/e3_first_index_evidence_np.pdf}
+\caption[E3 N/P1 original RGB and ink masks]{N-1 and P1-1: original before/after RGB and enlarged binary ink masks. Black denotes counted ink; the dashed outline is the unchanged ROI. Mask axes are native pixel coordinates and use the same crop and scale in every example. No residual is detected in N-1; P1-1 retains 31 pixels. Original RGB resolution is \(424\times240\); enlargement adds no image detail.}
+\label{fig:e3_first_index_evidence}
+\end{figure}
 
-D1-4's diagnostic image shows visible residual marking and final tool occlusion. The visible portion supports a qualitative residual note, not an estimate of hidden whole-stain area. Appendix~\ref{app:e3_archive} preserves that evidence, P2's exclusion record, all main-run areas, and the existing threshold sensitivity results.
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth]{figures/e3_first_index_evidence_d.pdf}
+\caption[E3 D1/D2 original RGB and ink masks]{D1-1 and D2-1: original before/after RGB and saved binary masks, displayed with the same rules as Figure~\ref{fig:e3_first_index_evidence}. The original remaining ink pixels are retained. Measured areas come from native images and masks, independently of the display enlargement.}
+\label{fig:e3_direction_evidence}
+\end{figure}
 
 \FloatBarrier
 \section{Answers to the Research Questions}

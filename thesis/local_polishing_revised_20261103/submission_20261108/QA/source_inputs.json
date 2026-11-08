@@ -1,0 +1,1859 @@
+{
+  "research_root": "/home/eunseop/nrs_imitation",
+  "inputs": [
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261015_E1_nominal_pass_height_v2_pdf_report/input_manifest.json",
+      "size": 174980,
+      "sha256": "db2a5a8fea673bef0a8f890359bd06e8903dbc067b9d24150c6cb6913526f667"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261015_E1_nominal_pass_height_v2_pdf_report/numeric_per_run.csv",
+      "size": 4955,
+      "sha256": "e83d74b7f1146c52aa89f9efd23941eb4ab7160db47d123e7cc352e29f22fe05"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/run_context.json",
+      "size": 2584,
+      "sha256": "2486b1913615a4e710873bf128cae8bd57b7e398dd956411fe5f937123d82a17"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/execution_config.json",
+      "size": 23213,
+      "sha256": "ec8db472353c17043a022018f54b2264fd2155a916b90e8d5336253c84e5f426"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/run_context.json",
+      "size": 2583,
+      "sha256": "081ead74387759ccb911acc13379f4e9e56ab4c2a87918ec162ebf199e72b600"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/execution_config.json",
+      "size": 23205,
+      "sha256": "b1768d9fb3d8a4de616e55ef352724e60f4bae19ba57df55440003c9cfdf4103"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/run_context.json",
+      "size": 2584,
+      "sha256": "662e92a4e21f039cf91e428e4ede2dc89f687d7ac9fd981339841beebaebbc19"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/execution_config.json",
+      "size": 22755,
+      "sha256": "aa860a454db7869b3dd9e196a007dcedc9edeee89e3f6ea3eafc13523a37f097"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/run_context.json",
+      "size": 2583,
+      "sha256": "aeebfb96138cfd35ded5e307e8f0655a8c22179b6bc650a00bd475e8ea62a516"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/execution_config.json",
+      "size": 23213,
+      "sha256": "18d79191fedb7508c85212c890b647cff318c23ad696c40a3a27652ff0121992"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/run_context.json",
+      "size": 2584,
+      "sha256": "3c7015dc96d2a074e7e54bd6b7cf5d0108453aa8e668b9b6fc2a75eeb651ced5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/execution_config.json",
+      "size": 23205,
+      "sha256": "2f79c1aabf0e1a6aad04336320121da555c9c43d27fcd360578ca890dd169292"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/run_context.json",
+      "size": 2584,
+      "sha256": "86be78c166b1edcd3a0607b2836cc8f41890245342b90b5006a4e914d45eebb7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/execution_config.json",
+      "size": 22755,
+      "sha256": "fd77d90c9aa28bdd0411a95b496aee7dd7717a7f47bb66781eedff17405c8eb8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/run_context.json",
+      "size": 2584,
+      "sha256": "67e9fc2e55811b71af90494be9a9a586aaf33d536bfcd958a2a83592e721bfc4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/execution_config.json",
+      "size": 23205,
+      "sha256": "a37e993fdb015c1db950a0b9755f924dda3afa5552a2c4ea2fc34f625203ee59"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/run_context.json",
+      "size": 2584,
+      "sha256": "57494228b7268e760f4694828da7f64b2274fd655874c395775f1a655b11dc80"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/execution_config.json",
+      "size": 22755,
+      "sha256": "b7083e7fdf35f4331090c4c544bbbb265fc4753de0d918ebf9184bfb5fbb03d9"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/run_context.json",
+      "size": 2584,
+      "sha256": "6b973c21a437eb3d1aa0a4100af6f6063893a17a21b8b8c9d3e975212403fe77"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/execution_config.json",
+      "size": 23213,
+      "sha256": "ed38850336e12fc4b307a9bc15767f8e37ce87909ef821deb3539598b5d5815a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/run_context.json",
+      "size": 2585,
+      "sha256": "75ecad5c457e3a199428b3ec4b12513d9b5d9df6f9a7c3d88ac1b85df59ebe4a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/execution_config.json",
+      "size": 23207,
+      "sha256": "9448f5b9d31cf9a291286bbb8200198de30dbb94a51e82bcfd857a03a088af62"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/run_context.json",
+      "size": 2585,
+      "sha256": "cc87b7779c629af60235e62184e427f2b888cbd917eece95b51892a05814fa99"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/execution_config.json",
+      "size": 23215,
+      "sha256": "e1fb980755681c6d003d5d0b55c258458167d06e715d0ac5c824bbbaf143c56e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/run_context.json",
+      "size": 2586,
+      "sha256": "350b9bb54440832d911fd3ee753488453a2344a9fd708165b1b95c2dc3a45a80"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/execution_config.json",
+      "size": 22757,
+      "sha256": "4c6e30719e5c98146108e35b2d46be729a17d2082ad661113c095b93c88f170c"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/run_context.json",
+      "size": 2586,
+      "sha256": "432693e56dd30dafddfd92dbaebb8fa95bc4c6f3190f9eb28fc8f5502377b383"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/execution_config.json",
+      "size": 23207,
+      "sha256": "6d1ac6c75761d2c702a86de79253f15ece892753a3a3153d59db3a6518e67804"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/run_context.json",
+      "size": 2586,
+      "sha256": "1f44a9dfec777f2f4f63f412fd6092a413af2299e867ba5295664e5d26c618c1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/execution_config.json",
+      "size": 22757,
+      "sha256": "68cdb3a322fd1a4d9909140f558238da1be30315e8291a4b1258c41527dbf506"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/run_context.json",
+      "size": 2586,
+      "sha256": "ac2aaf75301833b1a3fbb47a0a932b4be1709207eb6426ff280dcb84197809f4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/execution_config.json",
+      "size": 23215,
+      "sha256": "8603b642e5c058cd1c11fcfd388d2512d49754a5ef0017915553a3a8a5c5fa63"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/T/E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/E1_contact_task_pass_height_v2/baseline_manifest.json",
+      "size": 101417,
+      "sha256": "3e6a1d3f105c1b7866c245079b2bfa50530672f42f610e47098cafe8a6712db1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261019_E1_R_dataset_mean_feed_pdf_report/analysis/diagnostic_metrics_per_run.csv",
+      "size": 4544,
+      "sha256": "b658549f9ebcb1ba78cf65bae1c76d3f320eca623f9359de3ad1ec8e9da7d66f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261019_E1_R_dataset_mean_feed_pdf_report/audit_per_run.csv",
+      "size": 6790,
+      "sha256": "2870f1213074bbce36cd232d25737b1358d6574b2431e3e80dc7f4511e1f3dd8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261019_E1_R_dataset_mean_feed_pdf_report/input_manifest.csv",
+      "size": 196785,
+      "sha256": "711f9e897eabad7f3b818d832eff49ac04a2e28110d53f4badb958ad3d761e15"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261019_E1_R_dataset_mean_feed_pdf_report/code_versions.json",
+      "size": 11463,
+      "sha256": "4d4c1bf72f45ca80e04f6e8a35e086fc521a25febfc2cfd34a5872c58c9c444b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261019_E1_R_dataset_mean_feed_pdf_report/analysis/original_R5_vs_dataset_mean_R5.csv",
+      "size": 1975,
+      "sha256": "eb5871851509addb339eaf463afd59b69d611411b0f9b6c37df80551451c93c2"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_diag_current_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261019T140517_0921f1508b/run_context.json",
+      "size": 2651,
+      "sha256": "9a177a1fa60c226205a6e008acc9ccb59f3a0eec0c9c8dcd1544d15dc5f184a3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_diag_current_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261019T140517_0921f1508b/execution_config.json",
+      "size": 24852,
+      "sha256": "f39f7777b904b278d4721d5d350f25eee2ca10707866a766a4c2a4464ceffdef"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_diag_current_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261019T140517_0921f1508b/task_definition.json",
+      "size": 2729,
+      "sha256": "7b7dc981b9db3a3827a4c8e3d439db6f7e9b4cfcaa7dcfc5a25a11f0f2a8b9ec"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_diag_current_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261019T140517_0921f1508b/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_diag_current_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r1_20261019T140517_0921f1508b/runtime_source_versions.json",
+      "size": 1618,
+      "sha256": "ce173b675efcf3a67443ab80e87c46c07fcbc4acc4e5a9412dc2dee53bb778ea"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/experiments/E1_R_dataset_mean_feed_20261019/templates/rule_dataset_mean_feed.npz",
+      "size": 91338,
+      "sha256": "1616a9f1bbb68df6a5178d994ffd48e239958cdef8f139b4925f85d873c20083"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261019T141109_d8d222935d/run_context.json",
+      "size": 2667,
+      "sha256": "9493f402c8f9959e2c39757339e08d5595adaf5a9cdbd90098108f39f403933d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261019T141109_d8d222935d/execution_config.json",
+      "size": 25023,
+      "sha256": "68bf9d4fac530a39e8244c430c66e6e224ebf27e04c8100e7f2d3a5a7e5b6369"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261019T141109_d8d222935d/task_definition.json",
+      "size": 2729,
+      "sha256": "7b7dc981b9db3a3827a4c8e3d439db6f7e9b4cfcaa7dcfc5a25a11f0f2a8b9ec"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261019T141109_d8d222935d/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r2_20261019T141109_d8d222935d/runtime_source_versions.json",
+      "size": 1618,
+      "sha256": "ce173b675efcf3a67443ab80e87c46c07fcbc4acc4e5a9412dc2dee53bb778ea"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261019T141211_32499d64f6/run_context.json",
+      "size": 2667,
+      "sha256": "82bdc69f7aea334b279f51c30fba9089c58aae56d2e6289ebbe03053beb4c6d7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261019T141211_32499d64f6/execution_config.json",
+      "size": 25023,
+      "sha256": "131c237e995fcb799a376d4709cc26348123b13be66ff46886fab1beddd7225e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261019T141211_32499d64f6/task_definition.json",
+      "size": 2729,
+      "sha256": "7b7dc981b9db3a3827a4c8e3d439db6f7e9b4cfcaa7dcfc5a25a11f0f2a8b9ec"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261019T141211_32499d64f6/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r3_20261019T141211_32499d64f6/runtime_source_versions.json",
+      "size": 1618,
+      "sha256": "ce173b675efcf3a67443ab80e87c46c07fcbc4acc4e5a9412dc2dee53bb778ea"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261019T141312_586a744e36/run_context.json",
+      "size": 2667,
+      "sha256": "60c7ad44fdfbd19a2a034b976196718dbe843ffea36719175f83503c29c2d79a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261019T141312_586a744e36/execution_config.json",
+      "size": 25023,
+      "sha256": "42abe8677413ee2161a1157da6a40e05c9288598c3a9aaacb38ce06fdefbe836"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261019T141312_586a744e36/task_definition.json",
+      "size": 2729,
+      "sha256": "7b7dc981b9db3a3827a4c8e3d439db6f7e9b4cfcaa7dcfc5a25a11f0f2a8b9ec"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261019T141312_586a744e36/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r4_20261019T141312_586a744e36/runtime_source_versions.json",
+      "size": 1618,
+      "sha256": "ce173b675efcf3a67443ab80e87c46c07fcbc4acc4e5a9412dc2dee53bb778ea"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261019T141415_bc2827864a/run_context.json",
+      "size": 2668,
+      "sha256": "2ed4962b674c1875265a89bfe4956b43293ccdc320938473d25b09f1d61fe846"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261019T141415_bc2827864a/execution_config.json",
+      "size": 25023,
+      "sha256": "ad1fc2b812afb31d7124a8402f3acfd19e9e34f30590a6bb7e44748a817c2b57"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261019T141415_bc2827864a/task_definition.json",
+      "size": 2729,
+      "sha256": "7b7dc981b9db3a3827a4c8e3d439db6f7e9b4cfcaa7dcfc5a25a11f0f2a8b9ec"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261019T141415_bc2827864a/task_evaluation.json",
+      "size": 3858,
+      "sha256": "c16b88282a00eae61b9977e737f80e88f0d82929e0f91c2f3415e59cfea09abf"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_contact_transition/E1_R_dataset_mean_feed_nominal_five_extension_20261019/NOMINAL/R/E1_CT_NOMINAL_R_r5_20261019T141415_bc2827864a/runtime_source_versions.json",
+      "size": 1618,
+      "sha256": "ce173b675efcf3a67443ab80e87c46c07fcbc4acc4e5a9412dc2dee53bb778ea"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261013_E2_pdf_report/metrics_per_run.csv",
+      "size": 20545,
+      "sha256": "8aa272f6a347829035dbf96f2d2109ae84275bca84c4c335b93b27ebb76d6c72"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261013_E2_pdf_report/input_manifest.json",
+      "size": 324719,
+      "sha256": "db0023d59e902f14eed5a39f34e52a1ea2e9ead9e9e9b4a85be9a6bc5144097f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r1_20261013T195840_cfee7559de76/runtime.json",
+      "size": 9531,
+      "sha256": "c13e42c0710d5ac5b62f5aa20639e15aca478e411f561f48701b8ea5ddd10736"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r2_20261013T200254_da04a1075552/runtime.json",
+      "size": 9531,
+      "sha256": "bb1895cb03e8cde7e890b7e97de148fa6f58cf5cc6a55cbf411e87380f70a207"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r3_20261013T200416_6ffeb5146764/runtime.json",
+      "size": 9531,
+      "sha256": "5c64d17c2f5923174c449334575c40ad81e9b8210292688dc29898d95180d1b2"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601/runtime.json",
+      "size": 9531,
+      "sha256": "fb0984c73b76010684c2e9757cb5b5c975d52449eb9d47a7cc6a99c5035065c1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r5_20261013T200711_ed37cc309c44/runtime.json",
+      "size": 9531,
+      "sha256": "438af8b8454d0d6ed2430801bfe07dfcd99fed357ee5bc942ccd0d4d2685ee05"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r1_20261013T200856_b55a06b76524/runtime.json",
+      "size": 9530,
+      "sha256": "5ca564b934d1c7e36d7f3a23f1f5230e46c67dd071a727381b25290727879ef7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r2_20261013T201013_0fc3796e2d33/runtime.json",
+      "size": 9530,
+      "sha256": "aa8f7a52b96ed67843d6b13d18b8f39c1b4975f802e4c931934769a7caedbde5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r3_20261013T201128_ece39e727bc9/runtime.json",
+      "size": 9530,
+      "sha256": "fe40d014e73d7e3d38b17e458aa18312f49a1bdb6fc235295fe0afa14093abe1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c/runtime.json",
+      "size": 9530,
+      "sha256": "93807aafb51d6fbc93d7d40d69ab5753bdeafb0c3648cf2edd16753e252a93d4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r5_20261013T201347_702cc1eae9be/runtime.json",
+      "size": 9530,
+      "sha256": "263aacae73150dc2190108b8ebec22bca4ea8fe5365f937cb70f595868fc887f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a/runtime.json",
+      "size": 9529,
+      "sha256": "c03e4553d905cf620d0cdb8c50312eaf4a545f908229405c4ad762840224f244"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r2_20261013T201654_2c8a82453c1b/runtime.json",
+      "size": 9529,
+      "sha256": "07ea9980d650964ab97460fc89620a9a8f6b04f36d06f81a060ee7c17bb02988"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r3_20261013T201751_bb61fb537fa0/runtime.json",
+      "size": 9529,
+      "sha256": "77d853d72011d9b0968b5ad2657a24eb96510ee2ef2eebddde86f6d11f0c8972"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r4_20261013T201854_63aa9f0a5934/runtime.json",
+      "size": 9529,
+      "sha256": "fcd105fa9bac2c370823d67f1af7b16450907bc265b5e8ab1574f7b67cee0862"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r5_20261013T201958_870d2c89c24d/runtime.json",
+      "size": 9529,
+      "sha256": "748df3d5437e5a920bcecbb427906666e945f04d3c6190d48ad167e5bc247aac"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601/executor/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601_executor_20261013T200529_1791889529692307773_a7plxs7b/events.jsonl",
+      "size": 27739,
+      "sha256": "76cbe8086c89a52c81911aa539ca3cf40225041e82e162bf7ee82b654db77a59"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/analysis_config.json",
+      "size": 2538,
+      "sha256": "2bd471c476fdb1172fc1f91807428b3c56df0a271554c4a13463566f62d95555"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/annotations.json",
+      "size": 45513,
+      "sha256": "69d2464d38ecdeed4b2dbc2e879777941e035f7e0f194381f2b3e8462d565992"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/image_pair_manifest.json",
+      "size": 349364,
+      "sha256": "f2876317f821fa912725a94b30a9cca3656582a5f2ba9aa7c313c6951174e241"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/removal_metrics_per_run.csv",
+      "size": 21103,
+      "sha256": "44d1fa613ec39e6b37847f5d5caebe9fdcfaf9d2fef410f2c0ef1e9fb2ab2ae5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/removal_summary_by_condition.csv",
+      "size": 387,
+      "sha256": "61394d00862b92ae367a5736b05abf1a3fe37f2a7b62486884d111af601116c3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/image_pair_manifest.csv",
+      "size": 31755,
+      "sha256": "820a460470854e84e8ae607b5b2d6cb4f58ac6da5fd3102fb2e414ad0ee16f2e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/occluded_runs.csv",
+      "size": 5261,
+      "sha256": "929e091185abda75a7e0c70281ca1750bf5a4e06a7bbdb22738bba2073b2ee2b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_pdf_report/selection_manifest.json",
+      "size": 2466,
+      "sha256": "cf71892bb6b6c8d80ce2be72c95d31a8578e61f009cf6c40368626fd0e7e5b4a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_pdf_report/metrics_per_run.csv",
+      "size": 28307,
+      "sha256": "513baccd0c958a6e58ae358bfaa0a0e32d68c0c579c530a0ed6da1d988ba712a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/E3_N_anchor_home_135_20261021/N_final_5_20261021/final_selection_manifest.json",
+      "size": 26033,
+      "sha256": "45f051dbeb4d22f03d520b088eb72baaef4361aad3d98fe280e451ee5974264b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/E3_N_anchor_home_135_20261021/P1_final_5_20261023/final_selection_manifest.json",
+      "size": 20036,
+      "sha256": "1f524ba30842ed060f72b072781ea716029032a998afebadb03b62f2e270b9a4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/E3_N_anchor_home_135_20261021/P2_final_5_20261023/final_selection_manifest.json",
+      "size": 20067,
+      "sha256": "1d2976d3d0d0ed97fb3533663832d54260c74811c9349188142a989a28ec4044"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/E3_N_anchor_home_135_20261021/D1_final_5_20261023/final_selection_manifest.json",
+      "size": 11792,
+      "sha256": "dea1f469f345f56c995834fc8511aaf8723a2bcccc1971d7797092ba1a89dd17"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/E3_N_anchor_home_135_20261021/D2_final_5_20261023/final_selection_manifest.json",
+      "size": 3103,
+      "sha256": "427769522294845253ab74f6dcb79538841193c4c2042d7ca619b35d6efec2d2"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/analyze_images.py",
+      "size": 22386,
+      "sha256": "27c3ab769dd55fe2102ff028c0c4cdf8cec88834abaedda7ba70bf40d022ece5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r1_20261021T155427_38a11b672d/run_context.json",
+      "size": 10130,
+      "sha256": "9fb937290e39630f739bdb5798740b387ab1bde1078a5c137448559083af5990"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r1_20261021T155427_38a11b672d/execution_config.json",
+      "size": 46861,
+      "sha256": "5f98bba1164daeee844f48da563e86ca381aeb9758b57cb131745f2b896aaa32"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r1_20261021T155427_38a11b672d/task_registration.json",
+      "size": 3699,
+      "sha256": "98ae676e82310aefa65e261ab2cf5e48fd09b87f1000643590771d1b189a2abe"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r1_20261021T155427_38a11b672d/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "38a1408d5cda952b96dcbbd2cb990c226da6e3dc003b725ad8524dbf9da5b009"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r1_20261021T155427_38a11b672d/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r1_20261021T155427_38a11b672d/executor/E3_N_C_r1_20261021T155427_38a11b672d_executor_20261021T155428_1792565668517308305_6087pknc/snapshots/pre_task_review_image.png",
+      "size": 150357,
+      "sha256": "bf9dcd50b3c9ab3ea73a10b3c4ff3303d95ff05a47e6b587bdb02dc0d5e626d0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r1_20261021T155427_38a11b672d/executor/E3_N_C_r1_20261021T155427_38a11b672d_executor_20261021T155428_1792565668517308305_6087pknc/snapshots/post_home_image.png",
+      "size": 148020,
+      "sha256": "80a873093638cc08cc057c7c970ada0b5293c389e232badb05a27b7766b34a42"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-1/initial_ink_mask.png",
+      "size": 276,
+      "sha256": "91d717ccfe08e1dc78536b7cfb91e5072fc70f12195c7eb0a61f3b3b844786bc"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-1/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-1/roi_before.png",
+      "size": 327,
+      "sha256": "00e414971253e93a19fbedaa3e2db296dcf42c75fa09e65514b5642c1b995e8d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r2_20261021T155657_9c45f20eeb/run_context.json",
+      "size": 10132,
+      "sha256": "48bdb3fd65d778a9adb76b0f9732daf837285829572c45636f9101d8f041f5aa"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r2_20261021T155657_9c45f20eeb/execution_config.json",
+      "size": 46863,
+      "sha256": "b682adf2c57730dd423780dcc3f5124e4e79f34e4669b854c2157d8348bc043a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r2_20261021T155657_9c45f20eeb/task_registration.json",
+      "size": 3699,
+      "sha256": "98ae676e82310aefa65e261ab2cf5e48fd09b87f1000643590771d1b189a2abe"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r2_20261021T155657_9c45f20eeb/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "38a1408d5cda952b96dcbbd2cb990c226da6e3dc003b725ad8524dbf9da5b009"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r2_20261021T155657_9c45f20eeb/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r2_20261021T155657_9c45f20eeb/executor/E3_N_C_r2_20261021T155657_9c45f20eeb_executor_20261021T155658_1792565818564403188__dd6kqto/snapshots/pre_task_review_image.png",
+      "size": 148210,
+      "sha256": "402c2db45af4e7093d36ec9ee746b6b4c188b4b6e312c1026d48efb23e6a614f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r2_20261021T155657_9c45f20eeb/executor/E3_N_C_r2_20261021T155657_9c45f20eeb_executor_20261021T155658_1792565818564403188__dd6kqto/snapshots/post_home_image.png",
+      "size": 149586,
+      "sha256": "fb4f91aaf3d8c5e6fca6fc934e00000e5694d788bd7be967bb17437c6ec9f158"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-2/initial_ink_mask.png",
+      "size": 313,
+      "sha256": "5e400c4401ade18a629bf291fbfc1124d46372005b7ddfdb7056e6a9bbd9eba5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-2/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-2/roi_before.png",
+      "size": 329,
+      "sha256": "052a8993e02adae1c9eb5876c68551e5f216de9394fb9c5ea9324906854e7be8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r3_20261021T155811_4173b92a93/run_context.json",
+      "size": 10132,
+      "sha256": "d29f22123df43a4d94e1417b6132e84534f04e46eec02a37a1535c8506105c2f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r3_20261021T155811_4173b92a93/execution_config.json",
+      "size": 46863,
+      "sha256": "36de2fb3828e47c6703dfcfc2a1d711ae87022966960a6cd1d62c6a7f3487467"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r3_20261021T155811_4173b92a93/task_registration.json",
+      "size": 3699,
+      "sha256": "98ae676e82310aefa65e261ab2cf5e48fd09b87f1000643590771d1b189a2abe"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r3_20261021T155811_4173b92a93/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "38a1408d5cda952b96dcbbd2cb990c226da6e3dc003b725ad8524dbf9da5b009"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r3_20261021T155811_4173b92a93/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r3_20261021T155811_4173b92a93/executor/E3_N_C_r3_20261021T155811_4173b92a93_executor_20261021T155813_1792565893375414051_edn2w4a2/snapshots/pre_task_review_image.png",
+      "size": 148130,
+      "sha256": "37266cda62d6750b5edf967a026fcca1e63f809d638e2c5e33b61437571e548a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r3_20261021T155811_4173b92a93/executor/E3_N_C_r3_20261021T155811_4173b92a93_executor_20261021T155813_1792565893375414051_edn2w4a2/snapshots/post_home_image.png",
+      "size": 147770,
+      "sha256": "bc08efac3a020f9e9a71c37d8b30259321ffb5fb2fd2577aa87a15e6bfa5d0f7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-3/initial_ink_mask.png",
+      "size": 266,
+      "sha256": "280593de82ed83842cccaac5b7ff4912892bbc3e57df4019584f7e4ea99d9bab"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-3/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-3/roi_before.png",
+      "size": 324,
+      "sha256": "31d2422c7099f94d707accea2cfa8d8cefc032cf1ae61aff103565c5675029e8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r4_20261021T163649_2a0c43a870/run_context.json",
+      "size": 10154,
+      "sha256": "9660c603a3e5b25b291ef158206430522c29bedab320233d2b174d38bbf4a6c6"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r4_20261021T163649_2a0c43a870/execution_config.json",
+      "size": 46885,
+      "sha256": "3562f00fe04da9a71fa92e4e4c2a74c779b36a4c4fd159c07f8c2291b0d7237d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r4_20261021T163649_2a0c43a870/task_registration.json",
+      "size": 3699,
+      "sha256": "98ae676e82310aefa65e261ab2cf5e48fd09b87f1000643590771d1b189a2abe"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r4_20261021T163649_2a0c43a870/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "38a1408d5cda952b96dcbbd2cb990c226da6e3dc003b725ad8524dbf9da5b009"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r4_20261021T163649_2a0c43a870/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r4_20261021T163649_2a0c43a870/executor/E3_N_C_r4_20261021T163649_2a0c43a870_executor_20261021T163651_1792568211108990705_r0rksvqb/snapshots/pre_task_review_image.png",
+      "size": 152635,
+      "sha256": "558bf66ca6847dbe1aa0015c4b8d7092197f4c9f14ca3f04194f2bc5ba22ccf8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r4_20261021T163649_2a0c43a870/executor/E3_N_C_r4_20261021T163649_2a0c43a870_executor_20261021T163651_1792568211108990705_r0rksvqb/snapshots/post_home_image.png",
+      "size": 147406,
+      "sha256": "c7646ee6347622bb7e8408d24c529b224cb61559beff81d03f1ffc341a8f504f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-4/initial_ink_mask.png",
+      "size": 290,
+      "sha256": "9bf78f7ac844789fdb6cf612d988b93ce66e0430f50984ba6d1637c0a9737981"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-4/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-4/roi_before.png",
+      "size": 318,
+      "sha256": "16ad58ce95fec04430c3694aa5e97edea30353df827f496601340675646eac8c"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r5_20261021T155050_73ddc56b34/run_context.json",
+      "size": 10165,
+      "sha256": "a9c34319d2a3a8514e34a8fd54de87b7e679fe1dc301483490cb1190945e179e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r5_20261021T155050_73ddc56b34/execution_config.json",
+      "size": 46896,
+      "sha256": "69866d1307369e70df04a0c5e6449c98e0ea4e5feddd6eba82f1e68f3be7c08c"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r5_20261021T155050_73ddc56b34/task_registration.json",
+      "size": 3699,
+      "sha256": "98ae676e82310aefa65e261ab2cf5e48fd09b87f1000643590771d1b189a2abe"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r5_20261021T155050_73ddc56b34/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "38a1408d5cda952b96dcbbd2cb990c226da6e3dc003b725ad8524dbf9da5b009"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r5_20261021T155050_73ddc56b34/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r5_20261021T155050_73ddc56b34/executor/E3_N_C_r5_20261021T155050_73ddc56b34_executor_20261021T155051_1792565451684606915_901orsp4/snapshots/pre_task_review_image.png",
+      "size": 145891,
+      "sha256": "1311a3bf298848ba936b32f7058fb813cb702143f208ed0ce4fd0bc259bf9d35"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261021/E3_spatial_transfer/E3_N_anchor_home_135_releasefix_dev_20261021/N/E3_N_C_r5_20261021T155050_73ddc56b34/executor/E3_N_C_r5_20261021T155050_73ddc56b34_executor_20261021T155051_1792565451684606915_901orsp4/snapshots/post_home_image.png",
+      "size": 149579,
+      "sha256": "6902956e7a7ae97f133bd7a3e57e3b3d0a98489ed080f9df8530e53f648b1565"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-5/initial_ink_mask.png",
+      "size": 307,
+      "sha256": "c945daf9d1dc73ebda56dd20d8fb594b3c334e97c93096618d79664ec8dcd597"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-5/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/N-5/roi_before.png",
+      "size": 339,
+      "sha256": "b97a758cdee42a49b13412138d62a54a9b88884323207b14228712b2e3fd79b4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r1_20261023T153339_5840faf039/run_context.json",
+      "size": 10627,
+      "sha256": "10d31d6d8509ed9e7562d97313c6743ea3f9bbaffae5849a79a07123ae362c43"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r1_20261023T153339_5840faf039/execution_config.json",
+      "size": 48327,
+      "sha256": "03090d48f089ee2ab3b31d327aa28965de362af0cde7c3f8737f26add077b437"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r1_20261023T153339_5840faf039/task_registration.json",
+      "size": 3965,
+      "sha256": "0a29c9e014a4fc4b9dbc6203138de61b18ed99b656f2433ed6da3645b5c2ec8f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r1_20261023T153339_5840faf039/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "9a86e9afd075ac168b4174cb62f20552c8d19248c879e41767c020613805c9c0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r1_20261023T153339_5840faf039/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r1_20261023T153339_5840faf039/executor/E3_P1_C_r1_20261023T153339_5840faf039_executor_20261023T153340_1792737220821381030_9jbqd9gn/snapshots/pre_task_review_image.png",
+      "size": 150926,
+      "sha256": "c7120036fb2bf2849d4db7a500b7e9ac54371460121a1ec7c3687dd6f746a2af"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r1_20261023T153339_5840faf039/executor/E3_P1_C_r1_20261023T153339_5840faf039_executor_20261023T153340_1792737220821381030_9jbqd9gn/snapshots/post_home_image.png",
+      "size": 152849,
+      "sha256": "0e2bc4cecd726743eca1ca7e25d29639a0ea6d4078a07581352abd60c2a86e00"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-1/initial_ink_mask.png",
+      "size": 349,
+      "sha256": "59295a669e98b6539c89f600e1ec476ce5fe34ef962b0962cf69b8ca9c666d44"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-1/final_ink_mask_aligned.png",
+      "size": 230,
+      "sha256": "1caa43f33fe7365ee47b6dbc57a8732e40cea5cf2daa92aa7aad1fa1618689c0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-1/roi_before.png",
+      "size": 343,
+      "sha256": "37732c589eb0b89e4f707c58de59107d875b671622930225c569b94e83335fdd"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r2_20261023T152831_a89f4484b8/run_context.json",
+      "size": 10556,
+      "sha256": "db9659eac9ad6d4b566cce5555b0fb4a48a05656f7d6fc1724381dc17d7efefc"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r2_20261023T152831_a89f4484b8/execution_config.json",
+      "size": 48256,
+      "sha256": "537e0397147a16d9d7674d808db4b6cca949ae3220ebee2febddcf7a385f688b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r2_20261023T152831_a89f4484b8/task_registration.json",
+      "size": 3965,
+      "sha256": "e817ff21999b9946658d6d3f1a80bbacd7c502aca77a6b256285fe6839f0857f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r2_20261023T152831_a89f4484b8/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "9a86e9afd075ac168b4174cb62f20552c8d19248c879e41767c020613805c9c0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r2_20261023T152831_a89f4484b8/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r2_20261023T152831_a89f4484b8/executor/E3_P1_C_r2_20261023T152831_a89f4484b8_executor_20261023T152832_1792736912473698884_6_a6rgas/snapshots/pre_task_review_image.png",
+      "size": 148261,
+      "sha256": "3ea72286885b95bfcb95620c356da1a803adb42304b1ba87dff5b3e69d882626"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r2_20261023T152831_a89f4484b8/executor/E3_P1_C_r2_20261023T152831_a89f4484b8_executor_20261023T152832_1792736912473698884_6_a6rgas/snapshots/post_home_image.png",
+      "size": 149358,
+      "sha256": "2f8cd0b5a52dd0707f9d5476d89844155772db38693bcde3740d26980b416c4f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-2/initial_ink_mask.png",
+      "size": 321,
+      "sha256": "531cf0882f6b06679a6568f55fc12d126e423d84eef95a936dcf199259a566fa"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-2/final_ink_mask_aligned.png",
+      "size": 198,
+      "sha256": "429ccbb3bee4a000e0634aa5da03792d5c87e6dc950192c4e90b3b65a6957eb8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-2/roi_before.png",
+      "size": 346,
+      "sha256": "27947a41cc72af60bba6e88363ce782fbd01ad578f96dc665c92905492246df2"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r3_20261023T153443_efb37095fd/run_context.json",
+      "size": 10627,
+      "sha256": "e072c0a8c6d5cc07af3b45b529b03c4b8026317b8a794e0eafb12cdcd8ac0dae"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r3_20261023T153443_efb37095fd/execution_config.json",
+      "size": 48327,
+      "sha256": "a492834ac618b42fce2177aeaf7b2f6e9cd079fb4c308793b0853705cebae07e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r3_20261023T153443_efb37095fd/task_registration.json",
+      "size": 3965,
+      "sha256": "0a29c9e014a4fc4b9dbc6203138de61b18ed99b656f2433ed6da3645b5c2ec8f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r3_20261023T153443_efb37095fd/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "9a86e9afd075ac168b4174cb62f20552c8d19248c879e41767c020613805c9c0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r3_20261023T153443_efb37095fd/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r3_20261023T153443_efb37095fd/executor/E3_P1_C_r3_20261023T153443_efb37095fd_executor_20261023T153444_1792737284918847929_18cj3nf4/snapshots/pre_task_review_image.png",
+      "size": 153633,
+      "sha256": "19a8130432511886b7e76a2da7f85779364ce84397fa65e6f76c4d028c1547bc"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r3_20261023T153443_efb37095fd/executor/E3_P1_C_r3_20261023T153443_efb37095fd_executor_20261023T153444_1792737284918847929_18cj3nf4/snapshots/post_home_image.png",
+      "size": 153153,
+      "sha256": "d04ca0b20d7f4194af03ce4eae69ecc863829ee62ab673a9ba1583bc44859e53"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-3/initial_ink_mask.png",
+      "size": 329,
+      "sha256": "1149e08553daedd069d0be824e454192d2b73941918343575c75f8d84c3e9507"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-3/final_ink_mask_aligned.png",
+      "size": 204,
+      "sha256": "dfbed30917c304b3fdf2c012acfa7137a7ca1ce9d74043ef62de51cf0a60dd7e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-3/roi_before.png",
+      "size": 348,
+      "sha256": "aad675aaa2ddcecfefbe4347bd78ae3752bb7b7d64dbf4345ded22910535b2f4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r4_20261023T153019_63ef0c0584/run_context.json",
+      "size": 10556,
+      "sha256": "0c24bc11cb6e6149b41fa3c458e5947757d8117632681216d972c83611209cfd"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r4_20261023T153019_63ef0c0584/execution_config.json",
+      "size": 48256,
+      "sha256": "44ce05b566db633a44eeb9b5b40c254e9fa0d542ce2429b0bcc6ca76250577cb"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r4_20261023T153019_63ef0c0584/task_registration.json",
+      "size": 3965,
+      "sha256": "e817ff21999b9946658d6d3f1a80bbacd7c502aca77a6b256285fe6839f0857f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r4_20261023T153019_63ef0c0584/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "9a86e9afd075ac168b4174cb62f20552c8d19248c879e41767c020613805c9c0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r4_20261023T153019_63ef0c0584/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r4_20261023T153019_63ef0c0584/executor/E3_P1_C_r4_20261023T153019_63ef0c0584_executor_20261023T153021_1792737021274851958_a3e97k7b/snapshots/pre_task_review_image.png",
+      "size": 149317,
+      "sha256": "1af0bf9090ce7f3124a588aad95267d5b62ce316dd451f8da3c3403decd4b721"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r4_20261023T153019_63ef0c0584/executor/E3_P1_C_r4_20261023T153019_63ef0c0584_executor_20261023T153021_1792737021274851958_a3e97k7b/snapshots/post_home_image.png",
+      "size": 149158,
+      "sha256": "8444df298067e48ff9913a893ec1e9f3eaaffe468ec282cc7b801eb11cfe306f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-4/initial_ink_mask.png",
+      "size": 335,
+      "sha256": "126b712150c951dff71c7bd3b01a8ee1c2481e5af7756806b325f4d35e0b4df7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-4/final_ink_mask_aligned.png",
+      "size": 184,
+      "sha256": "a52a0f6602dbcbccc78045e901d25edf7b63b7a51233f51e133d735edba8bec9"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-4/roi_before.png",
+      "size": 359,
+      "sha256": "4e136f4d251b6dc78adaaf68d9dd938a40b9859c06fac23ab03b6a9cf6dfdbf4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r5_20261023T153537_09b7e2c615/run_context.json",
+      "size": 10628,
+      "sha256": "6dccbce11869ba6f91ad76e952bc7f601853c50d3304c739cc884f5cb3348c4a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r5_20261023T153537_09b7e2c615/execution_config.json",
+      "size": 48328,
+      "sha256": "31e824b4ebaf0cfd364a00d000fd65ef70340f2d712ffde580a493b38d4f8990"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r5_20261023T153537_09b7e2c615/task_registration.json",
+      "size": 3965,
+      "sha256": "0a29c9e014a4fc4b9dbc6203138de61b18ed99b656f2433ed6da3645b5c2ec8f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r5_20261023T153537_09b7e2c615/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "9a86e9afd075ac168b4174cb62f20552c8d19248c879e41767c020613805c9c0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r5_20261023T153537_09b7e2c615/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r5_20261023T153537_09b7e2c615/executor/E3_P1_C_r5_20261023T153537_09b7e2c615_executor_20261023T153539_1792737339330728619_v9hylmac/snapshots/pre_task_review_image.png",
+      "size": 153892,
+      "sha256": "9c2cb3fb4e4b552604f0ce67fdebea8bd88ef182050c43792d609fe448bed8dd"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P1/E3_P1_C_r5_20261023T153537_09b7e2c615/executor/E3_P1_C_r5_20261023T153537_09b7e2c615_executor_20261023T153539_1792737339330728619_v9hylmac/snapshots/post_home_image.png",
+      "size": 154406,
+      "sha256": "847fae340560040b1b783f6d105988e193d699953e48ecca9cfea1f3f09c2cdc"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-5/initial_ink_mask.png",
+      "size": 327,
+      "sha256": "4ce6c449160e369a82d6cfa93a5e8bff12b8c958e7191124cf6aa16eb570bf31"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-5/final_ink_mask_aligned.png",
+      "size": 239,
+      "sha256": "857fd46062113ac1488f1637152e6f5dd3de43471344654eb249385f526ce817"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P1-5/roi_before.png",
+      "size": 333,
+      "sha256": "22a003fd1908c49eb55a5dec7faadca171f02e8d507f790a857a325793e1b504"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r1_20261023T155343_954e8d45d0/run_context.json",
+      "size": 10672,
+      "sha256": "a33118611852e53b129bf21230468c6178258d28f8459bb3159b06277967eb26"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r1_20261023T155343_954e8d45d0/execution_config.json",
+      "size": 48439,
+      "sha256": "656c0c4e6d0f500c534e166073cd3603c4a677e9570bce4d645629b11b53639e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r1_20261023T155343_954e8d45d0/task_registration.json",
+      "size": 3986,
+      "sha256": "9260f94ce23de7c3ed8b836373dbf00a935373baab633ffd8155bd352eeb6711"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r1_20261023T155343_954e8d45d0/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "9a86e9afd075ac168b4174cb62f20552c8d19248c879e41767c020613805c9c0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r1_20261023T155343_954e8d45d0/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r1_20261023T155343_954e8d45d0/provider/E3_P2_C_r1_20261023T155343_954e8d45d0_20261023T155346_1792738426854141177_qnv6812n/snapshots/raw_rgb_000001.png",
+      "size": 149748,
+      "sha256": "6700f7dd2e6efdf81768f7d9c937a2b3e8197afea6173d15b284838156f76fd1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r1_20261023T155343_954e8d45d0/executor/E3_P2_C_r1_20261023T155343_954e8d45d0_executor_20261023T155344_1792738424485555446_abtgx82d/snapshots/post_home_image.png",
+      "size": 153562,
+      "sha256": "f9ef6984a39d1b240132c4d7b312e2d008af94311bb67df395ac5e0a59034c2b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-1/initial_ink_mask.png",
+      "size": 295,
+      "sha256": "1c32785ee65c29bd6a3a6eaebe7214accc7cb1b931c165539c4bdb041b1d4288"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-1/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-1/roi_before.png",
+      "size": 359,
+      "sha256": "0c730a64d58b3276d397ca952f44550403e7f8433a6c0aad231128b39b64895d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r2_20261023T155446_941524cf2a/run_context.json",
+      "size": 10672,
+      "sha256": "b1247e6ed41c2d492bb4e955155faf6e071c9758439b0e7f4f2bcfa088f021c3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r2_20261023T155446_941524cf2a/execution_config.json",
+      "size": 48439,
+      "sha256": "5f9f48e1295972f1fd2892cde529545565f8eb819d9fbc4994873298f4ad0fe3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r2_20261023T155446_941524cf2a/task_registration.json",
+      "size": 3986,
+      "sha256": "9260f94ce23de7c3ed8b836373dbf00a935373baab633ffd8155bd352eeb6711"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r2_20261023T155446_941524cf2a/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "9a86e9afd075ac168b4174cb62f20552c8d19248c879e41767c020613805c9c0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r2_20261023T155446_941524cf2a/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r2_20261023T155446_941524cf2a/provider/E3_P2_C_r2_20261023T155446_941524cf2a_20261023T155450_1792738490233485635_cfh2vqbc/snapshots/raw_rgb_000001.png",
+      "size": 151478,
+      "sha256": "3524d8c1bec33bfa84a62a6000e4ecd141e9a148d01d7a62ff7eeee7f32d7b40"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r2_20261023T155446_941524cf2a/executor/E3_P2_C_r2_20261023T155446_941524cf2a_executor_20261023T155447_1792738487877380115_5ciq2moo/snapshots/post_home_image.png",
+      "size": 154745,
+      "sha256": "4a1127d34e8dc1feb5555f19c2b3754c03798f4e09376421e1815e821fe352b7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-2/initial_ink_mask.png",
+      "size": 317,
+      "sha256": "b9ffa02ea5084a64dca45bac581403615f984de835ed94ffbd0d0beb4c35ae69"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-2/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-2/roi_before.png",
+      "size": 367,
+      "sha256": "6b3cc75b5219bdc88da80d45cca9f62f1b5ac0e8178179354e6b0ec9aa7fa13e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r3_20261023T155551_b6a9ea3356/run_context.json",
+      "size": 10672,
+      "sha256": "329d63cfb4def58ec2eecdfe0770d2f63d1a7953522d7ffc6df7a6a633619bd0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r3_20261023T155551_b6a9ea3356/execution_config.json",
+      "size": 48439,
+      "sha256": "ed6747042d3d45502b5b37882e09b256e8eff934e822777b49fd562b9f00bd02"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r3_20261023T155551_b6a9ea3356/task_registration.json",
+      "size": 3986,
+      "sha256": "9260f94ce23de7c3ed8b836373dbf00a935373baab633ffd8155bd352eeb6711"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r3_20261023T155551_b6a9ea3356/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "9a86e9afd075ac168b4174cb62f20552c8d19248c879e41767c020613805c9c0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r3_20261023T155551_b6a9ea3356/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r3_20261023T155551_b6a9ea3356/provider/E3_P2_C_r3_20261023T155551_b6a9ea3356_20261023T155555_1792738555255210873_agtzi06h/snapshots/raw_rgb_000001.png",
+      "size": 149875,
+      "sha256": "c93a6531ac57df145f24a6148ca02f327adce89ab9497cb7d6e0b6445c6a4b25"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r3_20261023T155551_b6a9ea3356/executor/E3_P2_C_r3_20261023T155551_b6a9ea3356_executor_20261023T155552_1792738552892298959_bpr7hkf8/snapshots/post_home_image.png",
+      "size": 155126,
+      "sha256": "f004ca90f735bc01c99d75402cd06b0b3d24931852acaa4d4ac71386559989e7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-3/initial_ink_mask.png",
+      "size": 324,
+      "sha256": "531da0e43de10535200f30d219bbf98362bacbf2ee1b97efc6d3c05425683bd0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-3/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-3/roi_before.png",
+      "size": 370,
+      "sha256": "aa25115228e074dcc089a395c97e60b72c381e404b005510e816e6594db2e673"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r4_20261023T155037_9d79f931f0/run_context.json",
+      "size": 10601,
+      "sha256": "37c566daa45773dd098fe86e5f3bda1c06af9a76faab6403c53ece36eb113dd0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r4_20261023T155037_9d79f931f0/execution_config.json",
+      "size": 48368,
+      "sha256": "b7ee3e9265fc6cbf5db258c012bd15e3763de00710fcc27aabf6ff0ce0adee07"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r4_20261023T155037_9d79f931f0/task_registration.json",
+      "size": 3986,
+      "sha256": "9260f94ce23de7c3ed8b836373dbf00a935373baab633ffd8155bd352eeb6711"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r4_20261023T155037_9d79f931f0/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "9a86e9afd075ac168b4174cb62f20552c8d19248c879e41767c020613805c9c0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r4_20261023T155037_9d79f931f0/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r4_20261023T155037_9d79f931f0/provider/E3_P2_C_r4_20261023T155037_9d79f931f0_20261023T155041_1792738241633046617_p523nd9f/snapshots/raw_rgb_000001.png",
+      "size": 149894,
+      "sha256": "0ca2a77a4376db92f280cec39a7c332a27ca04c472a4656c096b94b14b01da17"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r4_20261023T155037_9d79f931f0/executor/E3_P2_C_r4_20261023T155037_9d79f931f0_executor_20261023T155039_1792738239266041414_384o_kg3/snapshots/post_home_image.png",
+      "size": 154445,
+      "sha256": "486d42dbb883045b1e0397fb1aee0a8c58f1b18861ce5ce91186e8005215bc89"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-4/initial_ink_mask.png",
+      "size": 295,
+      "sha256": "e276650c91d7de33a6d15c2fb4557c29dbc35992c05a3fd01ed622cac5069b33"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-4/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-4/roi_before.png",
+      "size": 346,
+      "sha256": "9afb8262c96c73952803d582aad79acb2808bba9788d7949c0b754a6f5c09d46"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r5_20261023T155136_e6459e2f91/run_context.json",
+      "size": 10601,
+      "sha256": "f84f4e7ddec74824ddc91cdbc8830c8f25bd0218a2566721c0156266ea145c1a"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r5_20261023T155136_e6459e2f91/execution_config.json",
+      "size": 48368,
+      "sha256": "be97a257a66e2c5f44a797584e9022d0844dffed282f9ea3baf1b850df99c918"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r5_20261023T155136_e6459e2f91/task_registration.json",
+      "size": 3986,
+      "sha256": "9260f94ce23de7c3ed8b836373dbf00a935373baab633ffd8155bd352eeb6711"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r5_20261023T155136_e6459e2f91/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "9a86e9afd075ac168b4174cb62f20552c8d19248c879e41767c020613805c9c0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r5_20261023T155136_e6459e2f91/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r5_20261023T155136_e6459e2f91/provider/E3_P2_C_r5_20261023T155136_e6459e2f91_20261023T155140_1792738300177211955_2mbq5e1x/snapshots/raw_rgb_000001.png",
+      "size": 149481,
+      "sha256": "cd7d78784ea850336d4fb350cb501272d79b4e9d58bd4136a20f441421985dc2"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_P1_ptp_rerun_dev_20261023/P2/E3_P2_C_r5_20261023T155136_e6459e2f91/executor/E3_P2_C_r5_20261023T155136_e6459e2f91_executor_20261023T155137_1792738297797000837_ids2g3r6/snapshots/post_home_image.png",
+      "size": 154855,
+      "sha256": "6fc89b63aa6d8f95ef7aa14e15ddeeb1f0268318b42cbd91a2f27a54d09abbd1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-5/initial_ink_mask.png",
+      "size": 304,
+      "sha256": "37a93a8c65f304070ce897b872e0fd3cc17a64492488b654f9e32967ed56c1d7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-5/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/P2-5/roi_before.png",
+      "size": 350,
+      "sha256": "2d9e78af0833c5ec0ec2435e6a7568d65c9e1364352eaca5c26031a56b2e872b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r1_20261023T163223_c8d7feb14b/run_context.json",
+      "size": 10662,
+      "sha256": "c902abb4daeedd98adcf3cbffe492e02a1420103c61b2de2cd228b797c94b597"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r1_20261023T163223_c8d7feb14b/execution_config.json",
+      "size": 48546,
+      "sha256": "b99e21321c919c9247ace4193e14b43e14691db94992d5bd35679199f72d4cfe"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r1_20261023T163223_c8d7feb14b/task_registration.json",
+      "size": 4021,
+      "sha256": "078d84433d56de758a817cbe5c5eca29093e60e4526be53bfbc0ddc9e8bdca8e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r1_20261023T163223_c8d7feb14b/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "8d2985c8ba760eee0d4046b8d2b7aa1c7fcfdf89633c5447a6be2dec0bd361e0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r1_20261023T163223_c8d7feb14b/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r1_20261023T163223_c8d7feb14b/executor/E3_D1_C_r1_20261023T163223_c8d7feb14b_executor_20261023T163224_1792740744933477756_rxh0r669/snapshots/pre_task_review_image.png",
+      "size": 158424,
+      "sha256": "d197c7b052e4bcc7658dc197ce402b15b681ce3c7443bf31dc55b3e237955483"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r1_20261023T163223_c8d7feb14b/executor/E3_D1_C_r1_20261023T163223_c8d7feb14b_executor_20261023T163224_1792740744933477756_rxh0r669/snapshots/post_home_image.png",
+      "size": 155550,
+      "sha256": "5eb81f35d24798401f113d7b8b80200272f864c2025045c17f8e2967ec505a65"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-1/initial_ink_mask.png",
+      "size": 411,
+      "sha256": "e81f811b14874dad38ad5f29c56f763e6d6448d63f830d100d61fa5498961d13"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-1/final_ink_mask_aligned.png",
+      "size": 258,
+      "sha256": "a11ca75a7b6721e5efb7eb8ea397648893e82e51212c97e9a0484c2b5ffb3773"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-1/roi_before.png",
+      "size": 480,
+      "sha256": "dbde08b2684d2ba3edba848726c3e959b412ea6414c8ea10f811e433a49c3e4f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r2_20261023T163328_018b120cf3/run_context.json",
+      "size": 10662,
+      "sha256": "e6fee82b1d51b318ae5f4993ac5cab2281b2a593c1a0adb1a0bfe5c7db80d313"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r2_20261023T163328_018b120cf3/execution_config.json",
+      "size": 48546,
+      "sha256": "0b9325b668911aa9d82feff105961c8ecc80b2ab9c80e069380ec5a609106a80"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r2_20261023T163328_018b120cf3/task_registration.json",
+      "size": 4021,
+      "sha256": "078d84433d56de758a817cbe5c5eca29093e60e4526be53bfbc0ddc9e8bdca8e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r2_20261023T163328_018b120cf3/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "8d2985c8ba760eee0d4046b8d2b7aa1c7fcfdf89633c5447a6be2dec0bd361e0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r2_20261023T163328_018b120cf3/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r2_20261023T163328_018b120cf3/executor/E3_D1_C_r2_20261023T163328_018b120cf3_executor_20261023T163329_1792740809476127137_t0qmqcn9/snapshots/pre_task_review_image.png",
+      "size": 156193,
+      "sha256": "7999d8d7481c69f4138d03575f744670796b4a16d4a9457949bf3ab757e97d47"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r2_20261023T163328_018b120cf3/executor/E3_D1_C_r2_20261023T163328_018b120cf3_executor_20261023T163329_1792740809476127137_t0qmqcn9/snapshots/post_home_image.png",
+      "size": 153596,
+      "sha256": "764cab29c70dd10a41c699a335fd41afcf5364c0771e0e3dce23c0a12fee014f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-2/initial_ink_mask.png",
+      "size": 445,
+      "sha256": "9b35591311846d2ed06f58f70624ac93613ff8ccd6dcb7cae352288831255f07"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-2/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-2/roi_before.png",
+      "size": 494,
+      "sha256": "0b8eff00f5744157b1ac54435c2031bdfa090cb4c2abf151d25d53b47e080552"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r3_20261023T163438_9f4373dc6c/run_context.json",
+      "size": 10662,
+      "sha256": "c03001dc26510eaa5a086eb76d484258e513e49d9a828feb8fc9f135251a50a7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r3_20261023T163438_9f4373dc6c/execution_config.json",
+      "size": 48546,
+      "sha256": "5c9c2aa951ea4fdeb885f41e426f7c0f1e3ece78700f08917a2cf1a516fd23f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r3_20261023T163438_9f4373dc6c/task_registration.json",
+      "size": 4021,
+      "sha256": "078d84433d56de758a817cbe5c5eca29093e60e4526be53bfbc0ddc9e8bdca8e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r3_20261023T163438_9f4373dc6c/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "8d2985c8ba760eee0d4046b8d2b7aa1c7fcfdf89633c5447a6be2dec0bd361e0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r3_20261023T163438_9f4373dc6c/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r3_20261023T163438_9f4373dc6c/executor/E3_D1_C_r3_20261023T163438_9f4373dc6c_executor_20261023T163440_1792740880427409070_hpwxtiyl/snapshots/pre_task_review_image.png",
+      "size": 156311,
+      "sha256": "10a8d263a00f6373089c10abae9af7367c4d0c22ac8a077fbeb3b139715a2b01"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r3_20261023T163438_9f4373dc6c/executor/E3_D1_C_r3_20261023T163438_9f4373dc6c_executor_20261023T163440_1792740880427409070_hpwxtiyl/snapshots/post_home_image.png",
+      "size": 155716,
+      "sha256": "388fde8665c9ac40a469aec145a21da5b7fdc149e4105eaba817acee99b4549e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-3/initial_ink_mask.png",
+      "size": 449,
+      "sha256": "48ef9eb3b49a3a6ced7efee94a6aebb269b050ff7efb66c2a3aa596bcdae47c1"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-3/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-3/roi_before.png",
+      "size": 515,
+      "sha256": "436f9a8e1b9c358b9370d332e15ac3d1fcff401917ab5e299fb137be682c6f54"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r4_20261023T163542_97e3ad285b/run_context.json",
+      "size": 10662,
+      "sha256": "6e7d32316e193551a4c3363db13bef2a844f5a7616ff94859047313d3563c5e5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r4_20261023T163542_97e3ad285b/execution_config.json",
+      "size": 48546,
+      "sha256": "93af15e8bfe6fa728bece4a24add7ae34eee961ea0430c5794cb4dde462d8f60"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r4_20261023T163542_97e3ad285b/task_registration.json",
+      "size": 4021,
+      "sha256": "078d84433d56de758a817cbe5c5eca29093e60e4526be53bfbc0ddc9e8bdca8e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r4_20261023T163542_97e3ad285b/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "8d2985c8ba760eee0d4046b8d2b7aa1c7fcfdf89633c5447a6be2dec0bd361e0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r4_20261023T163542_97e3ad285b/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r4_20261023T163542_97e3ad285b/executor/E3_D1_C_r4_20261023T163542_97e3ad285b_executor_20261023T163543_1792740943919510298_3i36qk2a/snapshots/pre_task_review_image.png",
+      "size": 156035,
+      "sha256": "1c0568d2edb03bd92d14ba20dda1795df4707d890fec4eecf6b1c8b52bb95398"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r4_20261023T163542_97e3ad285b/provider/E3_D1_C_r4_20261023T163542_97e3ad285b_20261023T163546_1792740946268920962_qgcqr4d8/snapshots/final_image.png",
+      "size": 149093,
+      "sha256": "c1584c9e67a448debc93413b9ec218bc4ddd1d7e452ff7aef5c05475ef2176b7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-4/initial_ink_mask.png",
+      "size": 406,
+      "sha256": "1365f4b36bab6b24f7e06b63945ef3c2255b438d1174fcf16a3dbb57ef829fdd"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-4/final_ink_mask_aligned.png",
+      "size": 402,
+      "sha256": "8cbc565f918cb799cb757963fa4384829f11c41f91a1873dc2e665137b98b336"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-4/roi_before.png",
+      "size": 468,
+      "sha256": "a704cdf1f380df13aeb677337857aaedf69f267be90b0b217bbdb3ba286b4333"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r5_20261023T163745_b7ec194ae7/run_context.json",
+      "size": 10662,
+      "sha256": "3ae414cdc933cce640123ff28f373542700113e6262bbf5b7d259d548bbdcb03"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r5_20261023T163745_b7ec194ae7/execution_config.json",
+      "size": 48546,
+      "sha256": "a65304925f07a61a075c1c64ab4c672589a172a920ecff1237c6ebcab4c261ef"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r5_20261023T163745_b7ec194ae7/task_registration.json",
+      "size": 4021,
+      "sha256": "078d84433d56de758a817cbe5c5eca29093e60e4526be53bfbc0ddc9e8bdca8e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r5_20261023T163745_b7ec194ae7/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "8d2985c8ba760eee0d4046b8d2b7aa1c7fcfdf89633c5447a6be2dec0bd361e0"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r5_20261023T163745_b7ec194ae7/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r5_20261023T163745_b7ec194ae7/executor/E3_D1_C_r5_20261023T163745_b7ec194ae7_executor_20261023T163747_1792741067202543738_53lfy3oj/snapshots/pre_task_review_image.png",
+      "size": 157590,
+      "sha256": "d6e2830cae29ce238bc448b3c1fba0a27277138f40d41fbf4ee8809eb5cd39ce"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D1_release_guard_dev_20261023/D1/E3_D1_C_r5_20261023T163745_b7ec194ae7/executor/E3_D1_C_r5_20261023T163745_b7ec194ae7_executor_20261023T163747_1792741067202543738_53lfy3oj/snapshots/post_home_image.png",
+      "size": 153297,
+      "sha256": "5117c5190257efccda51fd461524cc7e4183e873f80e0fe445111f88d9fca952"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-5/initial_ink_mask.png",
+      "size": 425,
+      "sha256": "ffe3a534467c0ec6ba99847ca3254a101c4e2ec6a5c1242c86339b1ea82dc561"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-5/final_ink_mask_aligned.png",
+      "size": 179,
+      "sha256": "5a3ca1d1dc177045d6c2418a441e62e1367c191bb2b58d028ee02e89e4fc984e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D1-5/roi_before.png",
+      "size": 491,
+      "sha256": "fd796968437cd7adf9205a948c143259e290b062dc8d07b5f87fecd6cf8a070e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r1_20261023T164936_f6a9054e48/run_context.json",
+      "size": 10643,
+      "sha256": "6c623abb274432212aab501be2da22e0b2343974cbbe0a5f0a57e54d55bc2b8b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r1_20261023T164936_f6a9054e48/execution_config.json",
+      "size": 48499,
+      "sha256": "8a1cff8573eaa812f33997a1efd3eeabfbd8ea781af0ea4a3f5ffba1162a2742"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r1_20261023T164936_f6a9054e48/task_registration.json",
+      "size": 4010,
+      "sha256": "0f2f42e1055dc19e1cc764832e2117d46883796a32b00ca3c5243a74e3d9522b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r1_20261023T164936_f6a9054e48/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "b555fc2fba2f0ab0bb2a5430d05dc2cdc91bb95530a5f70bc1846a2584b686e4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r1_20261023T164936_f6a9054e48/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r1_20261023T164936_f6a9054e48/executor/E3_D2_C_r1_20261023T164936_f6a9054e48_executor_20261023T164938_1792741778031315553_9g9dnh13/snapshots/pre_task_review_image.png",
+      "size": 155697,
+      "sha256": "5ce437b2efd98864cdd305d9b5d3cdff0bfd012d04650c2586e833bad80891b9"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r1_20261023T164936_f6a9054e48/executor/E3_D2_C_r1_20261023T164936_f6a9054e48_executor_20261023T164938_1792741778031315553_9g9dnh13/snapshots/post_home_image.png",
+      "size": 156178,
+      "sha256": "876b1e12b8a65e5825571b4298a99184f9cf48255250fcfeb6146ecf00460cc9"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-1/initial_ink_mask.png",
+      "size": 474,
+      "sha256": "51b94c6bfd1a53d799bb605c96a088b8ea4e0b80a56480c9a0421ded88bf9f03"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-1/final_ink_mask_aligned.png",
+      "size": 269,
+      "sha256": "6cf93866110005904f2b4846f27795980ab6971f5d48692c0638430d958ba3c4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-1/roi_before.png",
+      "size": 502,
+      "sha256": "7730c0dc0aebcdbfa6efac128412e5f848390afe119187dce8d24cb4fe5c3fdc"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r2_20261023T165041_44c2066918/run_context.json",
+      "size": 10643,
+      "sha256": "fe915c3bd216216e41c88e60aa6808e4e5a1a58d89bd1a7de55809451f9a4907"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r2_20261023T165041_44c2066918/execution_config.json",
+      "size": 48499,
+      "sha256": "ff2c072fd9f8bfc5ee60e31fc844fd8d9439751f3229d2a94112d316a3c5bbd3"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r2_20261023T165041_44c2066918/task_registration.json",
+      "size": 4010,
+      "sha256": "0f2f42e1055dc19e1cc764832e2117d46883796a32b00ca3c5243a74e3d9522b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r2_20261023T165041_44c2066918/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "b555fc2fba2f0ab0bb2a5430d05dc2cdc91bb95530a5f70bc1846a2584b686e4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r2_20261023T165041_44c2066918/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r2_20261023T165041_44c2066918/executor/E3_D2_C_r2_20261023T165041_44c2066918_executor_20261023T165042_1792741842812380817_tli9vlnn/snapshots/pre_task_review_image.png",
+      "size": 155452,
+      "sha256": "67f411535ebe991de736769008d74b27eceeacb7f335ea1b18df903a1b517841"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r2_20261023T165041_44c2066918/executor/E3_D2_C_r2_20261023T165041_44c2066918_executor_20261023T165042_1792741842812380817_tli9vlnn/snapshots/post_home_image.png",
+      "size": 155304,
+      "sha256": "2513f3ae4ebd0ddf118b5df323a470e5b793424c4f508c78f1ba834517328ca4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-2/initial_ink_mask.png",
+      "size": 428,
+      "sha256": "bffcbe837414eb9c7993f79299c28b0327c67ab8fab30ea68e9d2b2219a45216"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-2/final_ink_mask_aligned.png",
+      "size": 208,
+      "sha256": "11cab076be87b57e10014eabb4a8b8ee1e466a7d78df83208886ec71d2ae69ba"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-2/roi_before.png",
+      "size": 518,
+      "sha256": "8b8406786e6121a9e8adced6a1c25a60eec5a9953ece5f7fd9f69ba81333d2a7"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r3_20261023T165204_6b3b22c193/run_context.json",
+      "size": 10643,
+      "sha256": "9406945ff1b6ea2061a17b952eb41e26a8c00667103e916dcc6a397ca237ed38"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r3_20261023T165204_6b3b22c193/execution_config.json",
+      "size": 48499,
+      "sha256": "ee108bdbcc1e80bebd40b0295183c11df3088705b3fbbaebad3a0418e7eaf08d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r3_20261023T165204_6b3b22c193/task_registration.json",
+      "size": 4010,
+      "sha256": "0f2f42e1055dc19e1cc764832e2117d46883796a32b00ca3c5243a74e3d9522b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r3_20261023T165204_6b3b22c193/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "b555fc2fba2f0ab0bb2a5430d05dc2cdc91bb95530a5f70bc1846a2584b686e4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r3_20261023T165204_6b3b22c193/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r3_20261023T165204_6b3b22c193/executor/E3_D2_C_r3_20261023T165204_6b3b22c193_executor_20261023T165206_1792741926231306878_dstvv5dh/snapshots/pre_task_review_image.png",
+      "size": 155890,
+      "sha256": "514f6f8fe05c4c8a0385ce3f72409b1a8bcd0300e6465dd487cab176f00a4292"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r3_20261023T165204_6b3b22c193/executor/E3_D2_C_r3_20261023T165204_6b3b22c193_executor_20261023T165206_1792741926231306878_dstvv5dh/snapshots/post_home_image.png",
+      "size": 153580,
+      "sha256": "cc638292557bb88744ecb8fb7b6f39c49d5afdd40b16e8299485c81bc7e4eb4d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-3/initial_ink_mask.png",
+      "size": 451,
+      "sha256": "c63b98fbf200691c920b40380b9563475ad1ab13515414cf20b1e10ed8e3113d"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-3/final_ink_mask_aligned.png",
+      "size": 299,
+      "sha256": "22dd277c7fc72e0397f72d907dd2c5095c2c0fa4e4928c5447c0cc8ecca758fa"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-3/roi_before.png",
+      "size": 521,
+      "sha256": "a8289c925f317732e8e960ab8a26b86c7016e7a2863ba97eb0035fbf5f2d3622"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r4_20261023T165320_71b4461890/run_context.json",
+      "size": 10643,
+      "sha256": "b393a321f3a2b021770dff67cb8f85316ccd4379739a481f5d04cac90eaa4ebb"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r4_20261023T165320_71b4461890/execution_config.json",
+      "size": 48499,
+      "sha256": "cbaf4fa940c84fbf9b73ce823485cd239f8cbfa202ac6f065c32d82d43ba3e18"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r4_20261023T165320_71b4461890/task_registration.json",
+      "size": 4010,
+      "sha256": "0f2f42e1055dc19e1cc764832e2117d46883796a32b00ca3c5243a74e3d9522b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r4_20261023T165320_71b4461890/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "b555fc2fba2f0ab0bb2a5430d05dc2cdc91bb95530a5f70bc1846a2584b686e4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r4_20261023T165320_71b4461890/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r4_20261023T165320_71b4461890/executor/E3_D2_C_r4_20261023T165320_71b4461890_executor_20261023T165321_1792742001643846874_f1b4xlgz/snapshots/pre_task_review_image.png",
+      "size": 158639,
+      "sha256": "ce2cc71a2649d9136edd7eeed16be1bf9dce4965b02b5ff41367a3af9307d37b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r4_20261023T165320_71b4461890/executor/E3_D2_C_r4_20261023T165320_71b4461890_executor_20261023T165321_1792742001643846874_f1b4xlgz/snapshots/post_home_image.png",
+      "size": 156590,
+      "sha256": "dac4815131762ee99b95049ff73b1fe1956d88d8a9ded51a9ee4b85a946f2456"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-4/initial_ink_mask.png",
+      "size": 464,
+      "sha256": "af47e1b54266f2e24e3e9192e91b14444c83708585d192d416b07fc8653b6e14"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-4/final_ink_mask_aligned.png",
+      "size": 211,
+      "sha256": "63b6e8630faee98f1779615d7a4c4565b87082b26681350c7069ee1e1be3f313"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-4/roi_before.png",
+      "size": 537,
+      "sha256": "6ec2d7f9b1f0f7e110d0591d1e7aa979884b3edb0261bafe37c37b265cb6cabc"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r5_20261023T165546_a2ec1e857d/run_context.json",
+      "size": 10714,
+      "sha256": "5bf60a5b67f25ec5f0ad0ed83ee2362d9f783ba0ef299eae9f8e613969cc5cb4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r5_20261023T165546_a2ec1e857d/execution_config.json",
+      "size": 48570,
+      "sha256": "56dc0d1949b43940aefe525333d2e34d857f4bfa9a8cd0eceaafc211fda5860e"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r5_20261023T165546_a2ec1e857d/task_registration.json",
+      "size": 4010,
+      "sha256": "0f2f42e1055dc19e1cc764832e2117d46883796a32b00ca3c5243a74e3d9522b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r5_20261023T165546_a2ec1e857d/runtime_source_versions.json",
+      "size": 5680,
+      "sha256": "b555fc2fba2f0ab0bb2a5430d05dc2cdc91bb95530a5f70bc1846a2584b686e4"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r5_20261023T165546_a2ec1e857d/source_snapshot/behavior_ws__src__nrs_imitation__nrs_imitation__inference_core.py",
+      "size": 346994,
+      "sha256": "bd7509e03328ecf1260f74c17428ea2cd44f6bcd564c466e63d3f16bb90134f5"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r5_20261023T165546_a2ec1e857d/executor/E3_D2_C_r5_20261023T165546_a2ec1e857d_executor_20261023T165548_1792742148075666155_h9p87tu2/snapshots/pre_task_review_image.png",
+      "size": 159029,
+      "sha256": "c1b5ae880cc327066d567cb6135f1deafc80a471fac43ed7e1c1cc017f6da2ea"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_spatial_transfer/E3_D2_release_guard_dev_20261023/D2/E3_D2_C_r5_20261023T165546_a2ec1e857d/executor/E3_D2_C_r5_20261023T165546_a2ec1e857d_executor_20261023T165548_1792742148075666155_h9p87tu2/snapshots/post_home_image.png",
+      "size": 156489,
+      "sha256": "b325e820f6fec5ba06b24f8c7c28969bc35b51f02f02d3df04754ae386a53677"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-5/initial_ink_mask.png",
+      "size": 421,
+      "sha256": "baa0b200b3521e32301926f1ae04bd0d17c31aac0da99fdca891eaaa21941714"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-5/final_ink_mask_aligned.png",
+      "size": 212,
+      "sha256": "a97dd8d657f4db94c2deca64de91a5ac9d23a50b4823d9b5bb47a3c16131b177"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/runs/D2-5/roi_before.png",
+      "size": 497,
+      "sha256": "b27d5ee25fc1c2b40b678ce8c911be4a38f8bcd27b13f0db1b6bf6a8180e8c72"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_pdf_report/input_manifest.json",
+      "size": 220776,
+      "sha256": "d0df046a45d04a4a2fbd92ff3784deaa9dba86fbfe2a8e56f9896fd259c83058"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/policy_best.ckpt",
+      "size": 885379440,
+      "sha256": "60d55e7092cb18035938e281f3022e3c6107fdbb51331b66a29dcca242d4d59f"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/checkpoints/flow/polishing/single_cam/e2_force_cleanup_20261012/C/20261012_seed0_500epochs/dataset_stats.pkl",
+      "size": 12915,
+      "sha256": "09111fa4acc3717e3085d9ef85474eb99270af33cbf78453eb793069b3759c49"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261015/E1_report_20261015_nominal_pass_height_v2.pdf",
+      "size": 3478691,
+      "sha256": "a12a9d89ec96cace859d9d9f669e13f01ca426906aa27257f54931142a931870"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261019/E1_report_20261019_R_dataset_mean_feed_5runs.pdf",
+      "size": 1540950,
+      "sha256": "fa07457d6e5ed53e22a858e9a9a83351fccbdd0b3c2d797e558596b0a9ecbb1b"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261013/E2_report_20261013.pdf",
+      "size": 3036171,
+      "sha256": "8f1f9f2607c54a38886f95b2a2dacfc8ed4d10a896d302481e2456bda473bac8"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/results/20261023/E3_report_20261023.pdf",
+      "size": 5530247,
+      "sha256": "c7c89677d68b1df3fa2757ebb6abf296cf73939f325525a25104622aebd3bd21"
+    },
+    {
+      "path": "/home/eunseop/nrs_imitation/reports/20261023_E3_image_removal_report/E3_image_removal_report_20261023.pdf",
+      "size": 7854670,
+      "sha256": "03f544cafd576194c2a7de627b720a8a4d6d8331e7280ae2f96fabd7a9cd8ef8"
+    }
+  ],
+  "read_only": true,
+  "python_opencv": "4.10.0",
+  "numpy": "2.2.6",
+  "source_files_modified": false
+}

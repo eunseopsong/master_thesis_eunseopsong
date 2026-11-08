@@ -1,0 +1,46 @@
+\chapter{Development Extensions}
+\label{app:development_extensions}
+
+\section{Execution-Derived Dose}
+\label{chap:removal_estimation}
+The repository includes an execution-derived heatmap recorder. It integrates a Preston-style force--speed product along the measured path and optionally spreads it over a nominal tool kernel. Its diagnostic quantity can be expressed as
+\begin{equation}
+ D(x,y)=\sum_k\kappa\,F_{n,k}\,v_k\,\Delta t_k\,
+                 K_{\mathrm{tool}}(x-x_k,y-y_k),
+ \label{eq:preston_spatial}
+\end{equation}
+where \((x_k,y_k)\) is the recorded path location, \(F_{n,k}\) the implementation's selected force component or projection, \(v_k\) its selected speed, \(\Delta t_k\) the observation duration, and \(K_{\mathrm{tool}}\) a spatial spreading kernel. Without a measured coefficient and tool-response calibration, \(\kappa\) defines relative scale and \(D\) has arbitrary units. Different recorder/extension versions also make different kernel and speed-model choices.
+
+Figure~\ref{fig:diagnostic_heatmap} illustrates this uncalibrated diagnostic quantity.
+
+\begin{figure}[tbp]\centering
+\includegraphics[width=\linewidth]{figures/E1_C1_diagnostic_heatmap.png}
+\caption[Uncalibrated execution heatmap]{Historical execution-derived heatmap from E1 C1 on 14 October 2026, reproduced with its original axes and colorbar. Values are an uncalibrated model diagnostic in arbitrary units. They are not measured removal depth, effective contact footprint, or surface-quality improvement. This historical illustration is separate from the 15 October primary E1 cohort.}
+\label{fig:diagnostic_heatmap}
+\end{figure}
+
+The implementation and generated artifact support calling this an implemented diagnostic extension. They do not support the older claim of a calibrated material-removal model. Its spatial distribution may help inspect where modeled processing exposure accumulated, but equal dose is not demonstrated equal removal on the actual specimen.
+
+\section{Blending and Adaptive Execution Assets}
+\label{chap:blending}
+The project also contains finite local blending-path generation from an existing dose map, construction of an additional spatial target, and time allocation along a path. The 13 October extension prepares a sequence in which an initial skill is followed by a separate blending pass and diagnostic displays. Its archived validation includes offline planning from an earlier execution. That is evidence of an implemented extension, not an E1--E3 surface-uniformity result.
+
+Separate 14 October adaptive-velocity records provide development experience with reference-clock progression and replanning. The located runtime files contain five online-OFF development attempts across multiple versions. Their completion status does not establish a controlled adaptive ON/OFF process-quality comparison. A later source revision addresses a recorded stalled reference-clock case, but its README explicitly distinguishes offline checking from a new physical run. These records are therefore kept outside the nominal E2 A/B/C cohort.
+
+Table~\ref{tab:extension_status} distinguishes the supported status of each extension.
+
+\begin{table}[tbp]\centering\small
+\caption[Status of inherited extensions]{Status of inherited extensions relative to the main thesis evidence.}
+\label{tab:extension_status}
+\begin{tabularx}{\textwidth}{P{0.32\textwidth}X}
+\toprule Asset & Supported status \\ \midrule
+Execution heatmap & Implemented and generated from runs; uncalibrated arbitrary-unit diagnostic. \\
+Finite blending planner & Implemented; archived offline planning and integration preparation. Surface-quality improvement not established by the main comparisons. \\
+Adaptive reference-clock execution & Separate versioned development attempts and code; controlled ON/OFF outcome benefit not established. \\
+High-level residual RL for curved-surface restoration & Planned extension; completed skill-level training and quality-grounded evaluation not established in the selected evidence. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Residual adjustments to orientation and feed velocity based on residual removal demand remain a planned extension. Existing low-level learned mass/damping control is a different asset and does not validate that proposed high-level policy. The core motion--force skill in this thesis does not require a removal estimator, blending planner, or residual RL stage to count as an executable system.
+

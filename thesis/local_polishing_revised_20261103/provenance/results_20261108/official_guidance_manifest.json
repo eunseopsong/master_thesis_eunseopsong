@@ -1,0 +1,50 @@
+{
+  "downloaded_on": "2026-11-08",
+  "files": [
+    {
+      "filename": "skku_official_english_thesis.zip",
+      "sha256": "b33aa9a6c85e420c6f5e87a24e1ef9d816b96414c4b731698d909c29fe47c45e",
+      "url": "https://www.skku.edu/cms/fileDownload.do?path=%2F_res%2Fskku%2Fetc%2Ftx_4.zip",
+      "version": "2026-10-16",
+      "scope": "Central university current English guidelines/forms; main format source"
+    },
+    {
+      "filename": "skku_thesis_english_guidance.zip",
+      "sha256": "36c21a6087dd31e9bb9cdaacebeb7f60d93db78350954c5db1ca6e6456fdf4bc",
+      "url": "https://aigs.skku.edu/aigs/community/notice.do?articleNo=218793&attachNo=193555&mode=download",
+      "version": "2026-06 notice for 2026-08 award",
+      "scope": "Earlier faculty-distributed copy; superseded for claim/approval dates by central 2026-10-16 version"
+    },
+    {
+      "filename": "skku_degree_titles_20250901.hwp",
+      "sha256": "744397e95aa3ecfa521d8321e0a0ec3937a4aed3fb518e4dbf1aee96a16ca31d",
+      "url": "https://robot.skku.edu/robot/notice.do?articleNo=218895&attachNo=193781&mode=download",
+      "version": "2025-09-01",
+      "scope": "University degree-title annex: Intelligent Robotics = Master of Science in Engineering"
+    }
+  ],
+  "pages": [
+    {
+      "url": "https://robot.skku.edu/robot/notice.do?articleNo=226028&mode=view",
+      "date": "2026-09-22",
+      "scope": "current semester examination process; separate from post-examination library submission"
+    },
+    {
+      "url": "https://robot.skku.edu/robot/thesis.do",
+      "scope": "Department requires English thesis"
+    },
+    {
+      "url": "https://semi.skku.edu/robot_en/faculty.do",
+      "scope": "Official English department and faculty spellings"
+    }
+  ],
+  "typography": {
+    "applied": "A4, 38mm top/bottom, 30mm sides, 11pt body, standard LaTeX double spacing, 16pt chapter headings, 14pt sections, 2-page abstracts, 5 keywords",
+    "font_implementation": {
+      "Latin": "TeX Gyre Termes X (Times family)",
+      "Hangul": "Nanum Myeongjo (Myeongjo family)",
+      "math": "original mathematical fonts and equations retained"
+    }
+  },
+  "examination_vs_approval": "No signed or unsigned text certifying an approval was fabricated. Examination committee/schedule page is used before defense; post-defense approval form is outside this delivery."
+}

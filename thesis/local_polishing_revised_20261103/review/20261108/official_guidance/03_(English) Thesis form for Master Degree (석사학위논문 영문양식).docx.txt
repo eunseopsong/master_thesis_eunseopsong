@@ -1,0 +1,140 @@
+Master’s Thesis
+<Cover>
+Thesis title (22p)
+- Subtitle(16p) -
+
+Student Name (16p)(ex: First name Last Name)
+The Graduate School
+Sungkyunkwan University
+Department of Artificial Intelligence (16p)
+<Side of Cover>
+Ｍａｓｔｅｒ＇ｓ　Ｔｈｅｓｉｓ
+
+Thesis Ｔｉｔｌｅ
+
+２
+０
+2
+6
+
+Student Nａｍｅ
+
+
+Master’s Thesis
+<Inside cover>
+Thesis title (22p)
+- Subtitle(16p) -
+Student Name (16p)(ex: First name Last Name)
+The Graduate School
+Sungkyunkwan University
+Department of Artificial Intelligence (16p)
+
+
+<Submission form>
+Thesis title (22p)
+- Subtitle(16p) -
+Student Name (16p)(ex: First name Last Name)
+A Master’s Thesis Submitted to the Department of Artificial Intelligence and the Graduate School of Sungkyunkwan University in partial fulfillment of the requirements for the degree of Master of Science in Engineering
+
+April 2026
+Supervised by
+Major Advisor’s English Name(16p)
+Major Advisor
+
+<Approval form>
+This certifies that the Master’s Thesis
+of  Student Name (16p)(ex: First name Last Name) is approved.
+
+
+           [signature]             
+Committee Chair : typed name
+
+           [signature]             
+Committee Member : typed name 
+
+           [signature]             
+Major Advisor : typed name
+The Graduate School
+Sungkyunkwan University
+June 2026
+
+Table of Contents
+
+Chapter 1.
+1.
+A.
+
+
+
+
+List of Tables
+Figure 1-1.
+Figure 1-2.
+
+
+
+
+
+List of Figures
+Figure 1-1.
+Figure 1-2.
+
+Abstract
+
+Thesis Title(16p)
+
+
+  Leave two blank spaces at the beginning of each paragraph, and use the font size of 11 points.
+  The length of the abstract should not be longer than 2 pages. 
+  List 2~5 keywords separated by commas.
+
+
+
+
+
+
+
+
+
+Keywords : ________________ , ________________ , ________________ ,
+________________ , ________________
+
+
+Chapter 1. INTRODUCTION(16p)
+
+
+1. Section(14p)
+
+1)
+
+  The main body of the text starts here. The main text should be typed with HY신명조 11 point which is composed of line scape 200% 38 characters×25 lines.
+  This page is typeset with the above font sizes, so you can write the text by using the typeset form of this page.
+  Leave two blank spaces at the beginning of each paragraph, and use the font sizes of 11 point.
+  The convention used for footnotes and references may vary in different academic disciplines and societies. Thus, please follow the convention used in your department.
+
+
+References (16p bold)
+
+
+List references here.(11p)
+
+
+Appendix (16p bold)
+
+
+<Appendix 1> title(14p)
+<Appendix 2> title(14p)
+
+If you need Appendix, please use same form with main body text.
+If you don’t need an Appendix, please delete this page.
+
+논문요약
+
+논문제목을 작성하시오(16p)
+
+제출자 성함(11p)
+OO학과(11p)
+성균관대학교
+
+
+여기부터 논문요약을 한국어로 2page 이내(주제어 기재란 포함)로 작성하시기 바랍니다. 

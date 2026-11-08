@@ -1,0 +1,501 @@
+[
+  {
+    "figure_id": "fig:diagnostic_heatmap",
+    "output": "figures/E1_C1_diagnostic_heatmap.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/results/20261014/E1_contact_transition/E1_CT_sync_confirm_dev_20261014/NOMINAL/C/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24/removal_visualization/E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24_20261014_192540/01_removal_heatmap.png"
+    ],
+    "processing": "copied without pixel changes",
+    "location": "Appendix E; historical 14 October E1 C1 diagnostic",
+    "run_id": "E1_CT_NOMINAL_C_r1_20261014T192513_7dea1c0e24",
+    "interpretation": "uncalibrated execution-derived diagnostic, arbitrary units; not depth",
+    "asset_sha256": "e99b76175297610ade2ebf32256f6da1872f16c40e9dec0c446b13c30d25c651"
+  },
+  {
+    "figure_id": "fig:apparatus",
+    "output": "figures/apparatus_20260807.jpg",
+    "sources": [
+      "/home/eunseop/Downloads/20260807_144759.jpg"
+    ],
+    "processing": "EXIF orientation 6 (clockwise 90 degrees); proportional downsize; JPEG quality 92",
+    "location": "Chapter 3",
+    "context": "archived apparatus photo; not a photograph of the October E1/E2 runs",
+    "capture_time_exif": "2026:08:07 14:47:59",
+    "asset_sha256": "e8ea742f2a365df38a1f580ec7c0a5629fee223fe1f3043cc815b43414e9e90b"
+  },
+  {
+    "figure_id": "fig:dataset_split",
+    "output": "figures/dataset_split.pdf",
+    "sources": [
+      "data/dataset_episodes.csv"
+    ],
+    "original_sources": [],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "All 42 episode lengths; episode-level split; not windows counted as independent trials",
+    "location": "Chapter 4",
+    "generated_plot": true,
+    "asset_sha256": "22765da321d3eeecc2709613cf0cf557028c3415d5c72ecb7d09f331bbbf2b19"
+  },
+  {
+    "figure_id": "fig:e1_c5_c6",
+    "output": "figures/e1_c5_c6.pdf",
+    "sources": [
+      "data/e1_c5_c6.csv",
+      "data/traces/E1_C5_force.csv",
+      "data/traces/E1_C5_pose.csv",
+      "data/traces/E1_C6_force.csv",
+      "data/traces/E1_C6_pose.csv"
+    ],
+    "run_ids": [
+      "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "E1_CT_NOMINAL_C_r5_20261015T233551_9021584d0a"
+    ],
+    "cohort": "E1_CT_pass_height_v2_nominal_dev_20261015",
+    "processing": "Original C5 and additional C6 shown separately, full first-completion windows; vertical lines: confirmed contact, required pass, first completion; no pooled mean",
+    "location": "Appendix C; unchanged inherited asset",
+    "generated_plot": true,
+    "provenance": "data/cohort_manifest.json; provenance/results_20261016/source_files.json",
+    "asset_sha256": "40623c460e71885831e8becccb80fd2723346bb7aae9ae408739ffe90d33250d"
+  },
+  {
+    "figure_id": "fig:e1_force_all",
+    "output": "figures/e1_force_all.pdf",
+    "sources": [
+      "data/traces/E1_T1_force.csv",
+      "data/traces/E1_R1_force.csv",
+      "data/traces/E1_C1_force.csv",
+      "data/traces/E1_T2_force.csv",
+      "data/traces/E1_R2_force.csv",
+      "data/traces/E1_C2_force.csv",
+      "data/traces/E1_R3_force.csv",
+      "data/traces/E1_C3_force.csv",
+      "data/traces/E1_T3_force.csv",
+      "data/traces/E1_R4_force.csv",
+      "data/traces/E1_T4_force.csv",
+      "data/traces/E1_C4_force.csv",
+      "data/traces/E1_R5_force.csv",
+      "data/traces/E1_C5_force.csv",
+      "data/traces/E1_T5_force.csv"
+    ],
+    "run_ids": [
+      "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6"
+    ],
+    "cohort": "E1_CT_pass_height_v2_nominal_dev_20261015",
+    "processing": "All five original runs per method; actual receipt-event force, ZOH to first completion; no smoothing, clipping, force correction or cached-command resampling",
+    "location": "Appendix C; unchanged inherited asset",
+    "generated_plot": true,
+    "provenance": "data/cohort_manifest.json; provenance/results_20261016/source_files.json",
+    "asset_sha256": "3592561f61055463b65b238b5fe8f9850aa24707d3d7d613760a9acb1ac72986"
+  },
+  {
+    "figure_id": "fig:e1_height_reference",
+    "output": "figures/e1_height_reference.pdf",
+    "sources": [
+      "data/e1_height_reference_replay.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/reports/E1_contact_task_pass_height_v2/baseline_replay/baseline_replay_comparison.csv"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "Both archived height thresholds for every run; no change to measured trajectories; not new robot trials",
+    "location": "Appendix B; historical 14 October cohort only",
+    "generated_plot": true,
+    "asset_sha256": "f40e91eed936a907a123185345b92593810d1642880eaf0370d10700cad20a6e"
+  },
+  {
+    "output": "figures/e1_latest_metrics.pdf",
+    "kind": "measured-result plot; not conceptual or synthesized",
+    "sources": [
+      "data/results_summary_20261108.json"
+    ],
+    "regeneration": "scripts/update_results_20261108.py",
+    "asset_sha256": "9b8254b635e4f0dae5986c6d77e7b8193d9edb23f2ecd9d0cebf31654a5a049a"
+  },
+  {
+    "figure_id": "fig:e1_photos",
+    "output": "figures/e1_snapshot_panel.pdf",
+    "sources": [
+      "figures/E1_R1_initial.png",
+      "figures/E1_R1_final.png",
+      "figures/E1_T1_initial.png",
+      "figures/E1_T1_final.png",
+      "figures/E1_C1_initial.png",
+      "figures/E1_C1_final.png"
+    ],
+    "run_ids": [
+      "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b"
+    ],
+    "cohort": "E1_CT_pass_height_v2_nominal_dev_20261015",
+    "processing": "Full initial/final snapshots from the first planned run per method on 15 October; different times/viewpoints; no image-derived removal measurement",
+    "location": "Appendix C; unchanged inherited asset",
+    "generated_plot": true,
+    "provenance": "data/cohort_manifest.json; provenance/results_20261016/source_files.json",
+    "asset_sha256": "db70e38e926cf662dbff2d76c78285605c11c64a18910ce3dc0c56decd928e6e"
+  },
+  {
+    "figure_id": "fig:e1_xy_all",
+    "output": "figures/e1_xy_all.pdf",
+    "sources": [
+      "data/traces/E1_T1_pose.csv",
+      "data/traces/E1_R1_pose.csv",
+      "data/traces/E1_C1_pose.csv",
+      "data/traces/E1_T2_pose.csv",
+      "data/traces/E1_R2_pose.csv",
+      "data/traces/E1_C2_pose.csv",
+      "data/traces/E1_R3_pose.csv",
+      "data/traces/E1_C3_pose.csv",
+      "data/traces/E1_T3_pose.csv",
+      "data/traces/E1_R4_pose.csv",
+      "data/traces/E1_T4_pose.csv",
+      "data/traces/E1_C4_pose.csv",
+      "data/traces/E1_R5_pose.csv",
+      "data/traces/E1_C5_pose.csv",
+      "data/traces/E1_T5_pose.csv"
+    ],
+    "run_ids": [
+      "E1_CT_NOMINAL_T_r1_20261015T224656_dfba08c20c",
+      "E1_CT_NOMINAL_R_r1_20261015T224838_5228b698d0",
+      "E1_CT_NOMINAL_C_r1_20261015T224950_64143b547b",
+      "E1_CT_NOMINAL_T_r2_20261015T225044_2ffeeefc85",
+      "E1_CT_NOMINAL_R_r2_20261015T225136_ef3791b2ee",
+      "E1_CT_NOMINAL_C_r2_20261015T225243_fc13821792",
+      "E1_CT_NOMINAL_R_r3_20261015T225438_c4bf8f50b2",
+      "E1_CT_NOMINAL_C_r3_20261015T225544_1bacff7797",
+      "E1_CT_NOMINAL_T_r3_20261015T225638_7d605b5ea6",
+      "E1_CT_NOMINAL_R_r4_20261015T225729_69395e5a81",
+      "E1_CT_NOMINAL_T_r4_20261015T225834_0e8c8a63ec",
+      "E1_CT_NOMINAL_C_r4_20261015T225924_ce9f5dd884",
+      "E1_CT_NOMINAL_R_r5_20261015T230013_76bdcbf5f7",
+      "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+      "E1_CT_NOMINAL_T_r5_20261015T230217_8939f235c6"
+    ],
+    "cohort": "E1_CT_pass_height_v2_nominal_dev_20261015",
+    "processing": "All 15 actual receipt trajectories through first completion; same fixed 25 mm evaluation band; no fit to trajectories",
+    "location": "Appendix C; unchanged inherited asset",
+    "generated_plot": true,
+    "provenance": "data/cohort_manifest.json; provenance/results_20261016/source_files.json",
+    "asset_sha256": "78e3da36ce2d3c8db8eafd9dcff141a5d1269ce62766a66cb5ed4acc6c392a69"
+  },
+  {
+    "figure_id": "fig:e2_force_all",
+    "output": "figures/e2_force_all.pdf",
+    "sources": [
+      "data/traces/E2_A1_force.csv",
+      "data/traces/E2_A2_force.csv",
+      "data/traces/E2_A3_force.csv",
+      "data/traces/E2_A4_force.csv",
+      "data/traces/E2_A5_force.csv",
+      "data/traces/E2_B1_force.csv",
+      "data/traces/E2_B2_force.csv",
+      "data/traces/E2_B3_force.csv",
+      "data/traces/E2_B4_force.csv",
+      "data/traces/E2_B5_force.csv",
+      "data/traces/E2_C1_force.csv",
+      "data/traces/E2_C2_force.csv",
+      "data/traces/E2_C3_force.csv",
+      "data/traces/E2_C4_force.csv",
+      "data/traces/E2_C5_force.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r1_20261013T195840_cfee7559de76/executor/E2_force_cleanup_20261013_A_r1_20261013T195840_cfee7559de76_executor_20261013T195842_1791889122628208116_t4qi7t14/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r2_20261013T200254_da04a1075552/executor/E2_force_cleanup_20261013_A_r2_20261013T200254_da04a1075552_executor_20261013T200257_1791889377184441181_4dqnn29b/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r3_20261013T200416_6ffeb5146764/executor/E2_force_cleanup_20261013_A_r3_20261013T200416_6ffeb5146764_executor_20261013T200419_1791889459139822375__rbnca_e/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601/executor/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601_executor_20261013T200529_1791889529692307773_a7plxs7b/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r5_20261013T200711_ed37cc309c44/executor/E2_force_cleanup_20261013_A_r5_20261013T200711_ed37cc309c44_executor_20261013T200714_1791889634197444926_a235544y/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r1_20261013T200856_b55a06b76524/executor/E2_force_cleanup_20261013_B_r1_20261013T200856_b55a06b76524_executor_20261013T200859_1791889739231717975_dzbdn8v7/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r2_20261013T201013_0fc3796e2d33/executor/E2_force_cleanup_20261013_B_r2_20261013T201013_0fc3796e2d33_executor_20261013T201016_1791889816183728102_w1cuqwic/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r3_20261013T201128_ece39e727bc9/executor/E2_force_cleanup_20261013_B_r3_20261013T201128_ece39e727bc9_executor_20261013T201131_1791889891167300132_omqwdm8d/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c/executor/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c_executor_20261013T201243_1791889963330503884_ceij0mqm/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r5_20261013T201347_702cc1eae9be/executor/E2_force_cleanup_20261013_B_r5_20261013T201347_702cc1eae9be_executor_20261013T201349_1791890029596730151_cc0pqltd/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a/executor/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a_executor_20261013T201552_1791890152942861977_6645_66c/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r2_20261013T201654_2c8a82453c1b/executor/E2_force_cleanup_20261013_C_r2_20261013T201654_2c8a82453c1b_executor_20261013T201656_1791890216606232605_8upj8nb1/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r3_20261013T201751_bb61fb537fa0/executor/E2_force_cleanup_20261013_C_r3_20261013T201751_bb61fb537fa0_executor_20261013T201754_1791890274315144695_etcuce_1/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r4_20261013T201854_63aa9f0a5934/executor/E2_force_cleanup_20261013_C_r4_20261013T201854_63aa9f0a5934_executor_20261013T201856_1791890336674181851_ppsve5wz/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r5_20261013T201958_870d2c89c24d/executor/E2_force_cleanup_20261013_C_r5_20261013T201958_870d2c89c24d_executor_20261013T202000_1791890400991857211_er24mwf9/wrench.csv"
+    ],
+    "run_ids": [
+      "E2_force_cleanup_20261013_A_r1_20261013T195840_cfee7559de76",
+      "E2_force_cleanup_20261013_A_r2_20261013T200254_da04a1075552",
+      "E2_force_cleanup_20261013_A_r3_20261013T200416_6ffeb5146764",
+      "E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601",
+      "E2_force_cleanup_20261013_A_r5_20261013T200711_ed37cc309c44",
+      "E2_force_cleanup_20261013_B_r1_20261013T200856_b55a06b76524",
+      "E2_force_cleanup_20261013_B_r2_20261013T201013_0fc3796e2d33",
+      "E2_force_cleanup_20261013_B_r3_20261013T201128_ece39e727bc9",
+      "E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c",
+      "E2_force_cleanup_20261013_B_r5_20261013T201347_702cc1eae9be",
+      "E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a",
+      "E2_force_cleanup_20261013_C_r2_20261013T201654_2c8a82453c1b",
+      "E2_force_cleanup_20261013_C_r3_20261013T201751_bb61fb537fa0",
+      "E2_force_cleanup_20261013_C_r4_20261013T201854_63aa9f0a5934",
+      "E2_force_cleanup_20261013_C_r5_20261013T201958_870d2c89c24d"
+    ],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "All five executions per method; raw logged values shown with ZOH; archived analysis windows; full force range",
+    "location": "Appendix C; unchanged inherited asset",
+    "generated_plot": true,
+    "asset_sha256": "ff0184cd801ab82cebcc7043765267e6623da4d32c2b5df2a653284f178db20d"
+  },
+  {
+    "figure_id": "fig:e2_primary_metrics",
+    "output": "figures/e2_primary_metrics.pdf",
+    "sources": [
+      "data/e2_runs_corrected.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/reports/20261013_E2_pdf_report/metrics_per_run.csv"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "All 15 attempts; A4 marked as interruption; time mean/sample SD use A completed 4, B/C 5; force/travel include A4",
+    "location": "Chapter 7",
+    "generated_plot": true,
+    "asset_sha256": "c1ecb2bb9178338fdc5b9f6cd7d9599207cb045da256369af60afa434e9ed6f3"
+  },
+  {
+    "figure_id": "fig:e2_sequence",
+    "output": "figures/e2_sequence.pdf",
+    "sources": [
+      "figures/E2_C1_video_0.png",
+      "figures/E2_C1_video_1.png",
+      "figures/E2_C1_video_2.png",
+      "figures/E2_C1_video_3.png"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/C/E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a/video/polishing_inference_20261013_201600_FLOW_E2_force_cleanup_20261013_C_r1_20261013T201550_2427359dfa4a.webm"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "Uniform video-relative offsets; left camera pane cropped at exactly half full-frame width; original camera overlays preserved; full decoded frames bundled",
+    "location": "Appendix C; unchanged inherited asset",
+    "generated_plot": true,
+    "asset_sha256": "70884f4accfbff0545ecde3aceb0316dea472a5844706f60be581e442e713d34"
+  },
+  {
+    "figure_id": "fig:e2_transition_cases",
+    "output": "figures/e2_transition_cases.pdf",
+    "sources": [
+      "data/traces/E2_A4_force.csv",
+      "data/traces/E2_A4_pose.csv",
+      "data/traces/E2_B4_force.csv",
+      "data/traces/E2_B4_pose.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601/executor/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601_executor_20261013T200529_1791889529692307773_a7plxs7b/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/A/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601/executor/E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601_executor_20261013T200529_1791889529692307773_a7plxs7b/wrench.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c/executor/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c_executor_20261013T201243_1791889963330503884_ceij0mqm/tcp_pose.csv",
+      "/home/eunseop/nrs_imitation/results/20261013/E2/E2_force_cleanup_20261013/B/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c/executor/E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c_executor_20261013T201243_1791889963330503884_ceij0mqm/wrench.csv"
+    ],
+    "run_ids": [
+      "E2_force_cleanup_20261013_A_r4_20261013T200527_3495cda4a601",
+      "E2_force_cleanup_20261013_B_r4_20261013T201240_fae6a7b8384c"
+    ],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "A4 retained on operator-corrected outcome; B4 chosen for maximum recorded gate transition count; full intervals, no smoothing",
+    "location": "Appendix C; unchanged inherited asset",
+    "generated_plot": true,
+    "asset_sha256": "ae6433d800519aacfe5a99bcebd79b2a57296f8575766f719346394d92a2d91b"
+  },
+  {
+    "output": "figures/e3_D1-4_native_evidence.pdf",
+    "kind": "original RGB and unchanged native-pixel mask panel",
+    "sources": [
+      "provenance/results_20261108/e3_display_manifest.json"
+    ],
+    "regeneration": "scripts/prepare_e3_assets_20261108.py",
+    "display": "common native-coordinate crop, nearest-neighbor display, vector ROI and occlusion hatching only",
+    "asset_sha256": "e19b74038b18132af2caf41883958053923334b2d83b52a3a2434608f9c2d0c7"
+  },
+  {
+    "output": "figures/e3_D2-3_native_evidence.pdf",
+    "kind": "original RGB and unchanged native-pixel mask panel",
+    "sources": [
+      "provenance/results_20261108/e3_display_manifest.json"
+    ],
+    "regeneration": "scripts/prepare_e3_assets_20261108.py",
+    "display": "common native-coordinate crop, nearest-neighbor display, vector ROI and occlusion hatching only",
+    "asset_sha256": "4b6129b23de490b9b07d12286af3f452a0d33225bd80d3e5c7dc56fe0b9b93df"
+  },
+  {
+    "output": "figures/e3_P2-1_native_evidence.pdf",
+    "kind": "original RGB and unchanged native-pixel mask panel",
+    "sources": [
+      "provenance/results_20261108/e3_display_manifest.json"
+    ],
+    "regeneration": "scripts/prepare_e3_assets_20261108.py",
+    "display": "common native-coordinate crop, nearest-neighbor display, vector ROI and occlusion hatching only",
+    "asset_sha256": "44b195648c18b1a47fc5e625d02dfdb40b672d716ff71e56d629d4a5f9a50a7f"
+  },
+  {
+    "output": "figures/e3_first_index_evidence_d.pdf",
+    "kind": "original RGB and unchanged native-pixel mask panel",
+    "sources": [
+      "provenance/results_20261108/e3_display_manifest.json"
+    ],
+    "regeneration": "scripts/prepare_e3_assets_20261108.py",
+    "display": "common native-coordinate crop, nearest-neighbor display, vector ROI and occlusion hatching only",
+    "asset_sha256": "6946fdc744c6c6283c9f3dec87e6a3aad099b85baf62cd91185fc8728bc1965c"
+  },
+  {
+    "output": "figures/e3_first_index_evidence_np.pdf",
+    "kind": "original RGB and unchanged native-pixel mask panel",
+    "sources": [
+      "provenance/results_20261108/e3_display_manifest.json"
+    ],
+    "regeneration": "scripts/prepare_e3_assets_20261108.py",
+    "display": "common native-coordinate crop, nearest-neighbor display, vector ROI and occlusion hatching only",
+    "asset_sha256": "f1bc13153232fc2c69267273a46e77998df7eadc27754fd5727db0dd770e1e14"
+  },
+  {
+    "output": "figures/e3_registered_layout.pdf",
+    "kind": "measured-result plot; not conceptual or synthesized",
+    "sources": [
+      "data/results_summary_20261108.json"
+    ],
+    "regeneration": "scripts/update_results_20261108.py",
+    "asset_sha256": "b6fd0fe971b6229cdcaa954cb246a4590ec075d482ecfe80de63ed76da6aedad"
+  },
+  {
+    "output": "figures/e3_removal_metrics.pdf",
+    "kind": "measured-result plot; not conceptual or synthesized",
+    "sources": [
+      "data/results_summary_20261108.json"
+    ],
+    "regeneration": "scripts/update_results_20261108.py",
+    "asset_sha256": "cd01a642a12945b0987c824ba9d4164dd478fc7d9b67dd8e5af519e70d92096c"
+  },
+  {
+    "figure_id": "fig:force_processing",
+    "output": "figures/force_processing.pdf",
+    "sources": [
+      "data/teaching_episode29.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/20260819_1618/merged_hdf5/hdf5_recorder_single_cam_20260819_1618.hdf5",
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "Archived post-publisher raw, offline EMA, cleanup, and full three-axis pose rotation; no duplicate bias/gravity corrections",
+    "location": "Chapter 4",
+    "generated_plot": true,
+    "asset_sha256": "9b97754ee6257e5d3dddb237362bd1b174461329be36b78de2827bfbab883685"
+  },
+  {
+    "figure_id": "fig:mark_example",
+    "output": "figures/mark_detection_example.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/images/home_pose_stain_detection.png"
+    ],
+    "processing": "copied without pixel changes",
+    "location": "Chapter 3",
+    "context": "archived spatial registration example; not the evaluated E1 fixed datum",
+    "asset_sha256": "57695e6cdc843bce40d1f1df14917442ea3aec39784110fe7971539dc577c1a5"
+  },
+  {
+    "figure_id": "fig:teaching_frames",
+    "output": "figures/teaching_ep29_frame000.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "source_dataset_key": "observations/images/cam0",
+    "frame_index": 0,
+    "processing": "exact RGB frame, PNG encoding",
+    "location": "Chapter 4",
+    "asset_sha256": "3c131552c33d5bf0a24899735ae85547c733e6d7873f9cf315b227b1a69acf4b"
+  },
+  {
+    "figure_id": "fig:teaching_frames",
+    "output": "figures/teaching_ep29_frame085.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "source_dataset_key": "observations/images/cam0",
+    "frame_index": 85,
+    "processing": "exact RGB frame, PNG encoding",
+    "location": "Chapter 4",
+    "asset_sha256": "c2f8014c3c187707eb1f85b67c87544b48041d966fa64da201b54679e809bca4"
+  },
+  {
+    "figure_id": "fig:teaching_frames",
+    "output": "figures/teaching_ep29_frame150.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "source_dataset_key": "observations/images/cam0",
+    "frame_index": 150,
+    "processing": "exact RGB frame, PNG encoding",
+    "location": "Chapter 4",
+    "asset_sha256": "a32e6e5255db97c59947dc56bfb9560b68f9931e79799feb6667ca4dce442939"
+  },
+  {
+    "figure_id": "fig:teaching_frames",
+    "output": "figures/teaching_ep29_frame400.png",
+    "sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "source_dataset_key": "observations/images/cam0",
+    "frame_index": 400,
+    "processing": "exact RGB frame, PNG encoding",
+    "location": "Chapter 4",
+    "asset_sha256": "8c473e7029b1b5b4058fe0c0c57a9d6ab1ae8d990b802b4e37b7159cd60bdd4d"
+  },
+  {
+    "figure_id": "fig:teaching_motion_force",
+    "output": "figures/teaching_motion_force.pdf",
+    "sources": [
+      "data/teaching_episode29.csv"
+    ],
+    "original_sources": [
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/20260819_1618/merged_hdf5/hdf5_recorder_single_cam_20260819_1618.hdf5",
+      "/home/eunseop/nrs_imitation/datasets/polishing/single_cam/e2_force_cleanup_20261012/imitation_form/episode_29.hdf5"
+    ],
+    "run_ids": [],
+    "provenance": "provenance/input_manifest.json and data run inventories",
+    "processing": "Actual episode29 on its preserved original source receipt-time axis; no smoothing beyond the archived dataset preprocessing",
+    "location": "Chapter 4",
+    "generated_plot": true,
+    "asset_sha256": "2f34f6adcf7411a601fa5049425133c7f9a551076849e0c7d56ef5266ea3301e"
+  },
+  {
+    "kind": "editable conceptual diagram",
+    "source_tex": "chapters/06_execution_evaluation.tex",
+    "not_measured_photograph": true
+  },
+  {
+    "kind": "editable conceptual diagram",
+    "source_tex": "chapters/03_problem_system.tex",
+    "not_measured_photograph": true
+  },
+  {
+    "kind": "editable conceptual diagram",
+    "source_tex": "chapters/04_demonstration_dataset.tex",
+    "not_measured_photograph": true
+  },
+  {
+    "kind": "editable conceptual diagram",
+    "source_tex": "chapters/05_skill_learning.tex",
+    "not_measured_photograph": true
+  }
+]

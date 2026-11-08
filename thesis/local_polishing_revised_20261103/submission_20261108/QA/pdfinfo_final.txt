@@ -1,0 +1,27 @@
+Title:           Human-Guided Local Robotic Polishing via Joint Motion–Force Representation and Force-Conditioned Imitation Learning
+Subject:         Master's thesis for examination
+Keywords:        
+Author:          Eunseop Song
+Creator:         LaTeX with hyperref
+Producer:        pdfTeX-1.40.22
+CreationDate:    Sun Nov  8 14:55:57 2026 KST
+ModDate:         Sun Nov  8 14:55:57 2026 KST
+Custom Metadata: yes
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           111
+Encrypted:       no
+Page size:       595.276 x 841.89 pts (A4)
+Page rot:        0
+MediaBox:            0.00     0.00   595.28   841.89
+CropBox:             0.00     0.00   595.28   841.89
+BleedBox:            0.00     0.00   595.28   841.89
+TrimBox:             0.00     0.00   595.28   841.89
+ArtBox:              0.00     0.00   595.28   841.89
+File size:       7227517 bytes
+Optimized:       no
+PDF version:     1.5

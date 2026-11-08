@@ -1,0 +1,56 @@
+성균관대학교 대학원
+석·박사 학위논문 작성방법
+
+
+박사학위논문의 공표에 관한 안내
+
+고등교육법 시행령 제51조(박사학위논문의 공표) 박사학위를 받은 자는 그 받은 날부터 1년 이내에 교육부장관이 정하는 바에 따라 박사학위논문을 공표하여야 한다. 다만, 교육부장관이 그 공표가 적당하지 아니하다고 인정하는 때에는 그러하지 아니하다.
+학칙 제51조 ⑨박사학위를 받은 자는 그 받은 날부터 1년 이내에 교육부장관이 정하는 바에 따라 박사학위 논문을 공표하여야 한다. 다만, 공표함이 적당하지 아니하다고 교육부장관이 인정하는 때에는 그러하지 아니하다.
+
+
+
+1. The thesis
+1) When you write a thesis on the Hangul(한글)
+- Paper size : A4 size (210 x 297mm)
+- Margins : Top and bottom margins - 38mm
+Forewords and footers - 15mm
+Left and right margins - 30mm
+- Indenting : Leave two blank spaces at the beginning of each paragraph.
+- Line spacing : 200%
+- Alignment method : mixed
+- Fonts and sizes :
+∙ Fonts: HYsinmyeongjo(HY신명조), humanmyeongjo(휴먼명조), Times New Roman,
+∙ Titles - 16 point, in bold types
+∙ Sub-headlines - 14 point, in bold types
+∙ Texts – 11 point
+∙ Footnotes - 9 point
+
+2) When you write a thesis on the MS Word 
+- Paper size : A4 (210 x 297mm) 
+- Margins : Top and bottom margins - 3.8cm 
+Forewords and footers - 1.5cm
+Left and right margins - 3cm
+- Others : Same as a thesis on the Hangul.
+
+2. How to bind your degree thesis 
+- Inside paper quality : 80g, vellum paper
+- Printing methods : Print your thesis on both sides.
+- Covers :
+∙ Soft : White, 220g
+∙ Hard : Navy, golden fonts
+- Year: Year of graduation (ex: 2026. 2. -> 2026 / 2026. 8. -> 2026)
+
+3. Order and forms of binding degree theses
+① Cover
+② Side of Cover : Print only as a cover.(Do not print as contents) 
+③ Submission form : It should be “April 2026”.(Do not change)
+④ Approval forms : Copy 1 Must be name and signature of Thesis Committee, 
+Copy 2, 3 Must be empty (no name and signature of Thesis Committee).
+It should be “June 2026”.(Do not change)
+⑤ Table of contents: The table of contents should include the contents for figures and
+tables (You may change the format for different theses.)
+⑥ Abstract in English : It should not be longer than 2 pages.
+⑦ Text
+⑧ Reference data
+⑨ You may have any appendices, indexes or other information.
+⑩ Abstract in Korean : It should not be longer than 2 pages.

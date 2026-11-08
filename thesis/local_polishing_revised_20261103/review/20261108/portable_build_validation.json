@@ -1,0 +1,459 @@
+{
+  "zip_sha256": "ce73f7a7f2a09f957c54f77beab55359993db33fde1022444fb99395b14d66cf",
+  "tested_exact_zip": "/home/eunseop/master_thesis_eunseopsong/thesis/local_polishing_revised_20261103/submission_20261108/Thesis_Source_20261108.zip",
+  "extracted_directory": "/tmp/thesis_submission_ziptest_20261108_n_wt088m/Thesis_Source_20261108",
+  "build_returncode": 0,
+  "validation_returncode": 0,
+  "identical_searchable_text": true,
+  "original_project_inputs_used": [],
+  "pages": 111,
+  "all_rendered_pages_pixel_identical": true,
+  "render_comparisons": [
+    {
+      "pdf_page": 1,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 2,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 3,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 4,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 5,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 6,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 7,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 8,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 9,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 10,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 11,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 12,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 13,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 14,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 15,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 16,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 17,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 18,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 19,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 20,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 21,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 22,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 23,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 24,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 25,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 26,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 27,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 28,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 29,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 30,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 31,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 32,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 33,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 34,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 35,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 36,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 37,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 38,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 39,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 40,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 41,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 42,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 43,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 44,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 45,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 46,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 47,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 48,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 49,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 50,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 51,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 52,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 53,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 54,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 55,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 56,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 57,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 58,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 59,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 60,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 61,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 62,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 63,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 64,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 65,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 66,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 67,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 68,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 69,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 70,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 71,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 72,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 73,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 74,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 75,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 76,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 77,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 78,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 79,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 80,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 81,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 82,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 83,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 84,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 85,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 86,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 87,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 88,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 89,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 90,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 91,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 92,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 93,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 94,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 95,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 96,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 97,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 98,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 99,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 100,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 101,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 102,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 103,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 104,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 105,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 106,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 107,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 108,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 109,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 110,
+      "pixel_identical": true
+    },
+    {
+      "pdf_page": 111,
+      "pixel_identical": true
+    }
+  ],
+  "tested_without_original_data_model_ros_or_gpu": true,
+  "source_only_system_TeX_dependencies": true
+}

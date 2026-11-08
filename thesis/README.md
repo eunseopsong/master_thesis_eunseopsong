@@ -1,11 +1,11 @@
-# 학위논문 검토본 위치
+# 학위논문 제출본 위치
 
-현재 수정·검토 대상은 [local_polishing_revised_20261103](local_polishing_revised_20261103/)이다. E1 R*별도추가5회/원R보존, E2 A4정정, E3 N/P1/D1/D2 main20/image19를반영한다.
+활성 프로젝트는 `local_polishing_revised_20261103/`이다. 최신 심사용 산출물은 그 아래 `submission_20261108/`에 있다.
 
-- PDF: `local_polishing_revised_20261103/ThesisMain.pdf`
-- LaTeX: `local_polishing_revised_20261103/ThesisMain.tex`
-- 빌드/재생성: 해당폴더README.md
-- 변경/근거: `revision_summary_20261103.md`, `claim_evidence_map_20261103.md`
-- 원출처접근한계: `open_items.md`
+- 심사용 PDF: `local_polishing_revised_20261103/submission_20261108/Thesis_Examination_20261108.pdf`
+- 소스 ZIP: `local_polishing_revised_20261103/submission_20261108/Thesis_Source_20261108.zip`
+- 검수·변경·재현성 기록: 같은 제출 폴더의 날짜별 Markdown 파일
+- 편집 진입점: `local_polishing_revised_20261103/ThesisMain.tex`
+- 빌드: 활성 프로젝트에서 `bash build.sh`
 
-이전20261015/20261016폴더와ZIP은보존한다. 루트의과거FAIRE ThesisMain으로되돌아가작성하지않는다.
+이전 20261015/20261016 프로젝트, 과거 ZIP, 루트의 오래된 원고는 보존한다. 기준 검토본과 작업 전 Git 상태는 활성 프로젝트의 제출 폴더 `preservation/`에 별도 보관한다.

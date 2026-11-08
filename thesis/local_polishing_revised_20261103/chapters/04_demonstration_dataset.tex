@@ -21,7 +21,7 @@ The recorded pose must refer to the tool rather than the tracker housing. Let \(
  {}^BT_E(t)={}^BT_V\,{}^VT_T(t)\,{}^TT_E.
  \label{eq:demo_transfer}
 \end{equation}
-The fixed transforms identify the tracking world with the robot base and remove the tracker-to-tool offset. Translation is expressed in millimeters, while the final orientation is converted to a rotation vector in radians.
+Figure~\ref{fig:demo_transfer} summarizes the coordinate-processing chain. The fixed transforms identify the tracking world with the robot base and remove the tracker-to-tool offset. Translation is expressed in millimeters, while the final orientation is converted to a rotation vector in radians.
 
 The implementation includes more than one rigid transform. Its calibration utilities solve the registration and tool offset, project rotations to valid rotation matrices, and support a planar correction and a bounded XY-dependent position residual. The tracker publisher converts OpenVR translation from meters to millimeters before applying the downstream calibration chain. It right-multiplies the configured spatial-angle alignment and applies the selected tool-offset convention. The published \texttt{calibrated\_pose} is the final tool pose used by the recorder; the raw tracker rotation is not substituted for it in force-axis reconstruction.
 
@@ -59,6 +59,8 @@ The teaching publisher applies its configured sensor decoding and sign conventio
 \end{equation}
 The stored pose is processed through the existing Hampel and difference-regularized smoothing pipeline. The archived episode reports no pose EMA, no approach slowdown, and retiming factor one. These are properties of the selected recorded episode; optional processing branches in the current recorder are not assumed to have been active.
 
+Table~\ref{tab:signal_stages} distinguishes the recording, cleanup, and normalization stages.
+
 \begin{table}[tbp]\centering\small
 \caption[Teaching and learning signal stages]{Teaching and learning signal stages. Normalization changes scale for the network; it does not perform physical calibration.}
 \label{tab:signal_stages}
@@ -95,6 +97,8 @@ Common-axis reconstruction makes the recorded teaching distribution and measured
 The compact representation subtracts the stored stain center from observation and action XY positions, leaving Z and orientation unchanged. Learning this local pattern removes absolute XY placement from the pose supervision. The selected dataset is labeled single-direction, 90-degree, and explicitly records \texttt{rotation\_aligned=false}. This attribute describes the saved training data; it does not mean that the implementation lacks direction transfer. The separate inference adapter in Section~\ref{sec:stain_relative_generalization} aligns live positions and images to a configured teaching direction and inversely restores generated XY. E1/E2 explicitly disable that adapter, so their results do not quantify its transfer performance. Some upstream files also record episode-specific XYZ corrections, which are preprocessing transformations rather than separate generalization tests.
 
 The evaluated A/B/C models share 42 unique episodes. The optimization partition contains 38 episodes; validation contains episodes 35, 39, 22, and 37. The checkpoint normalizer files reproduce this episode-level partition. All windows from an episode remain in its assigned partition, avoiding overlap of windows from one episode across optimization and validation. This does not establish independence by operator, material, specimen, or collection session. No separate held-out demonstration-test split is claimed.
+
+Figure~\ref{fig:dataset_split} shows the episode lengths and fixed partition.
 
 \figfull{dataset_split.pdf}{Stored lengths of all 42 episodes used by the force-cleanup models. Orange identifies the four validation episodes. The partition is made before window sampling; repeated windows are not independent demonstrations.}{fig:dataset_split}
 

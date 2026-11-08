@@ -21,6 +21,8 @@ The visual branch combines the global image feature with a feature pooled from a
 
 The state MLP encodes all nine normalized state components into 256 components. A GRU with input dimension three and hidden dimension 64 encodes the force history, with its final hidden state contributing to fusion. The fused condition is 256-dimensional. Thus the current force appears both in the state vector and as the last history sample. There is no learned moment-history branch, LSTM comparison, or termination head in the evaluated configuration.
 
+Figure~\ref{fig:force_history_policy} summarizes the force-observing architecture.
+
 \begin{figure}[tbp]\centering
 \resizebox{\linewidth}{!}{%
 \begin{tikzpicture}[node distance=8mm]
@@ -40,6 +42,8 @@ The state MLP encodes all nine normalized state components into 256 components. 
 \caption[Implemented policy architecture]{Actual force-observing policy configuration, shown conceptually. In B, the current-force and history tensors are zeroed after normalization while the history branch remains. A uses pose6 state/action and omits force history. The flow vector field has the same sequence shape as its action input.}
 \label{fig:force_history_policy}
 \end{figure}
+
+Table~\ref{tab:learning_settings} lists the saved architecture and training parameters.
 
 \begin{table}[tbp]\centering\small
 \caption[Architecture and training settings]{Architecture and training settings for the force-cleanup checkpoints used in E1--E3.}
@@ -99,7 +103,7 @@ At inference, a fresh Gaussian chunk \(Z^{(0)}\) is generated. With \(M=10\) and
 \end{equation}
 This is the exact explicit update with a midpoint flow-time argument used in the code. It is not a two-stage midpoint Runge--Kutta solver: no intermediate state evaluation is computed. The final sequence is denormalized using the stored action bounds, and its relative XY coordinates are restored before execution. When the implemented direction-transfer option is active, observation XY and the single-camera policy image are aligned before conditioning, and generated XY is inversely rotated before center addition, as defined in Section~\ref{sec:stain_relative_generalization}. This adapter surrounds the learned generator without changing its training objective or adding a predicted direction channel. It is disabled in E1/E2 and enabled for the E3 direction conditions.
 
-Ten flow updates generate an entire chunk. They are not ten physical polishing steps, and the physical action grid does not run at the flow-integration frequency. Online generation is triggered through a 5 Hz inference timer but is gated by existing plan age: the nominal stride is 120 samples at 30 Hz, or four seconds of reference progression. The actual recorded calls are separated by timer scheduling and inference latency as well. This gives observation-conditioned replanning at chunk boundaries, not a claim of continuous high-frequency strategy correction.
+Ten dimensionless flow updates generate one action chunk. Physical reference progression uses the separate 30 Hz action grid. The inference callback timer is configured at 5 Hz and generation is gated by plan age. The nominal stride of 120 action samples corresponds to 4.0 s. E3 additionally uses a 0.5 s replanning lead, giving a configured plan-age threshold of \(120/30-0.5=3.5\) s. The saved E3 execution configurations and runtime source snapshot implement this lead; it is not a measured interval between completed inference calls. Timer scheduling and inference latency can change the actual generation interval. The E3 lead does not replace the nominal stride reported for E1/E2. Command publication at 125 Hz is another distinct clock (Table~\ref{tab:clock_definitions}).
 
 The force history also has two time interpretations. In the dataset, 30 samples on a nominal 30 Hz grid describe approximately one second of historical context. Online, the adapter retains the most recent 30 force callback values and left-pads an insufficient history; it does not resample them onto an exact one-second clock. A 20 Hz recording cap for diagnostic CSV files does not specify the policy callback rate. The history length is therefore reported as a sample count, with its nominal training duration stated separately.
 

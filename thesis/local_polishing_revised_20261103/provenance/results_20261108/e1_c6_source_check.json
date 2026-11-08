@@ -1,0 +1,14 @@
+{
+  "run_id": "E1_CT_NOMINAL_C_r5_20261015T233551_9021584d0a",
+  "original_repeat": 5,
+  "retry_of": "E1_CT_NOMINAL_C_r5_20261015T230120_b45d2f021b",
+  "analysis_role": "additional diagnostic C6; original C5 retained",
+  "source": "/home/eunseop/nrs_imitation/results/20261015/E1_contact_transition/E1_CT_pass_height_v2_nominal_dev_20261015/NOMINAL/C/E1_CT_NOMINAL_C_r5_20261015T233551_9021584d0a/analysis/outcomes.json",
+  "source_sha256": "a1a7891d509f753c9fb1dbb62ccafd1d2eec1005f7db1d5ec5ab96b2c77e6f52",
+  "metrics_match": {
+    "completion_time_s": true,
+    "J_excess_Ns": true,
+    "peak_Fz_base_N": true,
+    "tcp_xy_distance_mm": true
+  }
+}
