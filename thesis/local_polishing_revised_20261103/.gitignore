@@ -1,3 +1,0 @@
-# Regenerable PDF review renders and Python caches.
-review/render_*/
-__pycache__/

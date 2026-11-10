@@ -10,28 +10,11 @@
 *.out
 *.toc
 *.synctex.gz
-*.xdv
-*.nav
-*.snm
-*.vrb
-*.ilg
-*.ind
-*.idx
-*.glo
-*.gls
-*.glg
-
-# Keep source figures and bibliography output if desired.
-# Final compiled PDFs are intentionally tracked for quick review.
-
-# Editor / OS files
+build/
+# Python / editor / OS
+__pycache__/
+.mplconfig/
 .vscode/
 .idea/
 .DS_Store
-Thumbs.db
 *~
-*.bak
-
-# Local build directories
-build/
-out/

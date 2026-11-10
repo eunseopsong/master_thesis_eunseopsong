@@ -1,4 +1,4 @@
-\documentclass[12pt,titlepage,headings,oneside,openany]{book}
+\documentclass[11pt,titlepage,headings,oneside,openany]{book}
 \usepackage{kotex}
 \usepackage{graphicx}
 \usepackage{epsfig}
@@ -22,7 +22,6 @@
 \usepackage[cmex10]{amsmath}
 \usepackage{newlfont}
 \usepackage{XThesis_skku_eng}
-\usepackage[active]{srcltx}
 \usepackage{notebook}
 \usepackage{fancyhdr}
 \usepackage{cite}
@@ -36,6 +35,8 @@
 \usepackage{placeins}
 \usepackage{mathtools}
 \usepackage{microtype}
+\usepackage{newtxtext}
+\usepackage{setspace}
 \ifpdf
   \usepackage[CJKbookmarks]{hyperref}
   \hypersetup{hidelinks}
@@ -49,12 +50,11 @@
 % chapter spacing, which pushed chapter titles far below the top of the page.
 \usepackage[
   a4paper,
-  top=25mm,
-  bottom=25mm,
-  left=36mm,
-  right=36mm,
-  includefoot,
-  footskip=10mm
+  top=38mm,
+  bottom=38mm,
+  left=30mm,
+  right=30mm,
+  footskip=23mm
 ]{geometry}
 
 % Place chapter headings at the top of the text area instead of adding the
@@ -65,82 +65,124 @@
   {\parindent \z@ \raggedright \normalfont
     \ifnum \c@secnumdepth >\m@ne
       \if@mainmatter
-        \huge\bfseries \@chapapp\space \thechapter
+      \fontsize{16}{21}\selectfont\bfseries \@chapapp\space \thechapter
         \par\nobreak
         \vskip 14\p@
       \fi
     \fi
     \interlinepenalty\@M
-    \Huge \bfseries #1\par\nobreak
-    \vskip 28\p@
+    \fontsize{16}{21}\selectfont \bfseries #1\par\nobreak
+    \vskip 22\p@
   }}
 \def\@makeschapterhead#1{%
   \vspace*{0pt}%
   {\parindent \z@ \raggedright \normalfont
     \interlinepenalty\@M
-    \Huge \bfseries #1\par\nobreak
-    \vskip 28\p@
+    \fontsize{16}{21}\selectfont \bfseries #1\par\nobreak
+    \vskip 22\p@
   }}
+% Ragged bottom with finite stretch. The default infinitely stretchable bottom
+% glue makes every page break before a heading equally cheap, which left
+% pages half empty ahead of section titles.
+\def\@textbottom{\vskip \z@ \@plus 6\baselineskip}
+\let\@texttop\relax
 \makeatother
+\usepackage{sectsty}
+\sectionfont{\fontsize{14}{18}\selectfont}
+\subsectionfont{\fontsize{12}{16}\selectfont}
+\setlength{\parindent}{2em}
+\hyphenpenalty=800
+\exhyphenpenalty=800
+\lefthyphenmin=3
+\righthyphenmin=3
+\emergencystretch=1em
+\widowpenalty=10000
+\clubpenalty=10000
 \hfuzz2pt
-\newlength{\defbaselineskip}
-\setlength{\defbaselineskip}{\baselineskip}
-\newcommand{\setlinespacing}[1]{\setlength{\baselineskip}{#1 \defbaselineskip}}
-\newcommand{\doublespacing}{\setlength{\baselineskip}{2.0 \defbaselineskip}}
-\newcommand{\singlespacing}{\setlength{\baselineskip}{\defbaselineskip}}
-\newcommand{\todoexp}[1]{\textcolor{red}{[Planned/TBD: #1]}}
-% TODO: Finalize thesis title after journal positioning and experiments.
-\newcommand{\fairetitle}{FAIRE: Force-Aware Imitation with Residual-Removal-Aware Blending for CAD-Free Robotic Surface Repair}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc,shapes.geometric}
+\tikzset{block/.style={draw=black!65,rounded corners=2pt,align=center,fill=blue!4,inner sep=6pt,font=\small},
+ link/.style={-{Latex[length=2mm]},thick},note/.style={align=center,font=\footnotesize}}
+\input{thesis_metadata}
+\input{frontmatter}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\NA}{\textemdash}
+\input{tables/result_numbers}
+\expandafter\def\csname short@fig:mark_example\endcsname{Marked local region and registration}
+\expandafter\def\csname short@fig:faire_architecture\endcsname{System overview and module interfaces}
+\expandafter\def\csname short@fig:apparatus\endcsname{Archived robot apparatus photograph}
+\expandafter\def\csname short@fig:teaching_frames\endcsname{Actual teaching-camera frames}
+\expandafter\def\csname short@fig:demo_transfer\endcsname{Coordinate-processing chain}
+\expandafter\def\csname short@fig:force_processing\endcsname{Recorded force-processing stages}
+\expandafter\def\csname short@fig:dataset_split\endcsname{Episode lengths and dataset partition}
+\expandafter\def\csname short@fig:teaching_motion_force\endcsname{Representative motion--force teaching}
+\expandafter\def\csname short@fig:force_history_policy\endcsname{Implemented policy architecture}
+\expandafter\def\csname short@fig:execution_architecture\endcsname{Command processing and contact execution}
+\expandafter\def\csname short@fig:e1_primary_metrics\endcsname{E1 completion and excess-force results}
+\expandafter\def\csname short@fig:e1_force_all\endcsname{All E1 measured force traces}
+\expandafter\def\csname short@fig:e1_xy_all\endcsname{All E1 measured XY trajectories}
+\expandafter\def\csname short@fig:e1_height_reference\endcsname{E1 exit-height reference sensitivity}
+\expandafter\def\csname short@fig:e1_c5_c6\endcsname{Original E1 C5 and additional diagnostic C6}
+\expandafter\def\csname short@fig:e2_primary_metrics\endcsname{E2 timing, force peaks, and travel}
+\expandafter\def\csname short@fig:e2_force_all\endcsname{All E2 measured force traces}
+\expandafter\def\csname short@fig:e2_transition_cases\endcsname{E2 A4 and B4 transition cases}
+\expandafter\def\csname short@fig:e1_photos\endcsname{First-run E1 initial and final snapshots}
+\expandafter\def\csname short@fig:e2_sequence\endcsname{Frames from the first E2 C video}
+\expandafter\def\csname short@fig:diagnostic_heatmap\endcsname{Uncalibrated execution heatmap}
+\expandafter\def\csname short@fig:e3_registered_layout\endcsname{E3 registered positions and directions}
+\expandafter\def\csname short@fig:e3_removal_metrics\endcsname{E3 individual image-area removal results}
+\expandafter\def\csname short@fig:e3_first_index_evidence\endcsname{E3 first-index RGB and ink-mask evidence}
+\newcommand{\figfull}[3]{\begin{figure}[tbp]\centering\includegraphics[width=\linewidth]{figures/#1}\caption[\csname short@#3\endcsname]{#2}\label{#3}\end{figure}}
+\captionsetup{font=small,labelfont=bf}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\renewcommand{\tabularxcolumn}[1]{P{#1}}
+\renewcommand{\arraystretch}{1.15}
+% Float placement: let text share pages with figures and tables instead of
+% leaving sparse float-only pages.
+\renewcommand{\topfraction}{.85}
+\renewcommand{\bottomfraction}{.70}
+\renewcommand{\textfraction}{.10}
+\renewcommand{\floatpagefraction}{.80}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{1}
+\setcounter{totalnumber}{3}
+\renewcommand{\contentsname}{Table of Contents}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+\hypersetup{pdftitle={\thesistitle},pdfauthor={\thesisauthor},pdfsubject={Master's thesis, Sungkyunkwan University}}
+
 \begin{document}
-\setlinespacing{1.7}
-\def\baselinestretch{1}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+\doublespacing
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}
+\hypersetup{pageanchor=false}
+\coverpage
+\coverpage % inside cover
+\submissionpage
+\approvalpage
 \pagenumbering{roman}
-\tableofcontents
-\clearpage
-\phantomsection
-\addcontentsline{toc}{chapter}{List of Tables}
-\listoftables
-\clearpage
-\phantomsection
-\addcontentsline{toc}{chapter}{List of Figures}
-\listoffigures
-\clearpage
-\markboth{Abstract}{Abstract}
+\hypersetup{pageanchor=true}
+\begingroup\singlespacing
+\tableofcontents\clearpage
+\phantomsection\addcontentsline{toc}{chapter}{List of Tables}\listoftables\clearpage
+\phantomsection\addcontentsline{toc}{chapter}{List of Figures}\listoffigures\clearpage
+\endgroup
 \include{abstract_eng}
-\pagenumbering{arabic}
-\setcounter{page}{1}
-\markboth{Introduction}{Introduction}
-\include{./1.Introduction/1.Introduction}
-\markboth{Related Work}{Related Work}
-\include{./2.RelatedWork/2.RelatedWork}
-\markboth{Problem Formulation and FAIRE Overview}{Problem Formulation and FAIRE Overview}
-\include{./3.ProblemFormulation/3.ProblemFormulation}
-\markboth{Demonstration Collection}{Demonstration Collection}
-\include{./4.DemonstrationCollection/4.DemonstrationCollection}
-\markboth{Force-Aware Expert Imitation}{Force-Aware Expert Imitation}
-\include{./5.ExpertImitation/5.ExpertImitation}
-\markboth{Material-Removal Estimation}{Material-Removal Estimation}
-\include{./6.MaterialRemoval/6.MaterialRemoval}
-\markboth{CAD-Free Model-Based Blending}{CAD-Free Model-Based Blending}
-\include{./7.Blending/7.Blending}
-\markboth{Experimental Evaluation}{Experimental Evaluation}
-\include{./8.ExperimentalEvaluation/8.ExperimentalEvaluation}
-\markboth{Conclusions and Future Work}{Conclusions and Future Work}
-\include{./9.Conclusions/9.Conclusions}
+\include{chapters/00_notation}
+\pagenumbering{arabic}\setcounter{page}{1}
+\include{chapters/01_introduction}
+\include{chapters/02_related_work}
+\include{chapters/03_problem_system}
+\include{chapters/04_demonstration_dataset}
+\include{chapters/05_skill_learning}
+\include{chapters/06_execution_evaluation}
+\include{chapters/07_experiments}
+\include{chapters/08_discussion_extensions}
+\include{chapters/09_conclusions}
 \clearpage
-\bibliographystyle{IEEEtran}
-\markboth{Bibliography}{Bibliography}
-\bibliography{Bibliography/ThesisRef}
-\setlinespacing{1.44}
-\clearpage
-\markboth{Appendix}{Appendix}
-\include{./Appendix/Appendix}
-\clearpage
-\markboth{국문요약}{국문요약}
+\bibliographystyle{IEEEtran}\bibliography{Bibliography/ThesisRef}
+\include{chapters/10_appendices}
 \include{abstract_kr}
 \end{document}

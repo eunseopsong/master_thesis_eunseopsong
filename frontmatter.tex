@@ -1,0 +1,71 @@
+% Front pages in the order of the SKKU English master's thesis form (2026-10-16):
+% cover, inside cover, submission form, approval form.
+% Sizes follow the form: 14 pt heading line, 22 pt title, 16 pt names and school lines.
+\newcommand{\coverpage}{%
+\begin{titlepage}
+\singlespacing\centering
+{\fontsize{14}{17}\selectfont Master's Thesis\par}
+\vspace{22mm}
+{\fontsize{22}{37}\selectfont\thesistitlecover\par}
+\vspace{26mm}
+{\fontsize{16}{20}\selectfont\thesisauthor\par}
+\vfill
+{\fontsize{16}{32}\selectfont The Graduate School\par
+Sungkyunkwan University\par
+\thesisdepartment\par}
+\vspace*{8mm}
+\end{titlepage}}
+
+\newcommand{\submissionpage}{%
+\begin{titlepage}
+\singlespacing\centering
+\vspace*{6mm}
+{\fontsize{22}{33}\selectfont\thesistitlecover\par}
+\vspace{12mm}
+{\fontsize{16}{20}\selectfont\thesisauthor\par}
+\vspace{14mm}
+{\fontsize{14}{27}\selectfont A Master's Thesis Submitted to the \thesisdepartment\\
+and the Graduate School of Sungkyunkwan University\\
+in partial fulfillment of the requirements for the degree of\\
+\thesisdegree\par}
+\vspace{14mm}
+{\fontsize{16}{20}\selectfont\thesisclaimmonth\par}
+\vfill
+{\fontsize{16}{32}\selectfont Supervised by\par
+\thesisadvisor\par
+Major Advisor\par}
+\vspace*{8mm}
+\end{titlepage}}
+
+\newcommand{\approvalline}[2]{%
+  \rule{62mm}{0.4pt}\par\vspace{1.5mm}
+  {\fontsize{11}{14}\selectfont #1 :\ifapprovalnames\ #2\fi\par}\vspace{11mm}}
+
+\newcommand{\approvalpage}{%
+\begin{titlepage}
+\singlespacing\centering
+\vspace*{6mm}
+{\fontsize{16}{32}\selectfont This certifies that the Master's Thesis\par
+of \thesisauthor{} is approved.\par}
+\vspace{30mm}
+\hfill\begin{minipage}{62mm}\raggedright
+\approvalline{Committee Chair}{\thesischair}
+\approvalline{Committee Member}{\thesisexaminer}
+\approvalline{Major Advisor}{\thesisadvisor}
+\end{minipage}\par
+\vfill
+{\fontsize{16}{32}\selectfont The Graduate School\par
+Sungkyunkwan University\par
+\thesisapprovalmonth\par}
+\vspace*{8mm}
+\end{titlepage}}
+
+% Side of cover (spine): printed on the bound cover only, never as a content page.
+\newcommand{\spinepage}{%
+\begin{titlepage}
+\centering\vspace*{\fill}
+\rotatebox{-90}{\makebox[.96\textheight]{\fontsize{8}{10}\selectfont
+Master's Thesis\hspace{1.5em plus 1fill}\thesistitle\hspace{1.5em plus 1fill}%
+\rotatebox{90}{\shortstack{2\\0\\2\\7}}\hspace{1.5em plus 1fill}\thesisauthor}}
+\vspace*{\fill}
+\end{titlepage}}

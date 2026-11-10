@@ -2,8 +2,10 @@
 
 ## Main entry points
 - `ThesisMain.tex`: main thesis document.
-- `ThesisCover.tex`: separate cover document.
-- Chapter source files are stored in numbered chapter directories.
+- `ThesisCover.tex`: separate cover document (front cover and spine).
+- `thesis_metadata.tex` and `frontmatter.tex`: title, names, dates, and the cover, submission, and approval pages.
+- Chapter source files are stored in `chapters/`; tables in `tables/`; figures in `figures/`.
+- Data figures are regenerated from `data/` with `scripts/make_figures.py`.
 - References are managed in `Bibliography/ThesisRef.bib`.
 
 ## Build on Ubuntu
@@ -21,7 +23,7 @@ The main outputs are `ThesisMain.pdf` and `ThesisCover.pdf`.
 - Preserve labels, citation keys, and cross-references.
 - Use formal academic English.
 - Escape LaTeX special characters such as `%`, `_`, `&`, and `#`.
-- Keep the page layout in `ThesisMain.tex` with equal top and bottom margins unless explicitly requested otherwise.
+- Keep the page layout in `ThesisMain.tex` on the official SKKU form (A4, 38 mm top and bottom, 30 mm sides, 11 pt, double spacing) unless explicitly requested otherwise.
 
 ## Validation
 - Compile the full thesis after editing.
