@@ -117,6 +117,35 @@ E3 evaluates reuse of the same C checkpoint and normalizer without new teaching 
 
 \figfull{e3_registered_layout.pdf}{Registered center offsets and directions for N/P1/D1/D2. Left axes show the recorded registration offsets in millimeters. Right arrows show direction relative to nominal, with arbitrary display length; they are not measured stroke lengths or tool footprints. Small center shifts in D1/D2 are retained in the table.}{fig:e3_registered_layout}
 
+Figure~\ref{fig:relative_position_logic} summarizes this relative-position logic. Unlike Figure~\ref{fig:force_history_policy}, which shows the internal structure of the Flow Matching policy, it shows the coordinate operations applied outside the network.
+
+\begin{figure}[tbp]\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[node distance=7mm,
+  net/.style={block,fill=black!7,dashed},
+  lane/.style={font=\small\bfseries,anchor=west}]
+% Training lane
+\node[block,text width=34mm,minimum height=17mm] (demo) at (0,0) {Demonstration XY\\$p_k$ in the robot base};
+\node[block,text width=46mm,minimum height=17mm,right=of demo] (sub) {Subtract frozen stain center\\$\widetilde p_{k,xy}=p_{k,xy}-c$\\Eq.~\eqref{eq:relative_task_pose}};
+\node[net,text width=40mm,minimum height=17mm,right=of sub] (train) {Flow Matching training\\Figure~\ref{fig:force_history_policy}\\checkpoint C + normalizer};
+\node[lane] at ([yshift=5mm]demo.north west) {Training: 42 teaching episodes, one reference direction};
+% Execution lane
+\node[block,text width=34mm,minimum height=21mm] (reg) at (0,-48mm) {Live registration\\center $c$, axis $\theta_{\mathrm{live}}$};
+\node[block,text width=46mm,minimum height=21mm,right=of reg] (obs) {Center and align observation\\$u_k=R_2(\alpha)(p_{k,xy}-c)$\\Eq.~\eqref{eq:stain_canonical_observation}\\image rotated by $\alpha$};
+\node[net,text width=40mm,minimum height=21mm,right=of obs] (policy) {Same checkpoint C\\Figure~\ref{fig:force_history_policy}\\no new teaching or training};
+\node[block,text width=46mm,minimum height=21mm,right=of policy] (restore) {Restore generated XY\\$p^{\mathrm{ref}}_{xy}=c+R_2(-\alpha)\widehat u$\\Eq.~\eqref{eq:stain_canonical_action}};
+\node[block,text width=46mm,minimum height=17mm,below=of restore] (exec) {Shared executor and\\existing force controller};
+\node[lane] at ([yshift=5mm]reg.north west) {Execution at a registered placement (E3)};
+\draw[link](demo)--(sub);\draw[link](sub)--(train);
+\draw[link](reg)--(obs);\draw[link](obs)--(policy);\draw[link](policy)--(restore);\draw[link](restore)--(exec);
+\draw[link,dashed](train)--node[right,note]{frozen weights}(policy);
+\node[note,anchor=north west,align=left,text width=128mm] at ([yshift=-7mm]reg.south west)
+ {Passed through without rotation: $z$, tool rotation vector, target-force channels, measured force, and force history.};
+\end{tikzpicture}}
+\caption[Relative-position learning and placement transfer]{Relative-position logic around the learned policy, shown as a conceptual diagram. Solid boxes are coordinate operations outside the network; dashed gray boxes are the Flow Matching policy of Figure~\ref{fig:force_history_policy}, whose architecture and weights are unchanged between training and E3 execution. The alignment angle \(\alpha\) follows Equation~\eqref{eq:stain_axis_alignment}; direction alignment is enabled for D1/D2, and \(\alpha=0\) reduces the path to the translation-relative case.}
+\label{fig:relative_position_logic}
+\end{figure}
+
 Position transfer uses center-relative XY and restoration to the live center. D1/D2 additionally align observation XY and the policy image to the teaching reference, then inversely transform generated XY. Z, tool posture, force actions, and measured-force channels are not jointly rotated as a full \(SE(3)\) transform. The result evaluates the policy together with its registration/direction adapter; it does not isolate spontaneous rotation generalization of the policy.
 
 \subsection{Selection and Image Evaluation}
